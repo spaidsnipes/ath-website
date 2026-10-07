@@ -101,7 +101,7 @@
       <div class="panel panel-pad"><p class="panel-title">Unknowns · needs input (${unk.length})</p>${unk.map(fnd).join("")}</div>
     </div>
     <div class="panel panel-pad mt2"><p class="panel-title">Recommended ATH path</p><p class="h-serif" style="font-size:24px">${esc(d.route.title)}</p><p class="body mb0">${esc(d.route.why)}</p></div>
-    <p class="panel-title mt3">Choose how to cross it</p>
+    <h2 class="panel-title mt3">Choose how to cross it</h2>
     <div class="doors">
       ${door("diy", "Do it myself", "Use these findings with your own team and tools. The Builder Dictionary helps you and your AI speak precisely.", "/language/")}
       ${door("world", "Join the world", "Passport identity and World Pass membership — the connected ATH ecosystem.", "/passport/")}

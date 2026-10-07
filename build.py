@@ -6,7 +6,7 @@ Truth: only $10 (Wavemotion) and $20 (World Pass) are published prices. Nothing 
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
 """
-import os, html
+import os, html, re
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
 SITE = "https://abovethehilldev.online"
@@ -580,11 +580,19 @@ pages["/404/"] = ("This path doesn't exist yet — ATH", "Page not found.",
  hero("path", "404", "This path doesn't<br>exist yet", "But the way over is still here.",
       btn("What's your hill?", "/diagnose/") + btn("Home", "/", "line"), size="d-m"))
 
+SECTION_H2 = {"/build/": "Service families", "/language/": "What the dictionary includes", "/passport/": "Membership tiers", "/report/": "What a Hill Report contains", "/work/": "ATH inventions"}
+
 # ---------------------------------------------------------------- write
 def write():
     for route, (title, desc, body) in pages.items():
         d = os.path.join(ROOT, route.strip("/"))
         os.makedirs(d, exist_ok=True)
+        # keep heading levels sequential for screen readers: a visually hidden h2 names card groups that follow the h1
+        label = SECTION_H2.get(route)
+        if label and re.search(r"<h1\b[\s\S]*?<h([23])\b", body) and re.search(r"<h1\b[\s\S]*?<h([23])\b", body).group(1) == "3":
+            i = body.find("<h3", body.find("<h1"))
+            j = body.rfind("<section", 0, i); j = j if j > body.find("<h1") else body.rfind("<div", 0, i)
+            body = body[:j] + f'<h2 class="vh">{label}</h2>' + body[j:]
         with open(os.path.join(d, "index.html"), "w") as f:
             f.write(head(title, desc, route) + header(route) + body + FOOT)
     # GitHub Pages serves /404.html for unknown paths
