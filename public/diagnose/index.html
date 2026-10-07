@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>What&#x27;s your hill? — ATHOS Diagnostic</title>
+<meta name="description" content="Tell us what&#x27;s stopping you. ATHOS inspects publicly available evidence where supported and never pretends to know what it cannot observe.">
+<link rel="canonical" href="https://abovethehilldev.online/diagnose/">
+<meta property="og:title" content="What&#x27;s your hill? — ATHOS Diagnostic">
+<meta property="og:description" content="Tell us what&#x27;s stopping you. ATHOS inspects publicly available evidence where supported and never pretends to know what it cannot observe.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abovethehilldev.online/diagnose/">
+<meta property="og:image" content="https://abovethehilldev.online/assets/art/home.jpg">
+<meta name="theme-color" content="#08090c">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/ath.css">
+<script>window.ATH_API="https://ath-athos.dhill5711.workers.dev";</script>
+<script src="/assets/ath.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="mantra" aria-hidden="true">Plain truth · Higher ground · One vision · One language · One ecosystem · Invention company · Systems · Destinations</div>
+<header class="site-head">
+ <div class="wrap">
+  <a class="brand" href="/" aria-label="Above the Hill Developments — home"><img src="/assets/ath-logo-lockup.png" width="250" height="131" alt="Above the Hill Developments"></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="nav" id="nav" aria-label="Primary"><a href="/company/">Company</a><a href="/work/">Inventions</a><a href="/build/">Services</a><a href="/diagnose/" aria-current="page">Diagnose</a><a href="/language/">Language</a><a href="/ecosystem/">Ecosystem</a><a class="btn btn-gold btn-sm" href="/diagnose/">Enter ATH</a></nav>
+ </div>
+</header>
+<main id="main">
+<section class="hero" style="--pos:60% 40%;--mpos:50% 30%;min-height:auto">
+ <div class="hero-art"><img src="/assets/art/diagnose.jpg" alt="" fetchpriority="high"></div>
+ <div class="wrap">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:28px">
+   <p class="eyebrow mb0">Diagnose / Start</p>
+   <ol class="stepper" aria-label="Progress: step 1 of 3"><li class="on"><span>1</span></li><li><span>2</span></li><li><span>3</span></li></ol>
+  </div>
+  <h1 class="display d-l">What's your hill?</h1>
+  <p class="lede">Tell us what's stopping you.</p>
+  <p class="body">ATHOS inspects publicly available evidence where supported and never pretends to know what it cannot observe.</p>
+  <form id="diag-form" class="mt3" novalidate>
+   <div class="grid" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px" data-collapse>
+    <div class="grid" style="gap:18px">
+     <div class="panel panel-pad">
+      <p class="panel-title">Show ATHOS what you have</p>
+      <label class="lbl" for="url">Website URL</label>
+      <p class="hint">Public pages only. Leave blank if you don't have one.</p>
+      <input id="url" name="url" type="url" inputmode="url" placeholder="https://example.com" autocomplete="url">
+     </div>
+     <div class="panel panel-pad">
+      <p class="panel-title">Business description</p>
+      <label class="lbl" for="desc">What you do, who you serve, what's in the way…</label>
+      <textarea id="desc" name="description" maxlength="1000" placeholder="We build … for … Our biggest challenge right now is …"></textarea>
+      <div class="counter"><span id="desc-count">0</span> / 1000</div>
+     </div>
+     <div class="panel panel-pad">
+      <label class="check"><input type="checkbox" name="unsure" id="unsure"><span><b>I don't know what I need yet</b><br><span class="mute">Explore without a specific brief.</span></span></label>
+     </div>
+    </div>
+    <div class="grid" style="gap:18px;align-content:start">
+     <fieldset class="panel panel-pad" style="margin:0">
+      <legend class="panel-title" style="float:left;width:100%">Optional public inspection</legend>
+      <p class="hint" style="clear:both">With a URL, ATHOS fetches that one public page and checks:</p>
+      <label class="check"><input type="checkbox" name="checks" value="structure" checked><span>Site structure</span></label><label class="check"><input type="checkbox" name="checks" value="messaging" checked><span>Messaging</span></label><label class="check"><input type="checkbox" name="checks" value="navigation" checked><span>Navigation</span></label><label class="check"><input type="checkbox" name="checks" value="conversion" checked><span>Visible conversion paths</span></label><label class="check"><input type="checkbox" name="checks" value="content" checked><span>Public content</span></label><label class="check"><input type="checkbox" name="checks" value="brand" checked><span>Brand positioning</span></label>
+     </fieldset>
+     <p class="body" style="margin:0 4px">Unknown remains a valid answer.<br>You control what you share.</p>
+     <p class="note" style="margin:0 4px">ATHOS reads one public page. It cannot see your analytics, traffic, sales, private systems or code — anything it can't observe is marked <b>unknown</b>.</p>
+    </div>
+   </div>
+   <div class="ctas">
+    <button class="btn btn-gold" type="submit" id="diag-go">Begin diagnosis <span class="arr" aria-hidden="true">→</span></button>
+    <a class="btn btn-line" href="/contact/?intent=describe">I prefer to describe it myself <span class="arr" aria-hidden="true">→</span></a>
+   </div>
+   <p class="form-status" id="diag-status" role="status" aria-live="polite"></p>
+  </form>
+ </div>
+</section>
+<style>@media (max-width:860px){[data-collapse]{grid-template-columns:1fr!important}}</style>
+</main>
+<footer class="site-foot">
+ <div class="wrap">
+  <div class="foot-grid">
+   <div><img src="/assets/ath-logo-lockup.png" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
+    <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
+   <div><h4>Start</h4><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/contact/">Contact ATH</a></div>
+   <div><h4>Company</h4><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
+   <div><h4>World</h4><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+  </div>
+  <div class="foot-line"><span class="mantra2">Heavens above · A realm to explore · Multiple destinations · One builder</span><span>© <span data-year>2026</span> Above the Hill Developments Inc.</span></div>
+ </div>
+</footer>
+</body>
+</html>

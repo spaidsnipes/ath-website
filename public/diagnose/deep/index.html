@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ATHOS Deep Diagnostic — Open the hood</title>
+<meta name="description" content="The free check found the hill. Want us to look underneath? You control the scope. ATHOS only inspects the sources you authorize.">
+<link rel="canonical" href="https://abovethehilldev.online/diagnose/deep/">
+<meta property="og:title" content="ATHOS Deep Diagnostic — Open the hood">
+<meta property="og:description" content="The free check found the hill. Want us to look underneath? You control the scope. ATHOS only inspects the sources you authorize.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abovethehilldev.online/diagnose/deep/">
+<meta property="og:image" content="https://abovethehilldev.online/assets/art/home.jpg">
+<meta name="theme-color" content="#08090c">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/ath.css">
+<script>window.ATH_API="https://ath-athos.dhill5711.workers.dev";</script>
+<script src="/assets/ath.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="mantra" aria-hidden="true">Plain truth · Higher ground · One vision · One language · One ecosystem · Invention company · Systems · Destinations</div>
+<header class="site-head">
+ <div class="wrap">
+  <a class="brand" href="/" aria-label="Above the Hill Developments — home"><img src="/assets/ath-logo-lockup.png" width="250" height="131" alt="Above the Hill Developments"></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="nav" id="nav" aria-label="Primary"><a href="/company/">Company</a><a href="/work/">Inventions</a><a href="/build/">Services</a><a href="/diagnose/" aria-current="page">Diagnose</a><a href="/language/">Language</a><a href="/ecosystem/">Ecosystem</a><a class="btn btn-gold btn-sm" href="/diagnose/">Enter ATH</a></nav>
+ </div>
+</header>
+<main id="main">
+<section class="hero" style="--pos:60% 60%;--mpos:62% 30%">
+ <div class="hero-art"><img src="/assets/art/deep.jpg" alt="" fetchpriority="high"></div>
+ <div class="wrap"><div class="hero-copy">
+  <p class="eyebrow">ATHOS Deep Diagnostic</p>
+  <h1 class="display d-m">The free check<br>found the hill.<br>Want us to look underneath?</h1>
+  <p class="lede">You control the scope. ATHOS only inspects the sources you authorize.</p>
+  
+ </div></div>
+</section>
+<section class="block"><div class="wrap">
+ <form class="panel panel-pad" id="deep-form" novalidate>
+  <p class="panel-title">Choose what ATH may inspect</p>
+  <div class="grid g2">
+   <div><label class="check"><input type="checkbox" name="sources" value="repo"><span>Repository / source</span></label><label class="check"><input type="checkbox" name="sources" value="docs"><span>Documentation</span></label><label class="check"><input type="checkbox" name="sources" value="arch"><span>Architecture</span></label><label class="check"><input type="checkbox" name="sources" value="ai"><span>AI instructions</span></label></div>
+   <div><label class="check"><input type="checkbox" name="sources" value="deploy"><span>Build / deployment</span></label><label class="check"><input type="checkbox" name="sources" value="analytics"><span>Analytics / business information</span></label><label class="check"><input type="checkbox" name="sources" value="flows"><span>Product / business flow</span></label></div>
+  </div>
+  <div class="grid g2 mt2">
+   <div class="field"><label class="lbl" for="d-name">Name</label><input id="d-name" name="name" type="text" autocomplete="name" required></div>
+   <div class="field"><label class="lbl" for="d-email">Email</label><input id="d-email" name="email" type="email" autocomplete="email" required></div>
+  </div>
+  <div class="field"><label class="lbl" for="d-msg">What should we look at, and why?</label><textarea id="d-msg" name="message"></textarea></div>
+  <input type="hidden" name="intent" value="deep-diagnostic">
+  <button class="btn btn-gold" type="submit">Request deep diagnostic <span class="arr" aria-hidden="true">→</span></button>
+  <p class="note mt1">This sends a request — no access is granted and nothing is charged. ATH replies with a written scope and quote first.</p>
+  <p class="form-status" role="status" aria-live="polite"></p>
+ </form>
+ <div class="grid g2 mt3">
+  <div class="panel panel-pad"><p class="panel-title">What ATHOS may do</p><ul class="rows">
+   <li><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><div><b>Read / inspect</b><span>Only the sources you select, through access you grant and can revoke.</span></div></li>
+   <li><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><b>Least privilege</b><span>Read-only wherever possible. Explicit, written scope.</span></div></li>
+   <li><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg><div><b>Deliver a Hill Report</b><span>Findings with evidence, confidence and unknowns.</span></div></li></ul></div>
+  <div class="panel panel-pad"><p class="panel-title">What ATHOS may not do</p><ul class="rows">
+   <li><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></svg><div><b>No changes</b><span>Diagnosis does not modify your code or systems.</span></div></li>
+   <li><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></svg><div><b>No hidden copying or training</b><span>Your materials aren't reused or used to train models without a separate written agreement.</span></div></li>
+   <li><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></svg><div><b>No wandering</b><span>Nothing outside the authorized scope is crawled.</span></div></li></ul></div>
+ </div>
+ <p class="note mt2">Retention: materials are kept only for the engagement and deleted on request or at its end. You own your materials; a diagnostic transfers no ownership to ATH. See <a class="gold" href="/terms/">Terms</a> and <a class="gold" href="/privacy/">Privacy</a>. We describe controls, not guarantees — no one can honestly promise "100% safe".</p>
+ <p class="note">Depth is sold by scope, passes and review level — never by fake hours. Final pricing is quoted per engagement.</p>
+</div></section></main>
+<footer class="site-foot">
+ <div class="wrap">
+  <div class="foot-grid">
+   <div><img src="/assets/ath-logo-lockup.png" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
+    <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
+   <div><h4>Start</h4><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/contact/">Contact ATH</a></div>
+   <div><h4>Company</h4><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
+   <div><h4>World</h4><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+  </div>
+  <div class="foot-line"><span class="mantra2">Heavens above · A realm to explore · Multiple destinations · One builder</span><span>© <span data-year>2026</span> Above the Hill Developments Inc.</span></div>
+ </div>
+</footer>
+</body>
+</html>
