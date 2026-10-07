@@ -52,10 +52,14 @@ def ic(name, cls="icon"):
     return f'<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{p}</svg>'
 
 ARR = '<span class="arr" aria-hidden="true">→</span>'
+FONTS = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+HERO_ART = {"/": "home", "/diagnose/": "diagnose", "/path/": "path", "/passport/": "passport", "/build/": "build", "/ecosystem/": "ecosystem", "/language/": "path", "/diagnose/deep/": "deep", "/work/": "path", "/company/": "home", "/404/": "path"}
 NAV = [("Company", "/company/"), ("Inventions", "/work/"), ("Services", "/build/"),
        ("Diagnose", "/diagnose/"), ("Language", "/language/"), ("Ecosystem", "/ecosystem/")]
 
 def head(title, desc, route):
+    art = HERO_ART.get(route)
+    preload = f'<link rel="preload" as="image" href="/assets/art/{art}.webp" fetchpriority="high">' if art else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -74,7 +78,9 @@ def head(title, desc, route):
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="preload" as="style" href="{FONTS}" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{FONTS}"></noscript>
+{preload}
 <link rel="stylesheet" href="/assets/ath.css">
 <script>window.ATH_API="{API}";</script>
 <script src="/assets/ath.js" defer></script>
@@ -89,7 +95,7 @@ def header(route):
     return f"""<div class="mantra" aria-hidden="true">Plain truth · Higher ground · One vision · One language · One ecosystem · Invention company · Systems · Destinations</div>
 <header class="site-head">
  <div class="wrap">
-  <a class="brand" href="/" aria-label="Above the Hill Developments — home"><img src="/assets/ath-logo-lockup.png" width="250" height="131" alt="Above the Hill Developments"></a>
+  <a class="brand" href="/" aria-label="Above the Hill Developments — home"><img src="/assets/ath-logo-lockup.webp" width="168" height="88" alt="Above the Hill Developments"></a>
   <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
   <nav class="nav" id="nav" aria-label="Primary">{links}<a class="btn btn-gold btn-sm" href="/diagnose/">Enter ATH</a></nav>
  </div>
@@ -101,11 +107,11 @@ FOOT = """</main>
 <footer class="site-foot">
  <div class="wrap">
   <div class="foot-grid">
-   <div><img src="/assets/ath-logo-lockup.png" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
+   <div><img src="/assets/ath-logo-lockup.webp" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
     <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
-   <div><h4>Start</h4><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/contact/">Contact ATH</a></div>
-   <div><h4>Company</h4><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
-   <div><h4>World</h4><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/contact/">Contact ATH</a></div>
+   <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
+   <div><p class="fh">World</p><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
   <div class="foot-line"><span class="mantra2">Heavens above · A realm to explore · Multiple destinations · One builder</span><span>© <span data-year>2026</span> Above the Hill Developments Inc.</span></div>
  </div>
@@ -116,7 +122,7 @@ FOOT = """</main>
 
 def hero(art, eyebrow, title, lede, ctas="", extra="", pos="70% 40%", mpos="62% 30%", size="d-xl"):
     return f"""<section class="hero" style="--pos:{pos};--mpos:{mpos}">
- <div class="hero-art"><img src="/assets/art/{art}.jpg" alt="" fetchpriority="high"></div>
+ <div class="hero-art"><img src="/assets/art/{art}.webp" alt="" fetchpriority="high"></div>
  <div class="wrap"><div class="hero-copy">
   {f'<p class="eyebrow">{eyebrow}</p>' if eyebrow else ''}
   <h1 class="display {size}">{title}</h1>
@@ -200,7 +206,7 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
 pages["/diagnose/"] = ("What's your hill? — ATHOS Diagnostic",
  "Tell us what's stopping you. ATHOS inspects publicly available evidence where supported and never pretends to know what it cannot observe.",
  f"""<section class="hero" style="--pos:60% 40%;--mpos:50% 30%;min-height:auto">
- <div class="hero-art"><img src="/assets/art/diagnose.jpg" alt="" fetchpriority="high"></div>
+ <div class="hero-art"><img src="/assets/art/diagnose.webp" alt="" fetchpriority="high"></div>
  <div class="wrap">
   <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:28px">
    <p class="eyebrow mb0">Diagnose / Start</p>
@@ -289,12 +295,12 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
 pages["/passport/"] = ("Passport & World Pass — Identity first. Membership second.",
  "Passport is not a subscription card. It is the spine. World Pass is the paid relationship layered on the world.",
  f"""<section class="hero" style="--pos:50% 60%">
- <div class="hero-art"><img src="/assets/art/passport.jpg" alt="" fetchpriority="high"></div>
+ <div class="hero-art"><img src="/assets/art/passport.webp" alt="" fetchpriority="high"></div>
  <div class="wrap"><div class="grid" style="grid-template-columns:1.1fr .8fr 1fr;gap:clamp(20px,3vw,44px);align-items:center" data-collapse>
   <div><h1 class="display d-l">Passport</h1><p class="lede" style="font-size:clamp(26px,3vw,40px);margin-top:10px">Identity first.<br>Membership second.</p>
    <p class="body mt2">Passport is not a subscription card. It is the spine. World Pass is the paid relationship layered on the world.</p>
    <div class="ctas">{btn("Explore Passport", "#tiers")}{btn("View benefits", "#benefits", "line")}</div></div>
-  <div class="book" role="img" aria-label="The Above the Hill Passport"><img src="/assets/ath-mark.png" alt=""><span class="bt">Above the Hill</span><span class="bs">Passport</span></div>
+  <div class="book" role="img" aria-label="The Above the Hill Passport"><img src="/assets/ath-mark.webp" alt=""><span class="bt">Above the Hill</span><span class="bs">Passport</span></div>
   <ul class="rows panel panel-pad" style="padding-top:8px;padding-bottom:8px">
    <li>{ic("me")}<div><b>This is me</b><span>Identity</span></div></li>
    <li>{ic("key")}<div><b>This is what I can access</b><span>Permissions</span></div></li>
@@ -390,13 +396,13 @@ pages["/ecosystem/"] = ("The Ecosystem — ATH builds the world. Destinations op
 
 pages["/language/"] = ("ATH Builder Dictionary — Build a better language",
  "A purpose-built dictionary of ATH terms that gives humans and AI a more precise shared language for building software and systems.",
- f"""<section class="hero" style="min-height:auto"><div class="hero-art"><img src="/assets/art/path.jpg" alt="" style="opacity:.35"></div>
+ f"""<section class="hero" style="min-height:auto"><div class="hero-art"><img src="/assets/art/path.webp" alt="" style="opacity:.35"></div>
  <div class="wrap split">
   <div><p class="eyebrow">ATH Builder Dictionary</p><h1 class="display d-m mt1">Stop writing longer prompts.<br>Build a better language.</h1>
    <p class="lede">A purpose-built dictionary of ATH terms that gives humans and AI a more precise shared language for building software and systems.</p>
    <div class="ctas">{btn("Get the dictionary — join waitlist", "/contact/?intent=dictionary")}{btn("View sample terms", "#samples", "line")}</div>
    <p class="note mt1">Founder pricing pending. Not yet for sale — no checkout until it is.</p></div>
-  <div class="book" role="img" aria-label="ATH Builder Dictionary"><img src="/assets/ath-mark.png" alt=""><span class="bt">ATH Builder<br>Dictionary</span><span class="bs">v1.0</span></div>
+  <div class="book" role="img" aria-label="ATH Builder Dictionary"><img src="/assets/ath-mark.webp" alt=""><span class="bt">ATH Builder<br>Dictionary</span><span class="bs">v1.0</span></div>
  </div></section>
 <section class="block"><div class="wrap">
  <div class="grid g5">
@@ -584,6 +590,10 @@ def write():
     # GitHub Pages serves /404.html for unknown paths
     with open(os.path.join(ROOT, "404", "index.html")) as f:
         open(os.path.join(ROOT, "404.html"), "w").write(f.read().replace('href="/assets', 'href="/assets'))
+    # redirects for alternate names (order lists /projects; old Base44 used /diagnosis)
+    for src, dst in {"projects": "/work/", "diagnosis": "/diagnose/", "services": "/build/", "inventions": "/work/", "pricing": "/path/"}.items():
+        os.makedirs(os.path.join(ROOT, src), exist_ok=True)
+        open(os.path.join(ROOT, src, "index.html"), "w").write(f'<!doctype html><meta charset="utf-8"><title>Redirecting…</title><link rel="canonical" href="{SITE}{dst}"><meta http-equiv="refresh" content="0; url={dst}"><script>location.replace("{dst}"+location.search)</script><a href="{dst}">Continue</a>')
     open(os.path.join(ROOT, "CNAME"), "w").write("abovethehilldev.online\n")
     open(os.path.join(ROOT, ".nojekyll"), "w").write("")
     open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")

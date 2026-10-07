@@ -185,7 +185,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--gold-hi);outline:none
 .site-foot{padding:64px 0 40px;background:linear-gradient(180deg,var(--obsidian),#050608)}
 .foot-grid{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:32px}
 .foot-grid img{height:72px;width:auto}
-.foot-grid h4{font:600 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold-hi);margin:6px 0 14px}
+.foot-grid .fh{font:600 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold-hi);margin:6px 0 14px}
 .foot-grid a{display:block;text-decoration:none;color:var(--ivory-dim);font-size:14px;padding:6px 0}
 .foot-grid a:hover{color:var(--gold-hi)}
 .foot-line{margin-top:48px;padding-top:22px;border-top:1px solid var(--gold-faint);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ivory-mute)}

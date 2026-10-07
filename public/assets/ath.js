@@ -74,7 +74,7 @@
         <circle cx="${x}" cy="${y}" r="${r}" fill="${lit ? "#e6c88a" : "#0b0c10"}" stroke="${lit ? "#f4dfae" : inf ? "#b9a27a" : "#7d8696"}" stroke-width="2" ${!lit && !inf ? 'stroke-dasharray="3 3"' : ""}/>
         <text class="node-label" x="${x + 16}" y="${y - 4}">${esc(s.name)}</text><text class="node-sub" x="${x + 16}" y="${y + 12}">${esc(s.note)}</text></g>`;
     }).join("");
-    return `<div class="map"><img src="/assets/art/home.jpg" alt=""><svg viewBox="0 0 1000 620" role="img" aria-label="Opportunity map: lit stages are supported by evidence; dashed stages are unknown">
+    return `<div class="map"><img src="/assets/art/home.webp" alt=""><svg viewBox="0 0 1000 620" role="img" aria-label="Opportunity map: lit stages are supported by evidence; dashed stages are unknown">
       <polyline points="${pts}" fill="none" stroke="rgba(230,200,138,.25)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
       <polyline points="${pts}" fill="none" stroke="#e6c88a" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"/>${nodes}</svg></div>`;
   }
