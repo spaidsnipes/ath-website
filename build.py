@@ -2,7 +2,7 @@
 """ATH Official Website — static page generator.
 
 Canon: Visual Canon Atlas v1, slide athWebsiteCanonPass3 (Founder finder doc 2026-10-07).
-Truth: only $10 (Wavemotion) and $20 (World Pass) are published prices. Nothing on this
+Truth: only $10/mo (every ATH app is a $10/month focused door — Wavemotion first) and $20/mo (World Pass) are published prices. Nothing on this
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
 """
@@ -138,7 +138,7 @@ def btn(label, href, kind="gold", attrs=""):
 # ---------------------------------------------------------------- shared blocks
 RUNGS = [
     ("free", "Free", "Come in", "Free ATH Diagnostic · Public discovery · Guest exploration", "", "/diagnose/"),
-    ("door", "$10 / mo", "Focused door", "Wavemotion — Creator &amp; Business Movement OS", "", "/ecosystem/#wavemotion"),
+    ("door", "$10 / mo", "Focused door", "Any ATH app, $10/month each · Wavemotion first", "", "/ecosystem/#wavemotion"),
     ("lattice", "$20 / mo", "Join the world", "Passport spine · World Pass membership", "", "/passport/"),
     ("triangle", "Specialist", "Serious systems", "WM Pro · PowerTribes · Dreamboard", "Own economics", "/ecosystem/#specialist"),
     ("peaks", "Services", "Build it for me", "Diagnostic → Scope → Quote → ATH implementation", "", "/build/"),
@@ -276,7 +276,9 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
  + f"""
 <section class="block"><div class="wrap">
  <div class="grid g2">
-  <div class="panel panel-pad"><p class="panel-title">What $20 is — and isn't</p>
+  <div class="panel panel-pad"><p class="panel-title">$10 opens one app. $20 joins the world.</p>
+   <p class="body">Every ATH app is a <b>$10/month focused door</b> — you pay for the one app you use. <b>World Pass at $20/month</b> is the membership across the connected world.</p>
+   <p class="panel-title mt2">What $20 is — and isn't</p>
    <p class="body">World Pass is paid ecosystem membership layered on your Passport identity. It does <b>not</b> automatically include every specialist product, professional system, ATH service, third-party cost, or unlimited expensive infrastructure.</p>
    <dl class="hpa mt2"><dt>Identity</dt><dd>≠ membership</dd><dt>Membership</dt><dd>≠ owning every product</dd><dt>Membership</dt><dd>≠ professional infrastructure</dd></dl></div>
   <div class="panel panel-pad"><p class="panel-title">No surprise costs</p>
@@ -285,7 +287,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
  <div class="panel panel-pad mt2"><p class="panel-title">Availability today</p>
   <ul class="rows">
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
-   <li>{ic("door","icon-sm")}<div><b>Wavemotion — $10 / month</b><span>Not yet purchasable. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Request access</a>.</span></div></li>
+   <li>{ic("door","icon-sm")}<div><b>Focused door — $10 / month per app</b><span>Every ATH app opens as its own $10/month focused door. Wavemotion is first; it is not yet purchasable, has no permanent free operator tier, and public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Request access</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Not yet purchasable. <a class="gold" href="/contact/?intent=worldpass">Join the waitlist</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems</b><span>Own economics, set per product. WM Pro is open at <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">wealthymindsetspro.com</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH Services</b><span>Diagnostic → scope → quote. <a class="gold" href="/build/">Build my path</a>.</span></div></li>
