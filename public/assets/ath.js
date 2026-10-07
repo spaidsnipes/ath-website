@@ -112,9 +112,18 @@
   }
 
   // ---------------- lead forms (contact + deep)
+  const PACKAGES = {
+    "clips-10": "10 clips — $75 ($60 Passport member)", "clips-20": "20 clips — $125 ($100 Passport member)",
+    "clips-30": "30 clips — $175 ($140 Passport member)", "clips-40": "40 clips — $225 ($180 Passport member)",
+    "living-destination": "Living Destination setup — from $75", "channeler": "Channeler setup — from $100",
+    "starter-website": "Starter website — from $250", "campaign-setup": "Content / campaign setup — from $250",
+    "business-website": "Business website / system — from $500", custom: "Custom OS / app / platform — diagnose → scope → quote",
+  };
   for (const f of document.querySelectorAll("#lead-form, #deep-form")) {
     const sel = f.querySelector("select[name=intent]");
     if (sel && qs.get("intent")) sel.value = qs.get("intent");
+    const pk = qs.get("package"), pkIn = f.querySelector("#l-package"), pkNote = f.querySelector("#pkg-note");
+    if (pk && PACKAGES[pk] && pkIn) { pkIn.value = pk; pkNote.hidden = false; pkNote.innerHTML = `Starting: <b>${esc(PACKAGES[pk])}</b>. ATH confirms scope with you before any payment.`; }
     f.addEventListener("submit", async (e) => {
       e.preventDefault();
       const st = f.querySelector(".form-status"), b = f.querySelector("button[type=submit]");
