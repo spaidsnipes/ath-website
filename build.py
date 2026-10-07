@@ -288,7 +288,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
   <ul class="rows">
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
    <li>{ic("door","icon-sm")}<div><b>Focused door — $10 / month per app</b><span>Every ATH app opens as its own $10/month focused door. Wavemotion is first; it is not yet purchasable, has no permanent free operator tier, and public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Request access</a>.</span></div></li>
-   <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Not yet purchasable. <a class="gold" href="/contact/?intent=worldpass">Join the waitlist</a>.</span></div></li>
+   <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Available now in WOW World, on your free Passport. <a class="gold" href="https://wow-world-os.dhill5711.workers.dev/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems</b><span>Own economics, set per product. WM Pro is open at <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">wealthymindsetspro.com</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH Services</b><span>Diagnostic → scope → quote. <a class="gold" href="/build/">Build my path</a>.</span></div></li>
   </ul></div>
@@ -323,7 +323,7 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
  </div>
  <div class="grid g2 mt3" id="benefits">
   <div class="panel panel-pad"><p class="panel-title">If a member cancels</p><p class="body mb0">The person doesn't stop existing. Identity, lawful ownership, receipts and applicable durable rights persist. Membership-only benefits end.</p></div>
-  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport and World Pass are in development and not yet purchasable. We won't fake a checkout.</p><div class="ctas mt1">{btn("Join the waitlist", "/contact/?intent=worldpass")}</div></div>
+  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free and World Pass is $20/month — both live in WOW World today, with a real Stripe checkout and cancel any time.</p><div class="ctas mt1">{btn("Get your free Passport", "https://wow-world-os.dhill5711.workers.dev/passport/claim")}{btn("Get World Pass", "https://wow-world-os.dhill5711.workers.dev/passport", "line")}</div></div>
  </div>
 </div></section>""")
 
@@ -363,13 +363,13 @@ pages["/build/"] = ("ATH Services — You need the right path",
 ECO = [
  ("ATH", "Parent builder", "live", "You're here", "The invention company. Builds, owns and routes.", ("Diagnose", "/diagnose/")),
  ("ATHOS", "Intelligence", "live", "Diagnostic live", "Diagnosis, evidence, routing. The free diagnostic on this site is ATHOS working today; deeper capabilities are in development.", ("Run it", "/diagnose/")),
- ("Passport", "Identity spine", "dim", "In development", "Identity, permissions, ownership, receipts, continuity.", ("Learn more", "/passport/")),
- ("World Pass", "Membership · $20/mo", "dim", "Coming", "Paid ecosystem membership. Not yet purchasable.", ("Join waitlist", "/contact/?intent=worldpass")),
+ ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW World.", ("Get Passport", "https://wow-world-os.dhill5711.workers.dev/passport/claim")),
+ ("World Pass", "Membership · $20/mo", "live", "Open door", "Paid ecosystem membership on your Passport. Cancel any time.", ("Get World Pass", "https://wow-world-os.dhill5711.workers.dev/passport")),
  ("Wavemotion", "Creator + Business Movement OS · $10/mo", "dim", "In development", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Request access", "/contact/?intent=wavemotion")),
  ("WM Pro", "Professional market OS · Specialist", "", "Open door", "A professional trading operating system. Own economics.", ("Visit", "https://wealthymindsetspro.com")),
  ("PowerTribes", "Business · sales · workforce · leadership OS", "dim", "In development", "Specialist economics.", ("Request access", "/contact/?intent=powertribes")),
  ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Specialist economics.", ("Request access", "/contact/?intent=dreamboard")),
- ("WOW World", "Civilization layer", "dim", "Future", "The world layer that connects every destination.", None),
+ ("WOW World", "Consumer world · Guest welcome", "live", "Open door", "One world, many rooms — Lounge, Academy, Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://wow-world-os.dhill5711.workers.dev/")),
  ("WOW TV · WM Radio", "Watch · Listen", "dim", "Future", "Viewer and listener destinations.", None),
  ("Lounge · Academy · Shop", "Connect · Learn · Own", "dim", "Future", "Community, learning and commerce places.", None),
  ("WOW Studios", "Creation infrastructure", "dim", "Future", "Deeper production infrastructure.", None),
@@ -389,7 +389,7 @@ pages["/ecosystem/"] = ("The Ecosystem — ATH builds the world. Destinations op
  "Not an app store. Parent builder, intelligence, identity, membership, destinations.",
  hero("ecosystem", "", "The<br>Ecosystem",
       "ATH builds the world.<br>Destinations open the doors.<br><span style=\"font-size:.8em;color:var(--ivory-dim)\">Not an app store. Parent builder · intelligence · identity · membership · destinations.</span>",
-      "", extra='<div class="plaques">' + "".join(f'<a class="plaque" href="#d"><b>{n}</b><span>{t}</span></a>' for n,t in [("WOW World","Future"),("WM Pro","Open door"),("WOW TV · WM Radio","Future"),("Lounge · Academy · Shop","Future")]) + '</div>', pos="50% 50%", mpos="50% 40%", size="d-l")
+      "", extra='<div class="plaques">' + "".join(f'<a class="plaque" href="#d"><b>{n}</b><span>{t}</span></a>' for n,t in [("WOW World","Open door"),("WM Pro","Open door"),("WOW TV · WOW Radio","Open door"),("Lounge · Academy · Shop","Open door")]) + '</div>', pos="50% 50%", mpos="50% 40%", size="d-l")
  + '<div class="strip">Connected destinations · One ecosystem · A living world</div>'
  + f"""<section class="block" id="d"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">Destinations</p><h2 class="display d-m mt1">Status, plainly</h2></div><p class="note" style="max-width:46ch">Statuses reflect what is actually reachable today. Future systems are never shown as purchasable.</p></div>
