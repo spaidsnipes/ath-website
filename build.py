@@ -402,8 +402,8 @@ ECO = [
  ("PowerTribes", "Business · sales · workforce · leadership OS", "dim", "In development", "Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=powertribes")),
  ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=dreamboard")),
  ("WOW World", "Consumer world · Guest welcome", "live", "Open door", "One world, many rooms — Lounge, Academy, Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://thewow.online/")),
- ("WOW TV · WM Radio", "Watch · Listen", "dim", "Future", "Viewer and listener destinations.", None),
- ("Lounge · Academy · Shop", "Connect · Learn · Own", "dim", "Future", "Community, learning and commerce places.", None),
+ ("WOW TV · WOW Radio", "Watch · Listen", "live", "Open door", "Viewer and listener destinations — separate rooms in WOW World.", ("Enter", "https://thewow.online/wow-tv")),
+ ("Lounge · Academy · Shop", "Connect · Learn · Own", "live", "Open door", "Community, learning and commerce places, entered from WOW World.", ("Enter", "https://thewow.online/lounge")),
  ("WOW Studios", "Creation infrastructure", "dim", "Future", "Deeper production infrastructure.", None),
 ]
 def eco_cards():
@@ -529,8 +529,8 @@ pages["/work/"] = ("Inventions & Work — Above the Hill Developments",
    ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. $20/month, one complete OS.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
    ("dim","In development","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","In development. $10/month focused door.", f'<p class="mt2 mb0">{btn("Request access","/contact/?intent=wavemotion","line")}</p>'),
    ("dim","In development","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","In development.", ""),
-   ("dim","In development","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","In development.", ""),
-   ("dim","Future","WOW World","Products feel like islands.","A connected world of destinations under one builder.","Future.", "")])}
+   ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW World; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),
+   ("","Open door","WOW World","Products feel like islands.","A connected world of destinations under one builder.","Open at thewow.online — guests welcome, free Passport, World Pass $20/month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/" rel="noopener">Enter {ARR}</a></p>')])}
  </div>
  <p class="note mt2">No client logos, testimonials or results are shown until they are real and approved.</p>
 </div></section>""" + cta_block())
