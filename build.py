@@ -112,7 +112,7 @@ FOOT = """</main>
     <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
    <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/contact/">Contact ATH</a></div>
    <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
-   <div><p class="fh">World</p><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+   <div><p class="fh">World</p><a href="https://thewow.online/">WOW OS</a><a href="https://wavemotion.live/">Wavemotion</a><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
   <div class="foot-line"><span class="mantra2">Heavens above · A realm to explore · Multiple destinations · One builder</span><span>© <span data-year>2026</span> Above the Hill Developments Inc.</span></div>
  </div>
@@ -300,7 +300,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
   <ul class="rows">
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
    <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion is $10/month: the creator + business movement OS. No permanent free operator tier; public Living Destinations stay viewable. Self-serve checkout isn't open yet — <a class="gold" href="/contact/?intent=wavemotion">start Wavemotion with ATH</a>.</span></div></li>
-   <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Available now in WOW World, on your free Passport. <a class="gold" href="https://wow-world-os.dhill5711.workers.dev/passport" rel="noopener">Get World Pass</a>.</span></div></li>
+   <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Available now in WOW World, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro is $20/month: one complete professional trading OS — no Basic/Pro/Pro+ split. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Clipping from $75, Living Destination from $75, websites from $250, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
   </ul></div>
@@ -335,7 +335,7 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
  </div>
  <div class="grid g2 mt3" id="benefits">
   <div class="panel panel-pad"><p class="panel-title">If a member cancels</p><p class="body mb0">The person doesn't stop existing. Identity, lawful ownership, receipts and applicable durable rights persist. Membership-only benefits end.</p></div>
-  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free and World Pass is $20/month — both live in WOW World today, with a real Stripe checkout and cancel any time.</p><div class="ctas mt1">{btn("Get your free Passport", "https://wow-world-os.dhill5711.workers.dev/passport/claim")}{btn("Get World Pass", "https://wow-world-os.dhill5711.workers.dev/passport", "line")}</div></div>
+  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free and World Pass is $20/month — both live in WOW World today, with a real Stripe checkout and cancel any time.</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
  </div>
 </div></section>""")
 
@@ -395,13 +395,13 @@ pages["/build/"] = ("ATH Services — You need the right path",
 ECO = [
  ("ATH", "Parent builder", "live", "You're here", "The invention company. Builds, owns and routes.", ("Diagnose", "/diagnose/")),
  ("ATHOS", "Intelligence", "live", "Diagnostic live", "Diagnosis, evidence, routing. The free diagnostic on this site is ATHOS working today; deeper capabilities are in development.", ("Run it", "/diagnose/")),
- ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW World.", ("Get Passport", "https://wow-world-os.dhill5711.workers.dev/passport/claim")),
- ("World Pass", "Membership · $20/mo", "live", "Open door", "Paid ecosystem membership on your Passport. Cancel any time.", ("Get World Pass", "https://wow-world-os.dhill5711.workers.dev/passport")),
- ("Wavemotion", "Creator + Business Movement OS · $10/mo", "dim", "In development", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Request access", "/contact/?intent=wavemotion")),
+ ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW World.", ("Get Passport", "https://thewow.online/passport/claim")),
+ ("World Pass", "Membership · $20/mo", "live", "Open door", "Paid ecosystem membership on your Passport. Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
+ ("Wavemotion", "Creator + Business Movement OS · $10/mo", "dim", "In development", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Visit Wavemotion", "https://wavemotion.live/")),
  ("WM Pro", "WealthyMindsets Pro · $20/mo", "", "Open door", "One complete professional trading operating system — no tier split. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
  ("PowerTribes", "Business · sales · workforce · leadership OS", "dim", "In development", "Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=powertribes")),
  ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=dreamboard")),
- ("WOW World", "Consumer world · Guest welcome", "live", "Open door", "One world, many rooms — Lounge, Academy, Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://wow-world-os.dhill5711.workers.dev/")),
+ ("WOW World", "Consumer world · Guest welcome", "live", "Open door", "One world, many rooms — Lounge, Academy, Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://thewow.online/")),
  ("WOW TV · WM Radio", "Watch · Listen", "dim", "Future", "Viewer and listener destinations.", None),
  ("Lounge · Academy · Shop", "Connect · Learn · Own", "dim", "Future", "Community, learning and commerce places.", None),
  ("WOW Studios", "Creation infrastructure", "dim", "Future", "Deeper production infrastructure.", None),
