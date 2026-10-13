@@ -20,3 +20,9 @@ Registry: `commercial/registry.json` v2026-10-13.1. Every price on abovethehilld
 - **D-006**: Keep the à-la-carte clipping packages ($75–$225), or fold them into the WAVEMOTION plan allowances?
 - **D-007**: Confirm or reject the Living Cinema credit counts (2/4/8/15) and the extra-credit price, after costs are measured from real jobs.
 - **D-008**: ATH card payments. Create Stripe Payment Links (or an invoice tool) for Quick Start and Business Growth. The Founder must do this in the Founder's own Stripe account; Claude does not enter payment credentials.
+
+## Supersession — 2026-10-13 (later the same day), Founder in Mission Control
+- **R-4 updated:** The Founder says the Starter $10 / Creator $20 / Pro $50 / Living Cinema Studio $75 tiers are **old**; new WAVEMOTION plans exist. Registry v2026-10-13.2 removes all WAVEMOTION plan prices from the ATH site (kept under `superseded` for lineage). The site shows "new plans are being finalized" until the Founder supplies the new plans. R-5 / D-007 (credit counts) now waits on those plans too.
+- **Music rights:** The Founder confirms the songs used for ATH ads are his own (Dspaid catalog). Oct 9 preflight decision "e" is resolved for ATH ads.
+- **D-009 resolved (Pipeline A scope):** ATH builds websites for businesses anywhere in the world, delivered remotely. No local pilot zone is required.
+- **Likeness:** Faceless by default; the Founder is OK appearing on camera. Any synthetic version of his face or voice still needs disclosure.

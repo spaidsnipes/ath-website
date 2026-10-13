@@ -230,7 +230,7 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
  <div class="grid g3">
   <article class="panel panel-pad card"><span class="tag live">Live today</span><h3>ATHOS Diagnostic</h3><p>The free hill-finder on this site. Inspects public evidence, separates what it observed from what it inferred, and says "unknown" when it doesn't know.</p><p class="mt2">{btn("Run it", "/diagnose/", "line")}</p></article>
   <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. $20/month. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
-  <article class="panel panel-pad card"><span class="tag dim">In development</span><h3>Wavemotion</h3><p>Creator + business movement OS — record, prepare, launch, distribute, learn. One permanent Living Destination. Plans from $10/month: Starter, Creator, Pro and Living Cinema Studio.</p><p class="mt2">{btn("Request access", "/contact/?intent=wavemotion", "line")}</p></article>
+  <article class="panel panel-pad card"><span class="tag dim">In development</span><h3>Wavemotion</h3><p>Creator + business movement OS — record, prepare, launch, distribute, learn. One permanent Living Destination. New plans are being finalized.</p><p class="mt2">{btn("Request access", "/contact/?intent=wavemotion", "line")}</p></article>
  </div>
 </div></section>
 <section class="block"><div class="wrap">
@@ -330,7 +330,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
  <div class="panel panel-pad mt2"><p class="panel-title">Availability today</p>
   <ul class="rows">
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
-   <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion plans: Starter $10, Creator $20, Pro $50, Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. Self-serve checkout isn't confirmed yet — <a class="gold" href="/build/#wavemotion-plans">see plans</a> or <a class="gold" href="/contact/?intent=wavemotion">start Wavemotion with ATH</a>.</span></div></li>
+   <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion: the creator + business movement OS. New plans are being finalized. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Available now in WOW World, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro is $20/month: one complete professional trading OS — no Basic/Pro/Pro+ split. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites from $100 (Quick Start) and $200 (Business Growth), clipping from $75, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
@@ -418,12 +418,8 @@ pages["/build/"] = ("ATH Services — You need the right path",
    </div>
   </div>
   <div class="panel panel-pad mt2" id="wavemotion-plans">
-   <p class="panel-title">WAVEMOTION plans — set by the Founder</p>
-   <div class="price-table" role="table" aria-label="WAVEMOTION plan prices">
-    <div class="pt-row pt-head" role="row"><span role="columnheader">Plan</span><span role="columnheader">Price</span><span role="columnheader">Allowance</span><span role="columnheader"><span class="vh">Ask</span></span></div>
-    {wm_rows()}
-   </div>
-   <p class="note mt2 mb0">Self-serve checkout for these plans isn't confirmed yet — ask ATH and we'll set you up. Living Cinema Studio includes a disclosed production-credit allowance; cinematic rendering is never unlimited.</p>
+   <p class="panel-title">WAVEMOTION plans</p>
+   <p class="body mb0">New WAVEMOTION plans are being finalized. <a class="gold" href="/contact/?intent=wavemotion">Ask ATH</a> and we'll set you up, or visit <a class="gold" href="https://wavemotion.live/" rel="noopener">wavemotion.live</a>.</p>
   </div>
   <p class="note mt2">“From” prices are starting points for a defined scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden. Catalog version {REG["version"]}.</p>
  </section>
@@ -448,7 +444,7 @@ ECO = [
  ("ATHOS", "Intelligence", "live", "Diagnostic live", "Diagnosis, evidence, routing. The free diagnostic on this site is ATHOS working today; deeper capabilities are in development.", ("Run it", "/diagnose/")),
  ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW World.", ("Get Passport", "https://thewow.online/passport/claim")),
  ("World Pass", "Membership · $20/mo", "live", "Open door", "Paid ecosystem membership on your Passport. Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
- ("Wavemotion", "Creator + Business Movement OS · from $10/mo", "dim", "In development", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Visit Wavemotion", "https://wavemotion.live/")),
+ ("Wavemotion", "Creator + Business Movement OS", "dim", "In development", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Visit Wavemotion", "https://wavemotion.live/")),
  ("WM Pro", "WealthyMindsets Pro · $20/mo", "", "Open door", "One complete professional trading operating system — no tier split. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
  ("PowerTribes", "Business · sales · workforce · leadership OS", "dim", "In development", "Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=powertribes")),
  ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=dreamboard")),
@@ -578,7 +574,7 @@ pages["/work/"] = ("Inventions & Work — Above the Hill Developments",
   {"".join(f'<article class="panel panel-pad card"><span class="tag {c}">{s}</span><h3>{t}</h3><dl class="hpa mt1"><dt>The hill</dt><dd>{h}</dd><dt>The path</dt><dd>{p}</dd><dt>Now</dt><dd>{n}</dd></dl>{l}</article>' for c,s,t,h,p,n,l in [
    ("live","Live","ATHOS Diagnostic","Businesses can't see what's actually stopping them — and most \"audits\" invent certainty.","An evidence-first diagnostic that separates observed, inferred and unknown.","Running on this site.", f'<p class="mt2 mb0">{btn("Run it","/diagnose/","line")}</p>'),
    ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. $20/month, one complete OS.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
-   ("dim","In development","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","In development. Plans from $10/month.", f'<p class="mt2 mb0">{btn("Request access","/contact/?intent=wavemotion","line")}</p>'),
+   ("dim","In development","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","In development. New plans coming.", f'<p class="mt2 mb0">{btn("Request access","/contact/?intent=wavemotion","line")}</p>'),
    ("dim","In development","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","In development.", ""),
    ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW World; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),
    ("","Open door","WOW World","Products feel like islands.","A connected world of destinations under one builder.","Open at thewow.online — guests welcome, free Passport, World Pass $20/month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/" rel="noopener">Enter {ARR}</a></p>')])}
@@ -617,7 +613,7 @@ pages["/contact/"] = ("Contact ATH — Start",
     <option value="services">ATH Services — build it for me</option>
     <option value="describe">Describing my hill to a person</option>
     <option value="deep-diagnostic">Deep diagnostic</option>
-    <option value="wavemotion">WAVEMOTION plans (from $10/mo)</option>
+    <option value="wavemotion">WAVEMOTION</option>
     <option value="worldpass">World Pass waitlist ($20/mo)</option>
     <option value="dictionary">Builder Dictionary waitlist</option>
     <option value="powertribes">PowerTribes access</option>
