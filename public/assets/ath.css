@@ -225,3 +225,17 @@ input:focus,textarea:focus,select:focus{border-color:var(--gold-hi);outline:none
 .pkg-note{border:1px solid var(--gold-line);border-radius:4px;padding:12px 14px;color:var(--ivory-dim);background:rgba(201,164,92,.06);margin:0 0 16px}
 .pkg-note b{color:var(--gold-hi);font-weight:600}
 @media (max-width:860px){[data-collapse]{grid-template-columns:1fr!important}}
+
+/* packages (registry-driven, 2026-10-13) */
+.pkg{display:flex;flex-direction:column;gap:6px}
+.pkg h3{margin:6px 0 0}
+.pkg-featured{border-color:var(--gold-line);box-shadow:0 0 0 1px var(--gold-line) inset}
+.pkg-price{font:500 40px/1.1 var(--serif);color:var(--gold-hi);margin:4px 0}
+.pkg-price span{font:400 14px/1 var(--sans,inherit);color:var(--ivory-dim);letter-spacing:.04em}
+.pkg-list{margin:6px 0 10px;padding-left:18px;color:var(--ivory-dim)}
+.pkg-list li{margin:4px 0}
+.pkg-eco{list-style:none;padding-left:0}
+.pkg-eco .note{display:block;margin-top:2px}
+.pkg .ctas{margin-top:auto}
+.pkg-ack[hidden],.pkg-note[hidden]{display:none!important}
+.pkg-ack{margin:0 0 16px}

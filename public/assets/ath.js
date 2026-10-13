@@ -112,18 +112,24 @@
   }
 
   // ---------------- lead forms (contact + deep)
-  const PACKAGES = {
-    "clips-10": "10 clips — $75 ($60 Passport member)", "clips-20": "20 clips — $125 ($100 Passport member)",
-    "clips-30": "30 clips — $175 ($140 Passport member)", "clips-40": "40 clips — $225 ($180 Passport member)",
-    "living-destination": "Living Destination setup — from $75", "channeler": "Channeler setup — from $100",
-    "starter-website": "Starter website — from $250", "campaign-setup": "Content / campaign setup — from $250",
-    "business-website": "Business website / system — from $500", custom: "Custom OS / app / platform — diagnose → scope → quote",
-  };
+  // Prices come from the commercial registry, embedded by build.py (commercial/registry.json).
+  let CATALOG = { version: "", packages: {}, disclosures: [] };
+  try { CATALOG = JSON.parse(document.getElementById("ath-catalog")?.textContent || "null") || CATALOG; } catch {}
+  const PACKAGES = CATALOG.packages || {};
   for (const f of document.querySelectorAll("#lead-form, #deep-form")) {
     const sel = f.querySelector("select[name=intent]");
     if (sel && qs.get("intent")) sel.value = qs.get("intent");
     const pk = qs.get("package"), pkIn = f.querySelector("#l-package"), pkNote = f.querySelector("#pkg-note");
-    if (pk && PACKAGES[pk] && pkIn) { pkIn.value = pk; pkNote.hidden = false; pkNote.innerHTML = `Starting: <b>${esc(PACKAGES[pk])}</b>. ATH confirms scope with you before any payment.`; }
+    const ack = f.querySelector("#pkg-ack"), cat = f.querySelector("#l-catalog");
+    if (cat) cat.value = CATALOG.version || "";
+    const needsAck = !!(pk && PACKAGES[pk]?.terms);
+    if (pk && PACKAGES[pk] && pkIn) {
+      pkIn.value = pk; pkNote.hidden = false;
+      pkNote.innerHTML = needsAck
+        ? `<b>${esc(PACKAGES[pk].label)}</b><ul class="pkg-list">${(CATALOG.disclosures || []).map((d) => `<li>${esc(d)}</li>`).join("")}</ul>`
+        : `Starting: <b>${esc(PACKAGES[pk].label)}</b>. ATH confirms scope with you before any payment.`;
+      if (ack) ack.hidden = !needsAck;
+    } else if (pk && pkNote) { pkNote.hidden = false; pkNote.textContent = "That package link is out of date. Tell us what you need and ATH will match it to a current package."; }
     f.addEventListener("submit", async (e) => {
       e.preventDefault();
       const st = f.querySelector(".form-status"), b = f.querySelector("button[type=submit]");
@@ -131,11 +137,14 @@
       const data = Object.fromEntries(fd.entries());
       data.sources = fd.getAll("sources");
       if (!data.name?.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email || "")) { st.className = "form-status err"; st.textContent = "Please add your name and a valid email."; return; }
+      if (needsAck && data.terms_ack !== "yes") { st.className = "form-status err"; st.textContent = "Please confirm you understand the scope-and-invoice terms."; return; }
       let diag = qs.get("diagnosis"); try { diag = diag || sessionStorage.getItem("ath_diag"); } catch {}
       b.disabled = true; st.className = "form-status"; st.innerHTML = '<span class="spinner"></span>Sending…';
       try {
-        await post("/api/lead", { ...data, diagnosis_id: diag || null, source: source(), page: location.pathname });
-        f.innerHTML = `<p class="panel-title">Received</p><p class="h-serif" style="font-size:26px">Thank you — a person at ATH will reply to ${esc(data.email)}.</p><p class="body">Nothing has been charged and no access has been granted.</p>`;
+        const r = await post("/api/lead", { ...data, diagnosis_id: diag || null, source: { ...source(), catalog: data.catalog_version || null, terms_ack: data.terms_ack === "yes" }, page: location.pathname });
+        const ref = r && r.lead ? `<p class="note">Your reference: <b>${esc(r.lead)}</b></p>` : "";
+        const next = needsAck ? `<p class="body">Next: ATH sends your written scope and invoice for <b>${esc(PACKAGES[pk].label)}</b>. Nothing has been charged.</p>` : `<p class="body">Nothing has been charged and no access has been granted.</p>`;
+        f.innerHTML = `<p class="panel-title">Received</p><p class="h-serif" style="font-size:26px">Thank you — a person at ATH will reply to ${esc(data.email)}.</p>${next}${ref}`;
       } catch (err) { st.className = "form-status err"; st.textContent = err.message; b.disabled = false; }
     });
   }

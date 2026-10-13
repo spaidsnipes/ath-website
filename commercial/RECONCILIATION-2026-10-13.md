@@ -1,0 +1,22 @@
+# ATH Commercial Reconciliation Ledger — 2026-10-13
+
+Precedence (Founder order §1): latest explicit Founder direction → constitutional law → approved product canon → verified runtime evidence → lineage.
+Registry: `commercial/registry.json` v2026-10-13.1. Every price on abovethehilldev.online is generated from it by `build.py`.
+
+| # | Conflict | Older authority | Chosen authority | Affected systems | Migration / status |
+|---|---|---|---|---|---|
+| R-1 | Entry website price | Oct 7 lock: Starter website from $250 | Oct 13 order §4: Quick Start $100, Business Growth $200 (one time) | ATH /build/, /path/, home, contact form, lead alerts | DONE in registry and site. Oct 7 `starter-website` id is retired. Old links show an "out of date" note instead of a stale price. |
+| R-2 | Business website | Oct 7: Business website / system from $500 | Oct 13: Professional Website from $500 | ATH /build/ | DONE. `business-website` id is retired → `professional-website`. |
+| R-3 | App ladder | Not priced (custom = diagnose → scope → quote) | Oct 13: App Starter $1,000, Mobile App Bundle $2,500, Business App System $5,000, Omnichannel $8,000 (all "starting at") | ATH /build/ | DONE. Each one routes to a scope request. |
+| R-4 | WAVEMOTION plans | Oct 7: single $10/mo membership (also what wavemotion.live showed on Oct 13) | Oct 13: Starter $10/40 clips, Creator $20/80, Pro $50/250, Living Cinema Studio $75 (Pro + Living Cinema with a disclosed credit allowance) | ATH site, WAVEMOTION billing/entitlements, wavemotion.live | ATH site DONE (labelled "checkout not confirmed"). WAVEMOTION billing: handed to the WAVEMOTION thread on 2026-10-13. OPEN. |
+| R-5 | Living Cinema credit counts | A conversation proposed 2/4/8/15 cinematic credits across the tiers | Not in the Oct 13 written order | WAVEMOTION | OPEN → decision D-007. No credit counts are published. |
+| R-6 | Clipping packages $75–$225 and setup services (Living Destination $75, Channeler $100, Campaign $250) | Oct 7 lock | Not addressed Oct 13 → Oct 7 stays in force | ATH /build/ | KEPT as "done-for-you services." Possible overlap with subscription clip allowances → decision D-006. |
+| R-7 | Member discount | Revenue canon 20%; another mission mentioned 10% | Revenue canon (20%) until superseded | Clipping prices | Unchanged. The existing Founder decision D-001 stays OPEN. |
+| R-8 | Package ecosystem extras (WAVEMOTION Starter, $20 membership first month, Teach Pass, WOW media pathways) | n/a | Oct 13 §4 + commercial-honesty law §2 | ATH site, Passport, Academy, WAVEMOTION | Published as "Not active yet." Not delivered until operational, with no renewal without consent. |
+| R-9 | Payment method | n/a — no checkout on ATH | Oct 13 §15: "valid payment or clearly defined invoice flow" | ATH contact → ATHOS lead | INVOICE_ONLY: the customer agrees to scope-and-invoice terms; the lead is stored with the package + catalog version; ATH sends the scope and invoice. Card checkout is BLOCKED on the Founder's Stripe decision (D-008). |
+| R-10 | Naming WOW vs WILD | Drive canon: WOW | WOW stays canonical | All | No change. |
+
+## Decisions for the Founder
+- **D-006**: Keep the à-la-carte clipping packages ($75–$225), or fold them into the WAVEMOTION plan allowances?
+- **D-007**: Confirm or reject the Living Cinema credit counts (2/4/8/15) and the extra-credit price, after costs are measured from real jobs.
+- **D-008**: ATH card payments. Create Stripe Payment Links (or an invoice tool) for Quick Start and Business Growth. The Founder must do this in the Founder's own Stripe account; Claude does not enter payment credentials.

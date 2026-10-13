@@ -1,0 +1,80 @@
+{
+  "version": "2026-10-13.1",
+  "authority": "Founder Super Max Execution Order, 2026-10-13, section 4 (ATH Commercial Catalog — Founder Pricing)",
+  "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md.",
+  "currency": "USD",
+  "payment": {
+    "method": "invoice",
+    "state": "INVOICE_ONLY",
+    "note": "No self-serve card checkout exists on abovethehilldev.online. Selecting a package creates a lead; ATH replies with a written scope and an invoice. Nothing is charged on submit."
+  },
+  "packages": [
+    {
+      "id": "quick-start", "name": "Quick Start", "price": 100, "billing": "one_time", "from": false, "icon": "site",
+      "summary": "A mobile-friendly landing page for your business.",
+      "includes": [
+        "Mobile-friendly business landing page",
+        "Your services, contact information, photos and links",
+        "Basic search metadata",
+        "One revision"
+      ],
+      "ecosystem": [
+        {"label": "Introductory WAVEMOTION Starter access", "state": "NOT_ACTIVE", "note": "Activated only once WAVEMOTION Starter is operational. No renewal is charged without your separate consent."}
+      ]
+    },
+    {
+      "id": "business-growth", "name": "Business Growth", "price": 200, "billing": "one_time", "from": false, "icon": "peaks", "featured": true,
+      "summary": "A small business website that captures leads and links to your offers.",
+      "includes": [
+        "Up to three pages (or equivalent scoped sections)",
+        "Contact or lead-capture flow",
+        "Course, offer and booking links"
+      ],
+      "ecosystem": [
+        {"label": "First month of the $20 ecosystem membership", "state": "NOT_ACTIVE", "note": "Included entitlements are only those registered for that tier when it activates. Renewal after the included month requires your separate consent."},
+        {"label": "Basic Teach Pass and instructor onboarding", "state": "NOT_ACTIVE", "note": "Activated when WOW Academy instructor tools are operational."},
+        {"label": "WAVEMOTION Creator allowance during the included period", "state": "NOT_ACTIVE", "note": "Activated when WAVEMOTION Creator is operational."},
+        {"label": "Access to eligible WOW media submission pathways", "state": "NOT_ACTIVE", "note": "Subject to each destination's own permission and publication rules."}
+      ]
+    },
+    {"id": "professional-website", "name": "Professional Website", "price": 500, "billing": "one_time", "from": true, "icon": "site",
+     "summary": "Expanded branded website; content management, commerce, booking and Academy course presentation as scoped."},
+    {"id": "app-starter", "name": "App Starter", "price": 1000, "billing": "one_time", "from": true, "icon": "app",
+     "summary": "A scoped installable web app, or a single-platform app quoted individually."},
+    {"id": "mobile-app-bundle", "name": "Mobile App Bundle", "price": 2500, "billing": "one_time", "from": true, "icon": "app",
+     "summary": "Basic iOS and Android apps on shared architecture, under a written scope."},
+    {"id": "business-app-system", "name": "Business App System", "price": 5000, "billing": "one_time", "from": true, "icon": "systems",
+     "summary": "Apps, backend, accounts, dashboards and integrations."},
+    {"id": "omnichannel-system", "name": "Omnichannel System", "price": 8000, "billing": "one_time", "from": true, "icon": "lattice",
+     "summary": "Scoped web, mobile, television and SDK / integration deliverables."}
+  ],
+  "package_disclosures": [
+    "No package silently includes every native platform.",
+    "Hosting, domains, app-store fees, paid tools and maintenance are disclosed in your written scope and passed through at cost — never hidden.",
+    "Timeline, revisions beyond those listed, ownership terms and refund terms are stated in your written scope before you pay."
+  ],
+  "wavemotion_plans": {
+    "state": "FOUNDER_SET_CHECKOUT_UNCONFIRMED",
+    "note": "Plan structure set by the Founder on 2026-10-13. wavemotion.live still showed the earlier $10 plan when checked on 2026-10-13; ATH does not link a checkout until WAVEMOTION confirms one is live.",
+    "plans": [
+      {"id": "wm-starter", "name": "Starter", "price": 10, "billing": "monthly", "clips": 40},
+      {"id": "wm-creator", "name": "Creator", "price": 20, "billing": "monthly", "clips": 80},
+      {"id": "wm-pro", "name": "Pro", "price": 50, "billing": "monthly", "clips": 250},
+      {"id": "wm-studio", "name": "Living Cinema Studio", "price": 75, "billing": "monthly", "clips": 250, "extra": "Pro benefits plus Living Cinema access, with a disclosed production-credit allowance. Not unlimited."}
+    ]
+  },
+  "services_retained": {
+    "note": "Oct 7 prices the Oct 13 order did not address. Kept published until the Founder decides (see decision D-006).",
+    "clips": [[10, 75], [20, 125], [30, 175], [40, 225]],
+    "member_discount": 0.2,
+    "starts": [
+      {"id": "living-destination", "name": "Living Destination setup", "price": 75, "icon": "site"},
+      {"id": "channeler", "name": "Channeler setup", "price": 100, "icon": "content"},
+      {"id": "campaign-setup", "name": "Content / campaign setup", "price": 250, "icon": "content"}
+    ]
+  },
+  "retired": [
+    {"id": "starter-website", "name": "Starter website — from $250", "replaced_by": ["quick-start", "business-growth"], "on": "2026-10-13"},
+    {"id": "business-website", "name": "Business website / system — from $500", "replaced_by": ["professional-website"], "on": "2026-10-13"}
+  ]
+}

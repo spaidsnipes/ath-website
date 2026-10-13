@@ -2,7 +2,8 @@
 """ATH Official Website — static page generator.
 
 Canon: Visual Canon Atlas v1, slide athWebsiteCanonPass3 (Founder finder doc 2026-10-07).
-Truth (Founder lock 2026-10-07): focused systems start at $10/mo (Wavemotion $10/mo); World Pass $20/mo; WM Pro $20/mo; other specialist systems "plans vary";
+Prices: commercial/registry.json (v2026-10-13, Founder Super Max order) — see commercial/RECONCILIATION-2026-10-13.md.
+Lineage (Founder lock 2026-10-07): focused systems start at $10/mo (Wavemotion $10/mo); World Pass $20/mo; WM Pro $20/mo; other specialist systems "plans vary";
 Services show Founder-approved starting prices; clipping packages $75/$125/$175/$225 with 20% off for Passport/World Pass members. Nothing on this
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
@@ -142,7 +143,7 @@ RUNGS = [
     ("door", "$10 / mo", "Focused door", "Focused systems start at $10/mo · Wavemotion $10/mo", "", "/ecosystem/#wavemotion"),
     ("lattice", "$20 / mo", "Join the world", "Passport spine · World Pass membership", "", "/passport/"),
     ("triangle", "Specialist", "Serious systems", "WealthyMindsets Pro $20/mo · plans vary by system", "", "/ecosystem/#specialist"),
-    ("peaks", "Services", "Build it for me", "Clips from $75 · websites from $250 · custom: scoped &amp; quoted", "", "/build/#pricing"),
+    ("peaks", "Services", "Build it for me", "Websites from $100 · clips from $75 · apps from $1,000", "", "/build/#pricing"),
 ]
 
 def ladder(detail=True):
@@ -160,15 +161,45 @@ def cta_block(title="What's your hill?", text="Tell ATHOS what's stopping you. V
 </div></div></section>"""
 
 
-CLIPS = [(10, 75), (20, 125), (30, 175), (40, 225)]
-STARTS = [("Living Destination setup", 75, "living-destination", "site"), ("Channeler setup", 100, "channeler", "content"),
-          ("Starter website", 250, "starter-website", "site"), ("Content / campaign setup", 250, "campaign-setup", "content"),
-          ("Business website / system", 500, "business-website", "systems")]
-def member(p): return int(round(p * 0.8))
+# ---------------------------------------------------------------- commercial registry (single source for every price on this site)
+import json
+REG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "commercial", "registry.json")))
+RET = REG["services_retained"]
+CLIPS = [tuple(c) for c in RET["clips"]]
+STARTS = [(x["name"], x["price"], x["id"], x["icon"]) for x in RET["starts"]]
+PKG = REG["packages"]
+WM = REG["wavemotion_plans"]
+def money(p): return f"${p:,}"
+def member(p): return int(round(p * (1 - RET["member_discount"])))
 def clip_rows():
     return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{n} clips</b></span><span role="cell" class="pt-price">${p}</span><span role="cell" class="pt-member">${member(p)}</span><span role="cell"><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package=clips-{n}" aria-label="Start {n} clips package">Start</a></span></div>' for n, p in CLIPS)
 def start_rows():
     return "".join(f'<li>{ic(i,"icon-sm")}<div style="flex:1"><b>{t}</b><span>from ${p}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={s}" aria-label="Start {t}">Start</a></li>' for t, p, s, i in STARTS)
+def pkg_cards():
+    out = []
+    for p in [x for x in PKG if not x["from"]]:
+        inc = "".join(f"<li>{html.escape(i)}</li>" for i in p["includes"])
+        eco = "".join(f'<li><span class="tag dim">Not active yet</span> {html.escape(e["label"])}<span class="note">{html.escape(e["note"])}</span></li>' for e in p.get("ecosystem", []))
+        out.append(f'''<article class="panel panel-pad pkg{' pkg-featured' if p.get('featured') else ''}" aria-labelledby="pkg-{p['id']}">
+   {ic(p['icon'])}<h3 id="pkg-{p['id']}">{p['name']}</h3><p class="pkg-price">{money(p['price'])} <span>one time</span></p><p class="body">{html.escape(p['summary'])}</p>
+   <p class="eyebrow mb0">Included</p><ul class="pkg-list">{inc}</ul>
+   {f'<p class="eyebrow mb0">Ecosystem extras</p><ul class="pkg-list pkg-eco">{eco}</ul>' if eco else ''}
+   <div class="ctas mt1">{btn(f"Start {p['name']}", f"/contact/?intent=services&amp;package={p['id']}")}</div></article>''')
+    return "".join(out)
+def ladder_rows():
+    return "".join(f'<li>{ic(p["icon"],"icon-sm")}<div style="flex:1"><b>{p["name"]}</b><span>from {money(p["price"])} · {html.escape(p["summary"])}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={p["id"]}" aria-label="Request a scope for {p["name"]}">Scope it</a></li>' for p in PKG if p["from"])
+def wm_rows():
+    return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{p["name"]}</b></span><span role="cell" class="pt-price">${p["price"]}/mo</span><span role="cell" class="pt-member">{p["clips"]} standard clips{" + Living Cinema" if p["id"]=="wm-studio" else ""}</span><span role="cell"><a class="btn btn-line btn-sm" href="/contact/?intent=wavemotion&amp;package={p["id"]}" aria-label="Ask about WAVEMOTION {p["name"]}">Ask</a></span></div>' for p in WM["plans"])
+def catalog_js():
+    m = {}
+    for p in PKG:
+        m[p["id"]] = {"label": f'{p["name"]} — {"from " if p["from"] else ""}{money(p["price"])}{"" if p["from"] else " one time"}', "terms": True}
+    for n, p in CLIPS: m[f"clips-{n}"] = {"label": f"{n} clips — ${p} (${member(p)} Passport member)"}
+    for t, p, s, i in STARTS: m[s] = {"label": f"{t} — from ${p}"}
+    for p in WM["plans"]: m[p["id"]] = {"label": f'WAVEMOTION {p["name"]} — ${p["price"]}/month ({p["clips"]} standard clips)'}
+    m["custom"] = {"label": "Custom OS / app / platform — diagnose → scope → quote"}
+    data = {"version": REG["version"], "payment": REG["payment"]["state"], "packages": m, "disclosures": REG["package_disclosures"]}
+    return '<script type="application/json" id="ath-catalog">' + json.dumps(data).replace("</", "<\\/") + "</script>"
 
 # ---------------------------------------------------------------- pages
 pages = {}
@@ -199,7 +230,7 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
  <div class="grid g3">
   <article class="panel panel-pad card"><span class="tag live">Live today</span><h3>ATHOS Diagnostic</h3><p>The free hill-finder on this site. Inspects public evidence, separates what it observed from what it inferred, and says "unknown" when it doesn't know.</p><p class="mt2">{btn("Run it", "/diagnose/", "line")}</p></article>
   <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. $20/month. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
-  <article class="panel panel-pad card"><span class="tag dim">In development</span><h3>Wavemotion</h3><p>Creator + business movement OS — record, prepare, launch, distribute, learn. One permanent Living Destination. $10/month focused door.</p><p class="mt2">{btn("Request access", "/contact/?intent=wavemotion", "line")}</p></article>
+  <article class="panel panel-pad card"><span class="tag dim">In development</span><h3>Wavemotion</h3><p>Creator + business movement OS — record, prepare, launch, distribute, learn. One permanent Living Destination. Plans from $10/month: Starter, Creator, Pro and Living Cinema Studio.</p><p class="mt2">{btn("Request access", "/contact/?intent=wavemotion", "line")}</p></article>
  </div>
 </div></section>
 <section class="block"><div class="wrap">
@@ -299,10 +330,10 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
  <div class="panel panel-pad mt2"><p class="panel-title">Availability today</p>
   <ul class="rows">
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
-   <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion is $10/month: the creator + business movement OS. No permanent free operator tier; public Living Destinations stay viewable. Self-serve checkout isn't open yet — <a class="gold" href="/contact/?intent=wavemotion">start Wavemotion with ATH</a>.</span></div></li>
+   <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion plans: Starter $10, Creator $20, Pro $50, Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. Self-serve checkout isn't confirmed yet — <a class="gold" href="/build/#wavemotion-plans">see plans</a> or <a class="gold" href="/contact/?intent=wavemotion">start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Available now in WOW World, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro is $20/month: one complete professional trading OS — no Basic/Pro/Pro+ split. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
-   <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Clipping from $75, Living Destination from $75, websites from $250, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
+   <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites from $100 (Quick Start) and $200 (Business Growth), clipping from $75, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
   </ul></div>
 </div></section>""" + cta_block())
 
@@ -357,9 +388,22 @@ pages["/build/"] = ("ATH Services — You need the right path",
    ("q","Consulting","When the honest first step is clarity, not code.")])}
  </div>
  <section class="mt3" id="pricing" aria-labelledby="pricing-h">
-  <h2 class="display d-m" id="pricing-h">Service prices</h2>
-  <p class="body">Real starting prices. Start any package below — ATH confirms scope with you before any payment is taken.</p>
-  <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:start" data-collapse>
+  <h2 class="display d-m" id="pricing-h">Website &amp; app packages</h2>
+  <p class="body">Pick a package and tell us about your business. ATH replies with a written scope and an invoice — <b>nothing is charged when you submit</b>, and work starts after you approve the scope and pay the invoice.</p>
+  <div class="grid g2 mt2" style="align-items:stretch">{pkg_cards()}</div>
+  <div class="grid mt2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:start" data-collapse>
+   <div class="panel panel-pad">
+    <p class="panel-title">Bigger builds — starting prices</p>
+    <ul class="rows">{ladder_rows()}</ul>
+    <div class="custom-os mt2"><p class="eyebrow mb0">Not sure which?</p><p class="h-serif mt1" style="font-size:24px">Diagnose → scope → quote</p><p class="note">Every “from” price becomes a real number only after a written scope.</p><div class="ctas mt1">{btn("Get a free diagnostic", "/diagnose/")}{btn("Request a quote", "/contact/?intent=services&amp;package=custom", "line")}</div></div>
+   </div>
+   <div class="panel panel-pad">
+    <p class="panel-title">What every package discloses</p>
+    <ul class="pkg-list">{"".join(f"<li>{html.escape(d)}</li>" for d in REG["package_disclosures"])}<li>Ecosystem extras marked “Not active yet” are not delivered until that product is operational. No subscription renews without your separate consent.</li></ul>
+   </div>
+  </div>
+  <h2 class="display d-m mt3" id="services-h">Done-for-you services</h2>
+  <div class="grid mt2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:start" data-collapse>
    <div class="panel panel-pad">
     <p class="panel-title">Wavemotion clipping packages</p>
     <div class="price-table" role="table" aria-label="Clipping package prices">
@@ -369,12 +413,19 @@ pages["/build/"] = ("ATH Services — You need the right path",
     <p class="note mt2 mb0">Passport / World Pass members save 20%. One discount — not stacked with any other offer.</p>
    </div>
    <div class="panel panel-pad">
-    <p class="panel-title">Build it for me — starting prices</p>
+    <p class="panel-title">Setup services — starting prices</p>
     <ul class="rows">{start_rows()}</ul>
-    <div class="custom-os mt2"><p class="eyebrow mb0">Custom OS · app · platform</p><p class="h-serif mt1" style="font-size:24px">Diagnose → scope → quote</p><p class="note">Larger systems are priced from a real scope, never from a starting number.</p><div class="ctas mt1">{btn("Get a free diagnostic", "/diagnose/")}{btn("Request a quote", "/contact/?intent=services&amp;package=custom", "line")}</div></div>
    </div>
   </div>
-  <p class="note mt2">“From” prices are starting points for a defined scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden.</p>
+  <div class="panel panel-pad mt2" id="wavemotion-plans">
+   <p class="panel-title">WAVEMOTION plans — set by the Founder</p>
+   <div class="price-table" role="table" aria-label="WAVEMOTION plan prices">
+    <div class="pt-row pt-head" role="row"><span role="columnheader">Plan</span><span role="columnheader">Price</span><span role="columnheader">Allowance</span><span role="columnheader"><span class="vh">Ask</span></span></div>
+    {wm_rows()}
+   </div>
+   <p class="note mt2 mb0">Self-serve checkout for these plans isn't confirmed yet — ask ATH and we'll set you up. Living Cinema Studio includes a disclosed production-credit allowance; cinematic rendering is never unlimited.</p>
+  </div>
+  <p class="note mt2">“From” prices are starting points for a defined scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden. Catalog version {REG["version"]}.</p>
  </section>
  <div class="panel panel-pad mt3"><p class="panel-title">How an engagement works</p>
   <div class="grid g5" style="gap:0">
@@ -397,7 +448,7 @@ ECO = [
  ("ATHOS", "Intelligence", "live", "Diagnostic live", "Diagnosis, evidence, routing. The free diagnostic on this site is ATHOS working today; deeper capabilities are in development.", ("Run it", "/diagnose/")),
  ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW World.", ("Get Passport", "https://thewow.online/passport/claim")),
  ("World Pass", "Membership · $20/mo", "live", "Open door", "Paid ecosystem membership on your Passport. Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
- ("Wavemotion", "Creator + Business Movement OS · $10/mo", "dim", "In development", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Visit Wavemotion", "https://wavemotion.live/")),
+ ("Wavemotion", "Creator + Business Movement OS · from $10/mo", "dim", "In development", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Visit Wavemotion", "https://wavemotion.live/")),
  ("WM Pro", "WealthyMindsets Pro · $20/mo", "", "Open door", "One complete professional trading operating system — no tier split. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
  ("PowerTribes", "Business · sales · workforce · leadership OS", "dim", "In development", "Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=powertribes")),
  ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=dreamboard")),
@@ -527,7 +578,7 @@ pages["/work/"] = ("Inventions & Work — Above the Hill Developments",
   {"".join(f'<article class="panel panel-pad card"><span class="tag {c}">{s}</span><h3>{t}</h3><dl class="hpa mt1"><dt>The hill</dt><dd>{h}</dd><dt>The path</dt><dd>{p}</dd><dt>Now</dt><dd>{n}</dd></dl>{l}</article>' for c,s,t,h,p,n,l in [
    ("live","Live","ATHOS Diagnostic","Businesses can't see what's actually stopping them — and most \"audits\" invent certainty.","An evidence-first diagnostic that separates observed, inferred and unknown.","Running on this site.", f'<p class="mt2 mb0">{btn("Run it","/diagnose/","line")}</p>'),
    ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. $20/month, one complete OS.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
-   ("dim","In development","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","In development. $10/month focused door.", f'<p class="mt2 mb0">{btn("Request access","/contact/?intent=wavemotion","line")}</p>'),
+   ("dim","In development","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","In development. Plans from $10/month.", f'<p class="mt2 mb0">{btn("Request access","/contact/?intent=wavemotion","line")}</p>'),
    ("dim","In development","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","In development.", ""),
    ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW World; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),
    ("","Open door","WOW World","Products feel like islands.","A connected world of destinations under one builder.","Open at thewow.online — guests welcome, free Passport, World Pass $20/month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/" rel="noopener">Enter {ARR}</a></p>')])}
@@ -566,7 +617,7 @@ pages["/contact/"] = ("Contact ATH — Start",
     <option value="services">ATH Services — build it for me</option>
     <option value="describe">Describing my hill to a person</option>
     <option value="deep-diagnostic">Deep diagnostic</option>
-    <option value="wavemotion">Wavemotion access ($10/mo)</option>
+    <option value="wavemotion">WAVEMOTION plans (from $10/mo)</option>
     <option value="worldpass">World Pass waitlist ($20/mo)</option>
     <option value="dictionary">Builder Dictionary waitlist</option>
     <option value="powertribes">PowerTribes access</option>
@@ -579,13 +630,15 @@ pages["/contact/"] = ("Contact ATH — Start",
    <div class="field"><label class="lbl" for="l-site">Website <span class="mute">(optional)</span></label><input id="l-site" name="website" type="url" inputmode="url" autocomplete="url"></div></div>
   <div class="field"><label class="lbl" for="l-msg">What's your hill?</label><textarea id="l-msg" name="message" maxlength="3000"></textarea></div>
   <input type="hidden" name="package" id="l-package" value="">
-  <p class="pkg-note" id="pkg-note" hidden></p>
+  <input type="hidden" name="catalog_version" id="l-catalog" value="">
+  <div class="pkg-note" id="pkg-note" hidden></div>
+  <label class="check pkg-ack" id="pkg-ack" hidden><input type="checkbox" id="l-ack" name="terms_ack" value="yes"> <span>I understand ATH will send a written scope and an invoice. Nothing is charged now, and work starts only after I approve the scope and pay.</span></label>
   <input type="text" name="company_fax" tabindex="-1" autocomplete="off" class="vh" aria-hidden="true">
   <button class="btn btn-gold" type="submit">Send to ATH {ARR}</button>
   <p class="note mt1">We use this only to reply to you. See <a class="gold" href="/privacy/">Privacy</a>.</p>
   <p class="form-status" role="status" aria-live="polite"></p>
  </form>
-</div></section>""")
+</div></section>""" + catalog_js())
 
 pages["/privacy/"] = ("Privacy — Above the Hill Developments", "What ATH collects, why, and how to remove it.",
  """<section class="block"><div class="wrap prose" style="max-width:820px"><p class="eyebrow">Policy</p><h1 class="display d-m">Privacy</h1>
@@ -602,12 +655,13 @@ pages["/privacy/"] = ("Privacy — Above the Hill Developments", "What ATH colle
 
 pages["/terms/"] = ("Terms — Above the Hill Developments", "Ownership, diagnostics, and use of the ATH website.",
  """<section class="block"><div class="wrap prose" style="max-width:820px"><p class="eyebrow">Policy</p><h1 class="display d-m">Terms</h1>
-<p>Effective October 7, 2026. These terms cover use of abovethehilldev.online, operated by Above the Hill Developments Inc. ("ATH").</p>
+<p>Effective October 7, 2026; packages section added October 13, 2026. These terms cover use of abovethehilldev.online, operated by Above the Hill Developments Inc. ("ATH").</p>
 <h2>The free diagnostic</h2><p>ATHOS reports what it observed on one public page, what it infers from that, and what it cannot know. It is informational, not a guarantee of results. Where evidence is missing, the result says "unknown".</p>
 <h2>Ownership</h2><ul>
 <li>You own your materials. A diagnostic or deep diagnostic transfers no ownership of your code, content or data to ATH.</li>
 <li>ATH owns ATH intellectual property — including ATHOS, its methods, the ATH Builder Dictionary, product designs and inventions. Purchasing the Dictionary or any product licenses its use; it does not transfer ownership of ATH inventions.</li></ul>
 <h2>Deep diagnostics and services</h2><p>Deeper inspection happens only under a written scope you approve, with access you grant and may revoke. Default posture is read-only; ATH does not modify your systems during a diagnostic. Services are delivered under a separate scope and quote.</p>
+<h2>Website and app packages</h2><p>Package prices are listed on the <a class="gold" href="/build/#pricing">Build page</a>. Submitting a package request creates no charge and no obligation. ATH replies with a written scope and an invoice; work begins only after you approve the scope and pay. Timeline, revisions, ownership terms, third-party costs and refund terms are stated in that written scope. Ecosystem extras described as “not active yet” are delivered only once that product is operational, and no subscription renews without your separate consent.</p>
 <h2>Prices and availability</h2><p>Only products marked available can be bought. Waitlists and access requests create no obligation for either side. Membership (World Pass) does not include specialist products, ATH services or third-party costs unless stated in writing.</p>
 <h2>Contact</h2><p>Questions: use the <a class="gold" href="/contact/">contact form</a>.</p>
 </div></section>""")
