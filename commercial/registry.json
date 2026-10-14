@@ -1,6 +1,6 @@
 {
-  "version": "2026-10-14.1",
-  "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers.",
+  "version": "2026-10-14.2",
+  "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired.",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
   "payment": {
@@ -181,7 +181,6 @@
         225
       ]
     ],
-    "member_discount": 0.2,
     "starts": [
       {
         "id": "living-destination",
@@ -201,7 +200,8 @@
         "price": 250,
         "icon": "content"
       }
-    ]
+    ],
+    "discounts": "none"
   },
   "retired": [
     {
