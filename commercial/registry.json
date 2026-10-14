@@ -1,7 +1,7 @@
 {
-  "version": "2026-10-13.2",
-  "authority": "Founder Super Max Execution Order, 2026-10-13, section 4 (ATH Commercial Catalog — Founder Pricing)",
-  "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md.",
+  "version": "2026-10-14.1",
+  "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers.",
+  "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
   "payment": {
     "method": "invoice",
@@ -120,25 +120,44 @@
     "Timeline, revisions beyond those listed, ownership terms and refund terms are stated in your written scope before you pay."
   ],
   "wavemotion_plans": {
-    "state": "PENDING_NEW_FOUNDER_PLANS",
-    "note": "Founder, 2026-10-13: the Starter $10 / Creator $20 / Pro $50 / Studio $75 tiers are old. New plans exist but are not yet recorded in the registry. ATH shows no WAVEMOTION plan prices until they are.",
-    "plans": [],
-    "superseded": [
+    "state": "FOUNDER_CONFIRMED_APP_PLANS",
+    "note": "Founder reconfirmed these four tiers October 14. WAVEMOTION public pricing and server registry agree. Paid cinematic generation is not open. No payment or entitlement-completion proof is inferred from this catalog.",
+    "plans": [
       {
+        "id": "wm-starter",
         "name": "Starter",
-        "price": 10
+        "price": 10,
+        "billing": "monthly",
+        "clips": 40
       },
       {
+        "id": "wm-creator",
         "name": "Creator",
-        "price": 20
+        "price": 20,
+        "billing": "monthly",
+        "clips": 80
       },
       {
+        "id": "wm-pro",
         "name": "Pro",
-        "price": 50
+        "price": 50,
+        "billing": "monthly",
+        "clips": 250
       },
       {
+        "id": "wm-studio",
         "name": "Living Cinema Studio",
-        "price": 75
+        "price": 75,
+        "billing": "monthly",
+        "clips": 250,
+        "extra": "250 standard clips per month. Cinematic generation is not open; production credit pricing awaits measured provider costs."
+      }
+    ],
+    "history": [
+      {
+        "version": "2026-10-13.2",
+        "state": "PENDING_NEW_FOUNDER_PLANS",
+        "note": "Founder, 2026-10-13: the Starter $10 / Creator $20 / Pro $50 / Studio $75 tiers are old. New plans exist but are not yet recorded in the registry. ATH shows no WAVEMOTION plan prices until they are."
       }
     ]
   },
