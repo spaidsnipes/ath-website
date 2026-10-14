@@ -4,7 +4,7 @@
 Canon: Visual Canon Atlas v1, slide athWebsiteCanonPass3 (Founder finder doc 2026-10-07).
 Prices: commercial/registry.json (v2026-10-13, Founder Super Max order) — see commercial/RECONCILIATION-2026-10-13.md.
 Lineage (Founder lock 2026-10-07): focused systems start at $10/mo (Wavemotion $10/mo); World Pass $20/mo; WM Pro $20/mo; other specialist systems "plans vary";
-Services show Founder-approved starting prices; clipping packages $75/$125/$175/$225 with 20% off for Passport/World Pass members. Nothing on this
+Services show Founder-approved starting prices; clipping packages $75/$125/$175/$225, one price for everyone (no discounts since 2026-10-14). Nothing on this
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
 """
@@ -170,9 +170,9 @@ STARTS = [(x["name"], x["price"], x["id"], x["icon"]) for x in RET["starts"]]
 PKG = REG["packages"]
 WM = REG["wavemotion_plans"]
 def money(p): return f"${p:,}"
-def member(p): return int(round(p * (1 - RET["member_discount"])))
+def per_clip(n, p): return f"${p / n:,.2f}"
 def clip_rows():
-    return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{n} clips</b></span><span role="cell" class="pt-price">${p}</span><span role="cell" class="pt-member">${member(p)}</span><span role="cell"><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package=clips-{n}" aria-label="Start {n} clips package">Start</a></span></div>' for n, p in CLIPS)
+    return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{n} clips</b></span><span role="cell" class="pt-price">${p}</span><span role="cell" class="pt-allowance">{per_clip(n, p)} per clip</span><span role="cell"><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package=clips-{n}" aria-label="Start {n} clips package">Start</a></span></div>' for n, p in CLIPS)
 def start_rows():
     return "".join(f'<li>{ic(i,"icon-sm")}<div style="flex:1"><b>{t}</b><span>from ${p}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={s}" aria-label="Start {t}">Start</a></li>' for t, p, s, i in STARTS)
 def pkg_cards():
@@ -194,7 +194,7 @@ def catalog_js():
     m = {}
     for p in PKG:
         m[p["id"]] = {"label": f'{p["name"]} — {"from " if p["from"] else ""}{money(p["price"])}{"" if p["from"] else " one time"}', "terms": True}
-    for n, p in CLIPS: m[f"clips-{n}"] = {"label": f"{n} clips — ${p} (${member(p)} Passport member)"}
+    for n, p in CLIPS: m[f"clips-{n}"] = {"label": f"{n} clips — ${p}"}
     for t, p, s, i in STARTS: m[s] = {"label": f"{t} — from ${p}"}
     for p in WM["plans"]: m[p["id"]] = {"label": f'WAVEMOTION {p["name"]} — ${p["price"]}/month ({p["clips"]} standard clips)'}
     m["custom"] = {"label": "Custom OS / app / platform — diagnose → scope → quote"}
@@ -407,10 +407,10 @@ pages["/build/"] = ("ATH Services — You need the right path",
    <div class="panel panel-pad">
     <p class="panel-title">Wavemotion clipping packages</p>
     <div class="price-table" role="table" aria-label="Clipping package prices">
-     <div class="pt-row pt-head" role="row"><span role="columnheader">Package</span><span role="columnheader">Price</span><span role="columnheader">Passport member</span><span role="columnheader"><span class="vh">Start</span></span></div>
+     <div class="pt-row pt-head" role="row"><span role="columnheader">Package</span><span role="columnheader">Price</span><span role="columnheader">Per clip</span><span role="columnheader"><span class="vh">Start</span></span></div>
      {clip_rows()}
     </div>
-    <p class="note mt2 mb0">Passport / World Pass members save 20%. One discount — not stacked with any other offer.</p>
+    <p class="note mt2 mb0">One price for everyone — no member discounts. Scope is confirmed before you pay.</p>
    </div>
    <div class="panel panel-pad">
     <p class="panel-title">Setup services — starting prices</p>
