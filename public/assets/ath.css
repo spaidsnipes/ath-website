@@ -239,3 +239,15 @@ input:focus,textarea:focus,select:focus{border-color:var(--gold-hi);outline:none
 .pkg .ctas{margin-top:auto}
 .pkg-ack[hidden],.pkg-note[hidden]{display:none!important}
 .pkg-ack{margin:0 0 16px}
+
+/* Monthly-plan rows retain their own allowance language, not the member-discount suffix. */
+.wm-plan-table .btn{white-space:nowrap}
+.wm-plan-table .pt-row>span:first-child{min-width:0}
+.wm-plan-table .pt-allowance{font-size:14px;line-height:1.5}
+@media (max-width:620px){
+ .wm-plan-table .pt-row{grid-template-columns:minmax(0,1fr) auto}
+ .wm-plan-table .pt-row>span:nth-child(3){grid-column:1;grid-row:2}
+ .wm-plan-table .pt-row>span:nth-child(4){grid-column:2;grid-row:2}
+ .wm-plan-table .pt-row .btn{grid-column:auto;grid-row:auto}
+ .wm-plan-table .pt-head>span:nth-child(4){display:none}
+}

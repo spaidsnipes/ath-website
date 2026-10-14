@@ -189,7 +189,7 @@ def pkg_cards():
 def ladder_rows():
     return "".join(f'<li>{ic(p["icon"],"icon-sm")}<div style="flex:1"><b>{p["name"]}</b><span>from {money(p["price"])} · {html.escape(p["summary"])}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={p["id"]}" aria-label="Request a scope for {p["name"]}">Scope it</a></li>' for p in PKG if p["from"])
 def wm_rows():
-    return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{p["name"]}</b></span><span role="cell" class="pt-price">${p["price"]}/mo</span><span role="cell" class="pt-member">{p["clips"]} standard clips{" + Living Cinema" if p["id"]=="wm-studio" else ""}</span><span role="cell"><a class="btn btn-line btn-sm" href="/contact/?intent=wavemotion&amp;package={p["id"]}" aria-label="Ask about WAVEMOTION {p["name"]}">Ask</a></span></div>' for p in WM["plans"])
+    return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{html.escape(p["name"])}</b></span><span role="cell" class="pt-price">${p["price"]}/mo</span><span role="cell" class="pt-allowance">{p["clips"]} standard clips / month</span><span role="cell"><a class="btn btn-line btn-sm" href="https://www.wavemotion.live/#plans" rel="noopener" aria-label="View WAVEMOTION {html.escape(p["name"])} plan">View plans</a></span></div>' for p in WM["plans"])
 def catalog_js():
     m = {}
     for p in PKG:
@@ -230,7 +230,7 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
  <div class="grid g3">
   <article class="panel panel-pad card"><span class="tag live">Live today</span><h3>ATHOS Diagnostic</h3><p>The free hill-finder on this site. Inspects public evidence, separates what it observed from what it inferred, and says "unknown" when it doesn't know.</p><p class="mt2">{btn("Run it", "/diagnose/", "line")}</p></article>
   <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. $20/month. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
-  <article class="panel panel-pad card"><span class="tag dim">In development</span><h3>Wavemotion</h3><p>Creator + business movement OS — record, prepare, launch, distribute, learn. One permanent Living Destination. New plans are being finalized.</p><p class="mt2">{btn("Request access", "/contact/?intent=wavemotion", "line")}</p></article>
+  <article class="panel panel-pad card"><span class="tag dim">In development</span><h3>Wavemotion</h3><p>Creator + business movement OS — record, prepare, launch, distribute, learn. One permanent Living Destination. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month.</p><p class="mt2">{btn("Request access", "/contact/?intent=wavemotion", "line")}</p></article>
  </div>
 </div></section>
 <section class="block"><div class="wrap">
@@ -330,7 +330,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
  <div class="panel panel-pad mt2"><p class="panel-title">Availability today</p>
   <ul class="rows">
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
-   <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion: the creator + business movement OS. New plans are being finalized. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
+   <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion: the creator + business movement OS. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Available now in WOW World, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro is $20/month: one complete professional trading OS — no Basic/Pro/Pro+ split. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites from $100 (Quick Start) and $200 (Business Growth), clipping from $75, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
@@ -418,8 +418,10 @@ pages["/build/"] = ("ATH Services — You need the right path",
    </div>
   </div>
   <div class="panel panel-pad mt2" id="wavemotion-plans">
-   <p class="panel-title">WAVEMOTION plans</p>
-   <p class="body mb0">New WAVEMOTION plans are being finalized. <a class="gold" href="/contact/?intent=wavemotion">Ask ATH</a> and we'll set you up, or visit <a class="gold" href="https://wavemotion.live/" rel="noopener">wavemotion.live</a>.</p>
+   <p class="panel-title" id="wavemotion-plans">WAVEMOTION plans</p>
+   <div class="price-table wm-plan-table" role="table" aria-label="WAVEMOTION monthly plans"><div class="pt-row pt-head" role="row"><span role="columnheader">Plan</span><span role="columnheader">Monthly</span><span role="columnheader">Allowance</span><span role="columnheader">Next step</span></div>{wm_rows()}</div>
+   <p class="note">Standard clip allowances are 40 / 80 / 250 / 250 per month. Cinematic generation is not open; production credits await measured provider costs. Platform publishing depends on the permissions of your connected accounts. Human clipping services above are separately scoped and priced.</p>
+   <p class="body mb0">A 14-day trial needs no card. Choose a plan inside <a class="gold" href="https://www.wavemotion.live/#plans" rel="noopener">WAVEMOTION</a>; this site does not charge a second subscription.</p>
   </div>
   <p class="note mt2">“From” prices are starting points for a defined scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden. Catalog version {REG["version"]}.</p>
  </section>
@@ -574,7 +576,7 @@ pages["/work/"] = ("Inventions & Work — Above the Hill Developments",
   {"".join(f'<article class="panel panel-pad card"><span class="tag {c}">{s}</span><h3>{t}</h3><dl class="hpa mt1"><dt>The hill</dt><dd>{h}</dd><dt>The path</dt><dd>{p}</dd><dt>Now</dt><dd>{n}</dd></dl>{l}</article>' for c,s,t,h,p,n,l in [
    ("live","Live","ATHOS Diagnostic","Businesses can't see what's actually stopping them — and most \"audits\" invent certainty.","An evidence-first diagnostic that separates observed, inferred and unknown.","Running on this site.", f'<p class="mt2 mb0">{btn("Run it","/diagnose/","line")}</p>'),
    ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. $20/month, one complete OS.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
-   ("dim","In development","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","In development. New plans coming.", f'<p class="mt2 mb0">{btn("Request access","/contact/?intent=wavemotion","line")}</p>'),
+   ("dim","In development","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","Plans $10 / $20 / $50 / $75 per month. Cinematic generation is not open.", f'<p class="mt2 mb0">{btn("Request access","/contact/?intent=wavemotion","line")}</p>'),
    ("dim","In development","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","In development.", ""),
    ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW World; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),
    ("","Open door","WOW World","Products feel like islands.","A connected world of destinations under one builder.","Open at thewow.online — guests welcome, free Passport, World Pass $20/month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/" rel="noopener">Enter {ARR}</a></p>')])}

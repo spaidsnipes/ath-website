@@ -26,3 +26,6 @@ Registry: `commercial/registry.json` v2026-10-13.1. Every price on abovethehilld
 - **Music rights:** The Founder confirms the songs used for ATH ads are his own (Dspaid catalog). Oct 9 preflight decision "e" is resolved for ATH ads.
 - **D-009 resolved (Pipeline A scope):** ATH builds websites for businesses anywhere in the world, delivered remotely. No local pilot zone is required.
 - **Likeness:** Faceless by default; the Founder is OK appearing on camera. Any synthetic version of his face or voice still needs disclosure.
+
+## Supersession — October 14, 2026, Founder confirmation
+The Founder answered the exact pricing reconciliation question in Execute ATH production sequence: **“Keep the current $10/$20/$50/$75 tiers.”** Registry v2026-10-14.1 restores Starter/Creator/Pro/Living Cinema Studio prices and 40/80/250/250 standard clips, matching WAVEMOTION's live registry. This supersedes the October 13 pending-new-plans hold; the older decision remains above as lineage. Paid cinematic generation remains closed, its expensive production credits unactivated, and no unlimited render claim is made. The website links to WAVEMOTION's existing trial/Plans path; no second billing system is created. Public pricing parity does not prove a paid customer lifecycle. D-006, D-007, D-008 and the Passport clipping-discount conflict are not silently resolved.
