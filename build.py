@@ -639,6 +639,30 @@ pages["/contact/"] = ("Contact ATH — Start",
  </form>
 </div></section>""" + catalog_js())
 
+pages["/start/"] = ("Start your build — ATH intake",
+ "Tell ATH about your business so we can start building.",
+ f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
+ <div><p class="eyebrow">Payment received · Next step</p><h1 class="display d-l mt1">Let's build<br>your site</h1>
+  <p class="lede">Thank you. Tell us about your business and ATH starts the build.</p>
+  <p class="body mt2">Share links to your logo and photos (Google Drive, Dropbox, Instagram or your current site). A person at ATH reads every intake and replies within one business day.</p>
+  <p class="note mt2">Didn't pay yet? <a class="gold" href="/build/#pricing">See packages</a>.</p></div>
+ <form class="panel panel-pad" id="intake-form" novalidate>
+  <input type="hidden" name="intent" value="paid-intake">
+  <div class="grid g2"><div class="field"><label class="lbl" for="i-name">Your name</label><input id="i-name" name="name" type="text" autocomplete="name" required></div>
+   <div class="field"><label class="lbl" for="i-email">Email used at checkout</label><input id="i-email" name="email" type="email" autocomplete="email" required></div></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="i-org">Business name</label><input id="i-org" name="org" type="text" autocomplete="organization"></div>
+   <div class="field"><label class="lbl" for="i-site">Current website or social page <span class="mute">(optional)</span></label><input id="i-site" name="website" type="url" inputmode="url"></div></div>
+  <div class="field"><label class="lbl" for="i-msg">Your services, hours, contact info, photo/logo links, and anything else the site should say</label><textarea id="i-msg" name="message" maxlength="3000" required></textarea></div>
+  <input type="hidden" name="package" id="l-package" value="">
+  <input type="hidden" name="catalog_version" id="l-catalog" value="">
+  <div class="pkg-note" id="pkg-note" hidden></div>
+  <input type="text" name="company_fax" tabindex="-1" autocomplete="off" class="vh" aria-hidden="true">
+  <button class="btn btn-gold" type="submit">Send intake to ATH {ARR}</button>
+  <p class="note mt1">Used only to build your site. See <a class="gold" href="/privacy/">Privacy</a>.</p>
+  <p class="form-status" role="status" aria-live="polite"></p>
+ </form>
+</div></section>""" + catalog_js())
+
 pages["/privacy/"] = ("Privacy — Above the Hill Developments", "What ATH collects, why, and how to remove it.",
  """<section class="block"><div class="wrap prose" style="max-width:820px"><p class="eyebrow">Policy</p><h1 class="display d-m">Privacy</h1>
 <p>Effective October 7, 2026. Above the Hill Developments Inc. ("ATH") collects only what each workflow needs.</p>
