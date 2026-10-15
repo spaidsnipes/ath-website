@@ -109,6 +109,18 @@ section.block{padding:clamp(64px,9vw,120px) 0;border-bottom:1px solid var(--gold
   .rung{flex:0 0 46%;scroll-snap-align:start;padding:20px 12px}
   .rung .d{display:none}
 }
+/* Phones: a ladder climbs. Measured at 375px, the horizontal scroller showed
+   FREE, $10 and half of $20 — and "SERVICES · Build it for me", the rung that
+   pays ATH, sat entirely off-screen at x 644–801 behind a swipe nothing
+   announced. Stacked, all five rungs are on screen and read top to bottom. */
+@media (max-width:620px){
+  .ladder{display:grid;grid-template-columns:1fr;overflow:visible;scroll-snap-type:none}
+  .rung{display:grid;grid-template-columns:auto 1fr;column-gap:14px;row-gap:2px;align-items:center;text-align:left;border-left:0;border-top:1px solid var(--gold-line);padding:14px 16px;min-height:56px}
+  .rung:first-child{border-top:0}
+  .rung .icon{grid-row:1 / span 3;margin:0}
+  .rung .t{font-size:18px}
+  .rung .s,.rung .x{grid-column:2}
+}
 
 /* ---------- Lists / rows ---------- */
 .rows{list-style:none;margin:0;padding:0}
