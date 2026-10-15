@@ -240,7 +240,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--gold-hi);outline:none
 
 /* packages (registry-driven, 2026-10-13) */
 .pkg{display:flex;flex-direction:column;gap:6px}
-.pkg h3{margin:6px 0 0}
+.pkg h3{font:500 26px/1.2 var(--serif);margin:6px 0 0}
 .pkg-featured{border-color:var(--gold-line);box-shadow:0 0 0 1px var(--gold-line) inset}
 .pkg-price{font:500 40px/1.1 var(--serif);color:var(--gold-hi);margin:4px 0}
 .pkg-price span{font:400 14px/1 var(--sans,inherit);color:var(--ivory-dim);letter-spacing:.04em}
