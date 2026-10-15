@@ -184,7 +184,8 @@ def pkg_cards():
    {ic(p['icon'])}<h3 id="pkg-{p['id']}">{p['name']}</h3><p class="pkg-price">{money(p['price'])} <span>one time</span></p><p class="body">{html.escape(p['summary'])}</p>
    <p class="eyebrow mb0">Included</p><ul class="pkg-list">{inc}</ul>
    {f'<p class="eyebrow mb0">Ecosystem extras</p><ul class="pkg-list pkg-eco">{eco}</ul>' if eco else ''}
-   <div class="ctas mt1">{btn(f"Start {p['name']}", f"/contact/?intent=services&amp;package={p['id']}")}</div></article>''')
+   <div class="ctas mt1">{btn(f"Pay {money(p['price'])} — start now", p['pay_url'], attrs='rel="noopener"') if p.get('pay_url') else ''}{btn("Ask a question first", f"/contact/?intent=services&amp;package={p['id']}", "line")}</div>
+   {'<p class="note mb0">Secure card checkout by Stripe. ATH emails your intake form within one business day.</p>' if p.get('pay_url') else ''}</article>''')
     return "".join(out)
 def ladder_rows():
     return "".join(f'<li>{ic(p["icon"],"icon-sm")}<div style="flex:1"><b>{p["name"]}</b><span>from {money(p["price"])} · {html.escape(p["summary"])}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={p["id"]}" aria-label="Request a scope for {p["name"]}">Scope it</a></li>' for p in PKG if p["from"])
@@ -389,7 +390,7 @@ pages["/build/"] = ("ATH Services — You need the right path",
  </div>
  <section class="mt3" id="pricing" aria-labelledby="pricing-h">
   <h2 class="display d-m" id="pricing-h">Website &amp; app packages</h2>
-  <p class="body">Pick a package and tell us about your business. ATH replies with a written scope and an invoice — <b>nothing is charged when you submit</b>, and work starts after you approve the scope and pay the invoice.</p>
+  <p class="body">Quick Start and Business Growth can be paid by card right now. Prefer to talk first? Ask a question and ATH replies with a written scope — nothing is charged until you pay.</p>
   <div class="grid g2 mt2" style="align-items:stretch">{pkg_cards()}</div>
   <div class="grid mt2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:start" data-collapse>
    <div class="panel panel-pad">

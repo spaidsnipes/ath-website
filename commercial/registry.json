@@ -1,12 +1,12 @@
 {
-  "version": "2026-10-14.2",
+  "version": "2026-10-14.3",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired.",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
   "payment": {
-    "method": "invoice",
-    "state": "INVOICE_ONLY",
-    "note": "No self-serve card checkout exists on abovethehilldev.online. Selecting a package creates a lead; ATH replies with a written scope and an invoice. Nothing is charged on submit."
+    "method": "stripe_payment_link",
+    "state": "LIVE_CARD_FOR_FIXED_PACKAGES",
+    "note": "Quick Start and Business Growth can be paid by card through Stripe Payment Links (account AboveTheHilldevelopments). Scoped packages (from $500) stay scope → quote → invoice."
   },
   "packages": [
     {
@@ -29,7 +29,8 @@
           "state": "NOT_ACTIVE",
           "note": "Activated only once WAVEMOTION Starter is operational. No renewal is charged without your separate consent."
         }
-      ]
+      ],
+      "pay_url": "https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00"
     },
     {
       "id": "business-growth",
@@ -66,7 +67,8 @@
           "state": "NOT_ACTIVE",
           "note": "Subject to each destination's own permission and publication rules."
         }
-      ]
+      ],
+      "pay_url": "https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01"
     },
     {
       "id": "professional-website",
