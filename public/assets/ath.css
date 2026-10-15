@@ -263,3 +263,6 @@ input:focus,textarea:focus,select:focus{border-color:var(--gold-hi);outline:none
  .wm-plan-table .pt-row .btn{grid-column:auto;grid-row:auto}
  .wm-plan-table .pt-head>span:nth-child(4){display:none}
 }
+
+/* Canon plate 06 (services): each service family's icon sits in an outlined gold tile. Matched 2026-10-15. */
+.svc > .icon{width:30px;height:30px;padding:9px;border:1.5px solid rgba(201,164,92,.8);border-radius:10px;background:rgba(201,164,92,.08);box-sizing:content-box}

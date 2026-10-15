@@ -380,7 +380,7 @@ pages["/build/"] = ("ATH Services — You need the right path",
  + f"""
 <section class="block"><div class="wrap">
  <div class="grid g3">
-  {"".join(f'<div class="panel panel-pad card" style="display:flex;gap:16px">{ic(i)}<div><h3 style="margin-top:0">{t}</h3><p>{d}</p></div></div>' for i,t,d in [
+  {"".join(f'<div class="panel panel-pad card svc" style="display:flex;gap:16px">{ic(i)}<div><h3 style="margin-top:0">{t}</h3><p>{d}</p></div></div>' for i,t,d in [
    ("site","Websites &amp; Destinations","Sites, Living Destinations, conversion paths."),
    ("content","Content &amp; Campaigns","Clipping packages, launch systems, distribution."),
    ("systems","Systems &amp; Automation","Business ops, integrations, custom applications."),
