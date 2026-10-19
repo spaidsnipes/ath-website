@@ -397,6 +397,7 @@ pages["/build/"] = ("ATH Services — You need the right path",
    <div class="panel panel-pad">
     <p class="panel-title">Bigger builds — starting prices</p>
     <ul class="rows">{ladder_rows()}</ul>
+    {(lambda e: f'<p class="note mt1"><span class="tag dim">Not active yet</span> <b>Every package from $500:</b> {html.escape(e["label"])}. {html.escape(e["note"])}</p>')(next(p for p in PKG if p["price"] >= 500)["ecosystem"][1])}
     <div class="custom-os mt2"><p class="eyebrow mb0">Not sure which?</p><p class="h-serif mt1" style="font-size:24px">Diagnose → scope → quote</p><p class="note">Every “from” price becomes a real number only after a written scope.</p><div class="ctas mt1">{btn("Get a free diagnostic", "/diagnose/")}{btn("Request a quote", "/contact/?intent=services&amp;package=custom", "line")}</div></div>
    </div>
    <div class="panel panel-pad">

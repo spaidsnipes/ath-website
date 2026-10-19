@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.3",
+  "version": "2026-10-19.4",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
@@ -89,7 +89,19 @@
       "billing": "one_time",
       "from": true,
       "icon": "site",
-      "summary": "Expanded branded website; content management, commerce, booking and Academy course presentation as scoped."
+      "summary": "Expanded branded website; content management, commerce, booking and Academy course presentation as scoped.",
+      "ecosystem": [
+        {
+          "label": "Free Passport identity, set up with you",
+          "state": "LIVE",
+          "note": "Your one WOW identity for every ATH app. Free, no subscription."
+        },
+        {
+          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "state": "NOT_ACTIVE",
+          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+        }
+      ]
     },
     {
       "id": "cinematic-launch",
@@ -107,19 +119,9 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "One month of WAVEMOTION Pro ($50 value)",
+          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
           "state": "NOT_ACTIVE",
-          "note": "Ends on its own after 30 days. Nothing renews unless you choose a plan."
-        },
-        {
-          "label": "One month of Wealthy Mindsets Pro at its top tier",
-          "state": "NOT_ACTIVE",
-          "note": "Ends on its own after 30 days. Nothing renews unless you choose a plan. The $50 Elite tier is still being built."
-        },
-        {
-          "label": "One month of the World Pass ($20 value)",
-          "state": "NOT_ACTIVE",
-          "note": "After 30 days you can keep the World Pass at $20 a month, or any app plan, only if you choose it."
+          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
         }
       ]
     },
@@ -130,7 +132,19 @@
       "billing": "one_time",
       "from": true,
       "icon": "app",
-      "summary": "A scoped installable web app, or a single-platform app quoted individually."
+      "summary": "A scoped installable web app, or a single-platform app quoted individually.",
+      "ecosystem": [
+        {
+          "label": "Free Passport identity, set up with you",
+          "state": "LIVE",
+          "note": "Your one WOW identity for every ATH app. Free, no subscription."
+        },
+        {
+          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "state": "NOT_ACTIVE",
+          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+        }
+      ]
     },
     {
       "id": "mobile-app-bundle",
@@ -139,7 +153,19 @@
       "billing": "one_time",
       "from": true,
       "icon": "app",
-      "summary": "Basic iOS and Android apps on shared architecture, under a written scope."
+      "summary": "Basic iOS and Android apps on shared architecture, under a written scope.",
+      "ecosystem": [
+        {
+          "label": "Free Passport identity, set up with you",
+          "state": "LIVE",
+          "note": "Your one WOW identity for every ATH app. Free, no subscription."
+        },
+        {
+          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "state": "NOT_ACTIVE",
+          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+        }
+      ]
     },
     {
       "id": "business-app-system",
@@ -148,7 +174,19 @@
       "billing": "one_time",
       "from": true,
       "icon": "systems",
-      "summary": "Apps, backend, accounts, dashboards and integrations."
+      "summary": "Apps, backend, accounts, dashboards and integrations.",
+      "ecosystem": [
+        {
+          "label": "Free Passport identity, set up with you",
+          "state": "LIVE",
+          "note": "Your one WOW identity for every ATH app. Free, no subscription."
+        },
+        {
+          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "state": "NOT_ACTIVE",
+          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+        }
+      ]
     },
     {
       "id": "omnichannel-system",
@@ -157,7 +195,19 @@
       "billing": "one_time",
       "from": true,
       "icon": "lattice",
-      "summary": "Scoped web, mobile, television and SDK / integration deliverables."
+      "summary": "Scoped web, mobile, television and SDK / integration deliverables.",
+      "ecosystem": [
+        {
+          "label": "Free Passport identity, set up with you",
+          "state": "LIVE",
+          "note": "Your one WOW identity for every ATH app. Free, no subscription."
+        },
+        {
+          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "state": "NOT_ACTIVE",
+          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+        }
+      ]
     }
   ],
   "package_disclosures": [
