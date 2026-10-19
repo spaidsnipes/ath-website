@@ -390,7 +390,7 @@ pages["/build/"] = ("ATH Services — You need the right path",
  </div>
  <section class="mt3" id="pricing" aria-labelledby="pricing-h">
   <h2 class="display d-m" id="pricing-h">Website &amp; app packages</h2>
-  <p class="body">Quick Start and Business Growth can be paid by card right now. Prefer to talk first? Ask a question and ATH replies with a written scope — nothing is charged until you pay.</p>
+  <p class="body">Quick Start and Business Growth can be paid by card right now. Prefer to talk first? Ask a question and ATH replies with a written scope — nothing is charged until you pay. <a class="gold" href="/sites/">See sample sites</a> to picture yours.</p>
   <div class="grid g2 mt2" style="align-items:stretch">{pkg_cards()}</div>
   <div class="grid mt2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:start" data-collapse>
    <div class="panel panel-pad">
@@ -725,3 +725,8 @@ def write():
 
 if __name__ == "__main__":
     write()
+
+if __name__ == "__main__":
+    # Website factory: client and sample sites from sites/clients/*.json (see sites/DELIVERY.md)
+    import runpy
+    runpy.run_path(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sites", "build_sites.py"), run_name="__main__")

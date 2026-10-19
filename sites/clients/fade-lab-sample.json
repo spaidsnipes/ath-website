@@ -1,0 +1,22 @@
+{
+  "slug": "fade-lab-sample", "sample": true, "package": "quick-start", "theme": "edge",
+  "name": "Fade Lab Barbershop", "category": "BarberShop", "category_label": "Barbershop",
+  "tagline": "Clean fades, sharp lineups and hot-towel shaves. Book a chair in thirty seconds or walk in.",
+  "phone": "(555) 010-0188", "sms": "(555) 010-0188",
+  "address": {"street": "220 Example Avenue", "city": "Riverbend", "region": "ST", "postal": "00000"},
+  "hours": [["Mon", "10:00 AM – 7:00 PM"], ["Tue", "10:00 AM – 7:00 PM"], ["Wed", "10:00 AM – 7:00 PM"], ["Thu", "10:00 AM – 8:00 PM"], ["Fri", "9:00 AM – 8:00 PM"], ["Sat", "8:00 AM – 6:00 PM"], ["Sun", "Closed"]],
+  "primary_cta": {"label": "Book a chair", "href": "https://example.com/book"},
+  "secondary_cta": {"label": "Text the shop", "href": "sms:+15550100188"},
+  "facts": [["Walk-ins welcome", "Or book online in 30 seconds"], ["Kids cuts", "Under 12, every day"], ["Card or cash", "Tap to pay at the chair"]],
+  "sections": [
+    {"title": "Services", "id": "services", "items": [
+      {"name": "Signature fade", "price": "$35", "desc": "Consult, fade, lineup, hot towel"},
+      {"name": "Classic cut", "price": "$30"},
+      {"name": "Beard trim & shape", "price": "$20"},
+      {"name": "Hot-towel shave", "price": "$35"},
+      {"name": "Kids cut (under 12)", "price": "$22"},
+      {"name": "Cut + beard", "price": "$50"}], "cta": {"label": "Book a chair", "href": "https://example.com/book"}},
+    {"title": "The chairs", "kind": "gallery", "items": [{"caption": "Fresh fade"}, {"caption": "Lineup detail"}, {"caption": "The shop floor"}]}
+  ],
+  "links": [{"label": "Instagram", "href": "https://instagram.com"}]
+}

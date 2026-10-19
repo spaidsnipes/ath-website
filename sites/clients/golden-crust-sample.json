@@ -1,0 +1,31 @@
+{
+  "slug": "golden-crust-sample", "sample": true, "package": "business-growth", "theme": "hearth",
+  "name": "Golden Crust Bakery", "category": "Bakery", "category_label": "Neighborhood bakery & café",
+  "tagline": "Bread, pastries and coffee baked before sunrise. Order a cake by Thursday and it's ready Saturday.",
+  "phone": "(555) 010-0142", "email": "hello@example.com",
+  "address": {"street": "100 Sample Street", "city": "Riverbend", "region": "ST", "postal": "00000"},
+  "hours": [["Mon", "Closed"], ["Tue", "6:30 AM – 3:00 PM"], ["Wed", "6:30 AM – 3:00 PM"], ["Thu", "6:30 AM – 3:00 PM"], ["Fri", "6:30 AM – 5:00 PM"], ["Sat", "7:00 AM – 5:00 PM"], ["Sun", "8:00 AM – 1:00 PM"]],
+  "primary_cta": {"label": "Order ahead", "href": "https://example.com/order"},
+  "secondary_cta": {"label": "Get directions", "href": "https://maps.google.com"},
+  "facts": [["Baked daily", "First loaves out at 6:30 AM"], ["Custom cakes", "Order by Thursday for Saturday"], ["Catering", "Trays for 10 to 60 people"]],
+  "sections": [
+    {"title": "Fresh today", "id": "fresh", "items": [
+      {"name": "Country sourdough", "price": "$9", "desc": "48-hour ferment, dark crust"},
+      {"name": "Butter croissant", "price": "$4.25"},
+      {"name": "Cinnamon morning bun", "price": "$4.75"},
+      {"name": "Seasonal fruit galette", "price": "$6", "desc": "Changes with what's ripe"},
+      {"name": "Drip coffee", "price": "$3"},
+      {"name": "Oat milk latte", "price": "$5.25"}]},
+    {"title": "From the ovens", "kind": "gallery", "items": [{"caption": "Morning bake"}, {"caption": "Sourdough shelf"}, {"caption": "Celebration cakes"}, {"caption": "The counter"}]},
+    {"title": "Our story", "kind": "text", "paragraphs": ["Golden Crust is a sample bakery, written to show how an ATH Business Growth site tells a real owner's story: who bakes, why, and what to order first."]}
+  ],
+  "pages": [
+    {"slug": "menu", "title": "Menu", "sections": [
+      {"title": "Breads", "items": [{"name": "Country sourdough", "price": "$9"}, {"name": "Seeded rye", "price": "$10"}, {"name": "Brioche loaf", "price": "$8"}]},
+      {"title": "Pastries", "items": [{"name": "Butter croissant", "price": "$4.25"}, {"name": "Almond croissant", "price": "$5"}, {"name": "Morning bun", "price": "$4.75"}, {"name": "Scone of the day", "price": "$3.75"}]},
+      {"title": "Coffee", "items": [{"name": "Drip", "price": "$3"}, {"name": "Latte", "price": "$4.75"}, {"name": "Oat milk latte", "price": "$5.25"}]}]},
+    {"slug": "orders", "title": "Cakes & catering", "show_visit": true, "sections": [
+      {"title": "Cakes & catering", "kind": "text", "paragraphs": ["Celebration cakes serve 8 to 40. Order by Thursday noon for Saturday pickup.", "Catering trays: pastries, sandwiches and coffee service for 10 to 60 people, with 48 hours' notice."], "cta": {"label": "Start an order", "href": "https://example.com/order"}}]}
+  ],
+  "links": [{"label": "Instagram", "href": "https://instagram.com"}]
+}

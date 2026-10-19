@@ -1,0 +1,22 @@
+{
+  "slug": "business-name-city",
+  "package": "quick-start",
+  "theme": "hearth | edge | atelier",
+  "domain": "",
+  "name": "", "category": "LocalBusiness | Bakery | Restaurant | CafeOrCoffeeShop | BarberShop | HairSalon | BeautySalon | NailSalon | ClothingStore | Store | BookStore | DaySpa | ShoeStore | AutoRepair | ProfessionalService",
+  "category_label": "", "tagline": "",
+  "phone": "", "sms": "", "email": "",
+  "address": {"street": "", "city": "", "region": "", "postal": "", "country": "US"},
+  "map_url": "",
+  "hours": [["Mon", "9:00 AM – 5:00 PM"], ["Tue", "Closed"]],
+  "primary_cta": {"label": "Call now", "href": "tel:+1..."},
+  "secondary_cta": {"label": "Get directions", "href": "https://maps.google.com/?q=..."},
+  "facts": [["Short fact", "One line"]],
+  "sections": [
+    {"title": "Services", "items": [{"name": "", "price": "", "desc": ""}]},
+    {"title": "Photos", "kind": "gallery", "items": [{"src": "photos/1.jpg", "alt": "Describe the photo"}]},
+    {"title": "About", "kind": "text", "paragraphs": [""]}
+  ],
+  "pages": [],
+  "links": [{"label": "Instagram", "href": ""}]
+}

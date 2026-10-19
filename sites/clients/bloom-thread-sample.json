@@ -1,0 +1,21 @@
+{
+  "slug": "bloom-thread-sample", "sample": true, "package": "quick-start", "theme": "atelier",
+  "name": "Bloom & Thread", "category": "ClothingStore", "category_label": "Women's boutique",
+  "tagline": "Small-batch dresses, everyday basics and local jewelry. New arrivals every Friday.",
+  "phone": "(555) 010-0163", "email": "shop@example.com",
+  "address": {"street": "48 Market Row", "city": "Riverbend", "region": "ST", "postal": "00000"},
+  "hours": [["Mon", "Closed"], ["Tue", "11:00 AM – 6:00 PM"], ["Wed", "11:00 AM – 6:00 PM"], ["Thu", "11:00 AM – 7:00 PM"], ["Fri", "10:00 AM – 7:00 PM"], ["Sat", "10:00 AM – 6:00 PM"], ["Sun", "12:00 PM – 5:00 PM"]],
+  "primary_cta": {"label": "Call the shop", "href": "tel:+15550100163"},
+  "secondary_cta": {"label": "Shop on Instagram", "href": "https://instagram.com"},
+  "facts": [["New every Friday", "Small runs, few repeats"], ["Local makers", "Jewelry and candles from nearby studios"], ["Gift wrap", "Free with any purchase"]],
+  "sections": [
+    {"title": "What we carry", "id": "carry", "items": [
+      {"name": "Dresses", "desc": "Linen, cotton and knit, sizes XS to 2X"},
+      {"name": "Everyday basics", "desc": "Tees, knits and denim"},
+      {"name": "Jewelry", "desc": "Handmade by local artists"},
+      {"name": "Home & gifts", "desc": "Candles, cards and small goods"}]},
+    {"title": "In the shop", "kind": "gallery", "items": [{"caption": "Friday arrivals"}, {"caption": "The jewelry case"}, {"caption": "Gift table"}]},
+    {"title": "About", "kind": "text", "paragraphs": ["Bloom & Thread is a sample boutique. A real client's About section says who runs the shop and what makes it worth the trip."]}
+  ],
+  "links": [{"label": "Instagram", "href": "https://instagram.com"}]
+}
