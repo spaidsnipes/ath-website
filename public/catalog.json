@@ -1,5 +1,5 @@
 {
- "version": "2026-10-19.2",
+ "version": "2026-10-19.3",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
@@ -56,6 +56,26 @@
    "status": "SCOPED",
    "buy": "https://abovethehilldev.online/contact/?intent=services&package=custom",
    "fulfillment": "Diagnose, scope, quote, contract",
+   "verified": "2026-10-19"
+  },
+  {
+   "id": "ath-content-weekly",
+   "business": "ATH Developments + WAVEMOTION",
+   "name": "Weekly Content Engine",
+   "price": "$500 a month",
+   "status": "SCOPED",
+   "buy": null,
+   "fulfillment": "Written scope, then a monthly Stripe invoice. Each month: 4 promotional videos (one a week, 30–60 s) made from the client's footage and photos, 8 short clips with captions, and a posting kit. Limited to 3 clients until WAVEMOTION confirms production capacity.",
+   "verified": "2026-10-19"
+  },
+  {
+   "id": "ath-content-twice",
+   "business": "ATH Developments + WAVEMOTION",
+   "name": "Twice-Weekly Content Engine",
+   "price": "$900 a month",
+   "status": "SCOPED",
+   "buy": null,
+   "fulfillment": "Written scope, then a monthly Stripe invoice. Each month: 8 promotional videos (two a week), 16 short clips with captions, a posting kit and one website content update. Limited to 3 clients until WAVEMOTION confirms production capacity.",
    "verified": "2026-10-19"
   },
   {
@@ -182,10 +202,10 @@
    "id": "spaidbot",
    "business": "ATHOS",
    "name": "Spaidbot",
-   "price": "Included in WM Pro today",
-   "status": "LIVE_IN_WM_PRO",
-   "buy": "https://wealthymindsetspro.com/ai-bot",
-   "fulfillment": "Trading co-pilot inside WM Pro. Business assistant (prices, proposals, tasks) reads /catalog.json once connected",
+   "price": "Free",
+   "status": "LIVE",
+   "buy": "https://abovethehilldev.online/",
+   "fulfillment": "Free AI assistant on every abovethehilldev.online page (Ask Spaidbot), answering from this catalog. The trading co-pilot version is inside WM Pro.",
    "verified": "2026-10-19"
   }
  ]

@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.2",
+  "version": "2026-10-19.3",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
@@ -320,6 +320,26 @@
       "verified": "2026-10-19"
     },
     {
+      "id": "ath-content-weekly",
+      "business": "ATH Developments + WAVEMOTION",
+      "name": "Weekly Content Engine",
+      "price": "$500 a month",
+      "status": "SCOPED",
+      "buy": null,
+      "fulfillment": "Written scope, then a monthly Stripe invoice. Each month: 4 promotional videos (one a week, 30–60 s) made from the client's footage and photos, 8 short clips with captions, and a posting kit. Limited to 3 clients until WAVEMOTION confirms production capacity.",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "ath-content-twice",
+      "business": "ATH Developments + WAVEMOTION",
+      "name": "Twice-Weekly Content Engine",
+      "price": "$900 a month",
+      "status": "SCOPED",
+      "buy": null,
+      "fulfillment": "Written scope, then a monthly Stripe invoice. Each month: 8 promotional videos (two a week), 16 short clips with captions, a posting kit and one website content update. Limited to 3 clients until WAVEMOTION confirms production capacity.",
+      "verified": "2026-10-19"
+    },
+    {
       "id": "wm-plans",
       "business": "WAVEMOTION",
       "name": "Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month",
@@ -443,10 +463,10 @@
       "id": "spaidbot",
       "business": "ATHOS",
       "name": "Spaidbot",
-      "price": "Included in WM Pro today",
-      "status": "LIVE_IN_WM_PRO",
-      "buy": "https://wealthymindsetspro.com/ai-bot",
-      "fulfillment": "Trading co-pilot inside WM Pro. Business assistant (prices, proposals, tasks) reads /catalog.json once connected",
+      "price": "Free",
+      "status": "LIVE",
+      "buy": "https://abovethehilldev.online/",
+      "fulfillment": "Free AI assistant on every abovethehilldev.online page (Ask Spaidbot), answering from this catalog. The trading co-pilot version is inside WM Pro.",
       "verified": "2026-10-19"
     }
   ]
