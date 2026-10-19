@@ -45,3 +45,5 @@ The Founder answered the exact pricing reconciliation question in Execute ATH pr
 - **Spaidbot (Founder: "all completely free, connected to ATHOS and the ATH website"):** live on every page as "Ask Spaidbot". ATHOS `/api/spaidbot` answers only from `/catalog.json` on Workers AI (`@cf/meta/llama-3.1-8b-instruct-fp8`), capped at 30 questions/hour per connection and 600/day so it stays inside the free daily allowance. Stores no message text.
 
 - **Packages from $500 (Founder, Oct 19, corrected):** one month of Pro across the ATH apps (WAVEMOTION Pro, WM Pro top tier, World Pass), then the $20/month World Pass only with consent given at purchase. A "three months" version briefly published in v2026-10-19.4 was a Mission Control error, corrected in v2026-10-19.5.
+
+- **World Pass free month LIVE (v2026-10-19.6):** WOW now issues single-use ATH codes (Founder-only) for a 30-day World Pass trial with the card saved at checkout; $20/month starts only if kept past day 30; no card → cancels. Included with Business Growth and every package from $500. WAVEMOTION and WM Pro months remain NOT ACTIVE.

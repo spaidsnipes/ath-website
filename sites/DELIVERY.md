@@ -31,3 +31,8 @@ Send the live link, what was included, how to ask for changes, and any recurring
 
 ## Ecosystem extras
 The package pages still label the WAVEMOTION month and the other extras "Not active yet". WAVEMOTION can now grant a complimentary plan, but it has no end date, so don't promise the free month until the grant expires on its own.
+
+## Free World Pass month (Business Growth and every package from $500)
+1. Sign in at thewow.online as the Founder, open Passport, press **Make ATH free-month code**.
+2. Send the buyer the link it shows: `https://thewow.online/passport?trial=ATH-XXXX-XXXX`. One code per buyer; it works once.
+3. They create a free Passport, save a card, and get 30 days free. It becomes $20/month only if they keep it; cancelling any time before day 30 costs nothing.
