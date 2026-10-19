@@ -642,6 +642,37 @@ pages["/contact/"] = ("Contact ATH — Start",
  </form>
 </div></section>""" + catalog_js())
 
+pages["/free-look/"] = ("Free website look — Above the Hill",
+ "Tell us about your business. ATH sends a free look at what your website could be, and what it costs.",
+ f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
+ <div><p class="eyebrow">Free · no obligation</p><h1 class="display d-l mt1">See your business<br>online, free</h1>
+  <p class="lede">Leave your name and number. A person at ATH looks at how customers find you today and sends you a free look at your new site.</p>
+  <ul class="pkg-list mt2"><li>Websites from <b>$100 one time</b>, live within one business day</li><li>Up to 3 pages with booking or ordering: <b>$200</b></li><li>Site + 2 promo videos: <b>$500–$700</b></li><li>Weekly videos made for you: <b>$500/month</b></li></ul>
+  <p class="body mt2">See real examples: <a class="gold" href="/sites/">sample sites ATH built</a>.</p></div>
+ <form class="panel panel-pad" id="lead-form" novalidate>
+  <input type="hidden" name="intent" value="free-look">
+  <div class="grid g2"><div class="field"><label class="lbl" for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+   <div class="field"><label class="lbl" for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40"></div></div>
+  <div class="field"><label class="lbl" for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="f-org">Business name and city</label><input id="f-org" name="org" type="text" autocomplete="organization"></div>
+   <div class="field"><label class="lbl" for="f-site">Your current site or social page <span class="mute">(optional)</span></label><input id="f-site" name="website" type="url" inputmode="url"></div></div>
+  <div class="field"><label class="lbl" for="f-want">What do you want most?</label>
+   <select id="f-want" name="interest"><option>A website customers can find</option><option>Bookings or online orders</option><option>Promo videos for my business</option><option>Weekly videos and posting done for me</option><option>Not sure, show me</option></select></div>
+  <p class="lbl" style="margin-top:6px">Pick a time for a quick call <span class="mute">(10 minutes, optional)</span></p>
+  <div class="grid g2"><div class="field"><label class="lbl" for="f-day">Day</label><input id="f-day" name="call_date" type="date"></div>
+   <div class="field"><label class="lbl" for="f-time">Time</label><select id="f-time" name="call_time"><option value="">Any time</option><option>9:00 AM</option><option>9:30 AM</option><option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option><option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option><option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option><option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option></select></div></div>
+  <input type="hidden" name="tz" id="f-tz" value="">
+  <script>try{{document.getElementById("f-tz").value=Intl.DateTimeFormat().resolvedOptions().timeZone;var d=new Date();document.getElementById("f-day").min=d.toISOString().slice(0,10);}}catch(e){{}}</script>
+  <input type="hidden" name="package" id="l-package" value="">
+  <input type="hidden" name="catalog_version" id="l-catalog" value="">
+  <div class="pkg-note" id="pkg-note" hidden></div>
+  <input type="text" name="company_fax" tabindex="-1" autocomplete="off" class="vh" aria-hidden="true">
+  <button class="btn btn-gold" type="submit">Get my free look {ARR}</button>
+  <p class="note mt1">Nothing is charged. We use this only to reply to you about your business. Reply STOP to any text and we won't contact you again. See <a class="gold" href="/privacy/">Privacy</a>.</p>
+  <p class="form-status" role="status" aria-live="polite"></p>
+ </form>
+</div></section>""" + catalog_js())
+
 pages["/start/"] = ("Start your build — ATH intake",
  "Tell ATH about your business so we can start building.",
  f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
