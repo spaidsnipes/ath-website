@@ -179,7 +179,7 @@ def pkg_cards():
     out = []
     for p in [x for x in PKG if not x["from"]]:
         inc = "".join(f"<li>{html.escape(i)}</li>" for i in p["includes"])
-        eco = "".join(f'<li><span class="tag dim">Not active yet</span> {html.escape(e["label"])}<span class="note">{html.escape(e["note"])}</span></li>' for e in p.get("ecosystem", []))
+        eco = "".join(f'<li><span class="tag {"live" if e.get("state") == "LIVE" else "dim"}">{"Included" if e.get("state") == "LIVE" else "Not active yet"}</span> {html.escape(e["label"])}<span class="note">{html.escape(e["note"])}</span></li>' for e in p.get("ecosystem", []))
         out.append(f'''<article class="panel panel-pad pkg{' pkg-featured' if p.get('featured') else ''}" aria-labelledby="pkg-{p['id']}">
    {ic(p['icon'])}<h3 id="pkg-{p['id']}">{p['name']}</h3><p class="pkg-price">{money(p['price'])} <span>one time</span></p><p class="body">{html.escape(p['summary'])}</p>
    <p class="eyebrow mb0">Included</p><ul class="pkg-list">{inc}</ul>
@@ -188,7 +188,7 @@ def pkg_cards():
    {'<p class="note mb0">Secure card checkout by Stripe. ATH emails your intake form within one business day.</p>' if p.get('pay_url') else ''}</article>''')
     return "".join(out)
 def ladder_rows():
-    return "".join(f'<li>{ic(p["icon"],"icon-sm")}<div style="flex:1"><b>{p["name"]}</b><span>from {money(p["price"])} · {html.escape(p["summary"])}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={p["id"]}" aria-label="Request a scope for {p["name"]}">Scope it</a></li>' for p in PKG if p["from"])
+    return "".join(f'<li>{ic(p["icon"],"icon-sm")}<div style="flex:1"><b>{p["name"]}</b><span>{(money(p["price"]) + "–" + money(p["price_max"])) if p.get("price_max") else "from " + money(p["price"])} · {html.escape(p["summary"])}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={p["id"]}" aria-label="Request a scope for {p["name"]}">Scope it</a></li>' for p in PKG if p["from"])
 def wm_rows():
     return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{html.escape(p["name"])}</b></span><span role="cell" class="pt-price">${p["price"]}/mo</span><span role="cell" class="pt-allowance">{p["clips"]} standard clips / month</span><span role="cell"><a class="btn btn-line btn-sm" href="https://www.wavemotion.live/#plans" rel="noopener" aria-label="View WAVEMOTION {html.escape(p["name"])} plan">View plans</a></span></div>' for p in WM["plans"])
 def catalog_js():
@@ -718,6 +718,8 @@ def write():
         open(os.path.join(ROOT, src, "index.html"), "w").write(f'<!doctype html><meta charset="utf-8"><title>Redirecting…</title><link rel="canonical" href="{SITE}{dst}"><meta http-equiv="refresh" content="0; url={dst}"><script>location.replace("{dst}"+location.search)</script><a href="{dst}">Continue</a>')
     open(os.path.join(ROOT, "CNAME"), "w").write("abovethehilldev.online\n")
     open(os.path.join(ROOT, ".nojekyll"), "w").write("")
+    # master catalog (registry "catalog"): every ATH offer with an honest status, for Spaidbot and partners
+    open(os.path.join(ROOT, "catalog.json"), "w").write(json.dumps({"version": REG["version"], "statuses": {"LIVE": "can be bought now", "SCOPED": "sold through a written quote", "NOT_ACTIVE": "named but not deliverable yet", "PROPOSED": "a plan, not for sale", "LIVE_IN_WM_PRO": "available inside WM Pro"}, "offers": REG.get("catalog", [])}, indent=1, ensure_ascii=False))
     open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     urls = "".join(f"<url><loc>{SITE}{r}</loc></url>" for r in pages if r != "/404/")
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')

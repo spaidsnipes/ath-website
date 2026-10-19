@@ -1,6 +1,6 @@
 {
-  "version": "2026-10-14.3",
-  "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired.",
+  "version": "2026-10-19.1",
+  "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
   "payment": {
@@ -25,9 +25,19 @@
       ],
       "ecosystem": [
         {
-          "label": "Introductory WAVEMOTION Starter access",
+          "label": "Free Passport identity, set up with you",
+          "state": "LIVE",
+          "note": "Your one WOW identity for every ATH app. Free, no subscription."
+        },
+        {
+          "label": "One month of WAVEMOTION Starter",
           "state": "NOT_ACTIVE",
-          "note": "Activated only once WAVEMOTION Starter is operational. No renewal is charged without your separate consent."
+          "note": "Turns on when complimentary plans can end on their own. Nothing renews without your separate consent."
+        },
+        {
+          "label": "One month of Wealthy Mindsets Pro",
+          "state": "NOT_ACTIVE",
+          "note": "Turns on when WM Pro can grant a complimentary month."
         }
       ],
       "pay_url": "https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00"
@@ -43,29 +53,26 @@
       "summary": "A small business website that captures leads and links to your offers.",
       "includes": [
         "Up to three pages (or equivalent scoped sections)",
-        "Contact or lead-capture flow",
+        "Lead capture through the booking or ordering tool you already use",
+        "Contact and social links",
+        "A clear conversion path for your visitors",
         "Course, offer and booking links"
       ],
       "ecosystem": [
         {
-          "label": "First month of the $20 ecosystem membership",
-          "state": "NOT_ACTIVE",
-          "note": "Included entitlements are only those registered for that tier when it activates. Renewal after the included month requires your separate consent."
+          "label": "Free Passport identity, set up with you",
+          "state": "LIVE",
+          "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "Basic Teach Pass and instructor onboarding",
+          "label": "One month of WAVEMOTION Starter",
           "state": "NOT_ACTIVE",
-          "note": "Activated when WOW Academy instructor tools are operational."
+          "note": "Turns on when complimentary plans can end on their own. Nothing renews without your separate consent."
         },
         {
-          "label": "WAVEMOTION Creator allowance during the included period",
+          "label": "One month of Wealthy Mindsets Pro",
           "state": "NOT_ACTIVE",
-          "note": "Activated when WAVEMOTION Creator is operational."
-        },
-        {
-          "label": "Access to eligible WOW media submission pathways",
-          "state": "NOT_ACTIVE",
-          "note": "Subject to each destination's own permission and publication rules."
+          "note": "Turns on when WM Pro can grant a complimentary month."
         }
       ],
       "pay_url": "https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01"
@@ -78,6 +85,28 @@
       "from": true,
       "icon": "site",
       "summary": "Expanded branded website; content management, commerce, booking and Academy course presentation as scoped."
+    },
+    {
+      "id": "cinematic-launch",
+      "name": "Cinematic Business Launch",
+      "price": 500,
+      "price_max": 700,
+      "billing": "one_time",
+      "from": true,
+      "icon": "content",
+      "summary": "A scoped business website plus two 30–60 second promotional videos made from your footage and photos, and a WAVEMOTION campaign set up for launch.",
+      "ecosystem": [
+        {
+          "label": "One month of WAVEMOTION Pro",
+          "state": "NOT_ACTIVE",
+          "note": "Turns on when complimentary plans can end on their own."
+        },
+        {
+          "label": "One month of the $20 World Pass",
+          "state": "NOT_ACTIVE",
+          "note": "Turns on when WOW can grant a complimentary month."
+        }
+      ]
     },
     {
       "id": "app-starter",
@@ -222,6 +251,188 @@
         "professional-website"
       ],
       "on": "2026-10-13"
+    }
+  ],
+  "catalog": [
+    {
+      "id": "ath-quick-start",
+      "business": "ATH Developments",
+      "name": "Quick Start website",
+      "price": "$100 one time",
+      "status": "LIVE",
+      "buy": "https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00",
+      "fulfillment": "ATH builds from the /start/ intake (sites/DELIVERY.md), live within one business day",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "ath-business-growth",
+      "business": "ATH Developments",
+      "name": "Business Growth website",
+      "price": "$200 one time",
+      "status": "LIVE",
+      "buy": "https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01",
+      "fulfillment": "Same as Quick Start, up to three pages",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "ath-cinematic-launch",
+      "business": "ATH Developments",
+      "name": "Cinematic Business Launch",
+      "price": "$500–$700 one time, scoped",
+      "status": "SCOPED",
+      "buy": "https://abovethehilldev.online/contact/?intent=services&package=cinematic-launch",
+      "fulfillment": "Website by ATH; two promo videos rendered by WAVEMOTION from the client's footage",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "ath-professional",
+      "business": "ATH Developments",
+      "name": "Professional website, apps, systems",
+      "price": "from $500 / $1,000 / $2,500 / $5,000 / $8,000",
+      "status": "SCOPED",
+      "buy": "https://abovethehilldev.online/build/#pricing",
+      "fulfillment": "Written scope and quote first",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "ath-custom",
+      "business": "ATH Developments",
+      "name": "Custom business systems",
+      "price": "$8,000 and $15,000 engagements, after scope",
+      "status": "SCOPED",
+      "buy": "https://abovethehilldev.online/contact/?intent=services&package=custom",
+      "fulfillment": "Diagnose, scope, quote, contract",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wm-plans",
+      "business": "WAVEMOTION",
+      "name": "Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month",
+      "price": "$10–$75/month",
+      "status": "LIVE",
+      "buy": "https://www.wavemotion.live/#plans",
+      "fulfillment": "Self-serve; 14-day free trial; cancel in billing portal. Paid cinematic generation closed",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wm-clips",
+      "business": "WAVEMOTION",
+      "name": "Managed clipping",
+      "price": "10/$75 · 20/$125 · 30/$175 · 40/$225",
+      "status": "LIVE",
+      "buy": "https://www.wavemotion.live/#plans",
+      "fulfillment": "Human clipping; one price for everyone",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wmp-pro",
+      "business": "Wealthy Mindsets Pro",
+      "name": "Wealthy Mindsets Pro",
+      "price": "$20/month",
+      "status": "LIVE",
+      "buy": "https://wealthymindsetspro.com",
+      "fulfillment": "Self-serve; education and tools, never a promise of profit",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wmp-tiers",
+      "business": "Wealthy Mindsets Pro",
+      "name": "Core $10 · Pro $20 · Elite $50 tiers",
+      "price": "$10 / $20 / $50 per month",
+      "status": "PROPOSED",
+      "buy": null,
+      "fulfillment": "Needs tier entitlements and quotas built and measured in WM Pro first",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wow-passport",
+      "business": "WOW World",
+      "name": "Passport identity",
+      "price": "Free",
+      "status": "LIVE",
+      "buy": "https://thewow.online/passport",
+      "fulfillment": "Self-serve",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wow-world-pass",
+      "business": "WOW World",
+      "name": "World Pass",
+      "price": "$20/month",
+      "status": "LIVE",
+      "buy": "https://thewow.online/passport",
+      "fulfillment": "Self-serve",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wow-passport-core",
+      "business": "WOW World",
+      "name": "Passport Core",
+      "price": "$10/month",
+      "status": "PROPOSED",
+      "buy": null,
+      "fulfillment": "Needs defined benefits and billing in WOW",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wow-ath-store",
+      "business": "WOW Shop",
+      "name": "ATH Store merchandise (28 items)",
+      "price": "from $11.99",
+      "status": "LIVE",
+      "buy": "https://thewow.online/marketplace",
+      "fulfillment": "Shopify checkout at the ATH Store",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wow-holiday",
+      "business": "WOW Shop",
+      "name": "Holiday gift collection",
+      "price": "varies",
+      "status": "PROPOSED",
+      "buy": null,
+      "fulfillment": "Needs suppliers, margins, stock, shipping cutoffs and returns verified",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wow-academy-free",
+      "business": "WOW Academy",
+      "name": "Idea Library · Polyglot's Mind · Student of the Game",
+      "price": "Free to practise",
+      "status": "LIVE",
+      "buy": "https://thewow.online/academy",
+      "fulfillment": "Self-serve",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "wow-academy-paid",
+      "business": "WOW Academy",
+      "name": "Paid courses and Teach Pass",
+      "price": "varies",
+      "status": "NOT_ACTIVE",
+      "buy": null,
+      "fulfillment": "Needs instructor publishing and course checkout",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "ai-influencer",
+      "business": "WAVEMOTION / WOW Studios",
+      "name": "Custom AI Influencer",
+      "price": "$199 one time (proposed)",
+      "status": "PROPOSED",
+      "buy": null,
+      "fulfillment": "Needs a working voice + lip-sync pipeline and a costed render; today only a still-portrait short exists",
+      "verified": "2026-10-19"
+    },
+    {
+      "id": "spaidbot",
+      "business": "ATHOS",
+      "name": "Spaidbot",
+      "price": "Included in WM Pro today",
+      "status": "LIVE_IN_WM_PRO",
+      "buy": "https://wealthymindsetspro.com/ai-bot",
+      "fulfillment": "Trading co-pilot inside WM Pro. Business assistant (prices, proposals, tasks) reads /catalog.json once connected",
+      "verified": "2026-10-19"
     }
   ]
 }
