@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.4",
+  "version": "2026-10-19.5",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
@@ -97,9 +97,9 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "label": "One month of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
           "state": "NOT_ACTIVE",
-          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+          "note": "Included with every package from $500. After the month it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
         }
       ]
     },
@@ -119,9 +119,9 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "label": "One month of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
           "state": "NOT_ACTIVE",
-          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+          "note": "Included with every package from $500. After the month it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
         }
       ]
     },
@@ -140,9 +140,9 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "label": "One month of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
           "state": "NOT_ACTIVE",
-          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+          "note": "Included with every package from $500. After the month it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
         }
       ]
     },
@@ -161,9 +161,9 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "label": "One month of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
           "state": "NOT_ACTIVE",
-          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+          "note": "Included with every package from $500. After the month it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
         }
       ]
     },
@@ -182,9 +182,9 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "label": "One month of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
           "state": "NOT_ACTIVE",
-          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+          "note": "Included with every package from $500. After the month it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
         }
       ]
     },
@@ -203,9 +203,9 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "Three months of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
+          "label": "One month of Pro across the ATH apps: WAVEMOTION Pro ($50), Wealthy Mindsets Pro top tier, World Pass ($20)",
           "state": "NOT_ACTIVE",
-          "note": "Included with every package from $500. After 3 months it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
+          "note": "Included with every package from $500. After the month it continues as the $20/month World Pass only if you agreed to that when you bought, with a reminder 7 days before and one-click cancel. Keep any app at its Pro price if you want more."
         }
       ]
     }
