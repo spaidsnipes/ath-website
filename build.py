@@ -86,6 +86,7 @@ def head(title, desc, route):
 <link rel="stylesheet" href="/assets/ath.css">
 <script>window.ATH_API="{API}";</script>
 <script src="/assets/ath.js" defer></script>
+<script src="/assets/spaidbot.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
