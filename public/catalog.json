@@ -1,5 +1,5 @@
 {
- "version": "2026-10-19.7",
+ "version": "2026-10-19.8",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
@@ -101,21 +101,21 @@
   {
    "id": "wmp-pro",
    "business": "Wealthy Mindsets Pro",
-   "name": "Wealthy Mindsets Pro (free account)",
-   "price": "Free account today; paid plans not on sale yet",
+   "name": "Wealthy Mindsets Pro",
+   "price": "WM Pro App $10/mo · Passport $20/mo (first month $10, limited time) · WM Pro OS $50/mo · free guest account",
    "status": "LIVE",
-   "buy": "https://wealthymindsetspro.com/signup",
-   "fulfillment": "Sign up free for the trading OS: charts, order-flow tools, journal and education. WM Pro has no checkout yet, so no paid plan can be bought.",
+   "buy": "https://wealthymindsetspro.com/pricing",
+   "fulfillment": "Buy on wealthymindsetspro.com/pricing: create an account, choose a tier, pay with Stripe. Cancel any time with Manage billing. Billing is in live mode (verified Oct 19: /api/billing/tiers).",
    "verified": "2026-10-19"
   },
   {
    "id": "wmp-tiers",
    "business": "Wealthy Mindsets Pro",
-   "name": "Core $10 · Pro $20 · Elite $50 tiers",
-   "price": "Core $10 / Pro $20 / Elite $50 (proposed, not on sale)",
-   "status": "PROPOSED",
-   "buy": null,
-   "fulfillment": "Needs tier entitlements and quotas built and measured in WM Pro first",
+   "name": "WM Pro tiers",
+   "price": "App $10 · Passport $20 · OS $50 a month",
+   "status": "LIVE",
+   "buy": "https://wealthymindsetspro.com/pricing",
+   "fulfillment": "Live tiers on WM Pro's own pricing page.",
    "verified": "2026-10-19"
   },
   {
