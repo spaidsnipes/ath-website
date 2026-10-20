@@ -673,6 +673,34 @@ pages["/free-look/"] = ("Free website look — Above the Hill",
  </form>
 </div></section>""" + catalog_js())
 
+# ---------------------------------------------------------------- holiday gift guide (live ATH Store feed snapshot)
+def gift_guide():
+    try: feed = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "commercial", "ath-store-snapshot.json")))
+    except Exception: return None
+    groups = [("For creators who film", ("microphone","mic","light","tripod","gimbal","selfie","backdrop","grip","foam","interface","boom","ring")),
+              ("Desk, journal and reset", ("journal","notebook","laptop","glasses","charger","charging","wallet","frother","tumbler")),
+              ("Home and host", ("candle","pillowcase","lamp")),
+              ("Wellness picks", ("massage","posture","resistance"))]
+    used, out = set(), []
+    for name, keys in groups:
+        items = [p for p in feed.get("products", []) if p.get("available") and p["id"] not in used and any(k in p["title"].lower() for k in keys)]
+        for p in items: used.add(p["id"])
+        if items: out.append((name, sorted(items, key=lambda p: p.get("price_from") or 0)))
+    cards = lambda items: "".join(f'<a class="gift" href="{html.escape(p["product_url"])}" rel="noopener"><img src="{html.escape(p["image"])}&width=480" alt="" loading="lazy" width="240" height="240"><span class="gift-t">{html.escape(p["title"])}</span><span class="gift-p">{"from " if p.get("multiple_prices") else ""}${p["price_from"]:,.2f}</span></a>' for p in items)
+    secs = "".join(f'<section class="block" style="padding-top:28px"><div class="wrap"><h2 class="display d-m">{n}</h2><div class="gift-grid mt2">{cards(i)}</div></div></section>' for n, i in out)
+    return secs, feed.get("as_of", "")[:10]
+
+_g = gift_guide()
+if _g:
+    pages["/gifts/"] = ("Holiday gift guide — Above the Hill",
+     "Holiday gifts from the ATH Store: creator gear, journals, home and wellness picks, plus gifts for business owners.",
+     f"""<section class="block" style="padding-top:56px"><div class="wrap"><p class="eyebrow">Holiday 2026 · ATH Store</p><h1 class="display d-l mt1">Gifts for the<br>builders you love</h1>
+  <p class="lede">Real products from the ATH Store, checkout by Shopify. Prices shown are from {_g[1]}; your cart shows the current price and shipping before you pay. Order early: shipping times vary by item.</p>
+  <div class="ctas mt2">{btn("Browse all in WOW Marketplace", "https://thewow.online/marketplace")}{btn("Gift a business a website", "/free-look/", "line")}</div></div></section>""" + _g[0] + f"""
+<section class="block"><div class="wrap"><div class="panel panel-pad"><p class="eyebrow">For the business owner on your list</p><h2 class="display d-m mt1">Get them found before the holiday rush</h2>
+  <p class="body">A mobile website for their business, <b>$100 one time</b>, live within one business day of their info. Up to 3 pages with booking or ordering is $200 and comes with a free month of World Pass. Sites ordered by <b>November 20</b> can be live before Black Friday (Nov 27).</p>
+  <div class="ctas mt1">{btn("Get a free look", "/free-look/")}{btn("See sample sites", "/sites/", "line")}</div></div></div></section>""")
+
 pages["/start/"] = ("Start your build — ATH intake",
  "Tell ATH about your business so we can start building.",
  f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
