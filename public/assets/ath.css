@@ -306,3 +306,4 @@ input:focus,textarea:focus,select:focus{border-color:var(--gold-hi);outline:none
 .gift img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;background:#111}
 .gift-t{font-size:13.5px;line-height:1.35}
 .gift-p{font-weight:700;color:var(--gold-hi)}
+.sha-ar{color:inherit;opacity:.35;text-decoration:none;margin-left:6px;font-size:12px}.sha-ar:hover{opacity:.9}
