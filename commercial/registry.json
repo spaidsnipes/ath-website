@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.6",
+  "version": "2026-10-19.7",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
@@ -35,9 +35,9 @@
           "note": "Ends on its own after 30 days. Nothing renews unless you choose a plan."
         },
         {
-          "label": "One month of Wealthy Mindsets Pro ($20 value)",
-          "state": "NOT_ACTIVE",
-          "note": "Ends on its own after 30 days. Nothing renews unless you choose a plan."
+          "label": "Free Wealthy Mindsets Pro account, set up with you",
+          "state": "LIVE",
+          "note": "The trading OS is free to use today. Paid plans aren't on sale yet; nothing is charged."
         }
       ],
       "pay_url": "https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00"
@@ -70,9 +70,9 @@
           "note": "Ends on its own after 30 days. Nothing renews unless you choose a plan."
         },
         {
-          "label": "One month of Wealthy Mindsets Pro ($20 value)",
-          "state": "NOT_ACTIVE",
-          "note": "Ends on its own after 30 days. Nothing renews unless you choose a plan."
+          "label": "Free Wealthy Mindsets Pro account, set up with you",
+          "state": "LIVE",
+          "note": "The trading OS is free to use today. Paid plans aren't on sale yet; nothing is charged."
         },
         {
           "label": "One month of the World Pass, free ($20 value)",
@@ -102,7 +102,7 @@
           "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
-          "label": "One month of Pro across the apps: WAVEMOTION Pro ($50) and Wealthy Mindsets Pro top tier",
+          "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
           "state": "NOT_ACTIVE",
           "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
         }
@@ -129,7 +129,7 @@
           "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
-          "label": "One month of Pro across the apps: WAVEMOTION Pro ($50) and Wealthy Mindsets Pro top tier",
+          "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
           "state": "NOT_ACTIVE",
           "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
         }
@@ -155,7 +155,7 @@
           "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
-          "label": "One month of Pro across the apps: WAVEMOTION Pro ($50) and Wealthy Mindsets Pro top tier",
+          "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
           "state": "NOT_ACTIVE",
           "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
         }
@@ -181,7 +181,7 @@
           "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
-          "label": "One month of Pro across the apps: WAVEMOTION Pro ($50) and Wealthy Mindsets Pro top tier",
+          "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
           "state": "NOT_ACTIVE",
           "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
         }
@@ -207,7 +207,7 @@
           "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
-          "label": "One month of Pro across the apps: WAVEMOTION Pro ($50) and Wealthy Mindsets Pro top tier",
+          "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
           "state": "NOT_ACTIVE",
           "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
         }
@@ -233,7 +233,7 @@
           "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
-          "label": "One month of Pro across the apps: WAVEMOTION Pro ($50) and Wealthy Mindsets Pro top tier",
+          "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
           "state": "NOT_ACTIVE",
           "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
         }
@@ -442,18 +442,18 @@
     {
       "id": "wmp-pro",
       "business": "Wealthy Mindsets Pro",
-      "name": "Wealthy Mindsets Pro",
-      "price": "$20/month",
+      "name": "Wealthy Mindsets Pro (free account)",
+      "price": "Free account today; paid plans not on sale yet",
       "status": "LIVE",
-      "buy": "https://wealthymindsetspro.com",
-      "fulfillment": "Self-serve; education and tools, never a promise of profit",
+      "buy": "https://wealthymindsetspro.com/signup",
+      "fulfillment": "Sign up free for the trading OS: charts, order-flow tools, journal and education. WM Pro has no checkout yet, so no paid plan can be bought.",
       "verified": "2026-10-19"
     },
     {
       "id": "wmp-tiers",
       "business": "Wealthy Mindsets Pro",
       "name": "Core $10 · Pro $20 · Elite $50 tiers",
-      "price": "$10 / $20 / $50 per month",
+      "price": "Core $10 / Pro $20 / Elite $50 (proposed, not on sale)",
       "status": "PROPOSED",
       "buy": null,
       "fulfillment": "Needs tier entitlements and quotas built and measured in WM Pro first",
