@@ -170,6 +170,30 @@ CLIPS = [tuple(c) for c in RET["clips"]]
 STARTS = [(x["name"], x["price"], x["id"], x["icon"]) for x in RET["starts"]]
 PKG = REG["packages"]
 WM = REG["wavemotion_plans"]
+CAT = {o["id"]: o for o in REG["catalog"]}
+def cat_price(oid):
+    o = CAT[oid]
+    assert o["status"] in ("LIVE", "SCOPED"), f"{oid} is {o['status']}: not for sale, so it is not shown as a price"
+    return o["price"]
+# Homepage "Start with what you do": one door per kind of visitor, each with its real price and next step.
+# Prices come from the commercial registry above, never typed here; WM Pro shows only its free guest account
+# until a paid checkout is proven (Founder ship order, 2026-10-21).
+OUTCOMES = [
+ ("site", "You run a local business", "Quick Start website", "One mobile page with your hours, services, photos and a call button, linked to the booking or ordering you already use.", lambda: cat_price("ath-quick-start"), "See it for your town", "/websites/"),
+ ("content", "You make videos, music or sermons", "WAVEMOTION", "Turn one video into short clips. You approve before anything posts.", lambda: cat_price("wm-plans"), "Open WAVEMOTION", "https://www.wavemotion.live/"),
+ ("systems", "You trade or want to learn to", "Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", lambda: "Free guest account" if "free guest account" in cat_price("wmp-pro") else None, "Take the guest tour", "https://wealthymindsetspro.com/"),
+ ("path", "You want to learn something new", "WOW Academy", "Price-action lessons, languages and a book library, open to browse as a guest.", lambda: cat_price("wow-academy-free"), "Visit the campus", "https://thewow.online/academy"),
+ ("link", "You want a place to belong", "WOW World Passport", "One identity for WOW's rooms: Lounge, Academy, Shop, TV, Music and Radio.", lambda: cat_price("wow-passport"), "Get a Passport", "https://thewow.online/passport"),
+ ("hill", "Your business has a bigger hill", "ATHOS Diagnostic", "A free diagnosis first. Custom systems are scoped in writing before any price.", lambda: "Free, then by written quote", "What's your hill?", "/diagnose/"),
+]
+def outcome_cards():
+    out = []
+    for icon, who, name, does, price, cta, href in OUTCOMES:
+        pr = price()
+        assert pr, f"{name}: no price available"
+        out.append(f'<article class="panel panel-pad card outcome" data-outcome="{name}">{ic(icon, "icon-sm")}<p class="eyebrow mt1">{who}</p><h3>{name}</h3><p>{does}</p>'
+                   f'<p class="mt1"><b class="outcome-price">{pr}</b></p><p class="mt2">{btn(cta, href, "line")}</p></article>')
+    return "".join(out)
 def money(p): return f"${p:,}"
 def per_clip(n, p): return f"${p / n:,.2f}"
 def clip_rows():
@@ -227,11 +251,15 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
    <li>{ic("above","icon-sm")}<div><b>Above</b><span>What genuinely improved — shown with evidence, never invented.</span></div></li>
   </ul></div>
 </div></section>
+<section class="block" id="start"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">Start with what you do</p><h2 class="display d-m mt1">Find your door</h2></div>{btn("All prices", "/build/#pricing", "line")}</div>
+ <div class="grid g3">{outcome_cards()}</div>
+</div></section>
 <section class="block"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">Inventions</p><h2 class="display d-m mt1">Built by ATH</h2></div>{btn("All inventions", "/work/", "line")}</div>
  <div class="grid g3">
   <article class="panel panel-pad card"><span class="tag live">Live today</span><h3>ATHOS Diagnostic</h3><p>The free hill-finder on this site. Inspects public evidence, separates what it observed from what it inferred, and says "unknown" when it doesn't know.</p><p class="mt2">{btn("Run it", "/diagnose/", "line")}</p></article>
-  <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. $20/month. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
+  <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. Start with a free guest account. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
   <article class="panel panel-pad card"><span class="tag live">Open door</span><h3>Wavemotion</h3><p>Creator + business movement OS — record, prepare, launch, distribute, learn. One permanent Living Destination. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month.</p><p class="mt2">{btn("Open Wavemotion", "https://www.wavemotion.live/", "line")}</p></article>
  </div>
 </div></section>
