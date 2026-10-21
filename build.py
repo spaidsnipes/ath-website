@@ -647,7 +647,7 @@ pages["/free-look/"] = ("Free website look — Above the Hill",
  f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">Free · no obligation</p><h1 class="display d-l mt1">See your business<br>online, free</h1>
   <p class="lede">Leave your name and number. A person at ATH looks at how customers find you today and sends you a free look at your new site.</p>
-  <ul class="pkg-list mt2"><li>Websites from <b>$100 one time</b>, live within one business day</li><li>Up to 3 pages with booking or ordering: <b>$200</b></li><li>Site + 2 promo videos: <b>$500–$700</b></li><li>Weekly videos made for you: <b>$500/month</b></li></ul>
+  <ul class="pkg-list mt2"><li>Websites from <b>$100 one time</b>, live within one business day</li><li>Up to 3 pages, linked to the booking or ordering you already use: <b>$200</b></li><li>Site + 2 promo videos: <b>$500–$700</b></li><li>Weekly videos made for you: <b>$500/month</b></li></ul>
   <p class="body mt2">See real examples: <a class="gold" href="/sites/">sample sites ATH built</a>.</p></div>
  <form class="panel panel-pad" id="lead-form" novalidate>
   <input type="hidden" name="intent" value="free-look">
@@ -698,7 +698,7 @@ if _g:
   <p class="lede">Real products from the ATH Store, checkout by Shopify. Prices shown are from {_g[1]}; your cart shows the current price and shipping before you pay. Order early: shipping times vary by item.</p>
   <div class="ctas mt2">{btn("Browse all in WOW Marketplace", "https://thewow.online/marketplace")}{btn("Gift a business a website", "/free-look/", "line")}</div></div></section>""" + _g[0] + f"""
 <section class="block"><div class="wrap"><div class="panel panel-pad"><p class="eyebrow">For the business owner on your list</p><h2 class="display d-m mt1">Get them found before the holiday rush</h2>
-  <p class="body">A mobile website for their business, <b>$100 one time</b>, live within one business day of their info. Up to 3 pages with booking or ordering is $200 and comes with a free month of World Pass. Sites ordered by <b>November 20</b> can be live before Black Friday (Nov 27).</p>
+  <p class="body">A mobile website for their business, <b>$100 one time</b>, live within one business day of their info. Up to 3 pages, linked to the booking or ordering they already use, is $200 and comes with a free month of World Pass. Sites ordered by <b>November 20</b> can be live before Black Friday (Nov 27).</p>
   <div class="ctas mt1">{btn("Get a free look", "/free-look/")}{btn("See sample sites", "/sites/", "line")}</div></div></div></section>""")
 
 pages["/start/"] = ("Start your build — ATH intake",
@@ -760,11 +760,11 @@ QS_LINK, BG_LINK = "https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00", "https://bu
 CITIES = [("tulsa", "Tulsa"), ("broken-arrow", "Broken Arrow"), ("bixby", "Bixby")]
 NICHES = [
  ("barbers-salons", "barbers and salons", "Your chair stays full", "Clients find your hours, see your work and tap Book, even at 10 pm when the shop is closed.", "A Book button to Booksy, Square, Vagaro or StyleSeat, your price list and a photo gallery"),
- ("restaurants-food-trucks", "restaurants and food trucks", "Hungry people find you first", "Your menu, hours and a call or order button come up on Google, not someone else's page.", "Menu, hours, where the truck is today, and an order or call button"),
- ("bakeries", "bakeries", "Holiday orders come to you", "Customers see your cakes, prices and how to order without messaging you on Facebook.", "A photo menu, an order request form and your pickup hours"),
- ("auto-repair", "auto repair shops", "The phone rings with real jobs", "Drivers searching for help at the roadside find your number, services and reviews in one tap.", "Services, hours, both locations, tap-to-call and directions"),
- ("cleaning-lawn-care", "cleaning and lawn care", "Quotes come in while you work", "Homeowners see what you do and send a quote request instead of scrolling past.", "Services, service area, before-and-after photos and a quote form"),
- ("small-business", "small businesses", "Customers find you, trust you and call", "A real site with your services, hours and photos, so the people already looking can pick you.", "Services, hours, photos, tap-to-call and search setup"),
+ ("restaurants-food-trucks", "restaurants and food trucks", "Hungry people find you first", "Your menu, hours and a call or order button on one page you own, not someone else's.", "Menu, hours, where the truck is today, and a call button or a link to the ordering you already use"),
+ ("bakeries", "bakeries", "Holiday orders come to you", "Customers see your cakes, prices and how to order without messaging you on Facebook.", "A photo menu, your pickup hours and a text-or-call button for orders"),
+ ("auto-repair", "auto repair shops", "The phone rings with real jobs", "Drivers searching for help at the roadside find your number, services and hours in one tap.", "Services, hours, both locations, tap-to-call and directions"),
+ ("cleaning-lawn-care", "cleaning and lawn care", "Quotes come in while you work", "Homeowners see what you do and send a quote request instead of scrolling past.", "Services, service area, before-and-after photos and a text-or-email button for quotes"),
+ ("small-business", "small businesses", "Customers find you, trust you and call", "A real site with your services, hours and photos, so the people already looking can pick you.", "Services, hours, photos and tap-to-call"),
 ]
 def city_page(cslug, city, n):
     nslug, who, payoff, line, gets = n
@@ -774,11 +774,11 @@ def city_page(cslug, city, n):
      f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">{city}, Oklahoma · local team</p><h1 class="display d-l mt1">{payoff}.</h1>
   <p class="lede">{line}</p>
-  <ul class="pkg-list mt2"><li><b>What you get:</b> {gets}</li><li><b>How soon:</b> live within one business day after a 5-minute form</li><li><b>Price:</b> $100 one time, no contract, no monthly fee. Up to 3 pages with booking or ordering: $200</li></ul>
+  <ul class="pkg-list mt2"><li><b>What you get:</b> {gets}</li><li><b>How soon:</b> live within one business day after a 5-minute form</li><li><b>Price:</b> $100 one time, no contract, no monthly fee. Up to 3 pages, linked to the booking or ordering you already use: $200</li></ul>
   <div class="ctas mt2">{btn("Start for $100", QS_LINK)}{btn("Get the $200 site", BG_LINK, "line")}</div>
   <p class="body mt2">Not ready? <a class="gold" href="/free-look/">Get a free look</a> at what your site could be, or <a class="gold" href="/sites/">open the sample sites</a> on your phone.</p></div>
  <div class="panel panel-pad"><p class="eyebrow">Why it works</p><h2 class="display d-m mt1">People are already searching</h2>
-  <p class="body">Before they call, customers in {city} Google you to check your hours, prices and reviews. If all they find is a social page, they find less than you offer. A real site puts you in front of the people already looking.</p>
+  <p class="body">Before they call, customers in {city} Google you to check your hours, prices and reviews. If all they find is a social page, they find less than you offer. A real site gives the people already looking something better to find. Search engines list it once it is on your own domain (about $12 a year, paid to the registrar).</p>
   <h3 class="mt2">What you stop doing</h3><p class="body">Answering "what are your hours?" in DMs, and losing customers who can't find you at night.</p>
   <h3 class="mt2">More in {city}</h3><ul class="pkg-list">{others}</ul></div>
 </div></section>""")
@@ -786,7 +786,7 @@ for cslug, city in CITIES:
     for n in NICHES: pages[f"/websites/{cslug}/{n[0]}/"] = city_page(cslug, city, n)
 pages["/websites/"] = ("Websites for local businesses in Tulsa, Broken Arrow and Bixby | Above the Hill",
  "Websites from $100 for barbers, salons, restaurants, bakeries, auto shops, cleaners and small businesses in Tulsa, Broken Arrow and Bixby, Oklahoma.",
- f"""<section class="block" style="padding-top:56px"><div class="wrap"><p class="eyebrow">Local · Tulsa area</p><h1 class="display d-l mt1">Get found by the customers<br>already looking for you</h1>
+ f"""<section class="block" style="padding-top:56px"><div class="wrap"><p class="eyebrow">Local · Tulsa area</p><h1 class="display d-l mt1">A website for the customers<br>already looking for you</h1>
  <p class="lede">$100 one time, live within one business day. Pick your town and your kind of business.</p>
  <div class="grid g3 mt2">""" + "".join(f'<div class="panel panel-pad"><h2 class="display d-m">{city}</h2><ul class="pkg-list">' + "".join(f'<li><a class="gold" href="/websites/{cslug}/{n[0]}/">{n[1].capitalize()}</a></li>' for n in NICHES) + "</ul></div>" for cslug, city in CITIES) + f"""</div>
  <div class="ctas mt2">{btn("Start for $100", QS_LINK)}{btn("Get a free look", "/free-look/", "line")}</div></div></section>""")
