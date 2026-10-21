@@ -144,7 +144,7 @@
       try {
         const r = await post("/api/lead", { ...data, diagnosis_id: diag || null, source: { ...source(), catalog: data.catalog_version || null, terms_ack: data.terms_ack === "yes", ...(paid ? { stripe_session: /^cs_[A-Za-z0-9_]{10,200}$/.test(qs.get("session") || "") ? qs.get("session") : null, paid_via: "stripe_payment_link" } : {}) }, page: location.pathname });
         const ref = r && r.lead ? `<p class="note">Your reference: <b>${esc(r.lead)}</b></p>` : "";
-        const next = paid ? `<p class="body">Your intake is with ATH. We'll confirm your payment and reply within one business day with your build timeline.</p>` : needsAck ? `<p class="body">Next: ATH sends your written scope and invoice for <b>${esc(PACKAGES[pk].label)}</b>. Nothing has been charged.</p>` : `<p class="body">Nothing has been charged and no access has been granted.</p>`;
+        const next = paid ? `<p class="body">Your intake is with ATH. We'll confirm your payment and reply with your build timeline.</p>` : needsAck ? `<p class="body">Next: ATH sends your written scope and invoice for <b>${esc(PACKAGES[pk].label)}</b>. Nothing has been charged.</p>` : `<p class="body">Nothing has been charged and no access has been granted.</p>`;
         f.innerHTML = `<p class="panel-title">Received</p><p class="h-serif" style="font-size:26px">Thank you — a person at ATH will reply to ${esc(data.email)}.</p>${next}${ref}`;
       } catch (err) { st.className = "form-status err"; st.textContent = err.message; b.disabled = false; }
     });

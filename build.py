@@ -186,7 +186,7 @@ def pkg_cards():
    <p class="eyebrow mb0">Included</p><ul class="pkg-list">{inc}</ul>
    {f'<p class="eyebrow mb0">Ecosystem extras</p><ul class="pkg-list pkg-eco">{eco}</ul>' if eco else ''}
    <div class="ctas mt1">{btn(f"Pay {money(p['price'])} — start now", p['pay_url'], attrs='rel="noopener"') if p.get('pay_url') else ''}{btn("Ask a question first", f"/contact/?intent=services&amp;package={p['id']}", "line")}</div>
-   {'<p class="note mb0">Secure card checkout by Stripe. ATH emails your intake form within one business day.</p>' if p.get('pay_url') else ''}</article>''')
+   {'<p class="note mb0">Secure card checkout by Stripe. ATH emails your intake form after your payment.</p>' if p.get('pay_url') else ''}</article>''')
     return "".join(out)
 def ladder_rows():
     return "".join(f'<li>{ic(p["icon"],"icon-sm")}<div style="flex:1"><b>{p["name"]}</b><span>{(money(p["price"]) + "–" + money(p["price_max"])) if p.get("price_max") else "from " + money(p["price"])} · {html.escape(p["summary"])}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={p["id"]}" aria-label="Request a scope for {p["name"]}">Scope it</a></li>' for p in PKG if p["from"])
@@ -686,7 +686,7 @@ def gift_guide():
         items = [p for p in feed.get("products", []) if p.get("available") and p["id"] not in used and any(k in p["title"].lower() for k in keys)]
         for p in items: used.add(p["id"])
         if items: out.append((name, sorted(items, key=lambda p: p.get("price_from") or 0)))
-    cards = lambda items: "".join(f'<a class="gift" href="{html.escape(p["product_url"])}" rel="noopener"><img src="{html.escape(p["image"])}&width=480" alt="" loading="lazy" width="240" height="240"><span class="gift-t">{html.escape(p["title"])}</span><span class="gift-p">{"from " if p.get("multiple_prices") else ""}${p["price_from"]:,.2f}</span></a>' for p in items)
+    cards = lambda items: "".join(f'<a class="gift" href="{html.escape(p["product_url"])}" rel="noopener"><img src="{html.escape(p["image"])}&width=480" alt="" loading="lazy" width="240" height="240"><span class="gift-t">{html.escape(p["title"])}</span><span class="gift-p">${p["price_from"]:,.2f}{"+" if p.get("multiple_prices") else ""}</span></a>' for p in items)
     secs = "".join(f'<section class="block" style="padding-top:28px"><div class="wrap"><h2 class="display d-m">{n}</h2><div class="gift-grid mt2">{cards(i)}</div></div></section>' for n, i in out)
     return secs, feed.get("as_of", "")[:10]
 
@@ -706,7 +706,7 @@ pages["/start/"] = ("Start your build — ATH intake",
  f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">Payment received · Next step</p><h1 class="display d-l mt1">Let's build<br>your site</h1>
   <p class="lede">Thank you. Tell us about your business and ATH starts the build.</p>
-  <p class="body mt2">Share links to your logo and photos (Google Drive, Dropbox, Instagram or your current site). A person at ATH reads every intake and replies within one business day.</p>
+  <p class="body mt2">Share links to your logo and photos (Google Drive, Dropbox, Instagram or your current site). A person at ATH reads every intake and replies.</p>
   <p class="note mt2">Didn't pay yet? <a class="gold" href="/build/#pricing">See packages</a>.</p></div>
  <form class="panel panel-pad" id="intake-form" novalidate>
   <input type="hidden" name="intent" value="paid-intake">
