@@ -1,5 +1,5 @@
 {
- "version": "2026-10-19.8",
+ "version": "2026-10-21.1",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
@@ -152,7 +152,7 @@
    "id": "wow-ath-store",
    "business": "WOW Shop",
    "name": "ATH Store merchandise (28 items)",
-   "price": "from $11.99",
+   "price": "from $4.99",
    "status": "LIVE",
    "buy": "https://thewow.online/marketplace",
    "fulfillment": "Shopify checkout at the ATH Store",
