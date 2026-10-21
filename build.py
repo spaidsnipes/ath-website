@@ -675,15 +675,19 @@ pages["/free-look/"] = ("Free website look — Above the Hill",
 
 # ---------------------------------------------------------------- holiday gift guide (live ATH Store feed snapshot)
 def gift_guide():
-    try: feed = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "commercial", "ath-store-snapshot.json")))
+    here = os.path.dirname(os.path.abspath(__file__))
+    try: feed = json.load(open(os.path.join(here, "commercial", "ath-store-snapshot.json")))
     except Exception: return None
+    # Products with a known store-page problem stay off the guide until it is fixed (commercial/gift-holds.json).
+    try: held = {str(h["id"]) for h in json.load(open(os.path.join(here, "commercial", "gift-holds.json")))["holds"]}
+    except FileNotFoundError: held = set()
     groups = [("For creators who film", ("microphone","mic","light","tripod","gimbal","selfie","backdrop","grip","foam","interface","boom","ring")),
               ("Desk, journal and reset", ("journal","notebook","laptop","glasses","charger","charging","wallet","frother","tumbler")),
               ("Home and host", ("candle","pillowcase","lamp")),
               ("Wellness picks", ("massage","posture","resistance"))]
     used, out = set(), []
     for name, keys in groups:
-        items = [p for p in feed.get("products", []) if p.get("available") and p["id"] not in used and any(k in p["title"].lower() for k in keys)]
+        items = [p for p in feed.get("products", []) if p.get("available") and p["id"] not in used and p["id"] not in held and any(k in p["title"].lower() for k in keys)]
         for p in items: used.add(p["id"])
         if items: out.append((name, sorted(items, key=lambda p: p.get("price_from") or 0)))
     cards = lambda items: "".join(f'<a class="gift" href="{html.escape(p["product_url"])}" rel="noopener"><img src="{html.escape(p["image"])}&width=480" alt="" loading="lazy" width="240" height="240"><span class="gift-t">{html.escape(p["title"])}</span><span class="gift-p">{"from " if p.get("multiple_prices") else ""}${p["price_from"]:,.2f}</span></a>' for p in items)
