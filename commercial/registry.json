@@ -356,7 +356,7 @@
       "price": "$100 one time",
       "status": "LIVE",
       "buy": "https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00",
-      "fulfillment": "ATH builds from the /start/ intake (sites/DELIVERY.md), live within one business day",
+      "fulfillment": "ATH builds from the /start/ intake (sites/DELIVERY.md); the go-live date is confirmed with the customer",
       "verified": "2026-10-19"
     },
     {

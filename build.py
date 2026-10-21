@@ -647,7 +647,7 @@ pages["/free-look/"] = ("Free website look — Above the Hill",
  f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">Free · no obligation</p><h1 class="display d-l mt1">See your business<br>online, free</h1>
   <p class="lede">Leave your name and number. A person at ATH looks at how customers find you today and sends you a free look at your new site.</p>
-  <ul class="pkg-list mt2"><li>Websites from <b>$100 one time</b>, live within one business day</li><li>Up to 3 pages with booking or ordering: <b>$200</b></li><li>Site + 2 promo videos: <b>$500–$700</b></li><li>Weekly videos made for you: <b>$500/month</b></li></ul>
+  <ul class="pkg-list mt2"><li>Websites from <b>$100 one time</b>, go-live date confirmed when your form arrives</li><li>Up to 3 pages with booking or ordering: <b>$200</b></li><li>Site + 2 promo videos: <b>$500–$700</b></li><li>Weekly videos made for you: <b>$500/month</b></li></ul>
   <p class="body mt2">See real examples: <a class="gold" href="/sites/">sample sites ATH built</a>.</p></div>
  <form class="panel panel-pad" id="lead-form" novalidate>
   <input type="hidden" name="intent" value="free-look">
@@ -702,7 +702,7 @@ if _g:
   <p class="lede">Real products from the ATH Store, checkout by Shopify. Prices shown are from {_g[1]}; your cart shows the current price and shipping before you pay. Order early: shipping times vary by item.</p>
   <div class="ctas mt2">{btn("Browse all in WOW Marketplace", "https://thewow.online/marketplace")}{btn("Gift a business a website", "/free-look/", "line")}</div></div></section>""" + _g[0] + f"""
 <section class="block"><div class="wrap"><div class="panel panel-pad"><p class="eyebrow">For the business owner on your list</p><h2 class="display d-m mt1">Get them found before the holiday rush</h2>
-  <p class="body">A mobile website for their business, <b>$100 one time</b>, live within one business day of their info. Up to 3 pages with booking or ordering is $200 and comes with a free month of World Pass. Sites ordered by <b>November 20</b> can be live before Black Friday (Nov 27).</p>
+  <p class="body">A mobile website for their business, <b>$100 one time</b>. Up to 3 pages with booking or ordering is $200 and comes with a free month of World Pass. Order early for the holidays: ATH confirms the go-live date when their info arrives.</p>
   <div class="ctas mt1">{btn("Get a free look", "/free-look/")}{btn("See sample sites", "/sites/", "line")}</div></div></div></section>""")
 
 pages["/start/"] = ("Start your build — ATH intake",
@@ -774,11 +774,11 @@ def city_page(cslug, city, n):
     nslug, who, payoff, line, gets = n
     others = "".join(f'<li><a class="gold" href="/websites/{cslug}/{o[0]}/">Websites for {o[1]} in {city}</a></li>' for o in NICHES if o[0] != nslug)
     return (f"Websites for {who} in {city}, OK — from $100 | Above the Hill",
-     f"{payoff}. A mobile website for {who} in {city}, Oklahoma: $100 one time, live within one business day. Local team, no contract.",
+     f"{payoff}. A mobile website for {who} in {city}, Oklahoma: $100 one time, go-live date confirmed with you. Local team, no contract.",
      f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">{city}, Oklahoma · local team</p><h1 class="display d-l mt1">{payoff}.</h1>
   <p class="lede">{line}</p>
-  <ul class="pkg-list mt2"><li><b>What you get:</b> {gets}</li><li><b>How soon:</b> live within one business day after a 5-minute form</li><li><b>Price:</b> $100 one time, no contract, no monthly fee. Up to 3 pages with booking or ordering: $200</li></ul>
+  <ul class="pkg-list mt2"><li><b>What you get:</b> {gets}</li><li><b>How soon:</b> a 5-minute form, then ATH confirms your go-live date</li><li><b>Price:</b> $100 one time, no contract, no monthly fee. Up to 3 pages with booking or ordering: $200</li></ul>
   <div class="ctas mt2">{btn("Start for $100", QS_LINK)}{btn("Get the $200 site", BG_LINK, "line")}</div>
   <p class="body mt2">Not ready? <a class="gold" href="/free-look/">Get a free look</a> at what your site could be, or <a class="gold" href="/sites/">open the sample sites</a> on your phone.</p></div>
  <div class="panel panel-pad"><p class="eyebrow">Why it works</p><h2 class="display d-m mt1">People are already searching</h2>
@@ -791,7 +791,7 @@ for cslug, city in CITIES:
 pages["/websites/"] = ("Websites for local businesses in Tulsa, Broken Arrow and Bixby | Above the Hill",
  "Websites from $100 for barbers, salons, restaurants, bakeries, auto shops, cleaners and small businesses in Tulsa, Broken Arrow and Bixby, Oklahoma.",
  f"""<section class="block" style="padding-top:56px"><div class="wrap"><p class="eyebrow">Local · Tulsa area</p><h1 class="display d-l mt1">Get found by the customers<br>already looking for you</h1>
- <p class="lede">$100 one time, live within one business day. Pick your town and your kind of business.</p>
+ <p class="lede">$100 one time, go-live date confirmed with you. Pick your town and your kind of business.</p>
  <div class="grid g3 mt2">""" + "".join(f'<div class="panel panel-pad"><h2 class="display d-m">{city}</h2><ul class="pkg-list">' + "".join(f'<li><a class="gold" href="/websites/{cslug}/{n[0]}/">{n[1].capitalize()}</a></li>' for n in NICHES) + "</ul></div>" for cslug, city in CITIES) + f"""</div>
  <div class="ctas mt2">{btn("Start for $100", QS_LINK)}{btn("Get a free look", "/free-look/", "line")}</div></div></section>""")
 
