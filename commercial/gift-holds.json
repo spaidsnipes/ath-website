@@ -1,0 +1,12 @@
+{
+  "purpose": "ATH Store products kept off /gifts/ until the named problem is fixed in Shopify. Remove an entry to feature the product again.",
+  "holds": [
+    {
+      "id": "15433178546266",
+      "title": "Resistance Band Set",
+      "reason": "Shopify product page shows template filler ('Feature 1/2', 'signature bestseller'); fix the copy before featuring.",
+      "source": "ATH Finish-Line Execution Update, 2026-10-20, read-only Shopify inspection",
+      "held_on": "2026-10-21"
+    }
+  ]
+}
