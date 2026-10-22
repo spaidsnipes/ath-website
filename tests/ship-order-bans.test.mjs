@@ -9,7 +9,8 @@ const ROOT = new URL('../public/', import.meta.url).pathname;
 const files = (d) => readdirSync(d).flatMap((n) => { const p = join(d, n); return statSync(p).isDirectory() ? files(p) : /\.(html|json)$/.test(n) || n === 'ath.js' ? [p] : []; });
 const BANNED = [/built this week/i, /live tomorrow/i, /within one business day/i, /order online/i, /book online/i,
   /show up on google/i, /best seller/i, /ships in the US/, /real makers/i, /real goods/i, /from \$11\.99/, /from \$4\.99/,
-  /Fresh Sneaks/i, /we set up your google/i, /we built your checkout/i];
+  /Fresh Sneaks/i, /we set up your google/i, /we built your checkout/i,
+  /limited time/i]; // open-ended scarcity: an offer without an end date never says 'limited time'
 
 test('the scan covers the site', () => assert.ok(files(ROOT).length >= 40));
 for (const re of BANNED) test(`no public page says ${re}`, () => {

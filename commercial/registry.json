@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-21.2",
+  "version": "2026-10-22.1",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
@@ -443,7 +443,7 @@
       "id": "wmp-pro",
       "business": "Wealthy Mindsets Pro",
       "name": "Wealthy Mindsets Pro",
-      "price": "WM Pro App $10/mo · Passport $20/mo (first month $10, limited time) · WM Pro OS $50/mo · free guest account",
+      "price": "WM Pro App $10/mo · Passport $20/mo (intro: first month $10) · WM Pro OS $50/mo · free guest account",
       "status": "LIVE",
       "buy": "https://wealthymindsetspro.com/pricing",
       "fulfillment": "Buy on wealthymindsetspro.com/pricing: create an account, choose a tier, pay with Stripe. Cancel any time with Manage billing. Billing is in live mode (verified Oct 19: /api/billing/tiers).",

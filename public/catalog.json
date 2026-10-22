@@ -1,5 +1,5 @@
 {
- "version": "2026-10-21.2",
+ "version": "2026-10-22.1",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
@@ -102,7 +102,7 @@
    "id": "wmp-pro",
    "business": "Wealthy Mindsets Pro",
    "name": "Wealthy Mindsets Pro",
-   "price": "WM Pro App $10/mo · Passport $20/mo (first month $10, limited time) · WM Pro OS $50/mo · free guest account",
+   "price": "WM Pro App $10/mo · Passport $20/mo (intro: first month $10) · WM Pro OS $50/mo · free guest account",
    "status": "LIVE",
    "buy": "https://wealthymindsetspro.com/pricing",
    "fulfillment": "Buy on wealthymindsetspro.com/pricing: create an account, choose a tier, pay with Stripe. Cancel any time with Manage billing. Billing is in live mode (verified Oct 19: /api/billing/tiers).",
