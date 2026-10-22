@@ -1,12 +1,12 @@
 // Founder ship order, 2026-10-21: phrases banned from public copy. Built pages and the catalog are
-// scanned. assets/spaidbot.js is left to its owner (the order says not to touch Spaidbot).
+// scanned, and Spaidbot's own words (Founder Door Amendment §H, 2026-10-21: Spaidbot refuses illegal claims).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = new URL('../public/', import.meta.url).pathname;
-const files = (d) => readdirSync(d).flatMap((n) => { const p = join(d, n); return statSync(p).isDirectory() ? files(p) : /\.(html|json)$/.test(n) || n === 'ath.js' ? [p] : []; });
+const files = (d) => readdirSync(d).flatMap((n) => { const p = join(d, n); return statSync(p).isDirectory() ? files(p) : /\.(html|json)$/.test(n) || n === 'ath.js' || n === 'spaidbot.js' ? [p] : []; });
 const BANNED = [/built this week/i, /live tomorrow/i, /within one business day/i, /order online/i, /book online/i,
   /show up on google/i, /best seller/i, /ships in the US/, /real makers/i, /real goods/i, /from \$11\.99/, /from \$4\.99/,
   /Fresh Sneaks/i, /we set up your google/i, /we built your checkout/i,

@@ -13,7 +13,7 @@
     '<button type="button" class="sb-x" aria-label="Close Spaidbot">×</button></header>' +
     '<div class="sb-log" role="log" aria-live="polite"><p class="sb-msg sb-bot">Hi, I\'m Spaidbot, an AI. Ask me which website package fits your business, what WAVEMOTION or Wealthy Mindsets Pro cost, or how to start.</p>' +
     '<div class="sb-chips"><button type="button">Which website fits my business?</button><button type="button">What does $100 get me?</button><button type="button">What is WAVEMOTION?</button></div></div>' +
-    '<form class="sb-lead" hidden><p class="sb-lead-h">Start my site. ATH replies within one business day.</p>' +
+    '<form class="sb-lead" hidden><p class="sb-lead-h">Start my site. A person at ATH reads every request and replies.</p>' +
     '<label for="sb-l-name">Your name</label><input id="sb-l-name" autocomplete="name" required maxlength="120">' +
     '<label for="sb-l-email">Email</label><input id="sb-l-email" type="email" autocomplete="email" required maxlength="200">' +
     '<label for="sb-l-biz">Business name and city</label><input id="sb-l-biz" autocomplete="organization" maxlength="160">' +
@@ -81,7 +81,7 @@
       if (!r.ok || !b.ok) { add('bot', b.error || 'That didn\'t send. Please try again, or use https://abovethehilldev.online/contact/'); showLead(false); return; }
       showLead(false); lead.reset();
       var pay = { 'quick-start': 'https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00', 'business-growth': 'https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01' }[pkg];
-      add('bot', 'Got it. ATH has your details and will reply within one business day.' + (pay ? ' Ready to start now? Pay securely through Stripe here: ' + pay : ''));
+      add('bot', 'Got it. ATH has your details, and a person will reply.' + (pay ? ' Ready to start now? Pay securely through Stripe here: ' + pay : ''));
     } catch (err) { btn.disabled = false; showLead(false); add('bot', 'That didn\'t send. Please try again, or use https://abovethehilldev.online/contact/'); }
   });
 })();
