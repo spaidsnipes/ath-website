@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-23.1",
+  "version": "2026-10-23.2",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
@@ -425,7 +425,7 @@
       "name": "Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month",
       "price": "$10–$75/month",
       "status": "LIVE",
-      "buy": "https://www.wavemotion.live/#plans",
+      "buy": "https://www.wavemotion.live/#pricing",
       "fulfillment": "Self-serve; 14-day free trial; cancel in billing portal. Paid cinematic generation closed",
       "verified": "2026-10-19"
     },
@@ -435,7 +435,7 @@
       "name": "Managed clipping (retired — clips come with the WAVEMOTION plans)",
       "price": "not sold separately",
       "status": "RETIRED",
-      "buy": "https://www.wavemotion.live/#plans",
+      "buy": "https://www.wavemotion.live/#pricing",
       "fulfillment": "Founder 2026-10-22: clips come with the $10/$20/$50/$75 WAVEMOTION plans; bundle orders already placed are honored",
       "verified": "2026-10-23"
     },

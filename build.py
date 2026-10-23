@@ -181,7 +181,7 @@ def cat_price(oid):
 OUTCOMES = [
  ("site", "You run a local business", "Quick Start website", "One mobile page with your hours, services, photos and a call button, linked to the booking or ordering you already use.", lambda: cat_price("ath-quick-start"), "See it for your town", "/websites/"),
  ("content", "You make videos, music or sermons", "WAVEMOTION", "Turn one video into short clips. You approve before anything posts.", lambda: cat_price("wm-plans"), "Open WAVEMOTION", "https://www.wavemotion.live/"),
- ("systems", "You trade or want to learn to", "Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", lambda: "Free guest account" if "free guest account" in cat_price("wmp-pro") else None, "Take the guest tour", "https://wealthymindsetspro.com/"),
+ ("systems", "You trade or want to learn to", "Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", lambda: "Free guest account" if "free guest account" in cat_price("wmp-pro") else None, "Take the guest tour", "https://wealthymindsetspro.com/welcome"),
  ("path", "You want to learn something new", "WOW Academy", "Price-action lessons, languages and a book library, open to browse as a guest.", lambda: cat_price("wow-academy-free"), "Visit the campus", "https://thewow.online/academy"),
  ("link", "You want a place to belong", "WOW World Passport", "One identity for WOW's rooms: Lounge, Academy, Shop, TV, Music and Radio.", lambda: cat_price("wow-passport"), "Get a Passport", "https://thewow.online/passport"),
  ("hill", "Your business has a bigger hill", "ATHOS Diagnostic", "A free diagnosis first. Custom systems are scoped in writing before any price.", lambda: "Free, then by written quote", "What's your hill?", "/diagnose/"),
@@ -215,7 +215,7 @@ def pkg_cards():
 def ladder_rows():
     return "".join(f'<li>{ic(p["icon"],"icon-sm")}<div style="flex:1"><b>{p["name"]}</b><span>{(money(p["price"]) + "–" + money(p["price_max"])) if p.get("price_max") else "from " + money(p["price"])} · {html.escape(p["summary"])}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={p["id"]}" aria-label="Request a scope for {p["name"]}">Scope it</a></li>' for p in PKG if p["from"])
 def wm_rows():
-    return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{html.escape(p["name"])}</b></span><span role="cell" class="pt-price">${p["price"]}/mo</span><span role="cell" class="pt-allowance">{p["clips"]} standard clips / month</span><span role="cell"><a class="btn btn-line btn-sm" href="https://www.wavemotion.live/#plans" rel="noopener" aria-label="View WAVEMOTION {html.escape(p["name"])} plan">View plans</a></span></div>' for p in WM["plans"])
+    return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{html.escape(p["name"])}</b></span><span role="cell" class="pt-price">${p["price"]}/mo</span><span role="cell" class="pt-allowance">{p["clips"]} standard clips / month</span><span role="cell"><a class="btn btn-line btn-sm" href="https://www.wavemotion.live/#pricing" rel="noopener" aria-label="View WAVEMOTION {html.escape(p["name"])} plan">View plans</a></span></div>' for p in WM["plans"])
 def catalog_js():
     m = {}
     for p in PKG:
@@ -410,7 +410,7 @@ pages["/build/"] = ("ATH Services — You need the right path",
  <div class="grid g3">
   {"".join(f'<div class="panel panel-pad card svc" style="display:flex;gap:16px">{ic(i)}<div><h3 style="margin-top:0">{t}</h3><p>{d}</p></div></div>' for i,t,d in [
    ("site","Websites &amp; Destinations","Sites, Living Destinations, conversion paths."),
-   ("content","Content &amp; Campaigns","Clipping packages, launch systems, distribution."),
+   ("content","Content &amp; Campaigns","Clips with WAVEMOTION plans, launch systems, distribution."),
    ("systems","Systems &amp; Automation","Business ops, integrations, custom applications."),
    ("app","Custom Applications &amp; Platforms","Products and larger platforms, engineered to last."),
    ("link","Implementation &amp; Integration","Make the tools you already pay for work together."),
@@ -447,7 +447,7 @@ pages["/build/"] = ("ATH Services — You need the right path",
    <p class="panel-title" id="wavemotion-plans">WAVEMOTION plans</p>
    <div class="price-table wm-plan-table" role="table" aria-label="WAVEMOTION monthly plans"><div class="pt-row pt-head" role="row"><span role="columnheader">Plan</span><span role="columnheader">Monthly</span><span role="columnheader">Allowance</span><span role="columnheader">Next step</span></div>{wm_rows()}</div>
    <p class="note">Standard clip allowances are 40 / 80 / 250 / 250 per month. Cinematic generation is not open; production credits await measured provider costs. Platform publishing depends on the permissions of your connected accounts. Your clips come with your plan.</p>
-   <p class="body mb0">A 14-day trial needs no card. Choose a plan inside <a class="gold" href="https://www.wavemotion.live/#plans" rel="noopener">WAVEMOTION</a>; this site does not charge a second subscription.</p>
+   <p class="body mb0">A 14-day trial needs no card. Choose a plan inside <a class="gold" href="https://www.wavemotion.live/#pricing" rel="noopener">WAVEMOTION</a>; this site does not charge a second subscription.</p>
   </div>
   <p class="note mt2">“From” prices are starting points for a defined scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden. Catalog version {REG["version"]}.</p>
  </section>
@@ -473,7 +473,7 @@ ECO = [
  ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW World.", ("Get Passport", "https://thewow.online/passport/claim")),
  ("World Pass", "Membership · $20/mo", "live", "Open door", "Paid ecosystem membership on your Passport. Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
  ("Wavemotion", "Creator + Business Movement OS", "live", "Open door", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Visit Wavemotion", "https://wavemotion.live/")),
- ("WM Pro", "WealthyMindsets Pro · $20/mo", "", "Open door", "One complete professional trading operating system — no tier split. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
+ ("WM Pro", "Wealthy Mindsets Pro · from $10/mo", "", "Open door", "App $10/mo · OS $50/mo · free guest account. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
  ("PowerTribes", "Business · sales · workforce · leadership OS", "dim", "In development", "Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=powertribes")),
  ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=dreamboard")),
  ("WOW World", "Consumer world · Guest welcome", "live", "Open door", "One world, many rooms — Lounge, Academy (Idea Library, Visual Learns, Student of the Game), Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://thewow.online/")),
@@ -643,7 +643,7 @@ pages["/contact/"] = ("Contact ATH — Start",
     <option value="describe">Describing my hill to a person</option>
     <option value="deep-diagnostic">Deep diagnostic</option>
     <option value="wavemotion">WAVEMOTION</option>
-    <option value="worldpass">World Pass waitlist ($20/mo)</option>
+    <option value="worldpass">World Pass — questions ($20/mo, live now)</option>
     <option value="dictionary">Builder Dictionary waitlist</option>
     <option value="powertribes">PowerTribes access</option>
     <option value="dreamboard">Dreamboard access</option>

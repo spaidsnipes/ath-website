@@ -1,5 +1,5 @@
 {
- "version": "2026-10-23.1",
+ "version": "2026-10-23.2",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
@@ -85,7 +85,7 @@
    "name": "Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month",
    "price": "$10–$75/month",
    "status": "LIVE",
-   "buy": "https://www.wavemotion.live/#plans",
+   "buy": "https://www.wavemotion.live/#pricing",
    "fulfillment": "Self-serve; 14-day free trial; cancel in billing portal. Paid cinematic generation closed",
    "verified": "2026-10-19"
   },
@@ -95,7 +95,7 @@
    "name": "Managed clipping (retired — clips come with the WAVEMOTION plans)",
    "price": "not sold separately",
    "status": "RETIRED",
-   "buy": "https://www.wavemotion.live/#plans",
+   "buy": "https://www.wavemotion.live/#pricing",
    "fulfillment": "Founder 2026-10-22: clips come with the $10/$20/$50/$75 WAVEMOTION plans; bundle orders already placed are honored",
    "verified": "2026-10-23"
   },
