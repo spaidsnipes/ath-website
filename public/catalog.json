@@ -1,11 +1,12 @@
 {
- "version": "2026-10-22.1",
+ "version": "2026-10-23.1",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
   "NOT_ACTIVE": "named but not deliverable yet",
   "PROPOSED": "a plan, not for sale",
-  "LIVE_IN_WM_PRO": "available inside WM Pro"
+  "LIVE_IN_WM_PRO": "available inside WM Pro",
+  "RETIRED": "no longer sold; orders already placed are honored"
  },
  "offers": [
   {
@@ -91,12 +92,12 @@
   {
    "id": "wm-clips",
    "business": "WAVEMOTION",
-   "name": "Managed clipping",
-   "price": "10/$75 · 20/$125 · 30/$175 · 40/$225",
-   "status": "LIVE",
+   "name": "Managed clipping (retired — clips come with the WAVEMOTION plans)",
+   "price": "not sold separately",
+   "status": "RETIRED",
    "buy": "https://www.wavemotion.live/#plans",
-   "fulfillment": "Human clipping; one price for everyone",
-   "verified": "2026-10-19"
+   "fulfillment": "Founder 2026-10-22: clips come with the $10/$20/$50/$75 WAVEMOTION plans; bundle orders already placed are honored",
+   "verified": "2026-10-23"
   },
   {
    "id": "wmp-pro",

@@ -4,7 +4,7 @@
 Canon: Visual Canon Atlas v1, slide athWebsiteCanonPass3 (Founder finder doc 2026-10-07).
 Prices: commercial/registry.json (v2026-10-13, Founder Super Max order) — see commercial/RECONCILIATION-2026-10-13.md.
 Lineage (Founder lock 2026-10-07): focused systems start at $10/mo (Wavemotion $10/mo); World Pass $20/mo; WM Pro $20/mo; other specialist systems "plans vary";
-Services show Founder-approved starting prices; clipping packages $75/$125/$175/$225, one price for everyone (no discounts since 2026-10-14). Nothing on this
+Services show Founder-approved starting prices; WAVEMOTION clips come with its $10/$20/$50/$75 plans (the separate clip-bundle menu was retired by the Founder on 2026-10-22). Nothing on this
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
 """
@@ -144,7 +144,7 @@ RUNGS = [
     ("door", "$10 / mo", "Focused door", "Focused systems start at $10/mo · Wavemotion $10/mo", "", "/ecosystem/#wavemotion"),
     ("lattice", "$20 / mo", "Join the world", "Passport spine · World Pass membership", "", "/passport/"),
     ("triangle", "Specialist", "Serious systems", "WealthyMindsets Pro $20/mo · plans vary by system", "", "/ecosystem/#specialist"),
-    ("peaks", "Services", "Build it for me", "Websites from $100 · clips from $75 · apps from $1,000", "", "/build/#pricing"),
+    ("peaks", "Services", "Build it for me", "Websites from $100 · WAVEMOTION $10–$75 a month · apps from $1,000", "", "/build/#pricing"),
 ]
 
 def ladder(detail=True):
@@ -220,7 +220,6 @@ def catalog_js():
     m = {}
     for p in PKG:
         m[p["id"]] = {"label": f'{p["name"]} — {"from " if p["from"] else ""}{money(p["price"])}{"" if p["from"] else " one time"}', "terms": True}
-    for n, p in CLIPS: m[f"clips-{n}"] = {"label": f"{n} clips — ${p}"}
     for t, p, s, i in STARTS: m[s] = {"label": f"{t} — from ${p}"}
     for p in WM["plans"]: m[p["id"]] = {"label": f'WAVEMOTION {p["name"]} — ${p["price"]}/month ({p["clips"]} standard clips)'}
     m["custom"] = {"label": "Custom OS / app / platform — diagnose → scope → quote"}
@@ -363,7 +362,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
    <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion: the creator + business movement OS. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Available now in WOW World, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro is $20/month: one complete professional trading OS — no Basic/Pro/Pro+ split. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
-   <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites from $100 (Quick Start) and $200 (Business Growth), clipping from $75, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
+   <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites from $100 (Quick Start) and $200 (Business Growth), WAVEMOTION plans $10–$75 a month with clips included, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
   </ul></div>
 </div></section>""" + cta_block())
 
@@ -436,12 +435,8 @@ pages["/build/"] = ("ATH Services — You need the right path",
   <h2 class="display d-m mt3" id="services-h">Done-for-you services</h2>
   <div class="grid mt2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:start" data-collapse>
    <div class="panel panel-pad">
-    <p class="panel-title">Wavemotion clipping packages</p>
-    <div class="price-table" role="table" aria-label="Clipping package prices">
-     <div class="pt-row pt-head" role="row"><span role="columnheader">Package</span><span role="columnheader">Price</span><span role="columnheader">Per clip</span><span role="columnheader"><span class="vh">Start</span></span></div>
-     {clip_rows()}
-    </div>
-    <p class="note mt2 mb0">One price for everyone — no member discounts. Scope is confirmed before you pay.</p>
+    <p class="panel-title">Clips come with your WAVEMOTION plan</p>
+    <p class="body mb0">There is no separate clip menu. Every WAVEMOTION plan includes its clips each month — see <a class="gold" href="#wavemotion-plans">WAVEMOTION plans</a> below. Orders placed before the change are honored as bought.</p>
    </div>
    <div class="panel panel-pad">
     <p class="panel-title">Setup services — starting prices</p>
@@ -451,7 +446,7 @@ pages["/build/"] = ("ATH Services — You need the right path",
   <div class="panel panel-pad mt2" id="wavemotion-plans">
    <p class="panel-title" id="wavemotion-plans">WAVEMOTION plans</p>
    <div class="price-table wm-plan-table" role="table" aria-label="WAVEMOTION monthly plans"><div class="pt-row pt-head" role="row"><span role="columnheader">Plan</span><span role="columnheader">Monthly</span><span role="columnheader">Allowance</span><span role="columnheader">Next step</span></div>{wm_rows()}</div>
-   <p class="note">Standard clip allowances are 40 / 80 / 250 / 250 per month. Cinematic generation is not open; production credits await measured provider costs. Platform publishing depends on the permissions of your connected accounts. Human clipping services above are separately scoped and priced.</p>
+   <p class="note">Standard clip allowances are 40 / 80 / 250 / 250 per month. Cinematic generation is not open; production credits await measured provider costs. Platform publishing depends on the permissions of your connected accounts. Your clips come with your plan.</p>
    <p class="body mb0">A 14-day trial needs no card. Choose a plan inside <a class="gold" href="https://www.wavemotion.live/#plans" rel="noopener">WAVEMOTION</a>; this site does not charge a second subscription.</p>
   </div>
   <p class="note mt2">“From” prices are starting points for a defined scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden. Catalog version {REG["version"]}.</p>
@@ -848,7 +843,7 @@ def write():
     open(os.path.join(ROOT, "CNAME"), "w").write("abovethehilldev.online\n")
     open(os.path.join(ROOT, ".nojekyll"), "w").write("")
     # master catalog (registry "catalog"): every ATH offer with an honest status, for Spaidbot and partners
-    open(os.path.join(ROOT, "catalog.json"), "w").write(json.dumps({"version": REG["version"], "statuses": {"LIVE": "can be bought now", "SCOPED": "sold through a written quote", "NOT_ACTIVE": "named but not deliverable yet", "PROPOSED": "a plan, not for sale", "LIVE_IN_WM_PRO": "available inside WM Pro"}, "offers": REG.get("catalog", [])}, indent=1, ensure_ascii=False))
+    open(os.path.join(ROOT, "catalog.json"), "w").write(json.dumps({"version": REG["version"], "statuses": {"LIVE": "can be bought now", "SCOPED": "sold through a written quote", "NOT_ACTIVE": "named but not deliverable yet", "PROPOSED": "a plan, not for sale", "LIVE_IN_WM_PRO": "available inside WM Pro", "RETIRED": "no longer sold; orders already placed are honored"}, "offers": REG.get("catalog", [])}, indent=1, ensure_ascii=False))
     open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     urls = "".join(f"<url><loc>{SITE}{r}</loc></url>" for r in pages if r != "/404/")
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
