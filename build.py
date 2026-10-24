@@ -55,7 +55,7 @@ def ic(name, cls="icon"):
 
 ARR = '<span class="arr" aria-hidden="true">→</span>'
 FONTS = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap"
-HERO_ART = {"/": "home", "/diagnose/": "diagnose", "/path/": "path", "/passport/": "passport", "/build/": "build", "/ecosystem/": "ecosystem", "/language/": "path", "/diagnose/deep/": "deep", "/work/": "path", "/company/": "home", "/404/": "path"}
+HERO_ART = {"/": "home", "/diagnose/": "diagnose", "/path/": "path", "/passport/": "passport", "/build/": "build", "/ecosystem/": "ecosystem", "/language/": "path", "/diagnose/deep/": "deep", "/work/": "path", "/company/": "home", "/404/": "path", "/offer/": "build"}
 NAV = [("Company", "/company/"), ("Inventions", "/work/"), ("Services", "/build/"),
        ("Diagnose", "/diagnose/"), ("Language", "/language/"), ("Ecosystem", "/ecosystem/")]
 
@@ -95,7 +95,7 @@ def head(title, desc, route):
 def header(route):
     links = "".join(
         f'<a href="{h}"{" aria-current=\"page\"" if route.startswith(h) else ""}>{n}</a>' for n, h in NAV)
-    return f"""<div class="mantra" aria-hidden="true">Plain truth · Higher ground · One vision · One language · One ecosystem · Invention company · Systems · Destinations</div>
+    return f"""<div class="mantra" aria-hidden="true"><span class="mq"><span>Plain truth · Higher ground · One vision · One language · One ecosystem · Invention company · Systems · Destinations</span><span>Plain truth · Higher ground · One vision · One language · One ecosystem · Invention company · Systems · Destinations</span></span></div>
 <header class="site-head">
  <div class="wrap">
   <a class="brand" href="/" aria-label="Above the Hill Developments — home"><img src="/assets/ath-logo-lockup.webp" width="168" height="88" alt="Above the Hill Developments"></a>
@@ -112,7 +112,7 @@ FOOT = """</main>
   <div class="foot-grid">
    <div><img src="/assets/ath-logo-lockup.webp" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
     <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
-   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/contact/">Contact ATH</a></div>
+   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/offer/">Everything you get</a><a href="/contact/">Contact ATH</a></div>
    <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
    <div><p class="fh">World</p><a href="https://thewow.online/">WOW OS</a><a href="https://wavemotion.live/">Wavemotion</a><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
@@ -183,7 +183,7 @@ OUTCOMES = [
  ("content", "You make videos, music or sermons", "WAVEMOTION", "Turn one video into short clips. You approve before anything posts.", lambda: cat_price("wm-plans"), "Open WAVEMOTION", "https://www.wavemotion.live/"),
  ("systems", "You trade or want to learn to", "Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", lambda: "Free guest account" if "free guest account" in cat_price("wmp-pro") else None, "Take the guest tour", "https://wealthymindsetspro.com/welcome"),
  ("path", "You want to learn something new", "WOW Academy", "Price-action lessons, languages and a book library, open to browse as a guest.", lambda: cat_price("wow-academy-free"), "Visit the campus", "https://thewow.online/academy"),
- ("link", "You want a place to belong", "WOW World Passport", "One identity for WOW's rooms: Lounge, Academy, Shop, TV, Music and Radio.", lambda: cat_price("wow-passport"), "Get a Passport", "https://thewow.online/passport"),
+ ("link", "You want a place to belong", "Passport", "One identity across WOW OS rooms: Lounge, Academy, Shop, TV, Music and Radio.", lambda: cat_price("wow-passport"), "Get a Passport", "https://thewow.online/passport"),
  ("hill", "Your business has a bigger hill", "ATHOS Diagnostic", "A free diagnosis first. Custom systems are scoped in writing before any price.", lambda: "Free, then by written quote", "What's your hill?", "/diagnose/"),
 ]
 def outcome_cards():
@@ -226,6 +226,141 @@ def catalog_js():
     data = {"version": REG["version"], "payment": REG["payment"]["state"], "packages": m, "disclosures": REG["package_disclosures"]}
     return '<script type="application/json" id="ath-catalog">' + json.dumps(data).replace("</", "<\\/") + "</script>"
 
+# ---------------------------------------------------------------- capability map (SP-055 / R41, 2026-10-23)
+# Founder: "do everything a content platform does, plus everything else, cheaper — it's about presentation."
+# One grouped "what we do" map. Every card names the ATH owner (Founder ownership order, 2026-10-21: no new
+# standalone Content OS brand), an honest status, a price from the registry or "By quote", and a real next step.
+P = {p["id"]: p for p in PKG}
+def pk(pid):
+    p = P[pid]
+    if p.get("price_max"): return f'{money(p["price"])}–{money(p["price_max"])}'
+    return ("from " if p["from"] else "") + money(p["price"])
+STATUS = {"live": ("Live now", "live"), "inc": ("Included", ""), "quote": ("By quote", ""),
+          "dev": ("In development", "dim"), "nb": ("Not built yet", "dim")}
+OWNERS = [
+ ("ATH", "peaks", "Corporate front door", "This website, discovery, service offers, quotes and the people who answer.", "ATHOS for diagnosis · ATH Commerce for checkout"),
+ ("ATH Web Studio", "site", "Websites & presentation", "Client websites, brand themes, reusable sections, previews, hosting and domains.", "WAVEMOTION videos · ATH Commerce links · Passport"),
+ ("WAVEMOTION", "content", "Content & campaigns", "Clips, captions, campaign workflow, approvals, publishing and what-worked learning.", "Web Studio pages as destinations · Passport"),
+ ("ATHOS · Atlas", "ai", "Intelligence & memory", "Diagnosis, Spaidbot, AI roles and orchestration; Atlas keeps decisions, sources and proof.", "The live price list (catalog.json) · every engagement's evidence"),
+ ("ATH Commerce", "own", "Orders & payments", "Card checkout, orders, entitlements and receipts for everything ATH sells.", "Stripe · Shopify · Passport"),
+ ("SPADE Business · PowerTribes", "flow", "Customers & teams", "Prospecting, CRM, sales routing, workforce and business operations.", "In development: not sold yet"),
+ ("WOW OS", "lattice", "Identity, community & learning", "Passport, World Pass, Lounge, Academy, Shop, TV, Music and Radio.", "Every ATH app as it connects to Passport"),
+]
+def caps():
+    """(group id, group title, eyebrow, [ (name, does, owner, status, price, cta, href, on_home) ])"""
+    wm = cat_price("wm-plans").replace("/month", " a month")
+    return [
+     ("presence", "Build your presence", "Websites & digital experience", [
+      ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'{money(P["quick-start"]["price"])} or {money(P["business-growth"]["price"])} one time', "Here's everything you get", "/offer/", True),
+      ("Professional website", "An expanded branded site: content management, commerce, booking and course presentation as scoped.", "ATH Web Studio", "quote", pk("professional-website"), "Scope it", "/contact/?intent=services&amp;package=professional-website", True),
+      ("Brand themes & reusable sections", "Three tuned site styles built from reusable sections: menus and price lists, galleries, hours, story.", "ATH Web Studio", "inc", "In every site", "See sample sites", "/sites/", False),
+      ("Preview & approval", "You see your site on a preview link, kept out of search, before it goes live. Revisions as your package states.", "ATH Web Studio", "inc", "In every site", "How delivery works", "/offer/#how", True),
+      ("Hosting & your own domain", "Fast static hosting. Move to your own domain whenever you like; the registrar fee (about $12 a year) is yours, at cost.", "ATH Web Studio", "inc", "Hosting included", "See packages", "/offer/", False),
+     ]),
+     ("content", "Create & distribute content", "Video, clips & campaigns", [
+      ("Clips from your videos", "Turn one long video into short captioned clips. You approve every clip before anything posts.", "WAVEMOTION", "live", wm, "See WAVEMOTION plans", "https://www.wavemotion.live/#pricing", True),
+      ("Campaign workflow", "Record, prepare, approve, publish and learn, through the accounts you connect and within each platform's permissions.", "WAVEMOTION", "live", "In every plan", "Open WAVEMOTION", "https://www.wavemotion.live/", False),
+      ("Website + two promo videos", "A scoped site plus two 30–60 second videos made from your footage and photos, and a launch campaign.", "ATH Web Studio + WAVEMOTION", "quote", pk("cinematic-launch"), "Scope it", "/contact/?intent=services&amp;package=cinematic-launch", True),
+      ("Weekly content, made for you", "Four promo videos and eight captioned clips a month, with a posting kit. Twice-weekly is " + CAT["ath-content-twice"]["price"] + ".", "WAVEMOTION + ATH", "quote", CAT["ath-content-weekly"]["price"], "Ask about it", "/contact/?intent=wavemotion", False),
+     ]),
+     ("intelligence", "Intelligence & AI agents", "Diagnosis, assistants & memory", [
+      ("Spaidbot assistant", "A free AI assistant on every page of this site. It answers from ATH's live price list and hands you to a person.", "ATHOS", "live", "Free", "Ask Spaidbot", "/contact/#ask", True),
+      ("ATHOS Diagnostic", "Reads one public page, separates what it observed from what it inferred, and says unknown when it doesn't know.", "ATHOS", "live", "Free", "What's your hill?", "/diagnose/", True),
+      ("Deep diagnostic", "Read-only inspection of the sources you authorize (code, docs, analytics, flows), delivered as a Hill Report.", "ATHOS · Atlas", "quote", "By written quote", "Request one", "/diagnose/deep/", False),
+      ("Automation & business systems", "Apps, back ends, accounts, dashboards, integrations and automations, scoped in writing before any work starts.", "ATHOS + ATH Web Studio", "quote", pk("business-app-system"), "Scope it", "/contact/?intent=services&amp;package=business-app-system", False),
+     ]),
+     ("commerce", "Sell & get paid", "Checkout, apps & channels", [
+      ("Checkout & booking links", "Your site's buttons go to the checkout, booking or ordering tool you already use. Nothing new to learn.", "ATH Commerce + ATH Web Studio", "inc", f'In the {money(P["business-growth"]["price"])} site', "See Business Growth", "/offer/#business-growth", False),
+      ("Installable web app", "A scoped installable web app, or a single-platform app quoted on its own.", "ATH Web Studio", "quote", pk("app-starter"), "Scope it", "/contact/?intent=services&amp;package=app-starter", True),
+      ("iOS + Android apps", "Basic apps for both stores on one shared architecture, under a written scope.", "ATH Web Studio", "quote", pk("mobile-app-bundle"), "Scope it", "/contact/?intent=services&amp;package=mobile-app-bundle", False),
+      ("Web, mobile, TV & SDK", "One scoped system across web, mobile, television and integrations.", "ATH Web Studio", "quote", pk("omnichannel-system"), "Scope it", "/contact/?intent=services&amp;package=omnichannel-system", False),
+     ]),
+     ("community", "Identity, community & learning", "WOW OS", [
+      ("Passport", "One identity across ATH apps: permissions, ownership and receipts that stay with you.", "WOW OS", "live", cat_price("wow-passport"), "Get a Passport", "https://thewow.online/passport", True),
+      ("World Pass", "One membership on your Passport across the connected ATH world. Cancel any time.", "WOW OS", "live", cat_price("wow-world-pass").replace("/month", " a month"), "Get World Pass", "https://thewow.online/passport", True),
+      ("WOW Academy", "Idea Library, The Polyglot's Mind and Student of the Game. Stamps come from proof, not attendance.", "WOW OS", "live", cat_price("wow-academy-free"), "Visit the campus", "https://thewow.online/academy", False),
+      ("Lounge, TV, Music, Radio & Shop", "Rooms to connect, watch, listen and shop, entered from WOW OS. Guests welcome.", "WOW OS", "live", "Free to enter", "Enter WOW OS", "https://thewow.online/", False),
+     ]),
+     ("teams", "Customers, teams & specialist systems", "SPADE Business · PowerTribes · specialist OS", [
+      ("Prospecting, CRM & sales routing", "Find, qualify and follow up with customers, connected to your site and campaigns.", "SPADE Business", "dev", "Not sold yet", "Request access", "/contact/?intent=services", True),
+      ("Workforce & operations OS", "Business, sales, workforce and leadership operations in one system.", "PowerTribes", "dev", "Not sold yet", "Request access", "/contact/?intent=powertribes", False),
+      ("Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", "Wealthy Mindsets Pro", "live", "Free guest account", "Take the guest tour", "https://wealthymindsetspro.com/welcome", True),
+     ]),
+    ]
+def cap_card(name, does, owner, st, price, cta, href, *_):
+    label, cls = STATUS[st]
+    ext = href.startswith("http")
+    sb = ' data-sb-open="1"' if href.endswith("#ask") else ""
+    return (f'<article class="cap" data-cap="{html.escape(name)}" data-status="{st}"><div class="cap-top"><span class="tag {cls}">{label}</span><span class="cap-owner">{html.escape(owner)}</span></div>'
+            f'<h3>{html.escape(name)}</h3><p>{html.escape(does)}</p>'
+            f'<div class="cap-foot"><b class="cap-price">{html.escape(price)}</b><a class="cap-go" href="{href}"{sb}{" rel=\"noopener\"" if ext else ""}>{cta} {ARR}</a></div></article>')
+GROUP_ICON = {"presence": "site", "content": "content", "intelligence": "ai", "commerce": "own", "community": "lattice", "teams": "flow"}
+def cap_tiles():
+    """Homepage: the whole map at a glance, one tile per group, every capability a row with status and price."""
+    out = []
+    for gid, title, eyebrow, items in caps():
+        norm = lambda o: "ATH Web Studio" if o == "Web Studio" else o
+        owners = list(dict.fromkeys(norm(o.strip()) for c in items for o in re.split(r"[+·]", c[2])))
+        rows = "".join(
+            f'<li><a href="{c[6]}"{" data-sb-open=\"1\"" if c[6].endswith("#ask") else ""}{" rel=\"noopener\"" if c[6].startswith("http") else ""}><span class="ct-name">{html.escape(c[0])}</span>'
+            f'<span class="ct-meta"><span class="ct-dot ct-{c[3]}" aria-hidden="true"></span>{STATUS[c[3]][0]}<span class="ct-sep" aria-hidden="true">·</span><b>{html.escape(c[4])}</b></span></a></li>' for c in items)
+        out.append(f'<article class="ct" id="tile-{gid}"><header class="ct-head">{ic(GROUP_ICON[gid])}<div><p class="eyebrow mb0">{eyebrow}</p><h3>{title}</h3></div></header>'
+                   f'<ul class="ct-list">{rows}</ul><p class="ct-own"><span>Owned by</span> {html.escape(" · ".join(owners))}</p></article>')
+    return '<div class="ct-grid">' + "".join(out) + '</div>'
+def cap_map(home=False):
+    out = []
+    for gid, title, eyebrow, items in caps():
+        shown = [c for c in items if c[7]] if home else items
+        out.append(f'<section class="cap-group" id="cap-{gid}" aria-labelledby="cg-{gid}"><header class="cap-head">{ic(GROUP_ICON[gid])}<div><p class="eyebrow mb0">{eyebrow}</p><h3 class="cap-title" id="cg-{gid}">{title}</h3></div></header>'
+                   f'<div class="cap-grid" data-n="{len(shown)}">{"".join(cap_card(*c) for c in shown)}</div></section>')
+    return '<div class="cap-map">' + "".join(out) + '</div>'
+# "Everything a headless CMS / digital experience platform gives you — plus the business systems."
+# No competitor is named. Each row says how ATH delivers it today, and says so when it does not.
+COMPARE_PLATFORM = [
+ ("Structured, reusable content", "Every site is built from structured content and reusable sections, so a change lands everywhere it belongs.", "inc"),
+ ("Visual editing & live preview", "You review a preview link and ATH makes the edits for you. A self-serve visual editor is not built yet.", "inc"),
+ ("Media & asset library", "Your photos and logo are placed, sized and given alt text. Video assets live in WAVEMOTION.", "inc"),
+ ("Brand rules & templates", "Three tuned themes, applied consistently across every page of your site.", "inc"),
+ ("Drafts, approvals & publishing", "Preview, approve, publish. In WAVEMOTION you approve every clip before it posts.", "live"),
+ ("Multichannel delivery", "Web and phone today, video channels through WAVEMOTION; apps, TV and SDKs by written scope.", "live"),
+ ("AI agents", "Spaidbot and the ATHOS Diagnostic are free and live; deeper automation is scoped.", "live"),
+ ("Localization", "Additional languages are scoped and quoted per project.", "quote"),
+ ("Audience data & personalization", "WAVEMOTION learns from campaign results. Customer profiles and personalization are not built yet.", "nb"),
+ ("Hosting & delivery", "Fast static hosting included; your own domain at the registrar's price.", "inc"),
+]
+def compare_plus():
+    return [
+     ("Websites built for you", f'Card-payable sites at {money(P["quick-start"]["price"])} and {money(P["business-growth"]["price"])}, no sales call needed.', "live"),
+     ("Video clips & campaigns", "WAVEMOTION plans " + cat_price("wm-plans").replace("/month", " a month") + ", clips included.", "live"),
+     ("A free diagnosis before you buy", "ATHOS tells you what's actually in the way, including when you need nothing.", "live"),
+     ("Identity, membership & community", "Passport (free), World Pass and the rooms of WOW OS.", "live"),
+     ("Learning", "WOW Academy tracks, free to practise.", "live"),
+     ("Apps & whole business systems", f'Starting points from {money(P["app-starter"]["price"])} to {money(P["omnichannel-system"]["price"])}, scoped in writing first.', "quote"),
+     ("A person who reads every message", "A person at ATH reads every request and replies.", "live"),
+    ]
+def compare_rows(rows):
+    return "".join(f'<div class="cmp-row" role="row"><span role="rowheader" class="cmp-k">{k}</span><span role="cell" class="cmp-v">{v}</span><span role="cell"><span class="tag {STATUS[st][1]}">{STATUS[st][0]}</span></span></div>' for k, v, st in rows)
+def compare_section(sid="compare"):
+    return f"""<section class="block" id="{sid}"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">One ecosystem</p><h2 class="display d-m mt1">Everything a content platform gives you.<br><span class="gold">Plus the business systems.</span></h2></div>
+  <p class="note" style="max-width:44ch">What a headless CMS or digital experience platform covers, and how ATH delivers each part today, row by row. Where something isn't built, this table says so.</p></div>
+ <div class="grid cmp-grid" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:start" data-collapse>
+  <div class="panel panel-pad"><p class="panel-title">The content platform essentials</p><div class="cmp" role="table" aria-label="Content platform capabilities and how ATH delivers them">{compare_rows(COMPARE_PLATFORM)}</div></div>
+  <div class="panel panel-pad cmp-plus"><p class="panel-title">Plus what a content platform leaves to you</p><div class="cmp" role="table" aria-label="Business systems ATH adds">{compare_rows(compare_plus())}</div>
+   <div class="ctas mt2">{btn("Here's everything you get", "/offer/")}{btn("All prices", "/build/#pricing", "line")}</div></div>
+ </div>
+</div></section>"""
+def pkg_ladder():
+    """The transparent package ladder, $100 → $8,000, every step from the registry."""
+    steps = []
+    for p in PKG:
+        pay = p.get("pay_url")
+        href = "/offer/#" + p["id"] if pay else f'/contact/?intent=services&amp;package={p["id"]}'
+        price = (money(p["price"]) + "–" + money(p["price_max"])) if p.get("price_max") else money(p["price"])
+        lead = "scoped range" if p.get("price_max") else ("starting at" if p["from"] else "one time")
+        steps.append(f'<a class="pl-step{" pl-card" if pay else ""}" href="{href}"><span class="pl-lead">{lead}</span><span class="pl-price">{price}</span><span class="pl-name">{html.escape(p["name"])}</span><span class="pl-how">{"Pay by card" if pay else "Written scope"}</span></a>')
+    return '<nav class="pl" aria-label="Website and app packages, lowest to highest">' + "".join(steps) + '</nav>'
+
 # ---------------------------------------------------------------- pages
 pages = {}
 
@@ -254,23 +389,23 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
  <div class="block-head"><div><p class="eyebrow">Start with what you do</p><h2 class="display d-m mt1">Find your door</h2></div>{btn("All prices", "/build/#pricing", "line")}</div>
  <div class="grid g3">{outcome_cards()}</div>
 </div></section>
+<section class="block cap-block" id="what-we-do"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">What ATH does</p><h2 class="display d-m mt1">One ecosystem.<br>Every part has an owner.</h2></div>
+  <div style="max-width:46ch"><p class="body mb0">Websites, content, AI, checkout, community and the systems behind them, each run by one ATH product. Every card shows who owns it, whether it's live, and what it costs.</p><p class="mt1 mb0">{btn("The full map", "/ecosystem/#map", "line")}</p></div></div>
+ {cap_tiles()}
+</div></section>
+""" + compare_section() + f"""
+<section class="block"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">Transparent prices</p><h2 class="display d-m mt1">From $100 to $8,000.<br>Every step on the page.</h2></div>{btn("Here's everything you get", "/offer/", "line")}</div>
+ {pkg_ladder()}
+ <p class="note mt2">Quick Start and Business Growth are paid by card. Everything above them starts with a written scope, and that scope sets the real number before anything is charged.</p>
+</div></section>
 <section class="block"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">Inventions</p><h2 class="display d-m mt1">Built by ATH</h2></div>{btn("All inventions", "/work/", "line")}</div>
  <div class="grid g3">
   <article class="panel panel-pad card"><span class="tag live">Live today</span><h3>ATHOS Diagnostic</h3><p>The free hill-finder on this site. Inspects public evidence, separates what it observed from what it inferred, and says "unknown" when it doesn't know.</p><p class="mt2">{btn("Run it", "/diagnose/", "line")}</p></article>
   <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. Start with a free guest account. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
   <article class="panel panel-pad card"><span class="tag live">Open door</span><h3>Wavemotion</h3><p>Creator + business movement OS — record, prepare, launch, distribute, learn. One permanent Living Destination. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month.</p><p class="mt2">{btn("Open Wavemotion", "https://www.wavemotion.live/", "line")}</p></article>
- </div>
-</div></section>
-<section class="block"><div class="wrap">
- <div class="block-head"><div><p class="eyebrow">ATH Services</p><h2 class="display d-m mt1">You don't need another tool</h2></div>{btn("Services", "/build/", "line")}</div>
- <div class="grid g5">
-  {"".join(f'<a class="panel panel-pad card" style="text-decoration:none" href="/build/">{ic(i)}<h3>{t}</h3><p>{d}</p></a>' for i,t,d in [
-   ("site","Websites &amp; Destinations","Sites, Living Destinations, conversion paths."),
-   ("content","Content &amp; Campaigns","Clipping, launch systems, distribution."),
-   ("systems","Systems &amp; Automation","Business ops, integrations, workflows."),
-   ("app","Custom Applications","Products and platforms, built to last."),
-   ("link","Implementation &amp; Integration","Make what you have work together.")])}
  </div>
 </div></section>
 """ + cta_block())
@@ -360,7 +495,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
   <ul class="rows">
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
    <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion: the creator + business movement OS. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
-   <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Available now in WOW World, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
+   <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Available now in WOW OS, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro is from $10/month: WM Pro App $10/month, WM Pro OS $50/month, plus a free guest account. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites from $100 (Quick Start) and $200 (Business Growth), WAVEMOTION plans $10–$75 a month with clips included, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
   </ul></div>
@@ -395,7 +530,7 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
  </div>
  <div class="grid g2 mt3" id="benefits">
   <div class="panel panel-pad"><p class="panel-title">If a member cancels</p><p class="body mb0">The person doesn't stop existing. Identity, lawful ownership, receipts and applicable durable rights persist. Membership-only benefits end.</p></div>
-  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free and World Pass is $20/month — both live in WOW World today, with a real Stripe checkout and cancel any time.</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
+  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free and World Pass is $20/month — both live in WOW OS today, with a real Stripe checkout and cancel any time.</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
  </div>
 </div></section>""")
 
@@ -418,7 +553,7 @@ pages["/build/"] = ("ATH Services — You need the right path",
  </div>
  <section class="mt3" id="pricing" aria-labelledby="pricing-h">
   <h2 class="display d-m" id="pricing-h">Website &amp; app packages</h2>
-  <p class="body">Quick Start and Business Growth can be paid by card right now. Prefer to talk first? Ask a question and ATH replies with a written scope — nothing is charged until you pay. <a class="gold" href="/sites/">See sample sites</a> to picture yours.</p>
+  <p class="body">Quick Start and Business Growth can be paid by card right now. Prefer to talk first? Ask a question and ATH replies with a written scope — nothing is charged until you pay. <a class="gold" href="/sites/">See sample sites</a> to picture yours, or <a class="gold" href="/offer/">see everything you get</a>, line by line.</p>
   <div class="grid g2 mt2" style="align-items:stretch">{pkg_cards()}</div>
   <div class="grid mt2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:start" data-collapse>
    <div class="panel panel-pad">
@@ -467,20 +602,80 @@ pages["/build/"] = ("ATH Services — You need the right path",
   <p class="note mt2 mb0">Case frames are structural examples only — no real client claims, logos, or statistics.</p></div>
 </div></section>""" + cta_block("Build my path", "Start with the free diagnostic, or tell us about the project directly."))
 
+# ---------------------------------------------------------------- SP-085 honest offer stack (2026-10-23)
+# "Here's everything you get", from the registry only: no countdown, no invented values, no "today only".
+# A dollar value appears only where the registry itself states one; extras that are not switched on are
+# listed apart and not counted.
+CHECK = '<svg class="vs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 12.5 4 4 8-9"/></svg>'
+def vs_line(label, note="", dim=False):
+    m = re.search(r"\s*\((\$\d+) value\)", label)
+    val = f'<span class="vs-val">{m.group(1)} value</span>' if m else ""
+    label = label.replace(m.group(0), "") if m else label
+    return (f'<li class="vs-row{" vs-dim" if dim else ""}">{CHECK if not dim else ic("lock", "vs-ic")}<div><b>{html.escape(label)}</b>'
+            + (f'<span>{html.escape(note)}</span>' if note else "") + f'</div>{val}</li>')
+def offer_stack(p):
+    live = [e for e in p.get("ecosystem", []) if e.get("state") == "LIVE"]
+    off = [e for e in p.get("ecosystem", []) if e.get("state") != "LIVE"]
+    return f'''<article class="panel vs{" vs-featured" if p.get("featured") else ""}" id="{p["id"]}" aria-labelledby="vs-{p["id"]}">
+ <header class="vs-head">{ic(p["icon"])}<div><h2 class="vs-name" id="vs-{p["id"]}">{p["name"]}</h2><p class="body mb0">{html.escape(p["summary"])}</p></div></header>
+ <p class="vs-sec">Your website</p><ul class="vs-list">{"".join(vs_line(i) for i in p["includes"])}</ul>
+ <p class="vs-sec">Set up with you</p><ul class="vs-list">{"".join(vs_line(e["label"], e["note"]) for e in live)}</ul>
+ {f'<p class="vs-sec vs-sec-dim">Not counted: not switched on yet</p><ul class="vs-list">{"".join(vs_line(e["label"], e["note"], True) for e in off)}</ul>' if off else ""}
+ <footer class="vs-foot"><div><p class="vs-price">{money(p["price"])}</p><p class="note mb0">one time · no monthly fee · no contract</p></div>
+  <div class="ctas" style="margin:0">{btn(f"Pay {money(p['price'])} by card", p["pay_url"], attrs='rel="noopener"')}{btn("Ask a question first", f"/contact/?intent=services&amp;package={p['id']}", "line")}</div></footer>
+</article>'''
+
+pages["/offer/"] = ("Here's everything you get — ATH website packages",
+ "Every line in the $100 Quick Start and $200 Business Growth websites, straight from ATH's price list. One price for everyone, no countdown.",
+ f"""<section class="hero offer-hero" style="--pos:62% 55%;--mpos:55% 40%;min-height:auto">
+ <div class="hero-art"><img src="/assets/art/build.webp" alt="" fetchpriority="high"></div>
+ <div class="wrap"><div class="hero-copy">
+  <p class="eyebrow">Website packages · one price for everyone</p>
+  <h1 class="display d-l">Here's everything<br>you get</h1>
+  <p class="lede">Two websites you can pay for by card right now. Every line below is in the package, and anything that isn't switched on yet is shown apart and not counted.</p>
+  <div class="ctas">{btn("See the $200 site", "#business-growth")}{btn("See the $100 site", "#quick-start", "line")}</div>
+ </div></div>
+</section>
+<section class="block" style="padding-top:48px"><div class="wrap">
+ <div class="vs-grid">{"".join(offer_stack(p) for p in sorted([x for x in PKG if x.get("pay_url")], key=lambda x: not x.get("featured")))}</div>
+ <p class="note mt2" style="text-align:center">Secure card checkout by Stripe. ATH emails your intake form after your payment. The price above is the price: no countdown and no “today only”.</p>
+</div></section>
+<section class="block" id="how"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">How delivery works</p><h2 class="display d-m mt1">Pay, tell us,<br>approve, go live</h2></div>{btn("See sample sites", "/sites/", "line")}</div>
+ <ol class="steps">{"".join(f'<li><span class="st-n">0{n}</span><b>{t}</b><span>{d}</span></li>' for n, t, d in [
+  (1, "Pay by card", "Checkout by Stripe. Nothing renews."),
+  (2, "Send your details", "A short intake: your services, hours, photos and the links your buttons should open."),
+  (3, "See a preview", "ATH builds your site and sends a preview link, kept out of search. Your go-live date is confirmed with you."),
+  (4, "Approve your changes", "Quick Start includes one revision. Business Growth is scoped up to three pages."),
+  (5, "Your own domain, when you want it", "Search engines list it once it is on your own domain (about $12 a year, paid to the registrar).")])}</ol>
+</div></section>
+<section class="block"><div class="wrap">
+ <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start" data-collapse>
+  <div class="panel panel-pad"><p class="panel-title">What these two packages don't do</p><ul class="pkg-list">
+   <li>They link to the booking or ordering tool you already use. ATH doesn't build a new one at this price.</li>
+   <li>Reviews, ratings and follower counts appear only if you give them to us. Nothing is invented.</li>
+   {"".join(f"<li>{html.escape(d)}</li>" for d in REG["package_disclosures"])}
+  </ul></div>
+  <div class="panel panel-pad"><p class="panel-title">Need more than a website?</p><ul class="rows">{ladder_rows()}</ul>
+   <p class="note mt1 mb0">Each of these starts with a written scope that sets the real number. Nothing is charged before you approve it.</p></div>
+ </div>
+</div></section>""" + cta_block("Not sure which?", "Start with the free diagnostic. Sometimes the honest answer is that you need nothing at all."))
+
 ECO = [
  ("ATH", "Parent builder", "live", "You're here", "The invention company. Builds, owns and routes.", ("Diagnose", "/diagnose/")),
  ("ATHOS", "Intelligence", "live", "Diagnostic live", "Diagnosis, evidence, routing. The free diagnostic on this site is ATHOS working today; deeper capabilities are in development.", ("Run it", "/diagnose/")),
- ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW World.", ("Get Passport", "https://thewow.online/passport/claim")),
+ ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW OS.", ("Get Passport", "https://thewow.online/passport/claim")),
  ("World Pass", "Membership · $20/mo", "live", "Open door", "Paid ecosystem membership on your Passport. Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
  ("Wavemotion", "Creator + Business Movement OS", "live", "Open door", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Visit Wavemotion", "https://wavemotion.live/")),
  ("WM Pro", "Wealthy Mindsets Pro · from $10/mo", "", "Open door", "App $10/mo · OS $50/mo · free guest account. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
  ("PowerTribes", "Business · sales · workforce · leadership OS", "dim", "In development", "Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=powertribes")),
  ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=dreamboard")),
- ("WOW World", "Consumer world · Guest welcome", "live", "Open door", "One world, many rooms — Lounge, Academy (Idea Library, Visual Learns, Student of the Game), Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://thewow.online/")),
- ("WOW TV · WOW Radio", "Watch · Listen", "live", "Open door", "Viewer and listener destinations — separate rooms in WOW World.", ("Enter", "https://thewow.online/wow-tv")),
- ("Lounge · Academy · Shop", "Connect · Learn · Own", "live", "Open door", "Community, learning and commerce places, entered from WOW World.", ("Enter", "https://thewow.online/lounge")),
+ ("WOW OS", "The operating system · Guest welcome", "live", "Open door", "One home, many rooms — Lounge, Academy (Idea Library, Visual Learns, Student of the Game), Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://thewow.online/")),
+ ("WOW TV · WOW Radio", "Watch · Listen", "live", "Open door", "Viewer and listener destinations — separate rooms in WOW OS.", ("Enter", "https://thewow.online/wow-tv")),
+ ("Lounge · Academy · Shop", "Connect · Learn · Own", "live", "Open door", "Community, learning and commerce places, entered from WOW OS.", ("Enter", "https://thewow.online/lounge")),
  ("WOW Academy", "Learn · Free to practise", "live", "Open door", "Three real tracks, open now: The Idea Library (read, question, remember, apply), Visual Learns · The Polyglot&#8217;s Mind (Spanish, Hebrew, Japanese), and Student of the Game (risk, candles, orders). A stamp is earned from proof and memory, never attendance.", ("Open the Academy", "https://thewow.online/academy")),
  ("WOW Studios", "Creation infrastructure", "dim", "Future", "Deeper production infrastructure.", None),
+ ("WOW World", "The future metaverse", "dim", "Future", "A future world for the whole ecosystem. Not open and not for sale; WOW OS is the live home today.", None),
 ]
 def eco_cards():
     out = []
@@ -493,14 +688,24 @@ def eco_cards():
         out.append(f'<article class="panel panel-pad card"{f" id=\"{anchor}\"" if anchor else ""}><span class="tag {cls}">{st}</span><h3>{n}</h3><p class="gold" style="font-size:13px;margin-bottom:8px">{r}</p><p>{d}</p>{cbtn}</article>')
     return "".join(out)
 
-pages["/ecosystem/"] = ("The Ecosystem — ATH builds the world. Destinations open the doors.",
- "Not an app store. Parent builder, intelligence, identity, membership, destinations.",
+pages["/ecosystem/"] = ("The Ecosystem — What ATH does, who owns it, what it costs",
+ "Websites, content, AI, checkout, community and business systems: one ATH ecosystem, every capability with its owner, live status and price.",
  hero("ecosystem", "", "The<br>Ecosystem",
       "ATH builds the world.<br>Destinations open the doors.<br><span style=\"font-size:.8em;color:var(--ivory-dim)\">Not an app store. Parent builder · intelligence · identity · membership · destinations.</span>",
-      "", extra='<div class="plaques">' + "".join(f'<a class="plaque" href="#d"><b>{n}</b><span>{t}</span></a>' for n,t in [("WOW World","Open door"),("WM Pro","Open door"),("WOW TV · WOW Radio","Open door"),("Lounge · Academy · Shop","Open door")]) + '</div>', pos="50% 50%", mpos="50% 40%", size="d-l")
- + '<div class="strip">Connected destinations · One ecosystem · A living world</div>'
- + f"""<section class="block" id="d"><div class="wrap">
- <div class="block-head"><div><p class="eyebrow">Destinations</p><h2 class="display d-m mt1">Status, plainly</h2></div><p class="note" style="max-width:46ch">Statuses reflect what is actually reachable today. Future systems are never shown as purchasable.</p></div>
+      btn("See the full map", "#map") + btn("Here's everything you get", "/offer/", "line"), extra='<div class="plaques">' + "".join(f'<a class="plaque" href="#d"><b>{n}</b><span>{t}</span></a>' for n,t in [("WOW OS","Open door"),("WM Pro","Open door"),("WOW TV · WOW Radio","Open door"),("Lounge · Academy · Shop","Open door")]) + '</div>', pos="50% 50%", mpos="50% 40%", size="d-l")
+ + '<div class="strip">One builder · Seven owners · One ecosystem</div>'
+ + f"""<section class="block" id="owners"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">Who owns what</p><h2 class="display d-m mt1">Seven owners.<br>No overlap.</h2></div>
+  <p class="note" style="max-width:46ch">Each capability belongs to one ATH product and the others use it, so nothing is built twice and nothing falls between two teams. There is no extra platform to learn.</p></div>
+ <div class="own-grid">{"".join(f'<article class="panel panel-pad own"><div class="own-top">{ic(i)}<div><h3>{n}</h3><p class="eyebrow mb0">{r}</p></div></div><p class="own-does">{d}</p><p class="own-uses"><span>Uses</span> {u}</p></article>' for n, i, r, d, u in OWNERS)}<a class="panel panel-pad own own-cta" href="/diagnose/"><p class="eyebrow mb0">Not sure who you need?</p><h3>Start with the hill, not the org chart</h3><p class="own-does">ATHOS diagnoses first and routes you to the one owner that fits. Free.</p><span class="cap-go">What's your hill? {ARR}</span></a></div>
+</div></section>
+<section class="block cap-block" id="map"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">The full map</p><h2 class="display d-m mt1">What ATH does,<br>and what it costs</h2></div>
+  <p class="note" style="max-width:46ch">Live now: you can use or buy it today. Included: it comes inside a package. By quote: a written scope sets the price first. In development: named, not for sale.</p></div>
+ {cap_map()}
+</div></section>
+""" + compare_section() + f"""<section class="block" id="d"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">Destinations</p><h2 class="display d-m mt1">Every door, status plainly</h2></div><p class="note" style="max-width:46ch">Statuses reflect what is actually reachable today. Future systems are never shown as purchasable.</p></div>
  <div class="grid g3">{eco_cards()}</div>
 </div></section>""" + cta_block())
 
@@ -605,8 +810,8 @@ pages["/work/"] = ("Inventions & Work — Above the Hill Developments",
    ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. From $10/month, free guest account.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
    ("","Open door","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","Plans $10 / $20 / $50 / $75 per month. Cinematic generation is not open.", f'<p class="mt2 mb0">{btn("Open Wavemotion","https://www.wavemotion.live/","line")}</p>'),
    ("dim","In development","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","In development.", ""),
-   ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW World; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),
-   ("","Open door","WOW World","Products feel like islands.","A connected world of destinations under one builder.","Open at thewow.online — guests welcome, free Passport, World Pass $20/month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/" rel="noopener">Enter {ARR}</a></p>')])}
+   ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW OS; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),
+   ("","Open door","WOW OS","Products feel like islands.","A connected world of destinations under one builder.","Open at thewow.online — guests welcome, free Passport, World Pass $20/month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/" rel="noopener">Enter {ARR}</a></p>')])}
  </div>
  <p class="note mt2">No client logos, testimonials or results are shown until they are real and approved.</p>
 </div></section>""" + cta_block())
@@ -627,7 +832,7 @@ pages["/company/"] = ("Company — Above the Hill Developments",
   <li>{ic("doc","icon-sm")}<div><b>Atlas</b><span>Memory — provenance, decisions, lessons.</span></div></li>
   <li>{ic("me","icon-sm")}<div><b>Passport</b><span>Identity, permissions, ownership, continuity.</span></div></li>
   <li>{ic("lattice","icon-sm")}<div><b>World Pass</b><span>Paid ecosystem membership.</span></div></li>
-  <li>{ic("door","icon-sm")}<div><b>Destinations</b><span>Wavemotion, WM Pro, PowerTribes, Dreamboard, WOW World and more — each owns its own experience.</span></div></li></ul></div>
+  <li>{ic("door","icon-sm")}<div><b>Destinations</b><span>Wavemotion, WM Pro, PowerTribes, Dreamboard, WOW OS and more — each owns its own experience.</span></div></li></ul></div>
 </div></section>""" + cta_block())
 
 pages["/contact/"] = ("Contact ATH — Start",

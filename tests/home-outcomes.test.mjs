@@ -1,4 +1,6 @@
 // Homepage "Find your door" (2026-10-21): one door per kind of visitor, with the registry's own price
+// and a next step that exists. Founder ruling 2026-10-23: the live Passport sits in WOW OS; WOW World is the
+// future metaverse, so the door is named "Passport", never "WOW World Passport".
 // and a next step that exists. WM Pro shows only its free guest account until a paid checkout is proven.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -16,12 +18,12 @@ const unesc = (s) => s.replace(/&amp;/g, '&').replace(/&#x27;|&#39;/g, "'");
 
 test('six doors, after "Who we are" and before "Built by ATH"', () => {
   assert.ok(home.indexOf('Who we are') < home.indexOf('id="start"'));
-  assert.deepEqual(cards.map((c) => c.name), ['Quick Start website', 'WAVEMOTION', 'Wealthy Mindsets Pro', 'WOW Academy', 'WOW World Passport', 'ATHOS Diagnostic']);
+  assert.deepEqual(cards.map((c) => c.name), ['Quick Start website', 'WAVEMOTION', 'Wealthy Mindsets Pro', 'WOW Academy', 'Passport', 'ATHOS Diagnostic']);
 });
 
 test('every price is the registry price of a product that is for sale', () => {
   assert.equal(cards.length, 6);
-  const want = { 'Quick Start website': 'ath-quick-start', WAVEMOTION: 'wm-plans', 'WOW Academy': 'wow-academy-free', 'WOW World Passport': 'wow-passport' };
+  const want = { 'Quick Start website': 'ath-quick-start', WAVEMOTION: 'wm-plans', 'WOW Academy': 'wow-academy-free', Passport: 'wow-passport' };
   for (const c of cards) if (want[c.name]) {
     const o = cat[want[c.name]];
     assert.equal(o.status, 'LIVE', c.name);

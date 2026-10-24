@@ -85,8 +85,12 @@ h2{{font:600 clamp(28px,4vw,40px)/1.1 var(--display);margin:0 0 24px}}
 table.hours{{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}}table.hours td{{padding:8px 0;border-bottom:1px solid var(--line)}}table.hours td+td{{text-align:right;color:var(--dim)}}
 .contact a{{display:block;padding:10px 0;border-bottom:1px solid var(--line);text-decoration:none}}.contact span{{color:var(--dim);font-size:13px;display:block}}
 .foot{{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--dim);font-size:13px}}.foot .wrap{{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}}
-.sample-ribbon{{background:var(--accent);color:var(--on-accent);text-align:center;font:600 13px/1.4 var(--body);padding:8px 16px}}
-.sample-ribbon a{{color:inherit}}
+/* SP-082: the SAMPLE ribbon stays pinned on screen for the whole visit, above the sticky header. */
+.sample-ribbon{{position:sticky;top:0;z-index:6;height:36px;display:flex;align-items:center;justify-content:center;gap:.5em;white-space:nowrap;overflow:hidden;background:repeating-linear-gradient(135deg,var(--accent) 0 14px,color-mix(in srgb,var(--accent) 86%,#000) 14px 28px);color:var(--on-accent);font:600 13px/1 var(--body);padding:0 12px;box-shadow:0 2px 10px rgba(0,0,0,.25)}}
+.sample-ribbon b{{letter-spacing:.16em;text-transform:uppercase;font-weight:700;border:1.5px solid currentColor;border-radius:3px;padding:4px 7px}}
+.sample-ribbon a{{color:inherit}}.sample-ribbon .sr-short{{display:none}}
+.is-sample .top{{top:36px}}
+@media (max-width:640px){{.sample-ribbon .sr-long{{display:none}}.sample-ribbon .sr-short{{display:inline}}}}
 #sample-note{{scroll-margin-top:80px;border:1px solid var(--accent);border-radius:var(--r);padding:20px;margin-top:8px;background:var(--surface)}}
 @media (max-width:640px){{.top .wrap{{flex-wrap:wrap;gap:0 12px;padding-block:8px}}.pages{{order:3;flex-basis:100%;margin:0;overflow-x:auto;gap:20px;border-top:1px solid var(--line)}}.hero{{padding-block:48px 40px}}}}
 @media (prefers-reduced-motion:reduce){{html{{scroll-behavior:auto}}}}
@@ -123,7 +127,9 @@ def page_html(c, page, pages):
     nav = "".join(f'<a href="{base}{p.get("slug","") + "/" if p.get("slug") else ""}"{" aria-current=\"page\"" if p is page else ""}>{E(p["title"])}</a>' for p in pages) if len(pages) > 1 else ""
     pc = c.get("primary_cta") or {}
     top_cta = f'<a class="btn btn-solid" href="{href(c, pc.get("href"))}">{E(pc.get("label", "Call"))}</a>' if pc else ""
-    ribbon = f'<div class="sample-ribbon">Sample site by Above the Hill — {E(c["name"])} is not a real business. <a href="{SITE}/build/#pricing">Get yours from $100</a></div>' if c.get("sample") else ""
+    ribbon = (f'<div class="sample-ribbon" role="note" aria-label="Sample site: {E(c["name"])} is not a real business"><b>Sample</b>'
+              f'<span class="sr-long">Built by Above the Hill · {E(c["name"])} is not a real business ·</span><span class="sr-short">Not a real business ·</span>'
+              f' <a href="{SITE}/offer/">Get yours: $100</a></div>') if c.get("sample") else ""
 
     body = []
     if is_home:
@@ -149,7 +155,7 @@ def page_html(c, page, pages):
 <title>{E(title)}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{E(canonical)}">{robots}
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:type" content="website"><meta property="og:url" content="{E(canonical)}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?{t['fonts']}&display=swap">
-<style>{css(t)}</style>{jsonld}</head><body>{ribbon}
+<style>{css(t)}</style>{jsonld}</head><body{' class="is-sample"' if c.get("sample") else ''}>{ribbon}
 <div class="top"><div class="wrap"><a class="mark" href="{base}">{E(c['name'])}</a>{f'<nav class="pages" aria-label="Pages">{nav}</nav>' if nav else ''}{top_cta}</div></div>
 <main>{''.join(body)}</main>{foot}</body></html>"""
 

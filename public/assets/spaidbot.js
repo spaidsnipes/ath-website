@@ -5,7 +5,7 @@
   var history = [];
   var fab = document.createElement('button');
   fab.className = 'sb-fab'; fab.type = 'button'; fab.setAttribute('aria-expanded', 'false'); fab.setAttribute('aria-controls', 'sb-panel');
-  fab.innerHTML = '<span class="sb-dot" aria-hidden="true"></span>Ask Spaidbot';
+  fab.innerHTML = '<span class="sb-dot" aria-hidden="true"></span><span class="sb-lbl">Ask Spaidbot</span>';
   var panel = document.createElement('section');
   panel.className = 'sb-panel'; panel.id = 'sb-panel'; panel.hidden = true; panel.setAttribute('aria-label', 'Spaidbot, ATH AI assistant');
   panel.innerHTML =
@@ -29,6 +29,15 @@
   var log = panel.querySelector('.sb-log'), form = panel.querySelector('form.sb-form'), input = panel.querySelector('textarea'), send = panel.querySelector('.sb-form .sb-send');
   function open(v) { panel.hidden = !v; fab.setAttribute('aria-expanded', String(v)); if (v) input.focus(); else fab.focus(); }
   fab.addEventListener('click', function () { open(panel.hidden); });
+  // SP-081: while a page's hero is on screen the launcher shrinks to a round icon, so it never sits on the
+  // tagline or the price ladder. It grows back into "Ask Spaidbot" once the visitor scrolls past the hero.
+  var hero = document.querySelector('.hero');
+  if (hero && 'IntersectionObserver' in window) {
+    fab.classList.add('sb-compact');
+    new IntersectionObserver(function (es) { fab.classList.toggle('sb-compact', es[0].isIntersecting); }, { rootMargin: '0px 0px -35% 0px' }).observe(hero);
+  }
+  // Any link marked data-sb-open (e.g. "Ask Spaidbot" on the capability map) opens the assistant in place.
+  document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('[data-sb-open]'); if (a) { e.preventDefault(); open(true); } });
   panel.querySelector('.sb-x').addEventListener('click', function () { open(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) open(false); });
   function linkify(text) {
