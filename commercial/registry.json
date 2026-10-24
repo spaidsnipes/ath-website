@@ -31,8 +31,8 @@
         },
         {
           "label": "One month of WAVEMOTION Starter ($10 value)",
-          "state": "NOT_ACTIVE",
-          "note": "Ends on its own after 30 days. Nothing renews unless you choose a plan."
+          "state": "LIVE",
+          "note": "After your package is paid, ATH sends you a single-use free-month code (WM-XXXX-XXXX); you enter it in WAVEMOTION under Plans at wavemotion.live. No card needed. Ends on its own after 30 days; nothing renews unless you choose a plan."
         },
         {
           "label": "Free Wealthy Mindsets Pro account, set up with you",
@@ -66,8 +66,8 @@
         },
         {
           "label": "One month of WAVEMOTION Creator ($20 value)",
-          "state": "NOT_ACTIVE",
-          "note": "Ends on its own after 30 days. Nothing renews unless you choose a plan."
+          "state": "LIVE",
+          "note": "After your package is paid, ATH sends you a single-use free-month code (WM-XXXX-XXXX); you enter it in WAVEMOTION under Plans at wavemotion.live. No card needed. Ends on its own after 30 days; nothing renews unless you choose a plan."
         },
         {
           "label": "Free Wealthy Mindsets Pro account, set up with you",
