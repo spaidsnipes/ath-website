@@ -121,7 +121,7 @@
   },
   {
    "id": "wow-passport",
-   "business": "WOW World",
+   "business": "WOW OS",
    "name": "Passport identity",
    "price": "Free",
    "status": "LIVE",
@@ -131,7 +131,7 @@
   },
   {
    "id": "wow-world-pass",
-   "business": "WOW World",
+   "business": "WOW OS",
    "name": "World Pass",
    "price": "$20/month",
    "status": "LIVE",
@@ -141,7 +141,7 @@
   },
   {
    "id": "wow-passport-core",
-   "business": "WOW World",
+   "business": "WOW OS",
    "name": "WOW OS Basic",
    "price": "$10/month",
    "status": "PROPOSED",
