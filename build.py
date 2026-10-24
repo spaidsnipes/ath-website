@@ -49,6 +49,7 @@ def ic(name, cls="icon"):
         "eye": '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
         "q": '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17h.01"/>',
         "export": '<path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/>',
+        "gauge": '<path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 18 4-6"/><path d="M7 21h10"/>',
         "lock": '<rect x="4" y="10" width="16" height="11" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
     }[name]
     return f'<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{p}</svg>'
@@ -112,7 +113,7 @@ FOOT = """</main>
   <div class="foot-grid">
    <div><img src="/assets/ath-logo-lockup.webp" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
     <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
-   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/offer/">Everything you get</a><a href="/contact/">Contact ATH</a></div>
+   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/offer/">Everything you get</a><a href="/garden-check/">Garden Check</a><a href="/contact/">Contact ATH</a></div>
    <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
    <div><p class="fh">World</p><a href="https://thewow.online/">WOW OS</a><a href="https://wavemotion.live/">Wavemotion</a><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
@@ -170,10 +171,27 @@ CLIPS = [tuple(c) for c in RET["clips"]]
 STARTS = [(x["name"], x["price"], x["id"], x["icon"]) for x in RET["starts"]]
 PKG = REG["packages"]
 WM = REG["wavemotion_plans"]
-CAT = {o["id"]: o for o in REG["catalog"]}
+# Mansion Garden Check (Founder order 2026-10-24): one-time live website check. Its price is ONE number,
+# registry garden_check.price; every page and the catalog entry Spaidbot reads are generated from it.
+# garden_check.payment_link empty -> "Book a Garden Check" (a booking request, nothing charged);
+# a Stripe Payment Link pasted there -> card checkout, and the catalog marks it LIVE.
+GC = REG["garden_check"]
+GC_PAY = (GC.get("payment_link") or "").strip()
+assert not GC_PAY or re.match(r"^https://buy\.stripe\.com/[A-Za-z0-9_]+$", GC_PAY), "garden_check.payment_link must be a Stripe Payment Link (https://buy.stripe.com/...)"
+GC_PRICE = f'${GC["price"]:,}'
+GC_PAGE = "/garden-check/"
+GC_CTA = f"Pay {GC_PRICE} by card" if GC_PAY else "Book a Garden Check"
+GC_HREF = GC_PAY or GC_PAGE + "#book"
+GC_CAT = {"id": GC["catalog_id"], "business": "ATH Developments", "name": f'{GC["name"]} (website health check)', "price": f"{GC_PRICE} one time",
+          "status": "LIVE" if GC_PAY else "BOOKABLE", "buy": GC_PAY or SITE + GC_PAGE,
+          "fulfillment": f'A {GC["minutes"]} minute live check of the client\'s website on Zoom or Google Meet that the client watches: links, speed, mobile, SSL and security, forms, booking and checkout buttons, Google listing, search basics and broken pages, then a plain list of what needs fixing and what does not. Passwords are never asked for. Fixes are quoted separately. Monthly upkeep is the Mansion Garden Pass, included with Passport Pro.',
+          "verified": GC["verified"]}
+OFFERS = list(REG["catalog"])
+OFFERS.insert(next(i for i, o in enumerate(OFFERS) if o["id"] == "ath-business-growth") + 1, GC_CAT)
+CAT = {o["id"]: o for o in OFFERS}
 def cat_price(oid):
     o = CAT[oid]
-    assert o["status"] in ("LIVE", "SCOPED"), f"{oid} is {o['status']}: not for sale, so it is not shown as a price"
+    assert o["status"] in ("LIVE", "SCOPED", "BOOKABLE"), f"{oid} is {o['status']}: not for sale, so it is not shown as a price"
     return o["price"]
 # Homepage "Start with what you do": one door per kind of visitor, each with its real price and next step.
 # Prices come from the commercial registry above, never typed here; WM Pro shows only its free guest account
@@ -224,6 +242,11 @@ def catalog_js():
     for t, p, s, i in STARTS: m[s] = {"label": f"{t} — from ${p}"}
     for p in WM["plans"]: m[p["id"]] = {"label": f'WAVEMOTION {p["name"]} — ${p["price"]}/month ({p["clips"]} standard clips)'}
     m["custom"] = {"label": "Custom OS / app / platform — diagnose → scope → quote"}
+    m[GC["id"]] = {"label": f'{GC["name"]} — {GC_PRICE} one time ({GC["minutes"]} minute live website check)',
+                   "note": {"ask": "ATH replies with a time for your live check. Nothing is charged now, and we never ask for passwords.",
+                            "paid": "Thank you for booking. ATH replies with your call time and a Zoom or Google Meet link."},
+                   "start": {"title": "Let's book your<br>Garden Check", "lede": "Thank you. Send your website address and a few times that work, and ATH sets up your live check.",
+                             "body": GC["privacy"], "msg": "Your website address, and two or three times that work for a " + GC["minutes"] + " minute video call (say Zoom or Google Meet)"}}
     data = {"version": REG["version"], "payment": REG["payment"]["state"], "packages": m, "disclosures": REG["package_disclosures"]}
     return '<script type="application/json" id="ath-catalog">' + json.dumps(data).replace("</", "<\\/") + "</script>"
 
@@ -295,6 +318,7 @@ def caps():
     return [
      ("presence", "Build your presence", "Websites & digital experience", [
       ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'{money(P["quick-start"]["price"])} or {money(P["business-growth"]["price"])} one time', "Here's everything you get", "/offer/", True),
+      ("Website health check", f'The {GC["name"]}: a {GC["minutes"]} minute live check of the site you already have, on a video call you watch. You learn what needs fixing and what doesn\'t.', "ATH Web Studio", "live", f"{GC_PRICE} one time", GC_CTA if not GC_PAY else "See the Garden Check", GC_PAGE, True),
       ("Professional website", "An expanded branded site: content management, commerce, booking and course presentation as scoped.", "ATH Web Studio", "quote", pk("professional-website"), "Scope it", "/contact/?intent=services&amp;package=professional-website", True),
       ("Brand themes & reusable sections", "Three tuned site styles built from reusable sections: menus and price lists, galleries, hours, story.", "ATH Web Studio", "inc", "In every site", "See sample sites", "/sites/", False),
       ("Preview & approval", "You see your site on a preview link, kept out of search, before it goes live. Revisions as your package states.", "ATH Web Studio", "inc", "In every site", "How delivery works", "/offer/#how", True),
@@ -404,6 +428,16 @@ def pkg_ladder():
         steps.append(f'<a class="pl-step{" pl-card" if pay else ""}" href="{href}"><span class="pl-lead">{lead}</span><span class="pl-price">{price}</span><span class="pl-name">{html.escape(p["name"])}</span><span class="pl-how">{"Pay by card" if pay else "Written scope"}</span></a>')
     return '<nav class="pl" aria-label="Website and app packages, lowest to highest">' + "".join(steps) + '</nav>'
 
+def gc_panel(eyebrow="Already have a website?"):
+    """The Mansion Garden Check, from the registry: the oil-change offer for a site that already exists."""
+    return f'''<section class="block" id="garden-check"><div class="wrap"><div class="panel panel-pad gc-panel" style="display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+ <div style="flex:1 1 420px;max-width:62ch">{ic(GC["icon"])}<p class="eyebrow mt1">{eyebrow}</p><h2 class="display d-m mt1">{GC["name"]}</h2>
+  <p class="body mt1"><b>{html.escape(GC["tagline"])}</b> {html.escape(GC["summary"])}</p>
+  <p class="note mb0">{html.escape(GC["privacy"])} {html.escape(GC["fixes_note"])}</p></div>
+ <div><p class="vs-price mb0">{GC_PRICE}</p><p class="note">one time · {GC["minutes"]} minutes · live</p>
+  <div class="ctas" style="margin:0">{btn(GC_CTA, GC_HREF, attrs='rel="noopener"' if GC_PAY else "")}{btn("What we check", GC_PAGE, "line")}</div></div>
+</div></div></section>'''
+
 # ---------------------------------------------------------------- pages
 pages = {}
 
@@ -442,6 +476,7 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
  <div class="block-head"><div><p class="eyebrow">Transparent prices</p><h2 class="display d-m mt1">From $100 to $8,000.<br>Every step on the page.</h2></div>{btn("Here's everything you get", "/offer/", "line")}</div>
  {pkg_ladder()}
  <p class="note mt2">Quick Start and Business Growth are paid by card. Everything above them starts with a written scope, and that scope sets the real number before anything is charged.</p>
+ <p class="note mt1">Already have a site? Start smaller: the <a class="gold" href="{GC_PAGE}">{GC["name"]}</a> is {GC_PRICE} one time. Like an oil change: pull in, {GC["minutes"]} minutes, done.</p>
 </div></section>
 """ + wp_value() + f"""
 <section class="block"><div class="wrap">
@@ -599,6 +634,10 @@ pages["/build/"] = ("ATH Services — You need the right path",
   <h2 class="display d-m" id="pricing-h">Website &amp; app packages</h2>
   <p class="body">Quick Start and Business Growth can be paid by card right now. Prefer to talk first? Ask a question and ATH replies with a written scope — nothing is charged until you pay. <a class="gold" href="/sites/">See sample sites</a> to picture yours, or <a class="gold" href="/offer/">see everything you get</a>, line by line.</p>
   <div class="grid g2 mt2" style="align-items:stretch">{pkg_cards()}</div>
+  <div class="panel panel-pad mt2" id="garden-check-price" style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+   <div style="max-width:60ch"><p class="eyebrow mb0">Already have a website?</p><h3 class="mt1">{GC["name"]} · {GC_PRICE} one time</h3><p class="body mb0">{html.escape(GC["tagline"])} {html.escape(GC["summary"])} {html.escape(GC["fixes_note"])}</p></div>
+   <div class="ctas" style="margin:0">{btn(GC_CTA, GC_HREF, attrs='rel="noopener"' if GC_PAY else "")}{btn("What we check", GC_PAGE, "line")}</div>
+  </div>
   <div class="grid mt2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:start" data-collapse>
    <div class="panel panel-pad">
     <p class="panel-title">Bigger builds — starting prices</p>
@@ -684,7 +723,7 @@ pages["/offer/"] = ("Here's everything you get — ATH website packages",
 <section class="block" style="padding-top:48px"><div class="wrap">
  <div class="vs-grid">{"".join(offer_stack(p) for p in sorted([x for x in PKG if x.get("pay_url")], key=lambda x: not x.get("featured")))}</div>
  <p class="note mt2" style="text-align:center">Secure card checkout by Stripe. ATH emails your intake form after your payment. The price above is the price: no countdown and no “today only”.</p>
-</div></section>""" + wp_value(eyebrow="Included with Business Growth: a month of the whole ecosystem") + f"""
+</div></section>""" + gc_panel() + wp_value(eyebrow="Included with Business Growth: a month of the whole ecosystem") + f"""
 <section class="block" id="how"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">How delivery works</p><h2 class="display d-m mt1">Pay, tell us,<br>approve, go live</h2></div>{btn("See sample sites", "/sites/", "line")}</div>
  <ol class="steps">{"".join(f'<li><span class="st-n">0{n}</span><b>{t}</b><span>{d}</span></li>' for n, t, d in [
@@ -981,9 +1020,9 @@ if _g:
 pages["/start/"] = ("Start your build — ATH intake",
  "Tell ATH about your business so we can start building.",
  f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
- <div><p class="eyebrow">Payment received · Next step</p><h1 class="display d-l mt1">Let's build<br>your site</h1>
-  <p class="lede">Thank you. Tell us about your business and ATH starts the build.</p>
-  <p class="body mt2">Share links to your logo and photos (Google Drive, Dropbox, Instagram or your current site). A person at ATH reads every intake and replies.</p>
+ <div><p class="eyebrow">Payment received · Next step</p><h1 class="display d-l mt1" id="start-h1">Let's build<br>your site</h1>
+  <p class="lede" id="start-lede">Thank you. Tell us about your business and ATH starts the build.</p>
+  <p class="body mt2" id="start-body">Share links to your logo and photos (Google Drive, Dropbox, Instagram or your current site). A person at ATH reads every intake and replies.</p>
   <p class="note mt2">Didn't pay yet? <a class="gold" href="/build/#pricing">See packages</a>.</p></div>
  <form class="panel panel-pad" id="intake-form" novalidate>
   <input type="hidden" name="intent" value="paid-intake">
@@ -991,13 +1030,55 @@ pages["/start/"] = ("Start your build — ATH intake",
    <div class="field"><label class="lbl" for="i-email">Email used at checkout</label><input id="i-email" name="email" type="email" autocomplete="email" required></div></div>
   <div class="grid g2"><div class="field"><label class="lbl" for="i-org">Business name</label><input id="i-org" name="org" type="text" autocomplete="organization"></div>
    <div class="field"><label class="lbl" for="i-site">Current website or social page <span class="mute">(optional)</span></label><input id="i-site" name="website" type="url" inputmode="url"></div></div>
-  <div class="field"><label class="lbl" for="i-msg">Your services, hours, contact info, photo/logo links, and anything else the site should say</label><textarea id="i-msg" name="message" maxlength="3000" required></textarea></div>
+  <div class="field"><label class="lbl" for="i-msg" id="start-msg">Your services, hours, contact info, photo/logo links, and anything else the site should say</label><textarea id="i-msg" name="message" maxlength="3000" required></textarea></div>
   <input type="hidden" name="package" id="l-package" value="">
   <input type="hidden" name="catalog_version" id="l-catalog" value="">
   <div class="pkg-note" id="pkg-note" hidden></div>
   <input type="text" name="company_fax" tabindex="-1" autocomplete="off" class="vh" aria-hidden="true">
   <button class="btn btn-gold" type="submit">Send intake to ATH {ARR}</button>
   <p class="note mt1">Used only to build your site. See <a class="gold" href="/privacy/">Privacy</a>.</p>
+  <p class="form-status" role="status" aria-live="polite"></p>
+ </form>
+</div></section>""" + catalog_js())
+
+pages[GC_PAGE] = (f'{GC["name"]} — a {GC["minutes"]} minute website check',
+ f'{GC["tagline"]} A live check of your website on a video call you watch, then a plain list of what needs fixing. {GC_PRICE} one time.',
+ f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
+ <div><p class="eyebrow">{GC["name"]} · {GC_PRICE} one time</p><h1 class="display d-l mt1">A quick check&#8209;up<br>for your website</h1>
+  <p class="lede">{html.escape(GC["tagline"])}</p>
+  <p class="body mt2">{html.escape(GC["summary"])}</p>
+  <div class="ctas">{btn(GC_CTA, GC_HREF, attrs='rel="noopener"' if GC_PAY else "")}{btn("What we check", "#checks", "line")}</div>
+  <div class="panel panel-pad mt2"><p class="panel-title">Private, and you watch it all</p><ul class="pkg-list">{"".join(f"<li>{html.escape(x.strip()[:1].upper() + x.strip()[1:].rstrip('.'))}.</li>" for x in GC["privacy"].split(";"))}</ul></div></div>
+ <div class="panel panel-pad" id="checks"><p class="panel-title">What we check</p><ul class="vs-list">{"".join(vs_line(c) for c in GC["checks"])}</ul>
+  <p class="body mt2 mb0">Then we break it down: what needs fixing, and what doesn't. {html.escape(GC["fixes_note"])}</p></div>
+</div></section>
+<section class="block" id="how"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">How it works</p><h2 class="display d-m mt1">Pull in, check,<br>drive off</h2></div></div>
+ <ol class="steps">{"".join(f'<li><span class="st-n">0{n}</span><b>{html.escape(t)}</b></li>' for n, t in enumerate(GC["how"], 1))}</ol>
+ <p class="note mt2">{html.escape(GC["monthly"]["note"])} <a class="gold" href="/contact/?intent=services">Ask about it</a></p>
+</div></section>
+<section class="block" id="book"><div class="wrap split" style="align-items:start">
+ <div><p class="eyebrow">{"Prefer to pick a time first?" if GC_PAY else "Book a Garden Check"}</p><h2 class="display d-m mt1">Pick a time</h2>
+  <p class="body mt1">{"Pay by card above, or send a time here and ATH replies with your call link." if GC_PAY else f"Send your website and a time that works. ATH confirms your call and how to pay the {GC_PRICE} before the check starts. Nothing is charged by this form."}</p></div>
+ <form class="panel panel-pad" id="lead-form" novalidate>
+  <input type="hidden" name="intent" value="garden-check">
+  <div class="grid g2"><div class="field"><label class="lbl" for="g-name">Your name</label><input id="g-name" name="name" type="text" autocomplete="name" required></div>
+   <div class="field"><label class="lbl" for="g-email">Email</label><input id="g-email" name="email" type="email" autocomplete="email" required></div></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="g-site">Your website address</label><input id="g-site" name="website" type="url" inputmode="url" autocomplete="url" required></div>
+   <div class="field"><label class="lbl" for="g-phone">Phone <span class="mute">(optional)</span></label><input id="g-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40"></div></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="g-org">Business name <span class="mute">(optional)</span></label><input id="g-org" name="org" type="text" autocomplete="organization"></div>
+   <div class="field"><label class="lbl" for="g-call">Video call</label><select id="g-call" name="interest"><option>Zoom</option><option>Google Meet</option><option>Either is fine</option></select></div></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="g-day">Day</label><input id="g-day" name="call_date" type="date"></div>
+   <div class="field"><label class="lbl" for="g-time">Time</label><select id="g-time" name="call_time"><option value="">Any time</option>{"".join(f"<option>{h}:{m} {ap}</option>" for h, ap in [(9, "AM"), (10, "AM"), (11, "AM"), (12, "PM"), (1, "PM"), (2, "PM"), (3, "PM"), (4, "PM"), (5, "PM"), (6, "PM")] for m in ("00", "30"))}</select></div></div>
+  <div class="field"><label class="lbl" for="g-msg">Anything you want us to look at first? <span class="mute">(optional)</span></label><textarea id="g-msg" name="message" maxlength="3000"></textarea></div>
+  <input type="hidden" name="tz" id="g-tz" value="">
+  <script>try{{document.getElementById("g-tz").value=Intl.DateTimeFormat().resolvedOptions().timeZone;document.getElementById("g-day").min=new Date().toISOString().slice(0,10);}}catch(e){{}}</script>
+  <input type="hidden" name="package" id="l-package" value="{GC["id"]}">
+  <input type="hidden" name="catalog_version" id="l-catalog" value="">
+  <div class="pkg-note" id="pkg-note" hidden></div>
+  <input type="text" name="company_fax" tabindex="-1" autocomplete="off" class="vh" aria-hidden="true">
+  <button class="btn btn-gold" type="submit">Book my Garden Check {ARR}</button>
+  <p class="note mt1">We never ask for passwords. We use this only to set up your check. See <a class="gold" href="/privacy/">Privacy</a>.</p>
   <p class="form-status" role="status" aria-live="polite"></p>
  </form>
 </div></section>""" + catalog_js())
@@ -1093,7 +1174,7 @@ def write():
     open(os.path.join(ROOT, "CNAME"), "w").write("abovethehilldev.online\n")
     open(os.path.join(ROOT, ".nojekyll"), "w").write("")
     # master catalog (registry "catalog"): every ATH offer with an honest status, for Spaidbot and partners
-    open(os.path.join(ROOT, "catalog.json"), "w").write(json.dumps({"version": REG["version"], "statuses": {"LIVE": "can be bought now", "SCOPED": "sold through a written quote", "NOT_ACTIVE": "named but not deliverable yet", "PROPOSED": "a plan, not for sale", "LIVE_IN_WM_PRO": "available inside WM Pro", "RETIRED": "no longer sold; orders already placed are honored"}, "offers": REG.get("catalog", [])}, indent=1, ensure_ascii=False))
+    open(os.path.join(ROOT, "catalog.json"), "w").write(json.dumps({"version": REG["version"], "statuses": {"LIVE": "can be bought now", "SCOPED": "sold through a written quote", "NOT_ACTIVE": "named but not deliverable yet", "PROPOSED": "a plan, not for sale", "LIVE_IN_WM_PRO": "available inside WM Pro", "RETIRED": "no longer sold; orders already placed are honored", "BOOKABLE": "book now: ATH confirms a time; card checkout switches on when its payment link is added"}, "offers": OFFERS}, indent=1, ensure_ascii=False))
     open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     urls = "".join(f"<url><loc>{SITE}{r}</loc></url>" for r in pages if r != "/404/")
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')

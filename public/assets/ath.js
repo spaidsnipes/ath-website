@@ -119,16 +119,23 @@
   for (const f of document.querySelectorAll("#lead-form, #deep-form, #intake-form")) {
     const sel = f.querySelector("select[name=intent]");
     if (sel && qs.get("intent")) sel.value = qs.get("intent");
-    const pk = qs.get("package"), pkIn = f.querySelector("#l-package"), pkNote = f.querySelector("#pkg-note");
+    const pk = qs.get("package") || qs.get("offer") || f.querySelector("#l-package")?.value || "", pkIn = f.querySelector("#l-package"), pkNote = f.querySelector("#pkg-note");
     const ack = f.querySelector("#pkg-ack"), cat = f.querySelector("#l-catalog");
     if (cat) cat.value = CATALOG.version || "";
     const paid = f.id === "intake-form";
     const needsAck = !!(pk && PACKAGES[pk]?.terms && ack && !paid);
     if (pk && PACKAGES[pk] && pkIn) {
       pkIn.value = pk; pkNote.hidden = false;
+      const own = PACKAGES[pk].note && PACKAGES[pk].note[paid ? "paid" : "ask"];
       pkNote.innerHTML = needsAck
         ? `<b>${esc(PACKAGES[pk].label)}</b><ul class="pkg-list">${(CATALOG.disclosures || []).map((d) => `<li>${esc(d)}</li>`).join("")}</ul>`
-        : `Starting: <b>${esc(PACKAGES[pk].label)}</b>. ATH confirms scope with you before any payment.`;
+        : own ? `<b>${esc(PACKAGES[pk].label)}</b>. ${esc(own)}` : `Starting: <b>${esc(PACKAGES[pk].label)}</b>. ATH confirms scope with you before any payment.`;
+      // After a Stripe payment the intake page speaks for the offer that was bought (e.g. ?offer=garden-check).
+      const st = paid && PACKAGES[pk].start;
+      if (st) {
+        const set = (id, v, rich) => { const el = document.getElementById(id); if (el && v) rich ? (el.innerHTML = esc(v).replace(/&lt;br&gt;/g, "<br>")) : (el.textContent = v); };
+        set("start-h1", st.title, true); set("start-lede", st.lede); set("start-body", st.body); set("start-msg", st.msg);
+      }
       if (ack) ack.hidden = !needsAck;
     } else if (pk && pkNote) { pkNote.hidden = false; pkNote.textContent = "That package link is out of date. Tell us what you need and ATH will match it to a current package."; }
     f.addEventListener("submit", async (e) => {

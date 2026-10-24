@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-24.2",
+  "version": "2026-10-24.3",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
@@ -235,6 +235,45 @@
       ]
     }
   ],
+  "garden_check": {
+    "id": "garden-check",
+    "name": "Mansion Garden Check",
+    "price": 20,
+    "price_note": "Founder order 2026-10-24: one-time, low price (\"$10 or $20 or something\"). This one number sets every price shown for the Garden Check, on every page and in catalog.json. Change it here only.",
+    "billing": "one_time",
+    "icon": "gauge",
+    "payment_link": "",
+    "payment_link_note": "Paste the Stripe Payment Link URL (https://buy.stripe.com/...) here. Empty = the site shows 'Book a Garden Check' and takes a booking request; filled = card checkout, and catalog.json marks it LIVE.",
+    "after_payment_url": "https://abovethehilldev.online/start/?offer=garden-check",
+    "minutes": "5–10",
+    "tagline": "Like an oil change for your website: pull in, 5–10 minutes, done.",
+    "summary": "A quick live check of your website on a video call. You watch while we go through it, then we tell you plainly what needs fixing and what doesn't.",
+    "checks": [
+      "Links and buttons that go nowhere",
+      "Speed on a phone and on a computer",
+      "How it looks and works on a phone",
+      "The padlock: security and SSL",
+      "Contact forms",
+      "Booking and checkout buttons",
+      "Your Google listing",
+      "Search basics: titles, descriptions, your name, address and phone",
+      "Broken or missing pages"
+    ],
+    "how": [
+      "Book a time and send your website address",
+      "We meet on Zoom or Google Meet; you watch the whole check",
+      "We go through your site, one area at a time",
+      "You get a plain list: what needs fixing, and what doesn't"
+    ],
+    "privacy": "Your logins stay yours: we never ask for passwords; everything we look at stays private between us; you can watch the whole check live.",
+    "fixes_note": "Fixes are quoted separately, and only if you want them. Nothing is changed on your site during the check.",
+    "monthly": {
+      "name": "Mansion Garden Pass",
+      "note": "Want it every month? The Mansion Garden Pass checks your whole site once a month and fixes what it finds. It is included with Passport Pro ($50 a month)."
+    },
+    "catalog_id": "ath-garden-check",
+    "verified": "2026-10-24"
+  },
   "package_disclosures": [
     "No package silently includes every native platform.",
     "Hosting, domains, app-store fees, paid tools and maintenance are disclosed in your written scope and passed through at cost — never hidden.",

@@ -1,12 +1,13 @@
 {
- "version": "2026-10-24.2",
+ "version": "2026-10-24.3",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
   "NOT_ACTIVE": "named but not deliverable yet",
   "PROPOSED": "a plan, not for sale",
   "LIVE_IN_WM_PRO": "available inside WM Pro",
-  "RETIRED": "no longer sold; orders already placed are honored"
+  "RETIRED": "no longer sold; orders already placed are honored",
+  "BOOKABLE": "book now: ATH confirms a time; card checkout switches on when its payment link is added"
  },
  "offers": [
   {
@@ -28,6 +29,16 @@
    "buy": "https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01",
    "fulfillment": "Same as Quick Start, up to three pages",
    "verified": "2026-10-19"
+  },
+  {
+   "id": "ath-garden-check",
+   "business": "ATH Developments",
+   "name": "Mansion Garden Check (website health check)",
+   "price": "$20 one time",
+   "status": "BOOKABLE",
+   "buy": "https://abovethehilldev.online/garden-check/",
+   "fulfillment": "A 5–10 minute live check of the client's website on Zoom or Google Meet that the client watches: links, speed, mobile, SSL and security, forms, booking and checkout buttons, Google listing, search basics and broken pages, then a plain list of what needs fixing and what does not. Passwords are never asked for. Fixes are quoted separately. Monthly upkeep is the Mansion Garden Pass, included with Passport Pro.",
+   "verified": "2026-10-24"
   },
   {
    "id": "ath-cinematic-launch",
