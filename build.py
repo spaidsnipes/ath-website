@@ -3,7 +3,7 @@
 
 Canon: Visual Canon Atlas v1, slide athWebsiteCanonPass3 (Founder finder doc 2026-10-07).
 Prices: commercial/registry.json (v2026-10-13, Founder Super Max order) — see commercial/RECONCILIATION-2026-10-13.md.
-Lineage (Founder lock 2026-10-07): focused systems start at $10/mo (Wavemotion $10/mo); World Pass $20/mo; WM Pro $20/mo; other specialist systems "plans vary";
+Lineage (Founder lock 2026-10-07): focused systems start at $10/mo (Wavemotion $10/mo); World Pass $20/mo; WM Pro from $10/mo (App $10 · OS $50, corrected 2026-10-23); other specialist systems "plans vary";
 Services show Founder-approved starting prices; WAVEMOTION clips come with its $10/$20/$50/$75 plans (the separate clip-bundle menu was retired by the Founder on 2026-10-22). Nothing on this
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
@@ -143,7 +143,7 @@ RUNGS = [
     ("free", "Free", "Come in", "Free ATH Diagnostic · Public discovery · Guest exploration", "", "/diagnose/"),
     ("door", "$10 / mo", "Focused door", "Focused systems start at $10/mo · Wavemotion $10/mo", "", "/ecosystem/#wavemotion"),
     ("lattice", "$20 / mo", "Join the world", "Passport spine · World Pass membership", "", "/passport/"),
-    ("triangle", "Specialist", "Serious systems", "WealthyMindsets Pro $20/mo · plans vary by system", "", "/ecosystem/#specialist"),
+    ("triangle", "Specialist", "Serious systems", "WealthyMindsets Pro from $10/mo · plans vary by system", "", "/ecosystem/#specialist"),
     ("peaks", "Services", "Build it for me", "Websites from $100 · WAVEMOTION $10–$75 a month · apps from $1,000", "", "/build/#pricing"),
 ]
 
@@ -349,7 +349,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
 <section class="block"><div class="wrap">
  <div class="grid g2">
   <div class="panel panel-pad"><p class="panel-title">$10 opens a focused door. $20 joins the world.</p>
-   <p class="body"><b>Focused systems start at $10/month</b> — one product for one job, like Wavemotion. <b>World Pass at $20/month</b> is one predictable membership across the connected ATH world. Specialist operating systems carry their own plans — WealthyMindsets Pro is $20/month.</p>
+   <p class="body"><b>Focused systems start at $10/month</b> — one product for one job, like Wavemotion. <b>World Pass at $20/month</b> is one predictable membership across the connected ATH world. Specialist operating systems carry their own plans — WealthyMindsets Pro starts at $10/month.</p>
    <p class="panel-title mt2">What $20 is — and isn't</p>
    <p class="body">World Pass is paid ecosystem membership layered on your Passport identity. It does <b>not</b> automatically include every specialist product, professional system, ATH service, third-party cost, or unlimited expensive infrastructure.</p>
    <dl class="hpa mt2"><dt>Identity</dt><dd>≠ membership</dd><dt>Membership</dt><dd>≠ owning every product</dd><dt>Membership</dt><dd>≠ professional infrastructure</dd></dl></div>
@@ -361,7 +361,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
    <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion: the creator + business movement OS. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>Available now in WOW World, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
-   <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro is $20/month: one complete professional trading OS — no Basic/Pro/Pro+ split. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
+   <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro is from $10/month: WM Pro App $10/month, WM Pro OS $50/month, plus a free guest account. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites from $100 (Quick Start) and $200 (Business Growth), WAVEMOTION plans $10–$75 a month with clips included, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
   </ul></div>
 </div></section>""" + cta_block())
@@ -390,7 +390,7 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
    ("eye","Guest","No account","Explore appropriate public experiences without an account. Guest is a legitimate state, not a broken one."),
    ("me","Passport Free","Identity","Persistent identity only where it is actually required — receipts, permissions, ownership proof."),
    ("lattice","World Pass","$20 / month","Ecosystem membership, member access, cross-world benefits, continuity — as actually released."),
-   ("triangle","Specialist Entitlements","Plans vary","WealthyMindsets Pro is $20/month. PowerTribes, Dreamboard and future systems carry their own plans."),
+   ("triangle","Specialist Entitlements","Plans vary","WealthyMindsets Pro is from $10/month (App $10 · OS $50). PowerTribes, Dreamboard and future systems carry their own plans."),
    ("own","Purchases &amp; Ownership","Yours","What you bought and what remains yours, carried by Passport where supported.")])}
  </div>
  <div class="grid g2 mt3" id="benefits">
@@ -602,7 +602,7 @@ pages["/work/"] = ("Inventions & Work — Above the Hill Developments",
  + f"""<section class="block"><div class="wrap"><div class="grid g2">
   {"".join(f'<article class="panel panel-pad card"><span class="tag {c}">{s}</span><h3>{t}</h3><dl class="hpa mt1"><dt>The hill</dt><dd>{h}</dd><dt>The path</dt><dd>{p}</dd><dt>Now</dt><dd>{n}</dd></dl>{l}</article>' for c,s,t,h,p,n,l in [
    ("live","Live","ATHOS Diagnostic","Businesses can't see what's actually stopping them — and most \"audits\" invent certainty.","An evidence-first diagnostic that separates observed, inferred and unknown.","Running on this site.", f'<p class="mt2 mb0">{btn("Run it","/diagnose/","line")}</p>'),
-   ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. $20/month, one complete OS.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
+   ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. From $10/month, free guest account.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
    ("","Open door","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","Plans $10 / $20 / $50 / $75 per month. Cinematic generation is not open.", f'<p class="mt2 mb0">{btn("Open Wavemotion","https://www.wavemotion.live/","line")}</p>'),
    ("dim","In development","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","In development.", ""),
    ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW World; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),

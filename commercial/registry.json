@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-23.2",
+  "version": "2026-10-23.3",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
@@ -77,7 +77,7 @@
         {
           "label": "One month of the World Pass, free ($20 value)",
           "state": "LIVE",
-          "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
+          "note": "After your package is paid, ATH sends you a single-use free-month code; you redeem it on your free WOW Passport at thewow.online/passport. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         }
       ],
       "pay_url": "https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01"
@@ -99,7 +99,7 @@
         {
           "label": "One month of the World Pass, free ($20 value)",
           "state": "LIVE",
-          "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
+          "note": "After your package is paid, ATH sends you a single-use free-month code; you redeem it on your free WOW Passport at thewow.online/passport. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
@@ -126,7 +126,7 @@
         {
           "label": "One month of the World Pass, free ($20 value)",
           "state": "LIVE",
-          "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
+          "note": "After your package is paid, ATH sends you a single-use free-month code; you redeem it on your free WOW Passport at thewow.online/passport. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
@@ -152,7 +152,7 @@
         {
           "label": "One month of the World Pass, free ($20 value)",
           "state": "LIVE",
-          "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
+          "note": "After your package is paid, ATH sends you a single-use free-month code; you redeem it on your free WOW Passport at thewow.online/passport. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
@@ -178,7 +178,7 @@
         {
           "label": "One month of the World Pass, free ($20 value)",
           "state": "LIVE",
-          "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
+          "note": "After your package is paid, ATH sends you a single-use free-month code; you redeem it on your free WOW Passport at thewow.online/passport. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
@@ -204,7 +204,7 @@
         {
           "label": "One month of the World Pass, free ($20 value)",
           "state": "LIVE",
-          "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
+          "note": "After your package is paid, ATH sends you a single-use free-month code; you redeem it on your free WOW Passport at thewow.online/passport. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
@@ -230,7 +230,7 @@
         {
           "label": "One month of the World Pass, free ($20 value)",
           "state": "LIVE",
-          "note": "ATH sends you a free-month code. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
+          "note": "After your package is paid, ATH sends you a single-use free-month code; you redeem it on your free WOW Passport at thewow.online/passport. Card saved at checkout; $20/month starts only if you keep it past day 30. Cancel any time before then and pay nothing."
         },
         {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
