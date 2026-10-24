@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Razor’s Edge Barber Shop — On Route 66 in Tulsa</title>
+<meta name="description" content="Barber shop on Route 66 at 2018 E 11th St, Tulsa. Haircuts and beard trims, Tuesday through Saturday.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d0e;--bg2:#121617;--acc:#3fd8d0;--acc2:#8ff0ea;--hi:#8ff0ea;--text:#eef4f4;--mute:#9fb0b0;
+  --line:color-mix(in srgb,#3fd8d0 32%,transparent);--icobg:color-mix(in srgb,#3fd8d0 14%,transparent);
+  --serif:'Bebas Neue','Oswald',sans-serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--btn:linear-gradient(180deg,#8ff0ea,#3fd8d0);--btntext:#062221;--glow:rgba(63,216,208,.6);
+  --navbg:color-mix(in srgb,#0b0d0e 78%,transparent);--chipbg:color-mix(in srgb,#0b0d0e 60%,transparent);--lede:color-mix(in srgb,#eef4f4 86%,transparent);
+  --ribbon:linear-gradient(90deg,#121617,color-mix(in srgb,#3fd8d0 22%,#121617),#121617);
+  --veil:radial-gradient(90% 70% at 50% 45%,color-mix(in srgb,#0b0d0e 40%,transparent),color-mix(in srgb,#0b0d0e 80%,transparent) 80%),linear-gradient(180deg,transparent 60%,#0b0d0e 99%);
+  --bandbg:radial-gradient(60% 120% at 0% 0%,color-mix(in srgb,#3fd8d0 18%,transparent),transparent 60%),radial-gradient(60% 120% at 100% 100%,color-mix(in srgb,#8ff0ea 12%,transparent),transparent 60%),#121617;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 var(--sans);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.demo{background:var(--ribbon);border-bottom:1px solid var(--line);color:var(--acc2);font-size:12.5px;letter-spacing:.04em;text-align:center;padding:8px 16px}
+.demo b{color:#fff;font-weight:600}
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--navbg);border-bottom:1px solid rgba(255,255,255,.06)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;font:700 18px/1.1 var(--serif);min-width:0}
+.brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.brand .logo{width:42px;height:42px;object-fit:cover;border-radius:50%;border:1px solid var(--line);flex:0 0 42px;background:#fff}
+.navlinks{display:flex;gap:26px;font-size:14px;color:var(--mute)}
+.navlinks a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;font:600 15px/1 var(--sans);padding:15px 24px;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;border:0;cursor:pointer}
+.btn svg{width:18px;height:18px}
+.btn-main{background:var(--btn);color:var(--btntext);box-shadow:0 10px 30px -12px var(--glow)}
+.btn-main:hover{transform:translateY(-2px)}
+.btn-line{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.04)}
+.btn-line:hover{background:rgba(255,255,255,.08)}
+.btn-sm{padding:11px 18px;font-size:14px}
+.hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;isolation:isolate;text-align:center}
+.hero .art{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--veil)}
+.hero .wrap{padding-top:44px;padding-bottom:80px;width:100%}
+.mark{width:clamp(120px,20vw,168px);height:clamp(120px,20vw,168px);object-fit:cover;border-radius:50%;margin:0 auto 24px;display:block;border:3px solid var(--acc);box-shadow:0 0 0 8px rgba(255,255,255,.04),0 20px 60px -20px var(--glow);background:#fff}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--acc2);font:600 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase}
+.eyebrow::before,.eyebrow::after{content:"";width:30px;height:1px;background:var(--acc)}
+h1{font:700 clamp(40px,8vw,96px)/1 var(--serif);letter-spacing:-.01em;margin:20px 0 16px;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+h1 em{font-style:italic;font-weight:500;color:var(--hi)}
+.lede{max-width:640px;margin:0 auto;color:var(--lede);font-size:clamp(16px,2.1vw,19px)}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:24px 0 28px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.16);background:var(--chipbg);backdrop-filter:blur(8px);border-radius:999px;padding:8px 14px;font-size:13.5px;color:var(--text)}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--mute)}
+.chip.open i{background:#6be36b;box-shadow:0 0 0 4px rgba(107,227,107,.18)}
+.cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+section{padding:92px 0}
+.head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:38px;flex-wrap:wrap}
+.num{font:600 12.5px/1 var(--sans);letter-spacing:.28em;color:var(--acc)}
+h2{font:700 clamp(30px,4.8vw,50px)/1.08 var(--serif);margin-top:12px}
+h2 em{font-style:italic;font-weight:500;color:var(--hi)}
+.sub{color:var(--mute);max-width:440px}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:0 auto;max-width:1140px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid3.n4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1100px){.grid3.n4{grid-template-columns:repeat(2,1fr)}}
+.card{position:relative;border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:30px 26px 28px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));overflow:hidden;transition:transform .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);border-color:var(--line)}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:.7}
+.ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--icobg);border:1px solid var(--line);margin-bottom:20px}
+.ico svg{width:26px;height:26px;stroke:var(--acc2)}
+.card h3{font:700 23px/1.15 var(--serif);margin-bottom:10px}
+.card p{color:var(--mute);font-size:15px}
+.card ul{list-style:none;margin-top:16px;display:grid;gap:8px}
+.card li{display:flex;gap:10px;font-size:14.5px;color:var(--text);opacity:.9}
+.card li::before{content:"";flex:0 0 6px;height:6px;border-radius:50%;background:var(--acc);margin-top:9px}
+.band{border:1px solid var(--line);border-radius:26px;padding:44px;display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;background:var(--bandbg)}
+.plans{display:grid;gap:12px}
+.plan{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:18px 20px;background:rgba(0,0,0,.25)}
+.plan b{font:700 19px/1.2 var(--serif)}
+.plan span{color:var(--mute);font-size:14px}
+.tag{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc2);border:1px solid var(--line);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:30px;background:rgba(255,255,255,.04)}
+.panel h3{font:700 22px/1.2 var(--serif);margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+td{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+td:last-child{text-align:right}
+tr.today td{color:var(--acc2);font-weight:600}
+tr.today td:first-child::after{content:" · today";font-weight:400;font-size:12px;letter-spacing:.08em}
+.contact{display:grid;gap:12px}
+.crow{display:flex;align-items:center;gap:14px;padding:16px 18px;border:1px solid rgba(255,255,255,.09);border-radius:16px;transition:border-color .2s,background .2s;min-width:0}
+.crow:hover{border-color:var(--line);background:rgba(255,255,255,.03)}
+.crow svg{width:22px;height:22px;stroke:var(--acc2);flex:0 0 22px}
+.crow div{min-width:0}
+.crow small{display:block;color:var(--mute);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.crow b{font-weight:600;font-size:16px;overflow-wrap:break-word}
+.quote{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
+form{display:grid;gap:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:7px;font-size:13px;color:var(--mute);letter-spacing:.04em}
+input,select,textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:14px;color:var(--text);font:400 16px/1.4 var(--sans);padding:14px 16px;outline:none;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--acc)}
+select option{background:#111}
+textarea{min-height:100px;resize:vertical}
+.fine{color:var(--mute);font-size:13px}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.day,.slot{flex:0 0 auto;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:var(--text);border-radius:14px;cursor:pointer;font:500 14px/1.2 var(--sans)}
+.day{width:64px;padding:10px 0;text-align:center}
+.day b{display:block;font:700 20px/1.1 var(--serif);margin-top:3px}
+.day small{color:var(--mute);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.slot{padding:11px 0}
+.day[aria-pressed=true],.slot[aria-pressed=true]{border-color:var(--acc);background:var(--icobg);color:var(--acc2)}
+.pick{font-size:13px;color:var(--mute);letter-spacing:.04em}
+.bk-links{display:grid;gap:12px}
+.bk-link{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(0,0,0,.2);transition:border-color .2s,transform .2s}
+.bk-link:hover{border-color:var(--acc);transform:translateY(-2px)}
+.bk-link b{display:block;font:700 19px/1.2 var(--serif)}
+.bk-link span{color:var(--mute);font-size:14px}
+.bk-link .arr{color:var(--acc2);font-size:22px}
+.owners{text-align:center;max-width:760px;margin:0 auto}
+.owners p{font:500 clamp(21px,3vw,30px)/1.4 var(--serif)}
+.owners p em{color:var(--hi)}
+.owners .sig{margin-top:22px;color:var(--acc2);letter-spacing:.2em;font-size:13px;text-transform:uppercase}
+footer{border-top:1px solid rgba(255,255,255,.08);padding:40px 0 110px;color:var(--mute);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--acc2)}
+.callbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;gap:10px;padding:10px;border-radius:20px;background:var(--navbg);backdrop-filter:blur(14px);border:1px solid var(--line)}
+.callbar .btn{flex:1;padding:14px 10px}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}*{animation:none!important}}
+@media (max-width:900px){
+  .grid3,.grid3.n4{grid-template-columns:1fr}
+  .band,.visit,.quote{grid-template-columns:1fr}
+  .band{padding:30px 22px}
+  .navlinks{display:none}
+  section{padding:70px 0}
+  .callbar{display:flex}
+}
+@media (max-width:520px){
+  .eyebrow{letter-spacing:.2em;font-size:11px}.eyebrow::before,.eyebrow::after{width:18px}
+  .row2{grid-template-columns:1fr}
+  nav .btn-sm{display:none}
+  .hero{min-height:86vh}
+  .plan{flex-direction:column;align-items:flex-start;gap:10px}
+  .panel{padding:24px 20px}
+}
+h1,h2,.card h3,.plan b,.panel h3,.bk-link b,.day b{font-weight:400!important;letter-spacing:.02em}h1{font-size:clamp(56px,11vw,128px)!important;line-height:.92!important}h2{font-size:clamp(40px,6vw,64px)!important}h1 em,h2 em{font-style:normal}.owners p{font-family:Inter,sans-serif;font-weight:500}.mark{border-radius:24px!important}
+</style>
+</head>
+<body>
+
+<div class="demo">Preview built for <b>Razor’s Edge Barber Shop</b> by <b>Above The Hill</b> · not yet published</div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Razor’s Edge Barber Shop, home"><img class="logo" src="img/logo.jpg" alt=""><span>Razor’s Edge</span></a>
+    <div class="navlinks"><a href="#services">Services</a><a href="#hours">Hours</a><a href="#book">Book</a></div>
+    <a class="btn btn-main btn-sm" href="tel:+19184024906"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>(918) 402-4906</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="art" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="tn" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#3fd8d0" stop-opacity=".18"/><stop offset="1" stop-color="#3fd8d0" stop-opacity="0"/></radialGradient></defs><rect width="1600" height="1000" fill="#0b0d0e"/><g stroke="#ffffff" stroke-opacity=".035" stroke-width="2"><path d="M0 0 H1600"/><path d="M0 44 H1600"/><path d="M0 88 H1600"/><path d="M0 132 H1600"/><path d="M0 176 H1600"/><path d="M0 220 H1600"/><path d="M0 264 H1600"/><path d="M0 308 H1600"/><path d="M0 352 H1600"/><path d="M0 396 H1600"/><path d="M0 440 H1600"/><path d="M0 484 H1600"/><path d="M0 528 H1600"/><path d="M0 572 H1600"/><path d="M0 616 H1600"/><path d="M0 660 H1600"/><path d="M0 704 H1600"/><path d="M0 748 H1600"/><path d="M0 792 H1600"/><path d="M0 836 H1600"/><path d="M0 880 H1600"/><path d="M0 924 H1600"/><path d="M0 968 H1600"/><path d="M0 0 V1000"/><path d="M110 0 V1000"/><path d="M176 0 V1000"/><path d="M286 0 V1000"/><path d="M352 0 V1000"/><path d="M462 0 V1000"/><path d="M528 0 V1000"/><path d="M638 0 V1000"/><path d="M704 0 V1000"/><path d="M814 0 V1000"/><path d="M880 0 V1000"/><path d="M990 0 V1000"/><path d="M1056 0 V1000"/><path d="M1166 0 V1000"/><path d="M1232 0 V1000"/><path d="M1342 0 V1000"/><path d="M1408 0 V1000"/><path d="M1518 0 V1000"/><path d="M1584 0 V1000"/></g><circle cx="800" cy="420" r="460" fill="url(#tn)"/><g transform="translate(1180 520) scale(2.2)" fill="none" stroke="#3fd8d0" stroke-opacity=".28" stroke-width="3"><path d="M0 0 h80 v10 c0 50 -20 80 -40 95 c-20 -15 -40 -45 -40 -95z"/><text x="40" y="62" text-anchor="middle" font-family="Georgia" font-size="34" fill="#3fd8d0" fill-opacity=".35" stroke="none">66</text></g></svg>
+  <div class="wrap">
+    <img class="mark" src="img/logo.jpg" alt="Razor’s Edge Barber Shop logo">
+    <span class="eyebrow">Route 66 · Tulsa</span>
+    <h1>Sharp cuts<br><em>on 11th Street.</em></h1>
+    <p class="lede">The black-and-teal barber shop with the Route 66 shield on the window — 2018 E 11th St, right on the Mother Road.</p>
+    <div class="chips"><span class="chip" id="openchip"><i></i><span>Tue–Sat</span></span><span class="chip">2018 E 11th St</span><span class="chip">On Route 66</span></div>
+    <div class="cta">
+      <a class="btn btn-main" href="#book">Request a chair <span aria-hidden="true">→</span></a>
+      <a class="btn btn-line" href="tel:+19184024906">Call (918) 402-4906</a>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head reveal"><div><span class="num">01 — SERVICES</span><h2>Walk out <em>sharp.</em></h2></div><p class="sub">We fill in the full service list with the shop before this goes live.</p></div>
+    <div class="grid3 n3"><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></div><h3>Haircuts</h3><p>Clean cuts for every head that walks in.</p></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6v4a7 7 0 0 0 14 0V6"/><path d="M9 14c1 1 5 1 6 0"/><path d="M12 17v4"/></svg></div><h3>Beard trims</h3><p>Shape it up between cuts.</p></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>By appointment</h3><p>Request a time below or just call the shop.</p></article></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section>
+  <div class="wrap">
+    <div class="band reveal">
+      <div><span class="num">02 — THE SHOP</span><h2>Right on<br><em>the Mother Road.</em></h2><p class="sub" style="margin-top:14px">Black brick, teal letters, a Route 66 shield on the glass. 1,900+ Facebook check-ins at 2018 E 11th St.</p></div>
+      <div class="plans"><div class="plan"><div><b>2018 E 11th St</b><br><span>On historic Route 66</span></div><span class="tag">Tulsa</span></div><div class="plan"><div><b>Tue–Sat</b><br><span>Closed Sunday &amp; Monday</span></div><span class="tag">Hours</span></div><div class="plan"><div><b>Call or text</b><br><span>(918) 402-4906</span></div><span class="tag">Direct</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="hours">
+  <div class="wrap">
+    <div class="head reveal"><div><span class="num">03 — HOURS &amp; CONTACT</span><h2>Pull up a <em>chair.</em></h2></div></div>
+    <div class="visit">
+      <div class="panel reveal">
+        <h3>Hours</h3>
+        <table id="hourtable"><tr data-d="1"><td>Monday</td><td>Closed</td></tr><tr data-d="2"><td>Tuesday</td><td>10:00 AM – 6:00 PM</td></tr><tr data-d="3"><td>Wednesday</td><td>10:00 AM – 5:00 PM</td></tr><tr data-d="4"><td>Thursday</td><td>10:00 AM – 6:00 PM</td></tr><tr data-d="5"><td>Friday</td><td>10:00 AM – 6:00 PM</td></tr><tr data-d="6"><td>Saturday</td><td>10:00 AM – 4:00 PM</td></tr><tr data-d="0"><td>Sunday</td><td>Closed</td></tr></table>
+        <p class="fine" style="margin-top:14px">Hours as listed publicly. We match them to yours before this goes live.</p>
+      </div>
+      <div class="panel reveal"><h3>Reach us</h3><div class="contact"><a class="crow" href="tel:+19184024906"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><div><small>Call</small><b>(918) 402-4906</b></div></a><a class="crow" href="sms:+19184024906"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div><small>Text</small><b>(918) 402-4906</b></div></a><a class="crow" href="https://maps.google.com/?q=2018+E+11th+St,+Tulsa,+OK+74104" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 22s7-7.4 7-12a7 7 0 1 0-14 0c0 4.6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><small>Find us</small><b>2018 E 11th St, Tulsa, OK 74104</b></div></a><a class="crow" href="https://www.facebook.com/RazorsEdgeBarberShopTulsa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><div><small>Facebook</small><b>Razor’s Edge Barber Shop Tulsa</b></div></a></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="book">
+  <div class="wrap quote">
+    <div class="reveal">
+      <span class="num">04 — BOOK</span>
+      <h2>Request your<br><em>chair time.</em></h2>
+      <p class="sub" style="margin-top:14px">Pick a day and time. It texts the shop your request and they confirm.</p>
+    </div>
+    <form class="panel reveal" id="qform">
+      <span class="pick">1 · Pick a day</span><div class="days" id="days"></div><span class="pick">2 · Pick a time</span><div class="slots" id="slots"></div><span class="pick">3 · Your details</span>
+      <div class="row2"><label>Your name<input name="name" required autocomplete="name"></label><label>Phone<input name="phone" type="tel" required autocomplete="tel"></label></div>
+      
+      <label>What are you getting?<select name="service"><option>Haircut</option><option>Haircut + beard</option><option>Beard trim</option><option>Kids cut</option><option>Not sure yet</option></select></label>
+      <label>Anything else?<textarea name="notes" placeholder="Anything the barber should know…"></textarea></label>
+      <div class="row2"><button class="btn btn-main" type="submit" data-via="sms">Text my request <span aria-hidden="true">→</span></button><a class="btn btn-line" href="tel:+19184024906">Call instead</a></div>
+      <p class="fine" id="pickmsg">Opens your messages app with the details filled in. The shop confirms your time.</p>
+    </form>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section>
+  <div class="wrap owners reveal">
+    <span class="num">05 — RAZOR’S EDGE</span>
+    <p style="margin-top:20px">A Tulsa barber shop on <em>Route 66</em> — 2,200+ people follow along on Facebook.</p>
+    <div class="sig">— Razor’s Edge Barber Shop</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr"></span> Razor’s Edge Barber Shop · Tulsa, Oklahoma</div>
+    <div>Site by <a href="https://abovethehilldev.online" target="_blank" rel="noopener">Above The Hill</a></div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-main" href="tel:+19184024906">Call now</a>
+  <a class="btn btn-line" href="#book">Book</a>
+</div>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){
+  try{
+    const p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+    const d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday), m=(+p.hour%24)*60+(+p.minute);
+    const hrs={"2": [600, 1080], "3": [600, 1020], "4": [600, 1080], "5": [600, 1080], "6": [600, 960]};if(false)return;
+    document.querySelector(`#hourtable tr[data-d="${d}"]`)?.classList.add('today');
+    const h=hrs[d], open=h&&m>=h[0]&&m<h[1], chip=document.getElementById('openchip');
+    chip.classList.toggle('open',!!open);
+    chip.lastElementChild.textContent=open?'Open now':'Closed now';
+  }catch(e){}
+})();
+(function(){
+  const hrs={"2": [10, 18], "3": [10, 17], "4": [10, 18], "5": [10, 18], "6": [10, 16]},pick=true,step=1,kind="appointment request";
+  const D=document.getElementById('days'),S=document.getElementById('slots');let day=null,time=null;
+  const fmt=h=>{const H=Math.floor(h),M=h%1?'30':'00';return `${(H+11)%12+1}:${M} ${H<12?'AM':'PM'}`};
+  if(pick){const now=new Date();
+  for(let i=1,n=0;n<12&&i<21;i++){const d=new Date(now);d.setDate(now.getDate()+i);if(!hrs[d.getDay()])continue;n++;
+    const b=document.createElement('button');b.type='button';b.className='day';b.setAttribute('aria-pressed','false');
+    b.innerHTML=`<small>${d.toLocaleDateString('en-US',{weekday:'short'})}</small><b>${d.getDate()}</b><small>${d.toLocaleDateString('en-US',{month:'short'})}</small>`;
+    b.onclick=()=>{D.querySelectorAll('.day').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');day=d;time=null;drawSlots()};D.appendChild(b);if(n===1)b.click();}}
+  function drawSlots(){S.innerHTML='';const [o,c]=hrs[day.getDay()];for(let h=Math.ceil(o*2)/2;h<=c-step;h+=step){const b=document.createElement('button');b.type='button';b.className='slot';b.textContent=fmt(h);b.setAttribute('aria-pressed','false');b.onclick=()=>{S.querySelectorAll('.slot').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');time=b.textContent};S.appendChild(b)}}
+  let via='sms';document.querySelectorAll('#qform [data-via]').forEach(b=>b.addEventListener('click',()=>via=b.dataset.via));
+  document.getElementById('qform').addEventListener('submit',e=>{e.preventDefault();
+    if(pick&&!time){document.getElementById('pickmsg').textContent='Pick a time first.';S.scrollIntoView({block:'center'});return}
+    const f=new FormData(e.target),when=pick?`${day.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} at ${time}`:'';
+    let body=`New ${kind} from your website\n`+(when?`When: ${when}\n`:'')+`Name: ${f.get('name')}\nPhone: ${f.get('phone')}\n`;
+    for(const [k,v] of f.entries()) if(!['name','phone','service','notes'].includes(k)&&v) body+=`${k[0].toUpperCase()+k.slice(1)}: ${v}\n`;
+    body+=`${f.get('service')}\n${f.get('notes')||''}`;
+    location.href=via==='sms'?`sms:+19184024906?&body=${encodeURIComponent(body)}`:`mailto:?subject=${encodeURIComponent(kind[0].toUpperCase()+kind.slice(1)+(when?' — '+when:''))}&body=${encodeURIComponent(body)}`;});
+})();
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+</script>
+</body>
+</html>
