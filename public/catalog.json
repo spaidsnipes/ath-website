@@ -1,5 +1,5 @@
 {
- "version": "2026-10-23.4",
+ "version": "2026-10-24.1",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
@@ -103,7 +103,7 @@
    "id": "wmp-pro",
    "business": "Wealthy Mindsets Pro",
    "name": "Wealthy Mindsets Pro",
-   "price": "WM Pro App $10/mo · Passport $20/mo (intro: first month $10) · WM Pro OS $50/mo · free guest account",
+   "price": "WM Pro App $10/mo · WM Pro $20/mo (your World Pass when it is the app you pick; intro: first month $10) · WM Pro OS $50/mo · free guest account",
    "status": "LIVE",
    "buy": "https://wealthymindsetspro.com/pricing",
    "fulfillment": "Buy on wealthymindsetspro.com/pricing: create an account, choose a tier, pay with Stripe. Cancel any time with Manage billing. Billing is in live mode (verified Oct 19: /api/billing/tiers).",
@@ -113,7 +113,7 @@
    "id": "wmp-tiers",
    "business": "Wealthy Mindsets Pro",
    "name": "WM Pro tiers",
-   "price": "App $10 · Passport $20 · OS $50 a month",
+   "price": "Free · App $10 · $20 (your World Pass when WM Pro is your pick) · OS $50 a month",
    "status": "LIVE",
    "buy": "https://wealthymindsetspro.com/pricing",
    "fulfillment": "Live tiers on WM Pro's own pricing page.",
@@ -136,7 +136,7 @@
    "price": "$20/month",
    "status": "LIVE",
    "buy": "https://thewow.online/passport",
-   "fulfillment": "Self-serve on WOW OS. Founder rule 2026-10-23: pick any one app at its $20 tier and get the $10 tier of every other app, including apps still to come. App tiers switch on as each app connects.",
+   "fulfillment": "Self-serve on WOW OS. Founder rule (2026-10-23, restated 2026-10-24): the World Pass is the $20 purchase. Pick ONE app at its $20 tier (e.g. WAVEMOTION Creator or WM Pro $20); every other ATH app opens at its $10 tier — WAVEMOTION or WM Pro (whichever you did not pick), WOW OS rooms, WOW Academy, Dreamboard and every app still to come, and WOW World (the future metaverse) when it opens. It never unlocks the $20 or $50 tier of every app, and it is never free. App tiers switch on as each app connects.",
    "verified": "2026-10-19"
   },
   {

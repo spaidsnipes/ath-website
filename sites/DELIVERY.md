@@ -29,10 +29,9 @@ The factory refuses an intake with more pages than its package allows.
 ## 5. Hand off
 Send the live link, what was included, how to ask for changes, and any recurring cost (domain, if any). Record the delivery on the lead in Mission Control.
 
-## Ecosystem extras
-The package pages still label the WAVEMOTION month and the other extras "Not active yet". WAVEMOTION can now grant a complimentary plan, but it has no end date, so don't promise the free month until the grant expires on its own.
+## Ecosystem extras (Founder order 2026-10-24)
+Every package includes the first month of ONE app's $10 tier free, chosen by the buyer. Today the only app with a working free-month code is WAVEMOTION Starter: follow `~/ath-canon-live/recovery/FREE-MONTH-RUNBOOK.md` (issue a WM-XXXX-XXXX code from WAVEMOTION Plans after you confirm the Stripe payment). Issue a Starter code for every package, including Business Growth.
 
-## Free World Pass month (Business Growth and every package from $500)
-1. Sign in at thewow.online as the Founder, open Passport, press **Make ATH free-month code**.
-2. Send the buyer the link it shows: `https://thewow.online/passport?trial=ATH-XXXX-XXXX`. One code per buyer; it works once.
-3. They create a free Passport, save a card, and get 30 days free. It becomes $20/month only if they keep it; cancelling any time before day 30 costs nothing.
+The buyer may instead step up to the $20 World Pass. That is a purchase they make on WOW OS (thewow.online/passport): one app at its $20 tier plus the $10 tier of every other app. Never tell a buyer the World Pass is free and never say it unlocks the $20/$50 tier of every app.
+
+The WOW "Make ATH free-month code" (30-day World Pass trial) still exists in WOW OS code, but the site no longer offers it. Do not send it unless the Founder rules otherwise.

@@ -3,7 +3,7 @@
 
 Canon: Visual Canon Atlas v1, slide athWebsiteCanonPass3 (Founder finder doc 2026-10-07).
 Prices: commercial/registry.json (v2026-10-13, Founder Super Max order) — see commercial/RECONCILIATION-2026-10-13.md.
-Lineage (Founder lock 2026-10-07): focused systems start at $10/mo (Wavemotion $10/mo); World Pass $20/mo; WM Pro from $10/mo (App $10 · OS $50, corrected 2026-10-23); other specialist systems "plans vary";
+Lineage (Founder lock 2026-10-07): focused systems start at $10/mo (Wavemotion $10/mo); World Pass = the $20 purchase (one app at $20 + $10 tier of every other app, Founder 2026-10-24); WM Pro free / $10 / $20 / OS $50; other specialist systems "plans vary";
 Services show Founder-approved starting prices; WAVEMOTION clips come with its $10/$20/$50/$75 plans (the separate clip-bundle menu was retired by the Founder on 2026-10-22). Nothing on this
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
@@ -142,7 +142,7 @@ def btn(label, href, kind="gold", attrs=""):
 RUNGS = [
     ("free", "Free", "Come in", "Free ATH Diagnostic · Public discovery · Guest exploration", "", "/diagnose/"),
     ("door", "$10 / mo", "Focused door", "Focused systems start at $10/mo · Wavemotion $10/mo", "", "/ecosystem/#wavemotion"),
-    ("lattice", "$20 / mo", "Join the world", "World Pass: one app at its $20 tier, every other app at $10", "", "/passport/"),
+    ("lattice", "$20 / mo", "Join the world", "World Pass: your pick of one app at $20 + the $10 tier of every other app", "", "/passport/#world-pass-value"),
     ("triangle", "Specialist", "Serious systems", "WealthyMindsets Pro from $10/mo · plans vary by system", "", "/ecosystem/#specialist"),
     ("peaks", "Services", "Build it for me", "Websites from $100 · WAVEMOTION $10–$75 a month · apps from $1,000", "", "/build/#pricing"),
 ]
@@ -209,6 +209,7 @@ def pkg_cards():
    {ic(p['icon'])}<h3 id="pkg-{p['id']}">{p['name']}</h3><p class="pkg-price">{money(p['price'])} <span>one time</span></p><p class="body">{html.escape(p['summary'])}</p>
    <p class="eyebrow mb0">Included</p><ul class="pkg-list">{inc}</ul>
    {f'<p class="eyebrow mb0">Ecosystem extras</p><ul class="pkg-list pkg-eco">{eco}</ul>' if eco else ''}
+   <p class="note pkg-step"><b>{html.escape(STEP["label"])}.</b> {html.escape(STEP["note"])} <a class="gold" href="{STEP["href"]}">What it gets you</a></p>
    <div class="ctas mt1">{btn(f"Pay {money(p['price'])} — start now", p['pay_url'], attrs='rel="noopener"') if p.get('pay_url') else ''}{btn("Ask a question first", f"/contact/?intent=services&amp;package={p['id']}", "line")}</div>
    {'<p class="note mb0">Secure card checkout by Stripe. ATH emails your intake form after your payment.</p>' if p.get('pay_url') else ''}</article>''')
     return "".join(out)
@@ -226,9 +227,37 @@ def catalog_js():
     data = {"version": REG["version"], "payment": REG["payment"]["state"], "packages": m, "disclosures": REG["package_disclosures"]}
     return '<script type="application/json" id="ath-catalog">' + json.dumps(data).replace("</", "<\\/") + "</script>"
 
-# World Pass rule (Founder ruling, 2026-10-23): one $20 pass on WOW OS; one app at its $20 tier, every other app at $10.
-WP_RULE = "One $20 World Pass: pick any one app at its $20 tier — WAVEMOTION, WealthyMindsets Pro and more — and get the $10 tier of every other app, including apps still to come."
+# World Pass rule (Founder ruling 2026-10-23, restated as final 2026-10-24). The World Pass is NOT free and NOT an add-on:
+# it IS the $20 purchase. You pick ONE app at its $20 tier; every other ATH app opens at its $10 tier, future apps included.
+# Never say "World Pass free"; never say one pass unlocks the $20/$50 tier of every app.
+WP_RULE = "The $20 World Pass is one $20 purchase: pick any one app at its $20 tier — WAVEMOTION, WealthyMindsets Pro and more — and get the $10 tier of every other app, including apps still to come."
 WP_NOTE = "App tiers switch on as each app connects."
+WP_SHORT = "$20: your pick of one app at $20, plus the $10 tier of every other app."
+CHECK = '<svg class="vs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 12.5 4 4 8-9"/></svg>'
+STEP = REG["package_step_up"]
+def wp_value(head=True, eyebrow="World Pass · $20 a month"):
+    """The one "What the $20 World Pass gets you" block, reused on /, /path/, /passport/, /offer/ and /build/."""
+    gets = [
+     ("Wealthy Mindsets Pro", "App tier, $10", "If WAVEMOTION is your pick"),
+     ("WAVEMOTION", "Starter, $10 · 40 clips a month", "If WM Pro is your pick"),
+     ("WOW OS rooms", "Lounge, TV, Music, Radio, Shop", "Every member"),
+     ("WOW Academy", "Classes and tracks", "Every member"),
+     ("Dreamboard", "When it opens", "Every member"),
+     ("Every new ATH app", "At its $10 tier, as it launches", "Every member"),
+     ("WOW World", "The future metaverse, when it opens", "Every member"),
+    ]
+    rows = "".join(f'<li class="wpv-row">{CHECK}<div><b>{n}</b><span>{d}</span></div><em>{w}</em></li>' for n, d, w in gets)
+    return f"""<section class="block wpv" id="world-pass-value" aria-labelledby="wpv-h"><div class="wrap"><div class="panel wpv-panel">
+ {f'<p class="eyebrow">{eyebrow}</p><h2 class="display d-m mt1" id="wpv-h">What the $20 World Pass<br>gets you</h2>' if head else '<h2 class="sr-only" id="wpv-h">What the $20 World Pass gets you</h2>'}
+ <p class="lede wpv-lede">One $20 purchase opens the whole ATH ecosystem, and it gets bigger every time ATH ships a new app.</p>
+ <div class="wpv-grid">
+  <div class="wpv-step"><span class="wpv-n">1</span><p class="wpv-t">Pick your app at $20</p><p class="wpv-d">Choose the one app you use most and get its full $20 tier: <b>WAVEMOTION Creator</b> (80 clips a month) or <b>WealthyMindsets Pro $20</b>, with more apps to choose from as they launch.</p></div>
+  <div class="wpv-step"><span class="wpv-n">2</span><p class="wpv-t">Get the $10 tier of everything else</p><ul class="wpv-list">{rows}</ul></div>
+  <div class="wpv-step"><span class="wpv-n">3</span><p class="wpv-t">It keeps growing</p><p class="wpv-d">At today's list prices that is <b>$30 of app tiers for $20</b>: your $20 app plus the other app's $10 tier. Each new ATH app, Dreamboard first, joins your pass at its $10 tier without raising your price.</p></div>
+ </div>
+ <p class="note wpv-fine">The World Pass is a paid plan, $20 a month, cancel any time. It is never free; your Passport identity is what's free. It gives the $20 tier of the one app you pick, not the $20 or $50 tier of every app. ATH services and third-party costs stay separate. {WP_NOTE}</p>
+ <div class="ctas mt1">{btn("Get the World Pass", "https://thewow.online/passport", attrs='rel="noopener"')}{btn("Get your free Passport first", "https://thewow.online/passport/claim", "line", 'rel="noopener"')}</div>
+</div></div></section>"""
 # ---------------------------------------------------------------- capability map (SP-055 / R41, 2026-10-23)
 # Founder: "do everything a content platform does, plus everything else, cheaper — it's about presentation."
 # One grouped "what we do" map. Every card names the ATH owner (Founder ownership order, 2026-10-21: no new
@@ -403,11 +432,12 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
  {pkg_ladder()}
  <p class="note mt2">Quick Start and Business Growth are paid by card. Everything above them starts with a written scope, and that scope sets the real number before anything is charged.</p>
 </div></section>
+""" + wp_value() + f"""
 <section class="block"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">Inventions</p><h2 class="display d-m mt1">Built by ATH</h2></div>{btn("All inventions", "/work/", "line")}</div>
  <div class="grid g3">
   <article class="panel panel-pad card"><span class="tag live">Live today</span><h3>ATHOS Diagnostic</h3><p>The free hill-finder on this site. Inspects public evidence, separates what it observed from what it inferred, and says "unknown" when it doesn't know.</p><p class="mt2">{btn("Run it", "/diagnose/", "line")}</p></article>
-  <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. Start with a free guest account. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
+  <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. Free guest account, then $10, $20 or $50 a month. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
   <article class="panel panel-pad card"><span class="tag live">Open door</span><h3>Wavemotion</h3><p>Creator + business movement OS — record, prepare, launch, distribute, learn. One permanent Living Destination. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month.</p><p class="mt2">{btn("Open Wavemotion", "https://www.wavemotion.live/", "line")}</p></article>
  </div>
 </div></section>
@@ -487,9 +517,9 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
 <section class="block"><div class="wrap">
  <div class="grid g2">
   <div class="panel panel-pad"><p class="panel-title">$10 opens a focused door. $20 joins the world.</p>
-   <p class="body"><b>Focused systems start at $10/month</b> — one product for one job, like Wavemotion. <b>World Pass at $20/month</b>: pick any one app at its $20 tier and get the $10 tier of every other app, including apps still to come. {WP_NOTE} Specialist operating systems carry their own plans — WealthyMindsets Pro starts at $10/month.</p>
+   <p class="body"><b>Focused systems start at $10/month</b> — one product for one job, like Wavemotion. <b>World Pass at $20/month</b>: pick any one app at its $20 tier and get the $10 tier of every other app, including apps still to come. {WP_NOTE} Specialist operating systems carry their own plans — WealthyMindsets Pro is free to start, then $10, $20 or $50 a month.</p>
    <p class="panel-title mt2">What $20 is — and isn't</p>
-   <p class="body">World Pass is layered on your Passport identity: one app at its $20 tier, every other app at its $10 tier. It does <b>not</b> include higher app tiers, ATH services, third-party costs, or unlimited expensive infrastructure.</p>
+   <p class="body">The World Pass is the $20 purchase itself, carried on your free Passport: one app at its $20 tier, every other app at its $10 tier. It is never free, and it does <b>not</b> unlock the $20 or $50 tier of every app, ATH services, third-party costs, or unlimited expensive infrastructure.</p>
    <dl class="hpa mt2"><dt>Identity</dt><dd>≠ membership</dd><dt>Membership</dt><dd>≠ owning every product</dd><dt>Membership</dt><dd>≠ professional infrastructure</dd></dl></div>
   <div class="panel panel-pad"><p class="panel-title">No surprise costs</p>
    <p class="body">Some things cost real money to run — market data, heavy AI compute, video/image/audio generation, mass messaging, unusual storage or bandwidth. We handle those with included allowances, bring-your-own credentials where lawful, add-ons or pass-through costs. Never hidden behind "unlimited".</p></div>
@@ -499,10 +529,10 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
    <li>{ic("door","icon-sm")}<div><b>Focused systems — from $10 / month</b><span>Wavemotion: the creator + business movement OS. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>{WP_RULE} {WP_NOTE} Available now on WOW OS, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
-   <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro is from $10/month: WM Pro App $10/month, WM Pro OS $50/month, plus a free guest account. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
+   <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro: a free guest account, WM Pro App $10/month, WM Pro $20/month (your World Pass when WM Pro is your pick) and WM Pro OS $50/month. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites from $100 (Quick Start) and $200 (Business Growth), WAVEMOTION plans $10–$75 a month with clips included, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
   </ul></div>
-</div></section>""" + cta_block())
+</div></section>""" + wp_value() + cta_block())
 
 pages["/passport/"] = ("Passport & World Pass — Identity first. Membership second.",
  "Passport is not a subscription card. It is the spine. World Pass is the paid relationship layered on the world.",
@@ -528,14 +558,14 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
    ("eye","Guest","No account","Explore appropriate public experiences without an account. Guest is a legitimate state, not a broken one."),
    ("me","Passport Free","Identity","Persistent identity only where it is actually required — receipts, permissions, ownership proof."),
    ("lattice","World Pass","$20 / month",WP_RULE + " " + WP_NOTE),
-   ("triangle","Specialist Entitlements","Plans vary","WealthyMindsets Pro is from $10/month (App $10 · OS $50). PowerTribes, Dreamboard and future systems carry their own plans."),
+   ("triangle","Specialist Entitlements","Plans vary","WealthyMindsets Pro: free guest, App $10, $20 (your World Pass if it's your pick), OS $50. Higher tiers such as WM Pro OS are bought on their own. PowerTribes, Dreamboard and future systems carry their own plans."),
    ("own","Purchases &amp; Ownership","Yours","What you bought and what remains yours, carried by Passport where supported.")])}
  </div>
  <div class="grid g2 mt3" id="benefits">
   <div class="panel panel-pad"><p class="panel-title">If a member cancels</p><p class="body mb0">The person doesn't stop existing. Identity, lawful ownership, receipts and applicable durable rights persist. Membership-only benefits end.</p></div>
-  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free and World Pass is $20/month — both live on WOW OS today, with a real Stripe checkout and cancel any time.</p><p class="body">{WP_RULE} {WP_NOTE}</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
+  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free. The World Pass is $20/month. Both are live on WOW OS today, with a real Stripe checkout, and you can cancel any time.</p><p class="body">{WP_RULE} {WP_NOTE}</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
  </div>
-</div></section>""")
+</div></section>""" + wp_value(eyebrow="The paid relationship"))
 
 pages["/build/"] = ("ATH Services — You need the right path",
  "ATH diagnoses before prescribing — for local businesses, creators, teams, churches, startups, and people with only an idea.",
@@ -589,6 +619,7 @@ pages["/build/"] = ("ATH Services — You need the right path",
   </div>
   <p class="note mt2">“From” prices are starting points for a defined scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden. Catalog version {REG["version"]}.</p>
  </section>
+</div></section>""" + wp_value() + f"""<section class="block"><div class="wrap">
  <div class="panel panel-pad mt3"><p class="panel-title">How an engagement works</p>
   <div class="grid g5" style="gap:0">
    {"".join(f'<div style="padding:12px 10px;border-left:1px solid var(--gold-faint)"><p class="eyebrow mb0">0{n}</p><p class="h-serif" style="font-size:22px;margin-top:6px">{t}</p><p class="note">{d}</p></div>' for n,t,d in [
@@ -609,7 +640,6 @@ pages["/build/"] = ("ATH Services — You need the right path",
 # "Here's everything you get", from the registry only: no countdown, no invented values, no "today only".
 # A dollar value appears only where the registry itself states one; extras that are not switched on are
 # listed apart and not counted.
-CHECK = '<svg class="vs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 12.5 4 4 8-9"/></svg>'
 def vs_line(label, note="", dim=False):
     m = re.search(r"\s*\((\$\d+) value\)", label)
     val = f'<span class="vs-val">{m.group(1)} value</span>' if m else ""
@@ -624,6 +654,7 @@ def offer_stack(p):
  <p class="vs-sec">Your website</p><ul class="vs-list">{"".join(vs_line(i) for i in p["includes"])}</ul>
  <p class="vs-sec">Set up with you</p><ul class="vs-list">{"".join(vs_line(e["label"], e["note"]) for e in live)}</ul>
  {f'<p class="vs-sec vs-sec-dim">Not counted: not switched on yet</p><ul class="vs-list">{"".join(vs_line(e["label"], e["note"], True) for e in off)}</ul>' if off else ""}
+ <p class="vs-sec">Or step up</p><p class="vs-step"><b>{html.escape(STEP["label"])}.</b> {html.escape(STEP["note"])} <a class="gold" href="{STEP["href"]}">What it gets you</a></p>
  <footer class="vs-foot"><div><p class="vs-price">{money(p["price"])}</p><p class="note mb0">one time · no monthly fee · no contract</p></div>
   <div class="ctas" style="margin:0">{btn(f"Pay {money(p['price'])} by card", p["pay_url"], attrs='rel="noopener"')}{btn("Ask a question first", f"/contact/?intent=services&amp;package={p['id']}", "line")}</div></footer>
 </article>'''
@@ -642,7 +673,7 @@ pages["/offer/"] = ("Here's everything you get — ATH website packages",
 <section class="block" style="padding-top:48px"><div class="wrap">
  <div class="vs-grid">{"".join(offer_stack(p) for p in sorted([x for x in PKG if x.get("pay_url")], key=lambda x: not x.get("featured")))}</div>
  <p class="note mt2" style="text-align:center">Secure card checkout by Stripe. ATH emails your intake form after your payment. The price above is the price: no countdown and no “today only”.</p>
-</div></section>
+</div></section>""" + wp_value(eyebrow="Your free month, or the whole ecosystem") + f"""
 <section class="block" id="how"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">How delivery works</p><h2 class="display d-m mt1">Pay, tell us,<br>approve, go live</h2></div>{btn("See sample sites", "/sites/", "line")}</div>
  <ol class="steps">{"".join(f'<li><span class="st-n">0{n}</span><b>{t}</b><span>{d}</span></li>' for n, t, d in [
@@ -670,9 +701,9 @@ ECO = [
  ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW OS.", ("Get Passport", "https://thewow.online/passport/claim")),
  ("World Pass", "On WOW OS · $20/mo", "live", "Open door", WP_RULE + " " + WP_NOTE + " Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
  ("Wavemotion", "Creator + Business Movement OS", "live", "Open door", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Visit Wavemotion", "https://wavemotion.live/")),
- ("WM Pro", "Wealthy Mindsets Pro · from $10/mo", "", "Open door", "App $10/mo · OS $50/mo · free guest account. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
+ ("WM Pro", "Wealthy Mindsets Pro · free to start", "", "Open door", "Free guest account · App $10/mo · $20/mo (your World Pass if it's your pick) · OS $50/mo. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
  ("PowerTribes", "Business · sales · workforce · leadership OS", "dim", "In development", "Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=powertribes")),
- ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=dreamboard")),
+ ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Not yet priced; when it opens, World Pass members get its $10 tier.", ("Request access", "/contact/?intent=dreamboard")),
  ("WOW OS", "The operating system · Guest welcome", "live", "Open door", "One home, many rooms — Lounge, Academy (Idea Library, Visual Learns, Student of the Game), Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://thewow.online/")),
  ("WOW TV · WOW Radio", "Watch · Listen", "live", "Open door", "Viewer and listener destinations — separate rooms in WOW OS.", ("Enter", "https://thewow.online/wow-tv")),
  ("Lounge · Academy · Shop", "Connect · Learn · Own", "live", "Open door", "Community, learning and commerce places, entered from WOW OS.", ("Enter", "https://thewow.online/lounge")),
@@ -810,11 +841,11 @@ pages["/work/"] = ("Inventions & Work — Above the Hill Developments",
  + f"""<section class="block"><div class="wrap"><div class="grid g2">
   {"".join(f'<article class="panel panel-pad card"><span class="tag {c}">{s}</span><h3>{t}</h3><dl class="hpa mt1"><dt>The hill</dt><dd>{h}</dd><dt>The path</dt><dd>{p}</dd><dt>Now</dt><dd>{n}</dd></dl>{l}</article>' for c,s,t,h,p,n,l in [
    ("live","Live","ATHOS Diagnostic","Businesses can't see what's actually stopping them — and most \"audits\" invent certainty.","An evidence-first diagnostic that separates observed, inferred and unknown.","Running on this site.", f'<p class="mt2 mb0">{btn("Run it","/diagnose/","line")}</p>'),
-   ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. From $10/month, free guest account.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
+   ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. Free guest account, then App $10, $20 (your World Pass if it's your pick) or OS $50 a month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
    ("","Open door","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","Plans $10 / $20 / $50 / $75 per month. Cinematic generation is not open.", f'<p class="mt2 mb0">{btn("Open Wavemotion","https://www.wavemotion.live/","line")}</p>'),
    ("dim","In development","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","In development.", ""),
    ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW OS; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),
-   ("","Open door","WOW OS","Products feel like islands.","A connected world of destinations under one builder.","Open at thewow.online — guests welcome, free Passport, World Pass $20/month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/" rel="noopener">Enter {ARR}</a></p>')])}
+   ("","Open door","WOW OS","Products feel like islands.","A connected world of destinations under one builder.","Open at thewow.online — guests welcome, free Passport. The $20 World Pass: one app at $20 plus the $10 tier of every other app.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/" rel="noopener">Enter {ARR}</a></p>')])}
  </div>
  <p class="note mt2">No client logos, testimonials or results are shown until they are real and approved.</p>
 </div></section>""" + cta_block())
@@ -834,7 +865,7 @@ pages["/company/"] = ("Company — Above the Hill Developments",
   <li>{ic("eye","icon-sm")}<div><b>ATHOS</b><span>Intelligence — diagnosis, evidence, routing.</span></div></li>
   <li>{ic("doc","icon-sm")}<div><b>Atlas</b><span>Memory — provenance, decisions, lessons.</span></div></li>
   <li>{ic("me","icon-sm")}<div><b>Passport</b><span>Identity, permissions, ownership, continuity.</span></div></li>
-  <li>{ic("lattice","icon-sm")}<div><b>World Pass</b><span>$20: one app at its $20 tier, every other app at $10.</span></div></li>
+  <li>{ic("lattice","icon-sm")}<div><b>World Pass</b><span>{WP_SHORT}</span></div></li>
   <li>{ic("door","icon-sm")}<div><b>Destinations</b><span>Wavemotion, WM Pro, PowerTribes, Dreamboard, WOW OS and more — each owns its own experience.</span></div></li></ul></div>
 </div></section>""" + cta_block())
 
@@ -933,7 +964,7 @@ if _g:
   <p class="lede">Real products from the ATH Store, checkout by Shopify. Prices shown are from {_g[1]}; your cart shows the current price and shipping before you pay. Order early: shipping times vary by item.</p>
   <div class="ctas mt2">{btn("Browse all in WOW Marketplace", "https://thewow.online/marketplace")}{btn("Gift a business a website", "/free-look/", "line")}</div></div></section>""" + _g[0] + f"""
 <section class="block"><div class="wrap"><div class="panel panel-pad"><p class="eyebrow">For the business owner on your list</p><h2 class="display d-m mt1">Get them found before the holiday rush</h2>
-  <p class="body">A mobile website for their business, <b>$100 one time</b>. Up to 3 pages, linked to the booking or ordering they already use, is $200 and comes with a free month of World Pass. Order early for the holidays: ATH confirms the go-live date when their info arrives.</p>
+  <p class="body">A mobile website for their business, <b>$100 one time</b>. Up to 3 pages, linked to the booking or ordering they already use, is $200. Both come with the first month of one app's $10 tier free. Order early for the holidays: ATH confirms the go-live date when their info arrives.</p>
   <div class="ctas mt1">{btn("Get a free look", "/free-look/")}{btn("See sample sites", "/sites/", "line")}</div></div></div></section>""")
 
 pages["/start/"] = ("Start your build — ATH intake",
@@ -982,7 +1013,7 @@ pages["/terms/"] = ("Terms — Above the Hill Developments", "Ownership, diagnos
 <li>ATH owns ATH intellectual property — including ATHOS, its methods, the ATH Builder Dictionary, product designs and inventions. Purchasing the Dictionary or any product licenses its use; it does not transfer ownership of ATH inventions.</li></ul>
 <h2>Deep diagnostics and services</h2><p>Deeper inspection happens only under a written scope you approve, with access you grant and may revoke. Default posture is read-only; ATH does not modify your systems during a diagnostic. Services are delivered under a separate scope and quote.</p>
 <h2>Website and app packages</h2><p>Package prices are listed on the <a class="gold" href="/build/#pricing">Build page</a>. Submitting a package request creates no charge and no obligation. ATH replies with a written scope and an invoice; work begins only after you approve the scope and pay. Timeline, revisions, ownership terms, third-party costs and refund terms are stated in that written scope. Ecosystem extras described as “not active yet” are delivered only once that product is operational, and no subscription renews without your separate consent.</p>
-<h2>Prices and availability</h2><p>Only products marked available can be bought. Waitlists and access requests create no obligation for either side. World Pass includes one app at its $20 tier and every other app at its $10 tier, switched on as each app connects; it does not include higher app tiers, ATH services or third-party costs unless stated in writing.</p>
+<h2>Prices and availability</h2><p>Only products marked available can be bought. Waitlists and access requests create no obligation for either side. The World Pass is a paid $20-a-month plan: it includes the $20 tier of one app you choose and the $10 tier of every other app, switched on as each app connects; it does not include the $20 or $50 tier of every app, ATH services or third-party costs unless stated in writing.</p>
 <h2>Contact</h2><p>Questions: use the <a class="gold" href="/contact/">contact form</a>.</p>
 </div></section>""")
 
