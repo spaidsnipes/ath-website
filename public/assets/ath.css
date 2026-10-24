@@ -473,3 +473,21 @@ input:focus,textarea:focus,select:focus{border-color:var(--gold-hi);outline:none
 .vs-step{border-top:0;padding-top:0;margin-top:4px}
 @media (max-width:960px){.wpv-grid{grid-template-columns:1fr}}
 @media (max-width:480px){.wpv-row{grid-template-columns:auto minmax(0,1fr)}.wpv-row em{grid-column:2;text-align:left;max-width:none;margin-top:0}}
+/* Ladder tiers inside the World Pass block (Founder corrections 2026-10-24) */
+.wpv-grid{grid-template-columns:minmax(0,.9fr) minmax(0,.9fr) minmax(0,1.3fr)}
+.wpv-tier{position:relative;border:1px solid var(--gold-faint);border-radius:16px;padding:22px 20px;background:rgba(201,164,92,.035);min-width:0}
+.wpv-feature{border-color:rgba(230,200,138,.75);background:linear-gradient(165deg,rgba(201,164,92,.16),rgba(10,10,12,.6) 55%);box-shadow:0 0 0 1px rgba(230,200,138,.25) inset,0 24px 70px rgba(201,164,92,.12)}
+.wpv-badge{position:absolute;top:-11px;left:20px;font:600 10.5px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#14110a;background:linear-gradient(90deg,var(--gold-hi),var(--gold));padding:6px 10px;border-radius:999px}
+.wpv-price{font:500 clamp(30px,3.2vw,40px)/1 var(--display);color:var(--gold-hi);margin:4px 0 6px}
+.wpv-price span{font:400 13px/1 var(--sans);color:var(--ivory-mute);letter-spacing:0}
+.wpv-tier .wpv-t{margin-top:2px}
+.wpv-tier .wpv-d{margin-bottom:10px}
+.wpv-tier .wpv-row{grid-template-columns:auto minmax(0,1fr)}
+.wpv-math{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--gold-line);font-size:14.5px;line-height:1.5;color:var(--ivory-dim)}
+.wpv-math b{color:var(--gold-hi);font-weight:500}
+@media (max-width:960px){.wpv-grid{grid-template-columns:1fr}.wpv-feature{order:-1}}
+/* Founder 2026-10-24: on phones the ladder says what each step gets you (stacked rungs show their line). */
+@media (max-width:620px){
+  .ladder .rung .d{display:block;grid-column:2;font-size:12.5px;margin-top:2px}
+  .ladder .rung .icon{grid-row:1 / span 4;align-self:start;margin-top:4px}
+}

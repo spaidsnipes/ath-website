@@ -104,7 +104,7 @@
     <h2 class="panel-title mt3">Choose how to cross it</h2>
     <div class="doors">
       ${door("diy", "Do it myself", "Use these findings with your own team and tools. The Builder Dictionary helps you and your AI speak precisely.", "/language/")}
-      ${door("world", "Join the world", "Passport identity and World Pass membership — the connected ATH ecosystem.", "/passport/")}
+      ${door("world", "Open the ecosystem", "A free Passport to come in, or the $20 World Pass: Premium of the app you choose and Basic of every other ATH app.", "/passport/#world-pass-value")}
       ${door("build", "Build it for me", "ATH scopes, quotes and implements. This diagnosis travels with your request.", leadHref)}
     </div>
     <p class="note mt2">Need more depth? <a class="gold" href="/diagnose/deep/">Deep diagnostic — open the hood</a>. Visual elements on this page are a metaphor; only items labelled Evidence are observations.</p>

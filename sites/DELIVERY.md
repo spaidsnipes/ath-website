@@ -29,9 +29,10 @@ The factory refuses an intake with more pages than its package allows.
 ## 5. Hand off
 Send the live link, what was included, how to ask for changes, and any recurring cost (domain, if any). Record the delivery on the lead in Mission Control.
 
-## Ecosystem extras (Founder order 2026-10-24)
-Every package includes the first month of ONE app's $10 tier free, chosen by the buyer. Today the only app with a working free-month code is WAVEMOTION Starter: follow `~/ath-canon-live/recovery/FREE-MONTH-RUNBOOK.md` (issue a WM-XXXX-XXXX code from WAVEMOTION Plans after you confirm the Stripe payment). Issue a Starter code for every package, including Business Growth.
-
-The buyer may instead step up to the $20 World Pass. That is a purchase they make on WOW OS (thewow.online/passport): one app at its $20 tier plus the $10 tier of every other app. Never tell a buyer the World Pass is free and never say it unlocks the $20/$50 tier of every app.
-
-The WOW "Make ATH free-month code" (30-day World Pass trial) still exists in WOW OS code, but the site no longer offers it. Do not send it unless the Founder rules otherwise.
+## Ecosystem extras (Founder corrections 2026-10-24)
+- **Quick Start ($100):** a free month of ONE app's Basic tier, the buyer chooses. Today only WAVEMOTION has a code: issue a Starter code from WAVEMOTION Plans after you confirm the Stripe payment (`~/ath-canon-live/recovery/FREE-MONTH-RUNBOOK.md`).
+- **Business Growth ($200) and every package from $500:** a free month of the $20 World Pass, the whole ecosystem.
+  1. Sign in at thewow.online as the Founder, open Passport, press **Make ATH World Pass month code**.
+  2. Send the buyer `https://thewow.online/passport?trial=ATH-XXXX-XXXX`. One code per buyer; it works once. Their card is saved at checkout; $20 a month starts only if they keep it after the month.
+  3. If WAVEMOTION is their chosen Premium app, also issue a WAVEMOTION **Creator** code (Plans → "Business Growth $200 → Creator month"), because the World Pass does not switch on WAVEMOTION plans yet.
+- Words to use: Free Passport · Basic · Premium · World Pass. Never "trial", never "$10 tier"/"$20 tier", no founding discounts.

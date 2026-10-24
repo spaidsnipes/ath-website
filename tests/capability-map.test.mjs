@@ -9,7 +9,7 @@ const read = (r) => readFileSync(PUB + r, 'utf8');
 const reg = JSON.parse(readFileSync(new URL('../commercial/registry.json', import.meta.url), 'utf8'));
 const files = (d) => readdirSync(d).flatMap((n) => { const p = join(d, n); return statSync(p).isDirectory() ? files(p) : /\.(html|json|js)$/.test(n) ? [p] : []; });
 const home = read('index.html'), eco = read('ecosystem/index.html'), offer = read('offer/index.html');
-const OWNERS = /^(ATH|ATH Web Studio|ATH Commerce|WAVEMOTION|ATHOS|Atlas|SPADE Business|PowerTribes|WOW OS|Wealthy Mindsets Pro)$/;
+const OWNERS = /^(ATH|ATH Web Studio|ATH Commerce|WAVEMOTION|ATHOS|Atlas|SPAID Business|PowerTribes|WOW OS|Wealthy Mindsets Pro)$/;
 const cards = [...eco.matchAll(/<article class="cap" data-cap="([^"]+)" data-status="(\w+)">([\s\S]*?)<\/article>/g)].map((m) => ({ name: m[1], st: m[2], html: m[3] }));
 
 test('the full map: every capability has an owner, an honest status, a price or quote, and a real next step', () => {
@@ -84,10 +84,10 @@ test('every sample site carries a pinned SAMPLE ribbon', () => {
   }
 });
 
-test('World Pass rule (Founder, 2026-10-23) is stated with its honest switch-on line, and the capacity note stays off', () => {
+test('World Pass rule (Founder, 2026-10-23, corrected 10-24) is stated with its honest switch-on line, and the capacity note stays off', () => {
   for (const r of ['ecosystem/index.html', 'passport/index.html', 'path/index.html']) {
     const s = read(r);
-    assert.match(s, /pick any one app at its \$20 tier — WAVEMOTION, WealthyMindsets Pro and more — and get the \$10 tier of every other app, including apps still to come/, r);
+    assert.match(s, /your passport across the whole ATH ecosystem: Premium of the one app you choose — WAVEMOTION, WealthyMindsets Pro and more — and Basic of every other ATH app, including apps still to come/, r);
     assert.match(s, /App tiers switch on as each app connects\./, r);
   }
   for (const r of ['index.html', 'ecosystem/index.html', 'offer/index.html']) assert.doesNotMatch(read(r), /3 clients/, r);
