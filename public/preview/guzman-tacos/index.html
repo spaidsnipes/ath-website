@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Guzmán Tacos — family-owned taco truck in Bixby</title>
+<meta name="description" content="Guzmán Tacos, a family-owned food truck in Bixby, Oklahoma: tacos, quesabirria, birria pizza, burritos, tortas and tamales. Call (918) 805-9435 or order on DoorDash.">
+<meta name="theme-color" content="#1a0f0c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1a0f0c;--bg2:#24150f;--acc:#f2b632;--acc2:#ffd98a;--hi:#ff8a6b;--text:#fbf1e4;--mute:#cdbba6;--warn:#7fd6a8;
+  --line:color-mix(in srgb,#f2b632 32%,transparent);--icobg:color-mix(in srgb,#f2b632 14%,transparent);
+  --serif:'Oswald','Arial Narrow',sans-serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--btn:linear-gradient(180deg,#ffd98a,#f2b632);--btntext:#2a1606;--glow:rgba(242,182,50,.6);
+  --navbg:color-mix(in srgb,#1a0f0c 80%,transparent);--chipbg:color-mix(in srgb,#1a0f0c 60%,transparent);--lede:color-mix(in srgb,#fbf1e4 88%,transparent);
+  --ribbon:linear-gradient(90deg,#24150f,color-mix(in srgb,#f2b632 22%,#24150f),#24150f);
+  --veil:radial-gradient(90% 70% at 50% 45%,color-mix(in srgb,#1a0f0c 35%,transparent),color-mix(in srgb,#1a0f0c 80%,transparent) 80%),linear-gradient(180deg,transparent 60%,#1a0f0c 99%);
+  --bandbg:radial-gradient(60% 120% at 0% 0%,color-mix(in srgb,#f2b632 18%,transparent),transparent 60%),radial-gradient(60% 120% at 100% 100%,color-mix(in srgb,#ff8a6b 12%,transparent),transparent 60%),#24150f;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--acc);color:var(--btntext);padding:10px 16px;border-radius:10px;font-weight:600}
+.skip:focus{top:12px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.demo{background:var(--ribbon);border-bottom:1px solid var(--line);color:var(--acc2);font-size:12.5px;letter-spacing:.04em;text-align:center;padding:8px 16px}
+.demo b{color:var(--text);font-weight:600}
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--navbg);border-bottom:1px solid rgba(255,255,255,.06)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;font:800 18px/1.1 var(--serif);min-width:0}
+.brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.brand .logo{width:42px;height:42px;object-fit:cover;border-radius:50%;border:1px solid var(--line);flex:0 0 42px;background:#fff}
+.navlinks{display:flex;gap:22px;font-size:14px;color:var(--mute)}
+.navlinks a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;font:600 15px/1 var(--sans);padding:15px 24px;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;border:0;cursor:pointer;min-height:48px}
+.btn svg{width:18px;height:18px}
+.btn-main{background:var(--btn);color:var(--btntext);box-shadow:0 10px 30px -12px var(--glow)}
+.btn-main:hover{transform:translateY(-2px)}
+.btn-line{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.04)}
+.btn-line:hover{background:rgba(255,255,255,.08)}
+.btn-sm{padding:11px 18px;font-size:14px;min-height:42px}
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;isolation:isolate;text-align:center}
+.hero .art{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--veil)}
+.hero .wrap{padding-top:44px;padding-bottom:80px;width:100%}
+.mark{width:clamp(120px,20vw,168px);height:clamp(120px,20vw,168px);object-fit:cover;border-radius:50%;margin:0 auto 24px;display:block;border:3px solid var(--acc);box-shadow:0 0 0 8px rgba(255,255,255,.04),0 20px 60px -20px var(--glow);background:#fff}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--acc2);font:600 12px/1.3 var(--sans);letter-spacing:.3em;text-transform:uppercase}
+.eyebrow::before,.eyebrow::after{content:"";width:30px;height:1px;background:var(--acc)}
+h1{font:800 clamp(40px,8vw,92px)/1 var(--serif);letter-spacing:-.01em;margin:20px 0 16px;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+h1 em{font-style:normal;color:var(--hi)}
+.lede{max-width:640px;margin:0 auto;color:var(--lede);font-size:clamp(16px,2.1vw,19px)}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:24px 0 28px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.16);background:var(--chipbg);backdrop-filter:blur(8px);border-radius:999px;padding:8px 14px;font-size:13.5px;color:var(--text)}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--mute)}
+.chip.open i{background:#6be36b;box-shadow:0 0 0 4px rgba(107,227,107,.18)}
+.cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+section{padding:88px 0;scroll-margin-top:64px}
+.head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px;flex-wrap:wrap}
+.num{font:600 12.5px/1 var(--sans);letter-spacing:.28em;color:var(--acc)}
+h2{font:800 clamp(30px,4.8vw,50px)/1.08 var(--serif);margin-top:12px}
+h2 em{font-style:normal;color:var(--hi)}
+.sub{color:var(--mute);max-width:460px}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:0 auto;max-width:1140px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid.n2{grid-template-columns:repeat(2,1fr)}
+.card{position:relative;border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:28px 24px 26px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:.7}
+.ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--icobg);border:1px solid var(--line);margin-bottom:18px}
+.ico svg{width:26px;height:26px;stroke:var(--acc2)}
+.card h3{font:800 23px/1.15 var(--serif);margin-bottom:8px}
+.card p{color:var(--mute);font-size:15px}
+.items{list-style:none;margin-top:14px;display:grid;gap:2px}
+.items li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.1);font-size:15px}
+.items li:last-child{border-bottom:0}
+.items li span{min-width:0}
+.items li small{display:block;color:var(--mute);font-size:13px;line-height:1.4}
+.items li b{font-weight:600;color:var(--acc2);white-space:nowrap}
+.tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc2);border:1px solid var(--line);padding:5px 9px;border-radius:999px;white-space:nowrap}
+.tag.confirm{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 55%,transparent);background:color-mix(in srgb,var(--warn) 10%,transparent)}
+.note{margin-top:18px;color:var(--mute);font-size:13.5px;border-left:3px solid var(--warn);padding:6px 0 6px 12px}
+.order{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.olink{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(0,0,0,.2);transition:border-color .2s,transform .2s;min-height:84px}
+a.olink:hover{border-color:var(--acc);transform:translateY(-2px)}
+.olink b{display:block;font:800 20px/1.2 var(--serif)}
+.olink span{color:var(--mute);font-size:14px}
+.olink .arr{color:var(--acc2);font-size:22px}
+.olink.off{opacity:.8;border-style:dashed}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:28px;background:rgba(255,255,255,.04);min-width:0}
+.panel h3{font:800 22px/1.2 var(--serif);margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+table{width:100%;border-collapse:collapse;font-size:15px}
+td{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+td:last-child{text-align:right}
+tr.today td{color:var(--acc2);font-weight:600}
+tr.today td:first-child::after{content:" · today";font-weight:400;font-size:12px;letter-spacing:.08em}
+.contact{display:grid;gap:12px}
+.crow{display:flex;align-items:center;gap:14px;padding:15px 18px;border:1px solid rgba(255,255,255,.09);border-radius:16px;transition:border-color .2s,background .2s;min-width:0}
+a.crow:hover{border-color:var(--line);background:rgba(255,255,255,.03)}
+.crow svg{width:22px;height:22px;stroke:var(--acc2);flex:0 0 22px}
+.crow div{min-width:0}
+.crow small{display:block;color:var(--mute);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.crow b{font-weight:600;font-size:16px;overflow-wrap:anywhere}
+.about{max-width:760px;margin:0 auto;text-align:center}
+.about p.big{font:600 clamp(21px,3vw,30px)/1.4 var(--serif);margin-top:18px}
+.about p.big em{font-style:normal;color:var(--hi)}
+.about .sig{margin-top:20px;color:var(--acc2);letter-spacing:.2em;font-size:13px;text-transform:uppercase}
+.follow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.athbox{border:1px solid var(--line);border-radius:22px;padding:26px;background:var(--bandbg);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.athbox p{color:var(--mute);font-size:15px;max-width:620px}
+.athbox strong{display:block;color:var(--text);font:800 22px/1.25 var(--serif);margin-bottom:6px}
+footer{border-top:1px solid rgba(255,255,255,.08);padding:36px 0 110px;color:var(--mute);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--acc2)}
+.callbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;gap:10px;padding:10px;border-radius:20px;background:var(--navbg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line)}
+.callbar .btn{flex:1;padding:14px 10px}
+.callbar.away{transform:translateY(140%);opacity:0;pointer-events:none}
+.callbar{transition:transform .3s,opacity .3s}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+@media (max-width:1000px){.follow{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){
+  .order,.visit{grid-template-columns:1fr}
+  .navlinks{display:none}
+  section{padding:66px 0}
+  .callbar{display:flex}
+}
+@media (max-width:640px){.grid,.grid.n2{grid-template-columns:1fr}}
+@media (max-width:520px){
+  .eyebrow{letter-spacing:.18em;font-size:11px}.eyebrow::before,.eyebrow::after{width:16px}
+  nav .btn-sm{display:none}
+  .hero{min-height:84vh}
+  .panel{padding:22px 18px}
+  .card{padding:24px 18px 22px}
+  .follow{grid-template-columns:1fr}
+}
+h1,h2,.card h3,.olink b,.panel h3,.brand{text-transform:uppercase;letter-spacing:.01em}h1{font-weight:700}
+.brand svg{width:42px;height:42px;flex:0 0 42px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo" role="note">Preview built for <b>Guzmán Tacos</b> by <b>Above The Hill</b> · not yet published</div>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Guzmán Tacos, home"><svg class="logo" viewBox="0 0 160 160" role="img" aria-label="Guzmán Tacos"><circle cx="80" cy="80" r="78" fill="#1f120e"/><circle cx="80" cy="80" r="70" fill="none" stroke="#f2b632" stroke-width="2.5"/><path d="M30 104a50 50 0 0 1 100 0z" fill="#f2b632"/><path d="M42 92c6-8 12-2 18-8s12 0 18-6 12 0 18-6 12 2 16 8" stroke="#3fb37f" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M48 98c6-5 10 0 16-4s10 0 16-4 10 0 16-4 8 2 12 6" stroke="#e8473a" stroke-width="5" fill="none" stroke-linecap="round"/><text x="80" y="134" text-anchor="middle" font-family="Oswald,Arial Narrow,sans-serif" font-weight="600" font-size="19" letter-spacing="3" fill="#f6e7cf">GUZMÁN</text></svg><span>Guzmán Tacos</span></a>
+    <div class="navlinks"><a href="#order">Order</a><a href="#menu">Menu</a><a href="#truck">Find the truck</a><a href="#hours">Hours</a><a href="#follow">Follow</a></div>
+    <a class="btn btn-main btn-sm" href="tel:+19188059435"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>(918) 805-9435</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="art" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1712"/><stop offset="1" stop-color="#160d0a"/></linearGradient><radialGradient id="gg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f2b632" stop-opacity=".28"/><stop offset="1" stop-color="#f2b632" stop-opacity="0"/></radialGradient></defs><rect width="1600" height="1000" fill="url(#gb)"/><path d="M-40 40 Q 800 140 1640 40" stroke="#f6e7cf" stroke-opacity=".25" stroke-width="2" fill="none"/><path d="M-40 230 Q 800 320 1640 230" stroke="#f6e7cf" stroke-opacity=".25" stroke-width="2" fill="none"/><g transform="translate(-30 40)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#e8473a" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#e8473a" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#e8473a" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(120 60)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#f2b632" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#f2b632" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#f2b632" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(270 76)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#3fb37f" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#3fb37f" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#3fb37f" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(420 88)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#e86aa6" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#e86aa6" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#e86aa6" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(570 96)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#4aa3df" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#4aa3df" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#4aa3df" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(720 100)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#e8473a" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#e8473a" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#e8473a" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(870 100)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#f2b632" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#f2b632" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#f2b632" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(1020 96)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#3fb37f" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#3fb37f" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#3fb37f" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(1170 88)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#e86aa6" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#e86aa6" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#e86aa6" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(1320 76)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#4aa3df" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#4aa3df" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#4aa3df" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(1470 60)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#e8473a" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#e8473a" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#e8473a" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(45 230)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#3fb37f" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#3fb37f" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#3fb37f" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(195 247)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#e86aa6" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#e86aa6" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#e86aa6" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(345 260)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#4aa3df" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#4aa3df" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#4aa3df" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(495 270)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#e8473a" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#e8473a" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#e8473a" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(645 276)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#f2b632" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#f2b632" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#f2b632" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(795 280)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#3fb37f" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#3fb37f" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#3fb37f" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(945 280)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#e86aa6" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#e86aa6" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#e86aa6" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(1095 276)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#4aa3df" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#4aa3df" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#4aa3df" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(1245 270)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#e8473a" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#e8473a" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#e8473a" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(1395 260)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#f2b632" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#f2b632" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#f2b632" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><g transform="translate(1545 247)"><path d="M0 0h110v120l-14-12-14 12-14-12-14 12-14-12-14 12-14-12-12 12z" fill="#3fb37f" fill-opacity=".22"/><circle cx="55" cy="50" r="18" fill="none" stroke="#3fb37f" stroke-opacity=".35" stroke-width="4"/><path d="M20 90h70" stroke="#3fb37f" stroke-opacity=".35" stroke-width="4" stroke-dasharray="6 8"/></g><circle cx="800" cy="520" r="420" fill="url(#gg)"/><path d="M0 820 C 400 790, 1200 800, 1600 830 V1000 H0Z" fill="#120a08"/></svg>
+  <div class="wrap">
+    <svg class="mark" viewBox="0 0 160 160" role="img" aria-label="Guzmán Tacos"><circle cx="80" cy="80" r="78" fill="#1f120e"/><circle cx="80" cy="80" r="70" fill="none" stroke="#f2b632" stroke-width="2.5"/><path d="M30 104a50 50 0 0 1 100 0z" fill="#f2b632"/><path d="M42 92c6-8 12-2 18-8s12 0 18-6 12 0 18-6 12 2 16 8" stroke="#3fb37f" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M48 98c6-5 10 0 16-4s10 0 16-4 10 0 16-4 8 2 12 6" stroke="#e8473a" stroke-width="5" fill="none" stroke-linecap="round"/><text x="80" y="134" text-anchor="middle" font-family="Oswald,Arial Narrow,sans-serif" font-weight="600" font-size="19" letter-spacing="3" fill="#f6e7cf">GUZMÁN</text></svg>
+    <span class="eyebrow">Bixby · Family-owned food truck</span>
+    <h1>Guzmán Tacos<br><em>Tacos &amp; birria</em></h1>
+    <p class="lede">A family-owned business bringing the best of Mexican taste to Tulsa and Bixby — tacos, quesabirria, burritos, tortas and tamales.</p>
+    <div class="chips"><span class="chip" id="openchip"><i></i><span>Open daily (listed)</span></span><span class="chip">Bixby, OK</span><span class="chip">Pickup &amp; delivery on DoorDash</span></div>
+    <div class="cta">
+      <a class="btn btn-main" href="tel:+19188059435"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call (918) 805-9435</a>
+      <a class="btn btn-line" href="https://www.doordash.com/store/guzman-tacos-1-bixby-38056259/" target="_blank" rel="noopener">Order on DoorDash <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section id="order" aria-labelledby="order-h">
+  <div class="wrap">
+    <div class="head reveal"><div><span class="num">01 — CALL OR ORDER</span><h2 id="order-h">Call it in. <em>Pick it up.</em></h2></div><p class="sub">Call the truck, or order pickup or delivery on DoorDash.</p></div>
+    <div class="order reveal" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+      <a class="olink" href="tel:+19188059435"><div><b>Call the truck</b><span>(918) 805-9435 · tap to call</span></div><span class="arr" aria-hidden="true">→</span></a>
+      <a class="olink" href="https://www.doordash.com/store/guzman-tacos-1-bixby-38056259/" target="_blank" rel="noopener"><div><b>DoorDash</b><span>Pickup or delivery</span></div><span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="menu" aria-labelledby="menu-h">
+  <div class="wrap">
+    <div class="head reveal"><div><span class="num">02 — MENU</span><h2 id="menu-h">From <em>the truck.</em></h2></div><p class="sub">Every item and price below is from Guzmán Tacos’ own DoorDash menu (October 2026).</p></div>
+    <div class="grid"><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 17a10 10 0 0 1 20 0z"/><path d="M6 13c1-1 2 0 3-1s2 0 3-1 2 0 3-1 2 0 3 1"/></svg></div><h3>Tacos</h3><p>Corn tortilla, your meat, cilantro and onion.</p><ul class="items"><li><span>Tacos</span><b>$3.00</b></li><li><span>Taco Cabeza</span><b>$4.00</b></li><li><span>Taco Tripa</span><b>$4.50</b></li><li><span>Taco Plate<small>3 tacos, rice and beans</small></span><b>$11.50</b></li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M2 10h20M9 6c0-1.5 1.5-1.5 1.5-3M14 6c0-1.5 1.5-1.5 1.5-3"/></svg></div><h3>Birria</h3><p>Shredded beef, melted mozzarella and consomé.</p><ul class="items"><li><span>Quesabirria</span><b>$4.00</b></li><li><span>Quesabirria Plate<small>3 quesabirrias and consomé</small></span><b>$14.00</b></li><li><span>Pizza Birria<small>Flour tortilla, mozzarella, shredded beef, consomé</small></span><b>$17.00</b></li><li><span>Birria Sliders</span><b>$13.00</b></li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="5"/><path d="M7 8h10M7 14h10"/></svg></div><h3>Burritos, tortas &amp; more</h3><p>Flour tortillas, tortas and griddle favorites.</p><ul class="items"><li><span>Burrito<small>Meat, pico, mozzarella, beans and rice</small></span><b>$12.00</b></li><li><span>Torta<small>Meat, pico, mayo, avocado, lettuce, mozzarella</small></span><b>$12.00</b></li><li><span>Quesadilla</span><b>$11.00</b></li><li><span>Gringa<small>Pastor, ham and mozzarella on flour</small></span><b>$11.00</b></li><li><span>Gordita</span><b>$6.50</b></li><li><span>Gordita Tripa</span><b>$8.00</b></li><li><span>Mulitas</span><b>$5.00</b></li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20c0-9 6-15 16-16-1 10-7 16-16 16z"/><path d="M4 20 14 10"/></svg></div><h3>Tamales</h3><p>Green chicken or red pork.</p><ul class="items"><li><span>Tamal</span><b>$4.00</b></li><li><span>Tamal Plate<small>2 tamales, rice and beans</small></span><b>$11.50</b></li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4v4l2 3v12a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V9l2-3z"/><path d="M8 13h8"/></svg></div><h3>Drinks</h3><p>Mexican sodas and water.</p><ul class="items"><li><span>Mexican Coke</span><b>$4.00</b></li><li><span>Jarritos</span><b>$3.50</b></li><li><span>Sidral</span><b>$3.50</b></li><li><span>Sangria</span><b>$3.50</b></li><li><span>Water</span><b>$1.50</b></li></ul></article></div>
+    <p class="note reveal">Prices are the DoorDash menu prices. We’ll confirm prices at the truck with you before this goes live.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="truck" aria-labelledby="truck-h">
+  <div class="wrap">
+    <div class="head reveal"><div><span class="num">03 — FIND THE TRUCK</span><h2 id="truck-h">Where’s the <em>truck today?</em></h2></div><p class="sub">Food trucks move. These spots are where the truck has been listed online. Follow Facebook for today’s spot.</p></div>
+    <div class="grid"><article class="card reveal"><div class="ico"><svg stroke="currentColor" viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-7.4 7-12a7 7 0 1 0-14 0c0 4.6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Bixby</h3><p>13330 S Memorial Dr, Bixby, OK 74008</p><p style="margin-top:6px;font-size:13.5px">The address on Guzmán Tacos’ Facebook page.</p><p style="margin:14px 0 16px"><span class="tag confirm">Confirm current spot</span></p><a class="btn btn-line btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=13330+S+Memorial+Dr+Bixby+OK+74008" target="_blank" rel="noopener">Open in Google Maps</a></article><article class="card reveal"><div class="ico"><svg stroke="currentColor" viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-7.4 7-12a7 7 0 1 0-14 0c0 4.6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Bixby</h3><p>15050 S Memorial Dr, Bixby, OK 74008</p><p style="margin-top:6px;font-size:13.5px">The address on the truck’s Yelp listing.</p><p style="margin:14px 0 16px"><span class="tag confirm">Confirm current spot</span></p><a class="btn btn-line btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=15050+S+Memorial+Dr+Bixby+OK+74008" target="_blank" rel="noopener">Open in Google Maps</a></article><article class="card reveal"><div class="ico"><svg stroke="currentColor" viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-7.4 7-12a7 7 0 1 0-14 0c0 4.6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Glenpool</h3><p>12108 S Waco Ave, Glenpool, OK 74033</p><p style="margin-top:6px;font-size:13.5px">Listed for a Guzman Tacos in Glenpool, near 121st.</p><p style="margin:14px 0 16px"><span class="tag confirm">Confirm current spot</span></p><a class="btn btn-line btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=12108+S+Waco+Ave+Glenpool+OK+74033" target="_blank" rel="noopener">Open in Google Maps</a></article></div>
+    <p class="note reveal">We’ll keep only the spots you’re really at. Tell us your regular spot and we’ll put it first.</p>
+    <p style="margin-top:22px" class="reveal"><a class="btn btn-main" href="https://www.facebook.com/guzmantacos918" target="_blank" rel="noopener">Today’s spot on Facebook <span aria-hidden="true">→</span></a></p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="hours" aria-labelledby="hours-h">
+  <div class="wrap">
+    <div class="head reveal"><div><span class="num">04 — HOURS</span><h2 id="hours-h">When the truck <em>is open.</em></h2></div></div>
+    <div class="visit">
+      <div class="panel reveal">
+        <h3>Listed hours <span class="tag confirm">Confirm</span></h3>
+        <table id="hourtable"><caption class="sr" style="position:absolute;left:-9999px">Hours</caption><tr data-d="1"><td>Monday</td><td>10:00 AM – 9:00 PM</td></tr><tr data-d="2"><td>Tuesday</td><td>10:00 AM – 9:00 PM</td></tr><tr data-d="3"><td>Wednesday</td><td>10:00 AM – 9:00 PM</td></tr><tr data-d="4"><td>Thursday</td><td>10:00 AM – 9:00 PM</td></tr><tr data-d="5"><td>Friday</td><td>10:00 AM – 9:00 PM</td></tr><tr data-d="6"><td>Saturday</td><td>10:00 AM – 9:00 PM</td></tr><tr data-d="0"><td>Sunday</td><td>10:00 AM – 5:00 PM</td></tr></table>
+        <p class="note">These are the hours on the truck’s Yelp listing. DoorDash orders show 11:00 AM – 8:40 PM. We’ll confirm the truck’s real hours before this goes live.</p>
+      </div>
+      <div class="panel reveal"><h3>Reach the truck</h3><div class="contact">
+        <a class="crow" href="tel:+19188059435"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><div><small>Call</small><b>(918) 805-9435</b></div></a>
+        <a class="crow" href="https://www.doordash.com/store/guzman-tacos-1-bixby-38056259/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><div><small>Order</small><b>DoorDash · Guzman Tacos 1</b></div></a>
+        <a class="crow" href="https://www.facebook.com/guzmantacos918" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><div><small>Today’s spot</small><b>Guzmán Tacos on Facebook</b></div></a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="follow" aria-labelledby="follow-h">
+  <div class="wrap">
+    <div class="head reveal"><div><span class="num">05 — FOLLOW</span><h2 id="follow-h">Follow the <em>truck.</em></h2></div><p class="sub">The truck’s latest posts and videos.</p></div>
+    <div class="follow reveal" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))">
+      <a class="crow" href="https://www.facebook.com/guzmantacos918" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><div><small>Facebook</small><b>Guzmán Tacos</b></div></a>
+      <a class="crow" href="https://www.tiktok.com/@bochosguzman" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.8 2.4 4.6 5 5"/></svg><div><small>TikTok</small><b>@bochosguzman</b></div></a>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="ath-h">
+  <div class="wrap">
+    <div class="athbox reveal">
+      <div><strong id="ath-h">A free preview from Above The Hill.</strong><p>You see it first. Love it? $100 one time. Your old address, guzmantacos.com, can point here again once you renew it.</p></div>
+      <a class="btn btn-line" href="https://abovethehilldev.online/free-look/" target="_blank" rel="noopener">How it works</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr"></span> Guzmán Tacos · Bixby, Oklahoma</div>
+    <div>Preview built by <a href="https://abovethehilldev.online" target="_blank" rel="noopener">Above The Hill</a> · You see it first. Love it? $100 one time.</div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-main" href="tel:+19188059435">Call now</a>
+  <a class="btn btn-line" href="https://www.doordash.com/store/guzman-tacos-1-bixby-38056259/" target="_blank" rel="noopener">DoorDash</a>
+</div>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){
+  try{
+    const p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+    const d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday), m=(+p.hour%24)*60+(+p.minute);
+    const hrs={};
+    document.querySelector(`#hourtable tr[data-d="${d}"]`)?.classList.add('today');
+    const chip=document.getElementById('openchip'); if(!chip||true)return;
+    const h=hrs[d], open=h&&m>=h[0]&&m<h[1];
+    chip.classList.toggle('open',!!open);
+    chip.lastElementChild.textContent=open?'Open now (listed hours)':'Closed now (listed hours)';
+  }catch(e){}
+})();
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+(function(){const bar=document.querySelector('.callbar'),cta=document.querySelector('.hero .cta');
+  if(!bar||!cta||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(es=>es.forEach(x=>bar.classList.toggle('away',x.isIntersecting))).observe(cta);})();
+</script>
+</body>
+</html>

@@ -5,244 +5,270 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Mixy Bites — Filipino café &amp; goodies in Broken Arrow</title>
-<meta name="description" content="Your neighborhood café and Filipino goodies at 2210 W Houston St, Broken Arrow: stuffed cookies, cake pops, lumpia, pancit, halo-halo, rice meals and milk tea.">
+<meta name="description" content="Mixy Bites Filipino Café &amp; Goodies, 2210 W Houston St, Broken Arrow: rice combos, lumpia, pancit, halo-halo, milk tea, goodies and a cozy gift shop. Created by Ailene &amp; Elena.">
+<meta name="theme-color" content="#1c1330">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#1c1330;--bg2:#251a3d;--acc:#c9a6f0;--acc2:#e6d4ff;--hi:#f7b8d2;--text:#fbf7ff;--mute:#bdb0d3;
+:root{--bg:#1c1330;--bg2:#251a3d;--acc:#c9a6f0;--acc2:#e6d4ff;--hi:#f7b8d2;--text:#fbf7ff;--mute:#c4b8d8;--warn:#ffd27a;
   --line:color-mix(in srgb,#c9a6f0 32%,transparent);--icobg:color-mix(in srgb,#c9a6f0 14%,transparent);
   --serif:'Baloo 2','Nunito',sans-serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--btn:linear-gradient(180deg,#f3e8ff,#c9a6f0);--btntext:#24163a;--glow:rgba(201,166,240,.7);
-  --navbg:color-mix(in srgb,#1c1330 78%,transparent);--chipbg:color-mix(in srgb,#1c1330 60%,transparent);--lede:color-mix(in srgb,#fbf7ff 86%,transparent);
+  --navbg:color-mix(in srgb,#1c1330 80%,transparent);--chipbg:color-mix(in srgb,#1c1330 60%,transparent);--lede:color-mix(in srgb,#fbf7ff 88%,transparent);
   --ribbon:linear-gradient(90deg,#251a3d,color-mix(in srgb,#c9a6f0 22%,#251a3d),#251a3d);
-  --veil:radial-gradient(90% 70% at 50% 45%,color-mix(in srgb,#1c1330 40%,transparent),color-mix(in srgb,#1c1330 80%,transparent) 80%),linear-gradient(180deg,transparent 60%,#1c1330 99%);
+  --veil:radial-gradient(90% 70% at 50% 45%,color-mix(in srgb,#1c1330 35%,transparent),color-mix(in srgb,#1c1330 80%,transparent) 80%),linear-gradient(180deg,transparent 60%,#1c1330 99%);
   --bandbg:radial-gradient(60% 120% at 0% 0%,color-mix(in srgb,#c9a6f0 18%,transparent),transparent 60%),radial-gradient(60% 120% at 100% 100%,color-mix(in srgb,#f7b8d2 12%,transparent),transparent 60%),#251a3d;}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font:400 16px/1.6 var(--sans);overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--acc);color:var(--btntext);padding:10px 16px;border-radius:10px;font-weight:600}
+.skip:focus{top:12px}
 .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
 .demo{background:var(--ribbon);border-bottom:1px solid var(--line);color:var(--acc2);font-size:12.5px;letter-spacing:.04em;text-align:center;padding:8px 16px}
-.demo b{color:#fff;font-weight:600}
+.demo b{color:var(--text);font-weight:600}
 nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--navbg);border-bottom:1px solid rgba(255,255,255,.06)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
-.brand{display:flex;align-items:center;gap:10px;font:700 18px/1.1 var(--serif);min-width:0}
+.brand{display:flex;align-items:center;gap:10px;font:800 18px/1.1 var(--serif);min-width:0}
 .brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .brand .logo{width:42px;height:42px;object-fit:cover;border-radius:50%;border:1px solid var(--line);flex:0 0 42px;background:#fff}
-.navlinks{display:flex;gap:26px;font-size:14px;color:var(--mute)}
+.navlinks{display:flex;gap:22px;font-size:14px;color:var(--mute)}
 .navlinks a:hover{color:var(--text)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;font:600 15px/1 var(--sans);padding:15px 24px;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;border:0;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;font:600 15px/1 var(--sans);padding:15px 24px;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;border:0;cursor:pointer;min-height:48px}
 .btn svg{width:18px;height:18px}
 .btn-main{background:var(--btn);color:var(--btntext);box-shadow:0 10px 30px -12px var(--glow)}
 .btn-main:hover{transform:translateY(-2px)}
 .btn-line{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.04)}
 .btn-line:hover{background:rgba(255,255,255,.08)}
-.btn-sm{padding:11px 18px;font-size:14px}
-.hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;isolation:isolate;text-align:center}
+.btn-sm{padding:11px 18px;font-size:14px;min-height:42px}
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;isolation:isolate;text-align:center}
 .hero .art{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--veil)}
 .hero .wrap{padding-top:44px;padding-bottom:80px;width:100%}
 .mark{width:clamp(120px,20vw,168px);height:clamp(120px,20vw,168px);object-fit:cover;border-radius:50%;margin:0 auto 24px;display:block;border:3px solid var(--acc);box-shadow:0 0 0 8px rgba(255,255,255,.04),0 20px 60px -20px var(--glow);background:#fff}
-.eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--acc2);font:600 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--acc2);font:600 12px/1.3 var(--sans);letter-spacing:.3em;text-transform:uppercase}
 .eyebrow::before,.eyebrow::after{content:"";width:30px;height:1px;background:var(--acc)}
-h1{font:700 clamp(40px,8vw,96px)/1 var(--serif);letter-spacing:-.01em;margin:20px 0 16px;text-shadow:0 6px 40px rgba(0,0,0,.5)}
-h1 em{font-style:italic;font-weight:500;color:var(--hi)}
+h1{font:800 clamp(40px,8vw,92px)/1 var(--serif);letter-spacing:-.01em;margin:20px 0 16px;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+h1 em{font-style:normal;color:var(--hi)}
 .lede{max-width:640px;margin:0 auto;color:var(--lede);font-size:clamp(16px,2.1vw,19px)}
 .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:24px 0 28px}
 .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.16);background:var(--chipbg);backdrop-filter:blur(8px);border-radius:999px;padding:8px 14px;font-size:13.5px;color:var(--text)}
 .chip i{width:8px;height:8px;border-radius:50%;background:var(--mute)}
 .chip.open i{background:#6be36b;box-shadow:0 0 0 4px rgba(107,227,107,.18)}
 .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
-section{padding:92px 0}
-.head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:38px;flex-wrap:wrap}
+section{padding:88px 0;scroll-margin-top:64px}
+.head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px;flex-wrap:wrap}
 .num{font:600 12.5px/1 var(--sans);letter-spacing:.28em;color:var(--acc)}
-h2{font:700 clamp(30px,4.8vw,50px)/1.08 var(--serif);margin-top:12px}
-h2 em{font-style:italic;font-weight:500;color:var(--hi)}
-.sub{color:var(--mute);max-width:440px}
+h2{font:800 clamp(30px,4.8vw,50px)/1.08 var(--serif);margin-top:12px}
+h2 em{font-style:normal;color:var(--hi)}
+.sub{color:var(--mute);max-width:460px}
 .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:0 auto;max-width:1140px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.grid3.n4{grid-template-columns:repeat(4,1fr)}
-@media (max-width:1100px){.grid3.n4{grid-template-columns:repeat(2,1fr)}}
-.card{position:relative;border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:30px 26px 28px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));overflow:hidden;transition:transform .3s,border-color .3s}
-.card:hover{transform:translateY(-4px);border-color:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid.n2{grid-template-columns:repeat(2,1fr)}
+.card{position:relative;border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:28px 24px 26px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));overflow:hidden}
 .card::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:.7}
-.ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--icobg);border:1px solid var(--line);margin-bottom:20px}
+.ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--icobg);border:1px solid var(--line);margin-bottom:18px}
 .ico svg{width:26px;height:26px;stroke:var(--acc2)}
-.card h3{font:700 23px/1.15 var(--serif);margin-bottom:10px}
+.card h3{font:800 23px/1.15 var(--serif);margin-bottom:8px}
 .card p{color:var(--mute);font-size:15px}
-.card ul{list-style:none;margin-top:16px;display:grid;gap:8px}
-.card li{display:flex;gap:10px;font-size:14.5px;color:var(--text);opacity:.9}
-.card li::before{content:"";flex:0 0 6px;height:6px;border-radius:50%;background:var(--acc);margin-top:9px}
-.band{border:1px solid var(--line);border-radius:26px;padding:44px;display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;background:var(--bandbg)}
-.plans{display:grid;gap:12px}
-.plan{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:18px 20px;background:rgba(0,0,0,.25)}
-.plan b{font:700 19px/1.2 var(--serif)}
-.plan span{color:var(--mute);font-size:14px}
-.tag{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc2);border:1px solid var(--line);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.items{list-style:none;margin-top:14px;display:grid;gap:2px}
+.items li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.1);font-size:15px}
+.items li:last-child{border-bottom:0}
+.items li span{min-width:0}
+.items li small{display:block;color:var(--mute);font-size:13px;line-height:1.4}
+.items li b{font-weight:600;color:var(--acc2);white-space:nowrap}
+.tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc2);border:1px solid var(--line);padding:5px 9px;border-radius:999px;white-space:nowrap}
+.tag.confirm{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 55%,transparent);background:color-mix(in srgb,var(--warn) 10%,transparent)}
+.note{margin-top:18px;color:var(--mute);font-size:13.5px;border-left:3px solid var(--warn);padding:6px 0 6px 12px}
+.order{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.olink{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(0,0,0,.2);transition:border-color .2s,transform .2s;min-height:84px}
+a.olink:hover{border-color:var(--acc);transform:translateY(-2px)}
+.olink b{display:block;font:800 20px/1.2 var(--serif)}
+.olink span{color:var(--mute);font-size:14px}
+.olink .arr{color:var(--acc2);font-size:22px}
+.olink.off{opacity:.8;border-style:dashed}
 .visit{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.panel{border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:30px;background:rgba(255,255,255,.04)}
-.panel h3{font:700 22px/1.2 var(--serif);margin-bottom:16px}
+.panel{border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:28px;background:rgba(255,255,255,.04);min-width:0}
+.panel h3{font:800 22px/1.2 var(--serif);margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 table{width:100%;border-collapse:collapse;font-size:15px}
 td{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07)}
 td:last-child{text-align:right}
 tr.today td{color:var(--acc2);font-weight:600}
 tr.today td:first-child::after{content:" · today";font-weight:400;font-size:12px;letter-spacing:.08em}
 .contact{display:grid;gap:12px}
-.crow{display:flex;align-items:center;gap:14px;padding:16px 18px;border:1px solid rgba(255,255,255,.09);border-radius:16px;transition:border-color .2s,background .2s;min-width:0}
-.crow:hover{border-color:var(--line);background:rgba(255,255,255,.03)}
+.crow{display:flex;align-items:center;gap:14px;padding:15px 18px;border:1px solid rgba(255,255,255,.09);border-radius:16px;transition:border-color .2s,background .2s;min-width:0}
+a.crow:hover{border-color:var(--line);background:rgba(255,255,255,.03)}
 .crow svg{width:22px;height:22px;stroke:var(--acc2);flex:0 0 22px}
 .crow div{min-width:0}
 .crow small{display:block;color:var(--mute);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
-.crow b{font-weight:600;font-size:16px;overflow-wrap:break-word}
-.quote{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
-form{display:grid;gap:14px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-label{display:grid;gap:7px;font-size:13px;color:var(--mute);letter-spacing:.04em}
-input,select,textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:14px;color:var(--text);font:400 16px/1.4 var(--sans);padding:14px 16px;outline:none;transition:border-color .2s}
-input:focus,select:focus,textarea:focus{border-color:var(--acc)}
-select option{background:#111}
-textarea{min-height:100px;resize:vertical}
-.fine{color:var(--mute);font-size:13px}
-.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
-.day,.slot{flex:0 0 auto;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:var(--text);border-radius:14px;cursor:pointer;font:500 14px/1.2 var(--sans)}
-.day{width:64px;padding:10px 0;text-align:center}
-.day b{display:block;font:700 20px/1.1 var(--serif);margin-top:3px}
-.day small{color:var(--mute);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
-.slot{padding:11px 0}
-.day[aria-pressed=true],.slot[aria-pressed=true]{border-color:var(--acc);background:var(--icobg);color:var(--acc2)}
-.pick{font-size:13px;color:var(--mute);letter-spacing:.04em}
-.bk-links{display:grid;gap:12px}
-.bk-link{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(0,0,0,.2);transition:border-color .2s,transform .2s}
-.bk-link:hover{border-color:var(--acc);transform:translateY(-2px)}
-.bk-link b{display:block;font:700 19px/1.2 var(--serif)}
-.bk-link span{color:var(--mute);font-size:14px}
-.bk-link .arr{color:var(--acc2);font-size:22px}
-.owners{text-align:center;max-width:760px;margin:0 auto}
-.owners p{font:500 clamp(21px,3vw,30px)/1.4 var(--serif)}
-.owners p em{color:var(--hi)}
-.owners .sig{margin-top:22px;color:var(--acc2);letter-spacing:.2em;font-size:13px;text-transform:uppercase}
-footer{border-top:1px solid rgba(255,255,255,.08);padding:40px 0 110px;color:var(--mute);font-size:13.5px}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.crow b{font-weight:600;font-size:16px;overflow-wrap:anywhere}
+.about{max-width:760px;margin:0 auto;text-align:center}
+.about p.big{font:600 clamp(21px,3vw,30px)/1.4 var(--serif);margin-top:18px}
+.about p.big em{font-style:normal;color:var(--hi)}
+.about .sig{margin-top:20px;color:var(--acc2);letter-spacing:.2em;font-size:13px;text-transform:uppercase}
+.follow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.athbox{border:1px solid var(--line);border-radius:22px;padding:26px;background:var(--bandbg);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.athbox p{color:var(--mute);font-size:15px;max-width:620px}
+.athbox strong{display:block;color:var(--text);font:800 22px/1.25 var(--serif);margin-bottom:6px}
+footer{border-top:1px solid rgba(255,255,255,.08);padding:36px 0 110px;color:var(--mute);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:var(--acc2)}
-.callbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;gap:10px;padding:10px;border-radius:20px;background:var(--navbg);backdrop-filter:blur(14px);border:1px solid var(--line)}
+.callbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;gap:10px;padding:10px;border-radius:20px;background:var(--navbg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line)}
 .callbar .btn{flex:1;padding:14px 10px}
+.callbar.away{transform:translateY(140%);opacity:0;pointer-events:none}
+.callbar{transition:transform .3s,opacity .3s}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}*{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+@media (max-width:1000px){.follow{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:900px){
-  .grid3,.grid3.n4{grid-template-columns:1fr}
-  .band,.visit,.quote{grid-template-columns:1fr}
-  .band{padding:30px 22px}
+  .order,.visit{grid-template-columns:1fr}
   .navlinks{display:none}
-  section{padding:70px 0}
+  section{padding:66px 0}
   .callbar{display:flex}
 }
+@media (max-width:640px){.grid,.grid.n2{grid-template-columns:1fr}}
 @media (max-width:520px){
-  .eyebrow{letter-spacing:.2em;font-size:11px}.eyebrow::before,.eyebrow::after{width:18px}
-  .row2{grid-template-columns:1fr}
+  .eyebrow{letter-spacing:.18em;font-size:11px}.eyebrow::before,.eyebrow::after{width:16px}
   nav .btn-sm{display:none}
-  .hero{min-height:86vh}
-  .plan{flex-direction:column;align-items:flex-start;gap:10px}
-  .panel{padding:24px 20px}
+  .hero{min-height:84vh}
+  .panel{padding:22px 18px}
+  .card{padding:24px 18px 22px}
+  .follow{grid-template-columns:1fr}
 }
-h1,h2{font-weight:800!important}h1 em,h2 em{font-style:normal;font-weight:800!important}.card h3,.plan b,.bk-link b{font-weight:800}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<div class="demo">Preview built for <b>Ailene &amp; Elena</b> by <b>Above The Hill</b> · not yet published</div>
+<div class="demo" role="note">Preview built for <b>Ailene &amp; Elena</b> by <b>Above The Hill</b> · not yet published</div>
 
-<nav>
+<nav aria-label="Main">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Mixy Bites Filipino Café &amp; Goodies, home"><img class="logo" src="img/logo.jpg" alt=""><span>Mixy Bites</span></a>
-    <div class="navlinks"><a href="#services">Menu</a><a href="#hours">Hours</a><a href="#book">Order</a></div>
-    <a class="btn btn-main btn-sm" href="tel:+19182368088"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>(918) 236-8088</a>
+    <a class="brand" href="#top" aria-label="Mixy Bites Filipino Café &amp; Goodies, home"><img class="logo" src="img/logo.jpg" alt="" width="42" height="42"><span>Mixy Bites</span></a>
+    <div class="navlinks"><a href="#order">Order</a><a href="#menu">Menu</a><a href="#goodies">Goodies</a><a href="#hours">Hours</a><a href="#about">About</a><a href="#follow">Follow</a></div>
+    <a class="btn btn-main btn-sm" href="tel:+19182368088"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>(918) 236-8088</a>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <svg class="art" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="mb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1d40"/><stop offset="1" stop-color="#1a1228"/></linearGradient><radialGradient id="mg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#c9a6f0" stop-opacity=".25"/><stop offset="1" stop-color="#c9a6f0" stop-opacity="0"/></radialGradient></defs><rect width="1600" height="1000" fill="url(#mb)"/><g><circle cx="0" cy="0" r="14" fill="#b79be0" fill-opacity=".16"/><circle cx="173" cy="97" r="21" fill="#f4c2d7" fill-opacity=".16"/><circle cx="346" cy="194" r="28" fill="#fbe3a2" fill-opacity=".16"/><circle cx="519" cy="291" r="35" fill="#9ad3c6" fill-opacity=".16"/><circle cx="692" cy="388" r="16" fill="#b79be0" fill-opacity=".16"/><circle cx="865" cy="485" r="23" fill="#f4c2d7" fill-opacity=".16"/><circle cx="1038" cy="582" r="30" fill="#fbe3a2" fill-opacity=".16"/><circle cx="1211" cy="679" r="37" fill="#9ad3c6" fill-opacity=".16"/><circle cx="1384" cy="776" r="18" fill="#b79be0" fill-opacity=".16"/><circle cx="1557" cy="873" r="25" fill="#f4c2d7" fill-opacity=".16"/><circle cx="130" cy="970" r="32" fill="#fbe3a2" fill-opacity=".16"/><circle cx="303" cy="67" r="39" fill="#9ad3c6" fill-opacity=".16"/><circle cx="476" cy="164" r="20" fill="#b79be0" fill-opacity=".16"/><circle cx="649" cy="261" r="27" fill="#f4c2d7" fill-opacity=".16"/><circle cx="822" cy="358" r="34" fill="#fbe3a2" fill-opacity=".16"/><circle cx="995" cy="455" r="15" fill="#9ad3c6" fill-opacity=".16"/><circle cx="1168" cy="552" r="22" fill="#b79be0" fill-opacity=".16"/><circle cx="1341" cy="649" r="29" fill="#f4c2d7" fill-opacity=".16"/><circle cx="1514" cy="746" r="36" fill="#fbe3a2" fill-opacity=".16"/><circle cx="87" cy="843" r="17" fill="#9ad3c6" fill-opacity=".16"/><circle cx="260" cy="940" r="24" fill="#b79be0" fill-opacity=".16"/><circle cx="433" cy="37" r="31" fill="#f4c2d7" fill-opacity=".16"/><circle cx="606" cy="134" r="38" fill="#fbe3a2" fill-opacity=".16"/><circle cx="779" cy="231" r="19" fill="#9ad3c6" fill-opacity=".16"/><circle cx="952" cy="328" r="26" fill="#b79be0" fill-opacity=".16"/><circle cx="1125" cy="425" r="33" fill="#f4c2d7" fill-opacity=".16"/><circle cx="1298" cy="522" r="14" fill="#fbe3a2" fill-opacity=".16"/><circle cx="1471" cy="619" r="21" fill="#9ad3c6" fill-opacity=".16"/><circle cx="44" cy="716" r="28" fill="#b79be0" fill-opacity=".16"/><circle cx="217" cy="813" r="35" fill="#f4c2d7" fill-opacity=".16"/><circle cx="390" cy="910" r="16" fill="#fbe3a2" fill-opacity=".16"/><circle cx="563" cy="7" r="23" fill="#9ad3c6" fill-opacity=".16"/><circle cx="736" cy="104" r="30" fill="#b79be0" fill-opacity=".16"/><circle cx="909" cy="201" r="37" fill="#f4c2d7" fill-opacity=".16"/><circle cx="1082" cy="298" r="18" fill="#fbe3a2" fill-opacity=".16"/><circle cx="1255" cy="395" r="25" fill="#9ad3c6" fill-opacity=".16"/><circle cx="1428" cy="492" r="32" fill="#b79be0" fill-opacity=".16"/><circle cx="1" cy="589" r="39" fill="#f4c2d7" fill-opacity=".16"/><circle cx="174" cy="686" r="20" fill="#fbe3a2" fill-opacity=".16"/><circle cx="347" cy="783" r="27" fill="#9ad3c6" fill-opacity=".16"/></g><g stroke-linecap="round" stroke-width="8"><path d="M0 0 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M211 131 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M422 262 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M633 393 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M844 524 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M1055 655 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M1266 786 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M1477 917 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M88 48 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M299 179 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M510 310 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M721 441 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M932 572 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M1143 703 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M1354 834 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M1565 965 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M176 96 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M387 227 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M598 358 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M809 489 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M1020 620 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M1231 751 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M1442 882 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M53 13 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M264 144 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M475 275 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M686 406 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M897 537 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M1108 668 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M1319 799 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M1530 930 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M141 61 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M352 192 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M563 323 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M774 454 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M985 585 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M1196 716 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M1407 847 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M18 978 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M229 109 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M440 240 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M651 371 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/><path d="M862 502 l18 -10" stroke="#9ad3c6" stroke-opacity=".3"/><path d="M1073 633 l18 -10" stroke="#ffffff" stroke-opacity=".3"/><path d="M1284 764 l18 -10" stroke="#f4c2d7" stroke-opacity=".3"/><path d="M1495 895 l18 -10" stroke="#fbe3a2" stroke-opacity=".3"/></g><circle cx="800" cy="460" r="420" fill="url(#mg)"/></svg>
   <div class="wrap">
-    <img class="mark" src="img/logo.jpg" alt="Mixy Bites Filipino Café &amp; Goodies logo">
-    <span class="eyebrow">Your neighborhood café</span>
-    <h1>Filipino goodies,<br><em>made with love.</em></h1>
-    <p class="lede">Stuffed cookies, cake pops, lumpia, pancit and halo-halo — created by Ailene &amp; Elena at 2210 W Houston St.</p>
-    <div class="chips"><span class="chip" id="openchip"><i></i><span>Wed–Sun</span></span><span class="chip">2210 W Houston St</span><span class="chip">Pickup &amp; delivery</span></div>
+    <img class="mark" src="img/logo.jpg" alt="Mixy Bites Filipino Café &amp; Goodies logo" width="168" height="168">
+    <span class="eyebrow">Broken Arrow · Filipino café</span>
+    <h1>Mixy Bites<br><em>Café &amp; Goodies</em></h1>
+    <p class="lede">Filipino comfort food, sweet treats, milk tea and a cozy gift shop — a taste of culture in every bite and sip, from Ailene &amp; Elena.</p>
+    <div class="chips"><span class="chip" id="openchip"><i></i><span>Wed–Sun 11–7</span></span><span class="chip">2210 W Houston St</span><span class="chip">Pickup &amp; delivery</span></div>
     <div class="cta">
-      <a class="btn btn-main" href="#book">Order for pickup or delivery <span aria-hidden="true">→</span></a>
-      <a class="btn btn-line" href="tel:+19182368088">Call (918) 236-8088</a>
+      <a class="btn btn-main" href="tel:+19182368088"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call (918) 236-8088</a>
+      <a class="btn btn-line" href="#order">Order pickup or delivery <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </header>
 
-<section id="services">
+<main id="main">
+<section id="order" aria-labelledby="order-h">
   <div class="wrap">
-    <div class="head reveal"><div><span class="num">01 — MENU</span><h2>Something sweet,<br><em>something savory.</em></h2></div><p class="sub">Favorites from the café. Full menu and prices are on the ordering apps.</p></div>
-    <div class="grid3 n3"><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="10" r="1"/><circle cx="10" cy="15" r="1"/><circle cx="15" cy="15" r="1"/></svg></div><h3>Goodies</h3><p>Baked fresh and made to share.</p><ul><li>Stuffed cookies</li><li>Cake pops</li><li>Baked treats</li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 7c0-2 2-2 2-4M13 7c0-2 2-2 2-4"/></svg></div><h3>Filipino comfort food</h3><p>The taste of home.</p><ul><li>Lumpia &amp; pancit</li><li>Adobo rice combo</li><li>Beef tapa rice combo</li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1.5 13h-9z"/><path d="M5 8h14M14 8l2-6"/><circle cx="10" cy="17" r="1"/><circle cx="13" cy="15" r="1"/></svg></div><h3>Drinks &amp; halo-halo</h3><p>Cold, creamy, colorful.</p><ul><li>Halo-halo</li><li>Milk tea</li><li>Coffee &amp; specialty drinks</li></ul></article></div>
+    <div class="head reveal"><div><span class="num">01 — ORDER</span><h2 id="order-h">Hungry? <em>Order ahead.</em></h2></div><p class="sub">Call the café, or use the delivery app Mixy Bites already uses.</p></div>
+    <div class="reveal"><div class="order">
+      <a class="olink" href="tel:+19182368088"><div><b>Call the café</b><span>(918) 236-8088 · tap to call</span></div><span class="arr" aria-hidden="true">→</span></a>
+      <a class="olink" href="https://www.doordash.com/store/mixy-bites-broken-arrow-37313733/" target="_blank" rel="noopener"><div><b>DoorDash</b><span>Pickup or delivery</span></div><span class="arr" aria-hidden="true">→</span></a>
+      <div class="olink off" role="group" aria-label="Uber Eats, to be confirmed"><div><b>Uber Eats</b><span>Uber Eats shows this café closed on its app since Jan 6, 2026.</span></div><span class="tag confirm">Confirm</span></div>
+    </div>
+    <p class="note">Uber Eats: if Mixy Bites is back on Uber Eats, we add the button here before this goes live.</p></div>
   </div>
 </section>
 
 <div class="rule"></div>
 
-<section>
+<section id="menu" aria-labelledby="menu-h">
   <div class="wrap">
-    <div class="band reveal">
-      <div><span class="num">02 — THE CAFÉ</span><h2>Made by Ailene<br><em>& Elena.</em></h2><p class="sub" style="margin-top:14px">A neighborhood café in Broken Arrow with Filipino comfort food and goodies you’ll want to photograph first.</p></div>
-      <div class="plans"><div class="plan"><div><b>Pickup</b><br><span>Order ahead on DoorDash or Uber Eats</span></div><span class="tag">Apps</span></div><div class="plan"><div><b>Delivery</b><br><span>Through the same apps</span></div><span class="tag">Apps</span></div><div class="plan"><div><b>Wed–Sun</b><br><span>Closed Monday &amp; Tuesday</span></div><span class="tag">Hours</span></div></div>
-    </div>
+    <div class="head reveal"><div><span class="num">02 — MENU HIGHLIGHTS</span><h2 id="menu-h">Something savory,<br><em>something sweet.</em></h2></div><p class="sub">From the café’s own DoorDash menu (October 2026). Full menu and current prices are on DoorDash.</p></div>
+    <div class="grid"><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 7c0-2 2-2 2-4M13 7c0-2 2-2 2-4"/></svg></div><h3>Rice combo meals</h3><p>Bowl (entrée + rice) or platter (entrée + rice + lumpiang shanghai + pancit bihon).</p><ul class="items"><li><span>Adobo Rice Combo<small>Pork belly and/or chicken in soy, vinegar and garlic</small></span></li><li><span>Beef Tapa Rice Combo<small>Marinated, garlicky, savory-sweet beef</small></span></li><li><span>Pork Belly Sisig Rice Combo<small>Spicy or non-spicy</small></span></li><li><span>Sinigang Rice Combo<small>Sour tamarind soup</small></span></li><li><span>Pinakbet Rice Combo</span></li><li><span>Pork Dinuguan Rice Combo</span></li><li><span>Embutido Rice Combo</span></li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="6" rx="3" transform="rotate(-20 12 12)"/><path d="M8 8.5l1.5 6M12 7l1.5 6M16 5.6l1.5 6"/></svg></div><h3>Lumpia &amp; pancit</h3><p>Crispy golden spring rolls and Filipino noodles.</p><ul class="items"><li><span>Pork Lumpiang Shanghai<small>6 pieces or a dozen</small></span></li><li><span>Lumpia &amp; Pancit<small>Pancit bihon with pork lumpiang shanghai</small></span></li><li><span>Palabok &amp; Lumpia<small>Rice noodles in savory orange sauce</small></span></li><li><span>Pancit Palabok A La Carte</span></li><li><span>Pancit Bihon A La Carte</span></li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11h14l-2 9H7z"/><path d="M7 11a5 5 0 0 1 10 0"/><path d="M12 6V3"/></svg></div><h3>Filipino sweet treats</h3><p>Cold, creamy and colorful.</p><ul class="items"><li><span>Halo-halo<small>Shaved ice, sweet beans, fruits, jellies and leche flan</small></span></li><li><span>Sweet Buko Pandan Salad<small>Coconut and pandan jelly in sweet milk</small></span></li><li><span>Ice Scramble</span></li><li><span>Cheesy Sweet Corn</span></li><li><span>Samalamig</span></li><li><span>Buko Juice Palamig<small>Young coconut juice with coconut strips</small></span></li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1.5 13h-9z"/><path d="M5 8h14M14 8l2-6"/><circle cx="10" cy="17" r="1"/><circle cx="13" cy="15" r="1"/></svg></div><h3>Milk tea &amp; drinks</h3><p>Milk teas, frappes, iced coffee and dirty sodas.</p><ul class="items"><li><span>Brown Sugar Milk Tea</span></li><li><span>Ube Macapuno Milk Tea or Frappe</span></li><li><span>Buko Pandan Milk Tea or Frappe</span></li><li><span>Taro, Thai, Matcha &amp; more milk teas</span></li><li><span>Dulce de Tiramisu Frappe</span></li><li><span>Iced coffee &amp; dirty soda</span></li></ul></article><article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="10" r="1"/><circle cx="10" cy="15" r="1"/><circle cx="15" cy="15" r="1"/></svg></div><h3>From the bakery case</h3><p>Baked treats to go with your drink.</p><ul class="items"><li><span>Croffle<small>Croissant-waffle with a choice of drizzle</small></span></li><li><span>Stuffed cookies</span></li><li><span>Cake pops</span></li><li><span>Filipino-inspired bread</span></li></ul></article></div>
+    <p class="note reveal">Prices are left off on purpose: app prices can differ from prices at the counter. Ailene &amp; Elena can add counter prices before this goes live.</p>
   </div>
 </section>
 
-<section id="hours">
+<div class="rule"></div>
+
+<section id="goodies" aria-labelledby="goodies-h">
   <div class="wrap">
-    <div class="head reveal"><div><span class="num">03 — HOURS &amp; CONTACT</span><h2>Come say <em>hi.</em></h2></div></div>
+    <div class="head reveal"><div><span class="num">03 — GOODIES &amp; GIFT SHOP</span><h2 id="goodies-h">Take a little<br><em>something home.</em></h2></div><p class="sub">Besides the kitchen, Mixy Bites has goodies to go and a cozy gift shop inside the café.</p></div>
+    <div class="grid n2">
+      <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="10" r="1"/><circle cx="10" cy="15" r="1"/><circle cx="15" cy="15" r="1"/></svg></div><h3>Goodies</h3><p>Stuffed cookies, cake pops, Filipino-inspired bread and classic desserts, in the café’s own words.</p></article>
+      <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18M12 8v13"/><path d="M12 8c-2-4-6-4-6-1.5S10 8 12 8zM12 8c2-4 6-4 6-1.5S14 8 12 8z"/></svg></div><h3>The gift shop <span class="tag confirm">Confirm</span></h3><p>A cozy gift shop inside the café. Stop by to browse, or call (918) 236-8088 to ask what’s on the shelf this week.</p></article>
+    </div>
+    <p class="note reveal">Gift shop: send us a few photos and the kinds of items you carry and we’ll fill this card in.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="hours" aria-labelledby="hours-h">
+  <div class="wrap">
+    <div class="head reveal"><div><span class="num">04 — HOURS &amp; MAP</span><h2 id="hours-h">Come say <em>hi.</em></h2></div></div>
     <div class="visit">
       <div class="panel reveal">
-        <h3>Hours</h3>
-        <table id="hourtable"><tr data-d="1"><td>Monday</td><td>Closed</td></tr><tr data-d="2"><td>Tuesday</td><td>Closed</td></tr><tr data-d="3"><td>Wednesday</td><td>11:00 AM – 8:00 PM</td></tr><tr data-d="4"><td>Thursday</td><td>11:00 AM – 8:00 PM</td></tr><tr data-d="5"><td>Friday</td><td>11:00 AM – 8:00 PM</td></tr><tr data-d="6"><td>Saturday</td><td>11:00 AM – 8:00 PM</td></tr><tr data-d="0"><td>Sunday</td><td>11:00 AM – 8:00 PM</td></tr></table>
-        <p class="fine" style="margin-top:14px">Listings show 11–7 and 11–8. We match these to the café’s real hours before this goes live.</p>
+        <h3>Hours <span class="tag confirm">Confirm</span></h3>
+        <table id="hourtable"><caption class="sr" style="position:absolute;left:-9999px">Hours</caption><tr data-d="1"><td>Monday</td><td>Closed</td></tr><tr data-d="2"><td>Tuesday</td><td>Closed</td></tr><tr data-d="3"><td>Wednesday</td><td>11:00 AM – 7:00 PM</td></tr><tr data-d="4"><td>Thursday</td><td>11:00 AM – 7:00 PM</td></tr><tr data-d="5"><td>Friday</td><td>11:00 AM – 7:00 PM</td></tr><tr data-d="6"><td>Saturday</td><td>11:00 AM – 7:00 PM</td></tr><tr data-d="0"><td>Sunday</td><td>11:00 AM – 7:00 PM</td></tr></table>
+        <p class="note">Wed–Sun 11–7 is what the café’s Linktree says. Some listings show 11–8, so we’ll confirm with Ailene &amp; Elena before this goes live.</p>
       </div>
-      <div class="panel reveal"><h3>Reach us</h3><div class="contact"><a class="crow" href="tel:+19182368088"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><div><small>Call</small><b>(918) 236-8088</b></div></a><a class="crow" href="https://maps.google.com/?q=2210+W+Houston+St,+Broken+Arrow,+OK+74012" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 22s7-7.4 7-12a7 7 0 1 0-14 0c0 4.6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><small>Find us</small><b>2210 W Houston St, Broken Arrow, OK 74012</b></div></a><a class="crow" href="https://linktr.ee/mixybites" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><div><small>Instagram &amp; TikTok</small><b>@mixybites</b></div></a><a class="crow" href="https://www.facebook.com/mixybites/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><div><small>Facebook</small><b>Mixy Bites</b></div></a></div></div>
+      <div class="panel reveal"><h3>Find us</h3><div class="contact">
+        <a class="crow" href="https://www.google.com/maps/search/?api=1&amp;query=Mixy+Bites+2210+W+Houston+St+Broken+Arrow+OK+74012" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-7.4 7-12a7 7 0 1 0-14 0c0 4.6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><small>Open in Google Maps</small><b>2210 W Houston St, Broken Arrow, OK 74012</b></div></a>
+        <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-7.4 7-12a7 7 0 1 0-14 0c0 4.6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><small>Cross streets</small><b>81st &amp; S 145th E Ave (Aspen Ave)</b></div></div>
+        <a class="crow" href="tel:+19182368088"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><div><small>Call</small><b>(918) 236-8088</b></div></a>
+        <a class="crow" href="mailto:mixybitesok@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div><small>Email</small><b>mixybitesok@gmail.com</b></div></a>
+      </div></div>
     </div>
   </div>
 </section>
 
 <div class="rule"></div>
 
-<section id="book">
-  <div class="wrap quote">
-    <div class="reveal">
-      <span class="num">04 — ORDER</span>
-      <h2>Hungry?<br><em>Order ahead.</em></h2>
-      <p class="sub" style="margin-top:14px">Mixy Bites already takes orders on DoorDash and Uber Eats. These buttons go straight there.</p>
-    </div>
-    <div class="panel reveal bk-links"><a class="bk-link" href="https://www.doordash.com/store/mixy-bites-broken-arrow-37313733/" target="_blank" rel="noopener"><div><b>DoorDash</b><span>Pickup or delivery</span></div><span class="arr" aria-hidden="true">→</span></a><a class="bk-link" href="https://www.ubereats.com/store/mixy-bites-filipino-asian-cafe-broken-arrow/R_1XuHV0S72TeXXcK8VTvg" target="_blank" rel="noopener"><div><b>Uber Eats</b><span>Pickup or delivery</span></div><span class="arr" aria-hidden="true">→</span></a>
-      <a class="bk-link" href="tel:+19182368088"><div><b>Rather call?</b><span>(918) 236-8088</span></div><span class="arr" aria-hidden="true">→</span></a>
-      <p class="fine">Ordering opens on the apps the café already uses.</p></div>
+<section id="about" aria-labelledby="about-h">
+  <div class="wrap about reveal">
+    <span class="num">05 — ABOUT</span>
+    <h2 id="about-h" style="margin-top:12px">Ailene <em>&amp;</em> Elena</h2>
+    <p class="big">Mixy Bites was created by Ailene &amp; Elena: a neighborhood café in Broken Arrow sharing <em>Filipino comfort food, goodies and drinks.</em></p>
+    <div class="sig">Mixy Bites · Broken Arrow</div>
   </div>
 </section>
 
 <div class="rule"></div>
 
-<section>
-  <div class="wrap owners reveal">
-    <span class="num">05 — MIXY BITES</span>
-    <p style="margin-top:20px">Your neighborhood café & <em>Filipino goodies</em> — created by Ailene & Elena.</p>
-    <div class="sig">— Mixy Bites, Broken Arrow</div>
+<section id="follow" aria-labelledby="follow-h">
+  <div class="wrap">
+    <div class="head reveal"><div><span class="num">06 — FOLLOW</span><h2 id="follow-h">Follow <em>Mixy Bites.</em></h2></div></div>
+    <div class="follow reveal">
+      <a class="crow" href="https://www.facebook.com/mixybites/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><div><small>Facebook</small><b>Mixy Bites</b></div></a>
+      <a class="crow" href="https://www.instagram.com/mixy_bites" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg><div><small>Instagram</small><b>@mixy_bites</b></div></a>
+      <a class="crow" href="https://www.tiktok.com/@mixybites" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.8 2.4 4.6 5 5"/></svg><div><small>TikTok</small><b>@mixybites</b></div></a>
+      <a class="crow" href="https://linktr.ee/mixybites" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><div><small>All links</small><b>linktr.ee/mixybites</b></div></a>
+    </div>
   </div>
 </section>
+
+<section aria-labelledby="ath-h">
+  <div class="wrap">
+    <div class="athbox reveal">
+      <div><strong id="ath-h">A free preview from Above The Hill.</strong><p>You see it first. Love it? $100 one time. It can live at mixybites.com, the domain you already own (it points to Facebook today).</p></div>
+      <a class="btn btn-line" href="https://abovethehilldev.online/free-look/" target="_blank" rel="noopener">How it works</a>
+    </div>
+  </div>
+</section>
+</main>
 
 <footer>
   <div class="wrap">
     <div>© <span id="yr"></span> Mixy Bites Filipino Café &amp; Goodies · Broken Arrow, Oklahoma</div>
-    <div>Site by <a href="https://abovethehilldev.online" target="_blank" rel="noopener">Above The Hill</a></div>
+    <div>Preview built by <a href="https://abovethehilldev.online" target="_blank" rel="noopener">Above The Hill</a> · You see it first. Love it? $100 one time.</div>
   </div>
 </footer>
 
 <div class="callbar">
   <a class="btn btn-main" href="tel:+19182368088">Call now</a>
-  <a class="btn btn-line" href="#book">Order</a>
+  <a class="btn btn-line" href="https://www.doordash.com/store/mixy-bites-broken-arrow-37313733/" target="_blank" rel="noopener">DoorDash</a>
 </div>
 
 <script>
@@ -251,18 +277,21 @@ document.getElementById('yr').textContent=new Date().getFullYear();
   try{
     const p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).map(x=>[x.type,x.value]));
     const d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday), m=(+p.hour%24)*60+(+p.minute);
-    const hrs={"3": [660, 1200], "4": [660, 1200], "5": [660, 1200], "6": [660, 1200], "0": [660, 1200]};if(false)return;
+    const hrs={"3":[660,1140],"4":[660,1140],"5":[660,1140],"6":[660,1140],"0":[660,1140]};
     document.querySelector(`#hourtable tr[data-d="${d}"]`)?.classList.add('today');
-    const h=hrs[d], open=h&&m>=h[0]&&m<h[1], chip=document.getElementById('openchip');
+    const chip=document.getElementById('openchip'); if(!chip||false)return;
+    const h=hrs[d], open=h&&m>=h[0]&&m<h[1];
     chip.classList.toggle('open',!!open);
-    chip.lastElementChild.textContent=open?'Open now':'Closed now';
+    chip.lastElementChild.textContent=open?'Open now (listed hours)':'Closed now (listed hours)';
   }catch(e){}
 })();
-
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){
   const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 }else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+(function(){const bar=document.querySelector('.callbar'),cta=document.querySelector('.hero .cta');
+  if(!bar||!cta||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(es=>es.forEach(x=>bar.classList.toggle('away',x.isIntersecting))).observe(cta);})();
 </script>
 </body>
 </html>
