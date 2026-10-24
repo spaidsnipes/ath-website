@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-23.3",
+  "version": "2026-10-23.4",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
@@ -476,7 +476,7 @@
       "price": "$20/month",
       "status": "LIVE",
       "buy": "https://thewow.online/passport",
-      "fulfillment": "Self-serve",
+      "fulfillment": "Self-serve on WOW OS. Founder rule 2026-10-23: pick any one app at its $20 tier and get the $10 tier of every other app, including apps still to come. App tiers switch on as each app connects.",
       "verified": "2026-10-19"
     },
     {

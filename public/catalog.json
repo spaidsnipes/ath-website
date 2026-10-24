@@ -1,5 +1,5 @@
 {
- "version": "2026-10-23.3",
+ "version": "2026-10-23.4",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
@@ -136,7 +136,7 @@
    "price": "$20/month",
    "status": "LIVE",
    "buy": "https://thewow.online/passport",
-   "fulfillment": "Self-serve",
+   "fulfillment": "Self-serve on WOW OS. Founder rule 2026-10-23: pick any one app at its $20 tier and get the $10 tier of every other app, including apps still to come. App tiers switch on as each app connects.",
    "verified": "2026-10-19"
   },
   {

@@ -83,3 +83,12 @@ test('every sample site carries a pinned SAMPLE ribbon', () => {
     assert.match(s, /\.sample-ribbon\{position:sticky;top:0/, d);
   }
 });
+
+test('World Pass rule (Founder, 2026-10-23) is stated with its honest switch-on line, and the capacity note stays off', () => {
+  for (const r of ['ecosystem/index.html', 'passport/index.html', 'path/index.html']) {
+    const s = read(r);
+    assert.match(s, /pick any one app at its \$20 tier — WAVEMOTION, WealthyMindsets Pro and more — and get the \$10 tier of every other app, including apps still to come/, r);
+    assert.match(s, /App tiers switch on as each app connects\./, r);
+  }
+  for (const r of ['index.html', 'ecosystem/index.html', 'offer/index.html']) assert.doesNotMatch(read(r), /3 clients/, r);
+});
