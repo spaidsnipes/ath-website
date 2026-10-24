@@ -84,11 +84,13 @@ test('every sample site carries a pinned SAMPLE ribbon', () => {
   }
 });
 
-test('World Pass rule (Founder, 2026-10-23, corrected 10-24) is stated with its honest switch-on line, and the capacity note stays off', () => {
+test('World Pass rule (Founder, 2026-10-23, corrected 10-24) is stated with its live switch-on line, and the capacity note stays off', () => {
   for (const r of ['ecosystem/index.html', 'passport/index.html', 'path/index.html']) {
     const s = read(r);
     assert.match(s, /your passport across the whole ATH ecosystem: Premium of the one app you choose — WAVEMOTION, WealthyMindsets Pro and more — and Basic of every other ATH app, including apps still to come/, r);
-    assert.match(s, /App tiers switch on as each app connects\./, r);
+    // 2026-10-24: WAVEMOTION and WM Pro read the one World Pass from WOW OS and switch their tier on.
+    assert.match(s, /Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today/, r);
+    assert.doesNotMatch(s, /as each app connects/, r);
   }
   for (const r of ['index.html', 'ecosystem/index.html', 'offer/index.html']) assert.doesNotMatch(read(r), /3 clients/, r);
 });

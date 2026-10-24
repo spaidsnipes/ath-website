@@ -256,7 +256,7 @@ def catalog_js():
 # WOW Academy, Dreamboard and every future app, and WOW World (the future metaverse) when it opens.
 # Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no trials, no founding discounts.
 WP_RULE = "The $20 World Pass is your passport across the whole ATH ecosystem: Premium of the one app you choose — WAVEMOTION, WealthyMindsets Pro and more — and Basic of every other ATH app, including apps still to come."
-WP_NOTE = "App tiers switch on as each app connects."
+WP_NOTE = "Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today, and every app as it opens."
 WP_SHORT = "$20: Premium of the app you choose, Basic of every other ATH app."
 CHECK = '<svg class="vs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 12.5 4 4 8-9"/></svg>'
 STEP = REG["package_step_up"]
@@ -1098,14 +1098,14 @@ pages["/privacy/"] = ("Privacy — Above the Hill Developments", "What ATH colle
 
 pages["/terms/"] = ("Terms — Above the Hill Developments", "Ownership, diagnostics, and use of the ATH website.",
  """<section class="block"><div class="wrap prose" style="max-width:820px"><p class="eyebrow">Policy</p><h1 class="display d-m">Terms</h1>
-<p>Effective October 7, 2026; packages section added October 13, 2026. These terms cover use of abovethehilldev.online, operated by Above the Hill Developments Inc. ("ATH").</p>
+<p>Effective October 7, 2026; packages section added October 13, 2026; World Pass app tiers updated October 24, 2026. These terms cover use of abovethehilldev.online, operated by Above the Hill Developments Inc. ("ATH").</p>
 <h2>The free diagnostic</h2><p>ATHOS reports what it observed on one public page, what it infers from that, and what it cannot know. It is informational, not a guarantee of results. Where evidence is missing, the result says "unknown".</p>
 <h2>Ownership</h2><ul>
 <li>You own your materials. A diagnostic or deep diagnostic transfers no ownership of your code, content or data to ATH.</li>
 <li>ATH owns ATH intellectual property — including ATHOS, its methods, the ATH Builder Dictionary, product designs and inventions. Purchasing the Dictionary or any product licenses its use; it does not transfer ownership of ATH inventions.</li></ul>
 <h2>Deep diagnostics and services</h2><p>Deeper inspection happens only under a written scope you approve, with access you grant and may revoke. Default posture is read-only; ATH does not modify your systems during a diagnostic. Services are delivered under a separate scope and quote.</p>
 <h2>Website and app packages</h2><p>Package prices are listed on the <a class="gold" href="/build/#pricing">Build page</a>. Submitting a package request creates no charge and no obligation. ATH replies with a written scope and an invoice; work begins only after you approve the scope and pay. Timeline, revisions, ownership terms, third-party costs and refund terms are stated in that written scope. Ecosystem extras described as “not active yet” are delivered only once that product is operational, and no subscription renews without your separate consent.</p>
-<h2>Prices and availability</h2><p>Only products marked available can be bought. Waitlists and access requests create no obligation for either side. The World Pass is a $20-a-month plan: it includes the Premium tier of one app you choose and the Basic tier of every other app, switched on as each app connects; it does not include the Premium or Pro tier of every app, ATH services or third-party costs unless stated in writing.</p>
+<h2>Prices and availability</h2><p>Only products marked available can be bought. Waitlists and access requests create no obligation for either side. The World Pass is a $20-a-month plan: it includes the Premium tier of one app you choose and the Basic tier of every other app, which each app switches on from your pass; it does not include the Premium or Pro tier of every app, ATH services or third-party costs unless stated in writing.</p>
 <h2>Contact</h2><p>Questions: use the <a class="gold" href="/contact/">contact form</a>.</p>
 </div></section>""")
 
