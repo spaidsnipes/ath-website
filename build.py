@@ -8,7 +8,7 @@ Services show Founder-approved starting prices; WAVEMOTION clips come with its $
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
 """
-import os, html, re
+import os, html, re, datetime
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
 SITE = "https://abovethehilldev.online"
@@ -233,6 +233,15 @@ def pkg_cards():
     return "".join(out)
 def ladder_rows():
     return "".join(f'<li>{ic(p["icon"],"icon-sm")}<div style="flex:1"><b>{p["name"]}</b><span>{(money(p["price"]) + "–" + money(p["price_max"])) if p.get("price_max") else "from " + money(p["price"])} · {html.escape(p["summary"])}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={p["id"]}" aria-label="Request a scope for {p["name"]}">Scope it</a></li>' for p in PKG if p["from"])
+# HOLIDAY SPECIAL (Founder ruling 2026-10-25): WAVEMOTION Creator (Premium, $20) first month $10, half off, through
+# Dec 25 2026 11:59 PM CT. WAVEMOTION charges it (WOW one-time coupon HOLIDAY50). Date-gated twice: a build after the
+# deadline leaves it out, and assets/ath.js removes any [data-offer-ends] element once the deadline passes.
+HOLIDAY_ENDS = "2026-12-26T05:59:59Z"
+HOLIDAY_LINE = "Holiday special: your first month of WAVEMOTION Creator (Premium, $20) is $10, half off, when you subscribe by December 25, 2026, 11:59 PM CT. Then $20/month until you cancel."
+def holiday_note(now=None):
+    now = now or datetime.datetime.now(datetime.timezone.utc)
+    if now > datetime.datetime(2026, 12, 26, 5, 59, 59, tzinfo=datetime.timezone.utc): return ""
+    return f'<p class="body holiday-note" data-offer-ends="{HOLIDAY_ENDS}"><b>{html.escape(HOLIDAY_LINE)}</b></p>'
 def wm_rows():
     return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{html.escape(p["name"])}</b></span><span role="cell" class="pt-price">${p["price"]}/mo</span><span role="cell" class="pt-allowance">{p["clips"]} standard clips / month</span><span role="cell"><a class="btn btn-line btn-sm" href="https://www.wavemotion.live/#pricing" rel="noopener" aria-label="View WAVEMOTION {html.escape(p["name"])} plan">View plans</a></span></div>' for p in WM["plans"])
 def catalog_js():
@@ -254,7 +263,7 @@ def catalog_js():
 # Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · Pro/OS $50+. The $20 World Pass is THE ecosystem
 # pass (that is why it is a passport): Premium of the one app you choose + Basic of every other ATH app, WOW OS,
 # WOW Academy, Dreamboard and every future app, and WOW World (the future metaverse) when it opens.
-# Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no trials, no founding discounts.
+# Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no trials (WAVEMOTION included, Founder 2026-10-25), no founding discounts.
 WP_RULE = "The $20 World Pass is your passport across the whole ATH ecosystem: Premium of the one app you choose — WAVEMOTION, WealthyMindsets Pro and more — and Basic of every other ATH app, including apps still to come."
 WP_NOTE = "Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today, and every app as it opens."
 WP_SHORT = "$20: Premium of the app you choose, Basic of every other ATH app."
@@ -665,7 +674,9 @@ pages["/build/"] = ("ATH Services — You need the right path",
    <p class="panel-title" id="wavemotion-plans">WAVEMOTION plans</p>
    <div class="price-table wm-plan-table" role="table" aria-label="WAVEMOTION monthly plans"><div class="pt-row pt-head" role="row"><span role="columnheader">Plan</span><span role="columnheader">Monthly</span><span role="columnheader">Allowance</span><span role="columnheader">Next step</span></div>{wm_rows()}</div>
    <p class="note">Standard clip allowances are 40 / 80 / 250 / 250 per month. Cinematic generation is not open; production credits await measured provider costs. Platform publishing depends on the permissions of your connected accounts. Your clips come with your plan.</p>
-   <p class="body mb0">A 14-day trial needs no card. Choose a plan inside <a class="gold" href="https://www.wavemotion.live/#pricing" rel="noopener">WAVEMOTION</a>; this site does not charge a second subscription.</p>
+   <p class="body"><b>Starts at $10 a month</b>: one link for all your socials, your analytics in one place, and clips from your videos.</p>
+   {holiday_note()}
+   <p class="body mb0">Choose a plan inside <a class="gold" href="https://www.wavemotion.live/#pricing" rel="noopener">WAVEMOTION</a>; this site does not charge a second subscription.</p>
   </div>
   <p class="note mt2">“From” prices are starting points for a defined scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden. Catalog version {REG["version"]}.</p>
  </section>

@@ -4,6 +4,9 @@
   const $ = (s, r = document) => r.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+  // Time-limited offers remove themselves once their deadline passes (e.g. the WAVEMOTION holiday special).
+  document.querySelectorAll("[data-offer-ends]").forEach((e) => { const t = Date.parse(e.getAttribute("data-offer-ends")); if (!Number.isFinite(t) || Date.now() > t) e.remove(); });
+
   // menu
   const mb = $(".menu-btn"), nav = $("#nav");
   mb?.addEventListener("click", () => { const o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
