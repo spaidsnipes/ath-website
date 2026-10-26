@@ -145,7 +145,7 @@ RUNGS = [
     ("door", "$10 / mo", "Basic", "One app's essentials, per app · WAVEMOTION Starter · WM Pro App", "", "/passport/#ladder"),
     ("lattice", "$20 / mo", "World Pass", "Premium of the app you choose + Basic of every other ATH app, WOW OS, Academy and every new app", "Best value", "/passport/#world-pass-value"),
     ("triangle", "$50+ / mo", "Pro &amp; OS", "WAVEMOTION Pro $50 · Living Cinema Studio $75 · WM Pro OS $50", "", "/ecosystem/#specialist"),
-    ("peaks", "Services", "Build it for me", "Websites from $100 · apps from $1,000 · custom systems by quote", "", "/build/#pricing"),
+    ("peaks", "Services", "Build it for me", "Websites $100 or $200 one time · apps from $1,000 · custom systems by quote", "", "/build/#pricing"),
 ]
 
 def ladder(detail=True):
@@ -582,10 +582,10 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
  <div class="panel panel-pad mt2"><p class="panel-title">Availability today</p>
   <ul class="rows">
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
-   <li>{ic("door","icon-sm")}<div><b>Basic — from $10 / month per app</b><span>Wavemotion: the creator + business movement OS. Starter (Basic) $10 · Creator (Premium) $20 · Pro $50 · Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
+   <li>{ic("door","icon-sm")}<div><b>Basic — $10 a month per app</b><span>Wavemotion: the creator + business movement OS. Starter (Basic) $10 · Creator (Premium) $20 · Pro $50 · Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>{WP_RULE} {WP_NOTE} Available now on WOW OS, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro: a free guest account, WM Pro App (Basic) $10/month, WM Pro Premium $20/month (your World Pass when WM Pro is your choice) and WM Pro OS $50/month. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
-   <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites from $100 (Quick Start) and $200 (Business Growth), WAVEMOTION plans $10–$75 a month with clips included, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
+   <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites $100 (Quick Start) and $200 (Business Growth), one time; WAVEMOTION starts at $10 a month, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
   </ul></div>
 </div></section>""" + wp_value() + cta_block())
 
@@ -762,7 +762,7 @@ ECO = [
  ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW OS.", ("Get Passport", "https://thewow.online/passport/claim")),
  ("World Pass", "On WOW OS · $20/mo", "live", "Open door", WP_RULE + " " + WP_NOTE + " Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
  ("Wavemotion", "Creator + Business Movement OS", "live", "Open door", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Visit Wavemotion", "https://wavemotion.live/")),
- ("WM Pro", "Wealthy Mindsets Pro · free to start", "", "Open door", "Free guest account · App (Basic) $10/mo · Premium $20/mo (your World Pass if it's your choice) · OS $50/mo. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
+ ("WM Pro", "Wealthy Mindsets Pro · free guest tour", "", "Open door", "Free guest account · App (Basic) $10/mo · Premium $20/mo (your World Pass if it's your choice) · OS $50/mo. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
  ("PowerTribes", "Business · sales · workforce · leadership OS", "dim", "In development", "Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=powertribes")),
  ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Not yet priced; when it opens, World Pass members get its Basic tier.", ("Request access", "/contact/?intent=dreamboard")),
  ("WOW OS", "The operating system · Guest welcome", "live", "Open door", "One home, many rooms — Lounge, Academy (Idea Library, Visual Learns, Student of the Game), Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://thewow.online/")),
@@ -971,7 +971,7 @@ pages["/free-look/"] = ("Free website look — Above the Hill",
  f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">Free · no obligation</p><h1 class="display d-l mt1">See your business<br>online, free</h1>
   <p class="lede">Leave your name and number. A person at ATH looks at how customers find you today and sends you a free look at your new site.</p>
-  <ul class="pkg-list mt2"><li>Websites from <b>$100 one time</b>, go-live date confirmed when your form arrives</li><li>Up to 3 pages, linked to the booking or ordering you already use: <b>$200</b></li><li>Site + 2 promo videos: <b>$500–$700</b></li><li>Weekly videos made for you: <b>$500/month</b></li></ul>
+  <ul class="pkg-list mt2"><li>A one-page website: <b>$100 one time</b>, free preview first; you pay only if you love it</li><li>Up to 3 pages, linked to the booking or ordering you already use: <b>$200</b></li><li>Site + 2 promo videos: <b>$500–$700</b></li><li>Weekly videos made for you: <b>$500/month</b></li></ul>
   <p class="body mt2">See real examples: <a class="gold" href="/sites/">sample sites ATH built</a>.</p></div>
  <form class="panel panel-pad" id="lead-form" novalidate>
   <input type="hidden" name="intent" value="free-look">
@@ -1139,7 +1139,7 @@ NICHES = [
 def city_page(cslug, city, n):
     nslug, who, payoff, line, gets = n
     others = "".join(f'<li><a class="gold" href="/websites/{cslug}/{o[0]}/">Websites for {o[1]} in {city}</a></li>' for o in NICHES if o[0] != nslug)
-    return (f"Websites for {who} in {city}, OK — from $100 | Above the Hill",
+    return (f"Websites for {who} in {city}, OK — $100 one time | Above the Hill",
      f"{payoff}. A mobile website for {who} in {city}, Oklahoma: $100 one time, go-live date confirmed with you. Local team, no contract.",
      f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">{city}, Oklahoma · local team</p><h1 class="display d-l mt1">{payoff}.</h1>
@@ -1155,7 +1155,7 @@ def city_page(cslug, city, n):
 for cslug, city in CITIES:
     for n in NICHES: pages[f"/websites/{cslug}/{n[0]}/"] = city_page(cslug, city, n)
 pages["/websites/"] = ("Websites for local businesses in Tulsa, Broken Arrow and Bixby | Above the Hill",
- "Websites from $100 for barbers, salons, restaurants, bakeries, auto shops, cleaners and small businesses in Tulsa, Broken Arrow and Bixby, Oklahoma.",
+ "Websites for $100 one time for barbers, salons, restaurants, bakeries, auto shops, cleaners and small businesses in Tulsa, Broken Arrow and Bixby, Oklahoma.",
  f"""<section class="block" style="padding-top:56px"><div class="wrap"><p class="eyebrow">Local · Tulsa area</p><h1 class="display d-l mt1">A website for the customers<br>already looking for you</h1>
  <p class="lede">$100 one time, go-live date confirmed with you. Pick your town and your kind of business.</p>
  <div class="grid g3 mt2">""" + "".join(f'<div class="panel panel-pad"><h2 class="display d-m">{city}</h2><ul class="pkg-list">' + "".join(f'<li><a class="gold" href="/websites/{cslug}/{n[0]}/">{n[1].capitalize()}</a></li>' for n in NICHES) + "</ul></div>" for cslug, city in CITIES) + f"""</div>
