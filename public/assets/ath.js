@@ -147,6 +147,18 @@
       const fd = new FormData(f);
       const data = Object.fromEntries(fd.entries());
       data.sources = fd.getAll("sources");
+      // Forms marked data-compose (Free Business Diagnosis) fold their extra answers into `message`,
+      // because /api/lead stores only its known fields.
+      if (f.hasAttribute("data-compose")) {
+        const lines = [];
+        for (const el of f.querySelectorAll("[data-q]")) {
+          const v = el.dataset.group ? fd.getAll(el.dataset.group).join(", ") : el.tagName === "SELECT" ? (el.value ? el.selectedOptions[0]?.text || el.value : "") : (el.value || "").trim();
+          if (v) lines.push(`${el.dataset.q}: ${v}`);
+        }
+        let calc = ""; try { calc = sessionStorage.getItem("ath_calc") || ""; } catch {}
+        if (calc && f.querySelector("#bd-calc")?.checked) lines.push("Consequence Calculator (visitor's estimates): " + calc);
+        data.message = [lines.join("\n"), (data.message || "").trim()].filter(Boolean).join("\n\n").slice(0, 3000);
+      }
       if (!data.name?.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email || "")) { st.className = "form-status err"; st.textContent = "Please add your name and a valid email."; return; }
       if (needsAck && data.terms_ack !== "yes") { st.className = "form-status err"; st.textContent = "Please confirm you understand the scope-and-invoice terms."; return; }
       let diag = qs.get("diagnosis"); try { diag = diag || sessionStorage.getItem("ath_diag"); } catch {}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Consequence Calculator — what missed contact costs you | Above the Hill</title>
+<meta name="description" content="Enter your cost per lead, contact, booking, show and close rates and average sale. See your estimated cost per contact, per appointment, per customer, and your estimated monthly leak.">
+<link rel="canonical" href="https://abovethehilldev.online/consequence-calculator/">
+<meta property="og:title" content="Consequence Calculator — what missed contact costs you | Above the Hill">
+<meta property="og:description" content="Enter your cost per lead, contact, booking, show and close rates and average sale. See your estimated cost per contact, per appointment, per customer, and your estimated monthly leak.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abovethehilldev.online/consequence-calculator/">
+<meta property="og:image" content="https://abovethehilldev.online/assets/art/home.jpg">
+<meta name="theme-color" content="#08090c">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap"></noscript>
+
+<link rel="stylesheet" href="/assets/ath.css">
+<script>window.ATH_API="https://ath-athos.dhill5711.workers.dev";</script>
+<script src="/assets/ath.js" defer></script>
+<script src="/assets/spaidbot.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="mantra" aria-hidden="true"><span class="mq"><span>Plain truth · Higher ground · One vision · One language · One ecosystem · Invention company · Systems · Destinations</span><span>Plain truth · Higher ground · One vision · One language · One ecosystem · Invention company · Systems · Destinations</span></span></div>
+<header class="site-head">
+ <div class="wrap">
+  <a class="brand" href="/" aria-label="Above the Hill Developments — home"><img src="/assets/ath-logo-lockup.webp" width="168" height="88" alt="Above the Hill Developments"></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="nav" id="nav" aria-label="Primary"><a href="/company/">Company</a><a href="/work/">Inventions</a><a href="/build/">Services</a><a href="/diagnose/">Diagnose</a><a href="/language/">Language</a><a href="/ecosystem/">Ecosystem</a><a class="btn btn-gold btn-sm" href="/diagnose/">Enter ATH</a></nav>
+ </div>
+</header>
+<main id="main">
+<section class="block" style="padding-top:56px"><div class="wrap">
+ <p class="eyebrow">Consequence Calculator</p><h1 class="display d-l mt1">What does a lead<br>you never reach<br>really cost?</h1>
+ <p class="lede">Cost per lead is the number everyone tracks. Cost per contact is the one that hurts: <b>cost per lead ÷ contact rate</b>. Put in your own numbers.</p>
+</div></section>
+<section class="block" style="padding-top:8px"><div class="wrap split rv-calc" style="align-items:start">
+ <form class="panel panel-pad" id="calc-form" novalidate aria-describedby="calc-ex">
+  <p class="panel-title">Your numbers</p>
+  <p class="note" id="calc-ex">The starting values are example numbers only. Replace them with yours; everything updates as you type. Nothing you enter leaves this page.</p>
+  <div class="grid g2"><div class="field"><label class="lbl" for="c-cpl">Cost per lead</label>
+  <div class="rv-in"><span class="rv-unit">$</span><input id="c-cpl" name="cpl" type="number" inputmode="decimal" min="0" max="100000" step="any" value="50" aria-describedby="c-cpl-h"></div>
+  <p class="note mb0" id="c-cpl-h">What you pay, on average, for one lead.</p></div><div class="field"><label class="lbl" for="c-leads">Leads per month</label>
+  <div class="rv-in"><input id="c-leads" name="leads" type="number" inputmode="decimal" min="0" max="1000000" step="1" value="100" aria-describedby="c-leads-h"></div>
+  <p class="note mb0" id="c-leads-h">New leads, calls or inquiries in a typical month.</p></div><div class="field"><label class="lbl" for="c-contact">Contact rate</label>
+  <div class="rv-in"><input id="c-contact" name="contact" type="number" inputmode="decimal" min="0" max="100" step="any" value="50" aria-describedby="c-contact-h"><span class="rv-unit">%</span></div>
+  <p class="note mb0" id="c-contact-h">Out of 100 leads, how many do you actually talk to?</p></div><div class="field"><label class="lbl" for="c-book">Booking rate</label>
+  <div class="rv-in"><input id="c-book" name="book" type="number" inputmode="decimal" min="0" max="100" step="any" value="40" aria-describedby="c-book-h"><span class="rv-unit">%</span></div>
+  <p class="note mb0" id="c-book-h">Out of 100 people you talk to, how many book an appointment?</p></div><div class="field"><label class="lbl" for="c-show">Show rate</label>
+  <div class="rv-in"><input id="c-show" name="show" type="number" inputmode="decimal" min="0" max="100" step="any" value="70" aria-describedby="c-show-h"><span class="rv-unit">%</span></div>
+  <p class="note mb0" id="c-show-h">Out of 100 booked, how many show up?</p></div><div class="field"><label class="lbl" for="c-close">Close rate</label>
+  <div class="rv-in"><input id="c-close" name="close" type="number" inputmode="decimal" min="0" max="100" step="any" value="30" aria-describedby="c-close-h"><span class="rv-unit">%</span></div>
+  <p class="note mb0" id="c-close-h">Out of 100 who show, how many buy?</p></div><div class="field"><label class="lbl" for="c-value">Average sale value</label>
+  <div class="rv-in"><span class="rv-unit">$</span><input id="c-value" name="value" type="number" inputmode="decimal" min="0" max="100000000" step="any" value="1000" aria-describedby="c-value-h"></div>
+  <p class="note mb0" id="c-value-h">What one new customer is worth to you (first sale).</p></div></div>
+ </form>
+ <div class="panel panel-pad rv-out" aria-live="polite">
+  <p class="panel-title">Estimates from your inputs</p>
+  <div class="rv-kpis">
+   <div class="rv-kpi"><span class="lbl">Est. cost per contact</span><b id="o-contact">—</b></div>
+   <div class="rv-kpi"><span class="lbl">Est. cost per appointment</span><b id="o-appt">—</b></div>
+   <div class="rv-kpi"><span class="lbl">Est. cost per customer</span><b id="o-cust">—</b></div>
+   <div class="rv-kpi rv-leak"><span class="lbl">Est. monthly leak</span><b id="o-leak">—</b></div>
+  </div>
+  <div class="rv-table mt2">
+   <div class="rv-row"><span>Monthly lead spend</span><span class="rv-price" id="o-spend">—</span></div>
+   <div class="rv-row"><span>People reached · booked · showed · bought</span><span class="rv-price"><span id="o-n-contacts">—</span> · <span id="o-n-appts">—</span> · <span id="o-n-shows">—</span> · <span id="o-n-cust">—</span></span></div>
+   <div class="rv-row"><span>Est. revenue at your current rates</span><span class="rv-price" id="o-rev">—</span></div>
+   <div class="rv-row"><span>Leak · leads never reached</span><span class="rv-price" id="o-l-contact">—</span></div>
+   <div class="rv-row"><span>Leak · reached, never booked</span><span class="rv-price" id="o-l-book">—</span></div>
+   <div class="rv-row"><span>Leak · booked, didn't show</span><span class="rv-price" id="o-l-show">—</span></div>
+  </div>
+  <details class="mt2"><summary class="gold">How these estimates are calculated</summary>
+   <ul class="pkg-list mt1">
+    <li>Cost per contact = cost per lead ÷ contact rate.</li>
+    <li>Cost per appointment = cost per lead ÷ (contact rate × booking rate).</li>
+    <li>Cost per customer = cost per lead ÷ (contact rate × booking rate × show rate × close rate).</li>
+    <li>Each leak line is the revenue that stage's drop-off would have produced if it had continued at <i>your own</i> later-stage rates, one stage at a time. The monthly leak is the sum of the three. Your close rate is left as you entered it.</li>
+    <li>These are estimates from the numbers you typed, not a forecast and not a promise of what ATH will recover. Real results depend on your leads, team and market.</li>
+   </ul></details>
+  <div class="ctas mt2"><a class="btn btn-gold" href="/business-diagnosis/" >Request a free business diagnosis <span class="arr" aria-hidden="true">→</span></a></div>
+  <p class="note mb0">If you request a diagnosis in this browser tab, you can choose to attach these numbers to your request.</p>
+ </div>
+</div></section><script>
+(() => {
+  const f = document.getElementById("calc-form"); if (!f) return;
+  const v = (id) => { const n = parseFloat(f.elements[id].value); return isFinite(n) && n >= 0 ? n : 0; };
+  const usd = (n) => isFinite(n) ? "$" + n.toLocaleString("en-US", { maximumFractionDigits: n < 100 ? 2 : 0, minimumFractionDigits: n < 100 ? 2 : 0 }) : "—";
+  const num = (n) => isFinite(n) ? n.toLocaleString("en-US", { maximumFractionDigits: 1 }) : "—";
+  const out = (id, t) => { const e = document.getElementById(id); if (e) e.textContent = t; };
+  function run() {
+    const cpl = v("cpl"), L = v("leads"), V = v("value");
+    const cr = Math.min(v("contact"), 100) / 100, br = Math.min(v("book"), 100) / 100, sr = Math.min(v("show"), 100) / 100, kr = Math.min(v("close"), 100) / 100;
+    const spend = cpl * L, contacts = L * cr, appts = contacts * br, shows = appts * sr, customers = shows * kr;
+    const perContact = cr > 0 ? cpl / cr : Infinity;
+    const perAppt = cr * br > 0 ? cpl / (cr * br) : Infinity;
+    const perCust = cr * br * sr * kr > 0 ? cpl / (cr * br * sr * kr) : Infinity;
+    // Leak: revenue each stage's drop-off would have produced at YOUR downstream rates (one stage fixed at a time, others unchanged).
+    const leakContact = L * (1 - cr) * br * sr * kr * V;
+    const leakBook = L * cr * (1 - br) * sr * kr * V;
+    const leakShow = L * cr * br * (1 - sr) * kr * V;
+    const leak = leakContact + leakBook + leakShow;
+    out("o-spend", usd(spend)); out("o-contact", usd(perContact)); out("o-appt", usd(perAppt)); out("o-cust", usd(perCust));
+    out("o-leak", usd(leak)); out("o-l-contact", usd(leakContact)); out("o-l-book", usd(leakBook)); out("o-l-show", usd(leakShow));
+    out("o-n-contacts", num(contacts)); out("o-n-appts", num(appts)); out("o-n-shows", num(shows)); out("o-n-cust", num(customers)); out("o-rev", usd(customers * V));
+    const summary = `cost/lead ${usd(cpl)}, leads/mo ${num(L)}, contact ${num(cr * 100)}%, booking ${num(br * 100)}%, show ${num(sr * 100)}%, close ${num(kr * 100)}%, avg sale ${usd(V)} → est. cost/contact ${usd(perContact)}, cost/appointment ${usd(perAppt)}, cost/customer ${usd(perCust)}, est. monthly leak ${usd(leak)}`;
+    try { sessionStorage.setItem("ath_calc", summary); } catch {}
+  }
+  f.addEventListener("input", run); f.addEventListener("submit", (e) => { e.preventDefault(); run(); });
+  run();
+})();
+</script></main>
+<footer class="site-foot">
+ <div class="wrap">
+  <div class="foot-grid">
+   <div><img src="/assets/ath-logo-lockup.webp" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
+    <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
+   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/offer/">Everything you get</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
+   <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
+   <div><p class="fh">World</p><a href="https://thewow.online/">WOW OS</a><a href="https://wavemotion.live/">Wavemotion</a><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+  </div>
+  <div class="foot-line"><span class="mantra2">Heavens above · A realm to explore · Multiple destinations · One builder</span><span>© <span data-year>2026</span> Above the Hill Developments Inc. <a class="sha-ar" href="https://mission.abovethehilldev.online/founders/login" rel="nofollow" aria-label="Founders" title="שַׁעַר">שַׁעַר</a></span></div>
+ </div>
+</footer>
+</body>
+</html>

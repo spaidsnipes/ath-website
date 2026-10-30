@@ -113,7 +113,7 @@ FOOT = """</main>
   <div class="foot-grid">
    <div><img src="/assets/ath-logo-lockup.webp" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
     <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
-   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/offer/">Everything you get</a><a href="/garden-check/">Garden Check</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
+   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/offer/">Everything you get</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
    <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
    <div><p class="fh">World</p><a href="https://thewow.online/">WOW OS</a><a href="https://wavemotion.live/">Wavemotion</a><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
@@ -1162,6 +1162,337 @@ pages["/websites/"] = ("Websites for local businesses in Tulsa, Broken Arrow and
  <div class="ctas mt2">{btn("Start for $100", QS_LINK)}{btn("Get a free look", "/free-look/", "line")}</div></div></section>""")
 
 SECTION_H2 = {"/build/": "Service families", "/language/": "What the dictionary includes", "/passport/": "Membership tiers", "/report/": "What a Hill Report contains", "/work/": "ATH inventions"}
+
+# ---------------------------------------------------------------- revenue front door (MASTER-12HR-SHIFT 2026-10-30 §5 + §6)
+# Industry pages + Consequence Calculator + Free Business Diagnosis.
+# AI-service and website prices below are the WORKING prices in ~/ath-canon-live/ATH-MASTER-12HR-SHIFT-2026-10-30.md §5.
+# They are not in commercial/registry.json yet, and §5 website prices ($250 / $500) differ from the registry's
+# live Quick Start $100 / Business Growth $200 card packages. Founder must reconcile before these pages ship.
+# Rules carried from §5: no trial offers, no review gating, no fake proof, no guaranteed results.
+SVC_AS_OF = "October 30, 2026"
+SVC = [
+    # (id, name, price line, what it does)
+    ("review-ai", "Review AI", "$300 / month", "Asks every customer for a review after a visit or a finished job: happy or not. We never filter who gets asked (no review gating)."),
+    ("speed-to-lead", "Speed-to-Lead", "$200 / month", "New web, ad and form leads get an automatic text or call right away, then a person on your team takes over."),
+    ("review-speed", "Review AI + Speed-to-Lead", "$500 / month", "Both systems together, set up as one flow."),
+    ("receptionist", "AI Receptionist", "$700–$1,500 pilot, then $300–$700 / location / month", "Answers calls, answers common questions, takes messages and books into the scheduling you already use. Starts as a two-week paid pilot; the monthly price is set per location after the pilot."),
+    ("websites", "Websites", "Starter $250 · Business $500 one time", "A fast mobile site with a clear call or booking button. Larger builds ($1,000 / $2,500 / $8,000–$15,000+) are scoped in writing."),
+]
+SVC_FINE = [
+    f"Working prices as of {SVC_AS_OF}. Every install starts with a written scope; nothing is charged on this page.",
+    "There is no trial offer. The receptionist pilot is a paid pilot.",
+    "Missed-call text-back and reactivation campaigns are set up inside Speed-to-Lead or the Receptionist; anything extra is quoted in your scope.",
+    "Results depend on your leads, your team and your market. ATH does not guarantee bookings, sales or revenue.",
+    "Any third-party costs (phone numbers, messaging fees, software you already use) are listed in your scope before you pay.",
+]
+
+def svc_table(only=None):
+    rows = "".join(
+        f'<div class="rv-row" data-svc="{sid}"><span><b>{n}</b><span class="note">{d}</span></span><span class="rv-price">{p}</span></div>'
+        for sid, n, p, d in SVC if not only or sid in only)
+    fine = "".join(f"<li>{f}</li>" for f in SVC_FINE)
+    return f"""<div class="panel panel-pad" id="prices"><p class="panel-title">What it costs · working prices</p><div class="rv-table">{rows}</div>
+ <ul class="pkg-list mt2 rv-fine">{fine}</ul></div>"""
+
+DIAG_HREF = "/business-diagnosis/"
+def diag_btn(ind=""):
+    return btn("Request a free business diagnosis", DIAG_HREF + (f"?industry={ind}" if ind else ""))
+
+INDUSTRIES = [
+    {
+        "slug": "dental", "name": "Dental practices", "short": "Dental",
+        "title": "Dental practices — answer every call, fill every chair",
+        "desc": "AI receptionist, missed-call text-back, speed-to-lead, review requests and patient reactivation for dental practices. Working prices, written scope, no trial offers.",
+        "h1": "Every unanswered call<br>is a patient who<br>calls the next office",
+        "lede": "Your front desk is checking someone in, on another line, or at lunch. The phone rings out. A new patient doesn't leave a voicemail; they try the next practice on the list.",
+        "problems": [
+            ("Missed calls", "Calls during procedures, lunch and after hours go to voicemail, and many callers never leave one."),
+            ("Slow follow-up", "Web and ad inquiries wait until someone has a free minute. By then the patient has booked somewhere else."),
+            ("No easy booking", "Patients who want to book at 9 PM have no way to start except calling back tomorrow."),
+            ("Lapsed recall", "Patients overdue for cleanings sit in your system with no reminder that reaches them."),
+            ("Reviews by chance", "Reviews get asked for when someone remembers, so your profile doesn't reflect how many patients you serve."),
+        ],
+        "does": [
+            ("AI receptionist", "Answers when the desk can't, handles scheduling and general questions (hours, location, insurance accepted, new-patient steps), and books or takes a message. It does not give clinical advice."),
+            ("Missed-call text-back", "A caller who hangs up gets an automatic text back from your practice number, so the conversation keeps going."),
+            ("Speed-to-lead", "Form and ad inquiries get an immediate reply and a handoff to your team."),
+            ("Review requests, no gating", "Every patient gets the same review request after a visit. We never screen out unhappy patients."),
+            ("Recall reactivation", "Overdue patients you choose get a friendly reminder to book."),
+            ("Website", "A mobile site with one clear call and booking path."),
+        ],
+        "note": "<b>Patient privacy.</b> ATH does not claim HIPAA compliance on this page. Before any dental install we map exactly what patient information each system would see, keep clinical details out of automated messages, and confirm with you whether a Business Associate Agreement is needed with ATH or any vendor involved. If it can't be done the right way for your practice, we say so in the scope.",
+    },
+    {
+        "slug": "home-services", "name": "Home services", "short": "Home services",
+        "title": "Home services — the first to call back gets the job",
+        "desc": "Missed-call text-back, speed-to-lead, AI receptionist, review requests and past-customer reactivation for HVAC, plumbing, roofing, lawn, cleaning and other home-service businesses.",
+        "h1": "You're on a roof.<br>The phone rings.<br>The job goes to someone else.",
+        "lede": "Many homeowners call more than one company and hire whoever answers first. When you're on a job, the call you can't take is often the job you don't get.",
+        "problems": [
+            ("Missed calls on the job", "You can't answer from a crawlspace or a ladder, and callers rarely wait for a callback."),
+            ("Quote requests go cold", "Form fills and ad leads sit for hours before anyone replies."),
+            ("No booking path", "Customers who'd book an estimate tonight can't, so they keep shopping."),
+            ("Past customers forget you", "Seasonal tune-ups and repeat work go to whoever reminds them first."),
+            ("Few reviews", "Great jobs don't turn into reviews unless someone asks every time."),
+        ],
+        "does": [
+            ("Missed-call text-back", "Every missed call gets a text from your business number so the customer knows you saw it."),
+            ("Speed-to-lead", "Web and ad leads get an immediate reply, the job details are collected, and your team gets the handoff."),
+            ("AI receptionist", "Answers calls while you work, collects the address and the problem, and books estimates into the calendar you use."),
+            ("Review requests, no gating", "Every customer gets asked after the job, not just the happy ones."),
+            ("Reactivation", "Past customers get a seasonal reminder you approve."),
+            ("Website", "A mobile site with your service area, your services, and a call button that works."),
+        ],
+    },
+    {
+        "slug": "local-business", "name": "Local businesses", "short": "Local business",
+        "title": "Local businesses — stop losing customers between hello and booked",
+        "desc": "Websites, missed-call text-back, speed-to-lead, review requests and reactivation for salons, restaurants, shops, studios and other local businesses.",
+        "h1": "Customers are<br>trying to reach you.<br>Some never get through.",
+        "lede": "You're serving the customer in front of you while the phone rings, the DMs pile up, and the website still shows last year's hours.",
+        "problems": [
+            ("Missed calls", "The phone rings while you're with a customer, and the caller moves on."),
+            ("Slow replies", "Messages and form fills get answered at the end of the day, or not at all."),
+            ("No booking", "People who want to book after hours have nowhere to go."),
+            ("Out-of-date website", "Old hours, missing services, no clear way to call or book."),
+            ("Regulars drift", "Customers who used to come weekly stop, and nobody notices."),
+        ],
+        "does": [
+            ("Website", "Starter or Business site: mobile first, your hours, services, photos and one clear next step."),
+            ("Missed-call text-back", "Missed callers get a text back so the conversation keeps going."),
+            ("Speed-to-lead", "New inquiries get an instant, friendly reply and land with you."),
+            ("Review requests, no gating", "Every customer is asked the same way. No filtering out the unhappy ones."),
+            ("Reactivation", "Customers who haven't been back get a message you approve."),
+            ("AI receptionist", "For busy phones: answers, books and takes messages when you can't."),
+        ],
+    },
+    {
+        "slug": "sales-organizations", "name": "Sales organizations", "short": "Sales orgs",
+        "title": "Sales organizations — you paid for the lead; make it count",
+        "desc": "Speed-to-lead, AI appointment setting, reactivation of aged leads and show-rate follow-up for sales teams that buy or generate leads.",
+        "h1": "You paid for the lead.<br>Then nobody<br>called it for hours.",
+        "lede": "Many sales teams don't have a lead problem. They have a contact problem: leads called late, called once, and never called again.",
+        "problems": [
+            ("Slow first contact", "Leads land in the CRM and wait until a rep is free."),
+            ("Low contact rate", "One or two attempts, then the lead is marked dead."),
+            ("No-shows", "Appointments get set and no one confirms them, so the calendar looks full and the room is empty."),
+            ("Aged leads ignored", "Thousands of old leads you already paid for never get another touch."),
+            ("No idea where it leaks", "Cost per lead is tracked. Cost per contact, appointment and customer usually isn't."),
+        ],
+        "does": [
+            ("Speed-to-lead", "Every new lead gets an immediate text or call, then routes to the next available rep."),
+            ("AI appointment setting", "The receptionist qualifies, answers common questions and books onto rep calendars."),
+            ("Confirmation and show-rate follow-up", "Booked appointments get reminders and an easy reschedule path."),
+            ("Aged-lead reactivation", "Compliant re-engagement of leads you already own, with opt-outs honored."),
+            ("Review requests, no gating", "Closed customers get asked for an honest review."),
+            ("The numbers", "Start with the Consequence Calculator: see your cost per contact, per appointment and per customer."),
+        ],
+        "note": "<b>Compliance.</b> Calls and texts to leads must follow consent and opt-out rules (TCPA, carrier rules and your state's laws). ATH sets up opt-outs on every flow and asks how your leads gave consent before anything is switched on. Call recording happens only with consent.",
+    },
+    {
+        "slug": "creators", "name": "Creators", "short": "Creators",
+        "title": "Creators — turn attention into booked work",
+        "desc": "Websites, inquiry follow-up, missed-call text-back and honest testimonial requests for creators, coaches and personal brands. WAVEMOTION plans for clips.",
+        "h1": "The views are there.<br>The bookings<br>aren't.",
+        "lede": "Brand deals, coaching calls and bookings come in through DMs, email and a link in bio. The ones you don't answer fast enough go to someone else.",
+        "problems": [
+            ("Inquiries buried in DMs", "Paid opportunities sit under hundreds of comments and messages."),
+            ("Slow follow-up", "A brand or client who doesn't hear back in a day moves on."),
+            ("No booking path", "Your link in bio doesn't take anyone to a clear offer and a time to book."),
+            ("No home base", "Your business lives on platforms you don't control."),
+            ("Testimonials by accident", "Happy clients rarely leave a review unless asked."),
+        ],
+        "does": [
+            ("Website", "A home base you own with your offers, media kit and a clear book-me button."),
+            ("Speed-to-lead", "Inquiries from your site and forms get an instant reply and land in one place."),
+            ("Missed-call text-back", "For your business line: missed callers get a text back."),
+            ("Review and testimonial requests", "Every client is asked the same way, and nothing is published without their permission."),
+            ("Clips", "Short-form clips come with WAVEMOTION plans from $10 a month at wavemotion.live."),
+            ("AI receptionist", "For coaches and service creators with a busy phone line."),
+        ],
+    },
+]
+
+def industry_page(ind):
+    probs = "".join(f'<div class="panel panel-pad card"><h3 style="margin-top:0">{t}</h3><p>{d}</p></div>' for t, d in ind["problems"])
+    does = "".join(f'<li><b>{t}.</b> {d}</li>' for t, d in ind["does"])
+    note = f'<div class="panel panel-pad mt2 rv-note"><p class="body mb0">{ind["note"]}</p></div>' if ind.get("note") else ""
+    others = " · ".join(f'<a class="gold" href="/industries/{o["slug"]}/">{o["short"]}</a>' for o in INDUSTRIES if o["slug"] != ind["slug"])
+    body = f"""<section class="block" style="padding-top:56px"><div class="wrap">
+ <p class="eyebrow">ATH for {ind["name"].lower()}</p>
+ <h1 class="display d-l mt1">{ind["h1"]}</h1>
+ <p class="lede">{ind["lede"]}</p>
+ <div class="ctas mt2">{diag_btn(ind["slug"])}{btn("Run the Consequence Calculator", "/consequence-calculator/", "line")}</div>
+</div></section>
+<section class="block" style="padding-top:12px"><div class="wrap">
+ <h2 class="display d-m">The real problem</h2>
+ <div class="grid g3 mt2">{probs}</div>
+</div></section>
+<section class="block"><div class="wrap split" style="align-items:start">
+ <div><h2 class="display d-m">What ATH does</h2>
+  <ul class="pkg-list mt2 rv-does">{does}</ul>{note}</div>
+ {svc_table()}
+</div></section>
+<section class="block"><div class="wrap"><div class="panel panel-pad rv-cta">
+ <div><p class="eyebrow">Start here</p><h2 class="display d-m mt1">Request a free business diagnosis</h2>
+  <p class="body mt1 mb0">Tell us how customers reach you today. A person at ATH looks at where calls and leads are slipping and replies with a plain diagnosis and a written scope. No obligation, nothing charged.</p></div>
+ <div class="ctas" style="margin:0">{diag_btn(ind["slug"])}</div>
+</div>
+<p class="note mt2">Other industries: {others} · <a class="gold" href="/industries/">All industries</a></p></div></section>"""
+    return (ind["title"] + " | Above the Hill", ind["desc"], body)
+
+for _ind in INDUSTRIES:
+    pages[f'/industries/{_ind["slug"]}/'] = industry_page(_ind)
+
+pages["/industries/"] = ("Industries — Above the Hill Developments",
+ "How ATH helps dental practices, home-service companies, local businesses, sales organizations and creators stop losing customers to missed calls and slow follow-up.",
+ f"""<section class="block" style="padding-top:56px"><div class="wrap">
+ <p class="eyebrow">Who we help</p><h1 class="display d-l mt1">Stop losing customers<br>between hello and booked</h1>
+ <p class="lede">Missed calls, slow follow-up and no way to book. The leak looks different in every industry. Pick yours.</p>
+ <div class="grid g3 mt2">{"".join(f'<a class="panel panel-pad card rv-ind" href="/industries/{i["slug"]}/"><h3 style="margin-top:0">{i["name"]}</h3><p>{i["problems"][0][1]}</p><span class="gold mt1" style="display:inline-block">See how ATH helps {ARR}</span></a>' for i in INDUSTRIES)}
+  <a class="panel panel-pad card rv-ind" href="/consequence-calculator/"><h3 style="margin-top:0">Consequence Calculator</h3><p>Put in your own numbers and see your cost per contact, per appointment and per customer.</p><span class="gold mt1" style="display:inline-block">Run the numbers {ARR}</span></a>
+ </div>
+</div></section>
+<section class="block" style="padding-top:12px"><div class="wrap">{svc_table()}</div></section>
+<section class="block"><div class="wrap"><div class="panel panel-pad rv-cta"><div><h2 class="display d-m">Not sure where you leak?</h2><p class="body mt1 mb0">That's what the diagnosis is for.</p></div><div class="ctas" style="margin:0">{diag_btn()}</div></div></div></section>""")
+
+# ---------------------------------------------------------------- Consequence Calculator (§6: cost per contact = cost per lead ÷ contact rate)
+CALC_FIELDS = [
+    # (id, label, unit, default, min, max, step, hint)
+    ("cpl", "Cost per lead", "$", 50, 0, 100000, "any", "What you pay, on average, for one lead."),
+    ("leads", "Leads per month", "#", 100, 0, 1000000, 1, "New leads, calls or inquiries in a typical month."),
+    ("contact", "Contact rate", "%", 50, 0, 100, "any", "Out of 100 leads, how many do you actually talk to?"),
+    ("book", "Booking rate", "%", 40, 0, 100, "any", "Out of 100 people you talk to, how many book an appointment?"),
+    ("show", "Show rate", "%", 70, 0, 100, "any", "Out of 100 booked, how many show up?"),
+    ("close", "Close rate", "%", 30, 0, 100, "any", "Out of 100 who show, how many buy?"),
+    ("value", "Average sale value", "$", 1000, 0, 100000000, "any", "What one new customer is worth to you (first sale)."),
+]
+
+def calc_field(fid, label, unit, dv, mn, mx, step, hint):
+    pre = '<span class="rv-unit">$</span>' if unit == "$" else ""
+    post = '<span class="rv-unit">%</span>' if unit == "%" else ""
+    return f"""<div class="field"><label class="lbl" for="c-{fid}">{label}</label>
+  <div class="rv-in">{pre}<input id="c-{fid}" name="{fid}" type="number" inputmode="decimal" min="{mn}" max="{mx}" step="{step}" value="{dv}" aria-describedby="c-{fid}-h">{post}</div>
+  <p class="note mb0" id="c-{fid}-h">{hint}</p></div>"""
+
+CALC_JS = r"""<script>
+(() => {
+  const f = document.getElementById("calc-form"); if (!f) return;
+  const v = (id) => { const n = parseFloat(f.elements[id].value); return isFinite(n) && n >= 0 ? n : 0; };
+  const usd = (n) => isFinite(n) ? "$" + n.toLocaleString("en-US", { maximumFractionDigits: n < 100 ? 2 : 0, minimumFractionDigits: n < 100 ? 2 : 0 }) : "—";
+  const num = (n) => isFinite(n) ? n.toLocaleString("en-US", { maximumFractionDigits: 1 }) : "—";
+  const out = (id, t) => { const e = document.getElementById(id); if (e) e.textContent = t; };
+  function run() {
+    const cpl = v("cpl"), L = v("leads"), V = v("value");
+    const cr = Math.min(v("contact"), 100) / 100, br = Math.min(v("book"), 100) / 100, sr = Math.min(v("show"), 100) / 100, kr = Math.min(v("close"), 100) / 100;
+    const spend = cpl * L, contacts = L * cr, appts = contacts * br, shows = appts * sr, customers = shows * kr;
+    const perContact = cr > 0 ? cpl / cr : Infinity;
+    const perAppt = cr * br > 0 ? cpl / (cr * br) : Infinity;
+    const perCust = cr * br * sr * kr > 0 ? cpl / (cr * br * sr * kr) : Infinity;
+    // Leak: revenue each stage's drop-off would have produced at YOUR downstream rates (one stage fixed at a time, others unchanged).
+    const leakContact = L * (1 - cr) * br * sr * kr * V;
+    const leakBook = L * cr * (1 - br) * sr * kr * V;
+    const leakShow = L * cr * br * (1 - sr) * kr * V;
+    const leak = leakContact + leakBook + leakShow;
+    out("o-spend", usd(spend)); out("o-contact", usd(perContact)); out("o-appt", usd(perAppt)); out("o-cust", usd(perCust));
+    out("o-leak", usd(leak)); out("o-l-contact", usd(leakContact)); out("o-l-book", usd(leakBook)); out("o-l-show", usd(leakShow));
+    out("o-n-contacts", num(contacts)); out("o-n-appts", num(appts)); out("o-n-shows", num(shows)); out("o-n-cust", num(customers)); out("o-rev", usd(customers * V));
+    const summary = `cost/lead ${usd(cpl)}, leads/mo ${num(L)}, contact ${num(cr * 100)}%, booking ${num(br * 100)}%, show ${num(sr * 100)}%, close ${num(kr * 100)}%, avg sale ${usd(V)} → est. cost/contact ${usd(perContact)}, cost/appointment ${usd(perAppt)}, cost/customer ${usd(perCust)}, est. monthly leak ${usd(leak)}`;
+    try { sessionStorage.setItem("ath_calc", summary); } catch {}
+  }
+  f.addEventListener("input", run); f.addEventListener("submit", (e) => { e.preventDefault(); run(); });
+  run();
+})();
+</script>"""
+
+pages["/consequence-calculator/"] = ("Consequence Calculator — what missed contact costs you | Above the Hill",
+ "Enter your cost per lead, contact, booking, show and close rates and average sale. See your estimated cost per contact, per appointment, per customer, and your estimated monthly leak.",
+ f"""<section class="block" style="padding-top:56px"><div class="wrap">
+ <p class="eyebrow">Consequence Calculator</p><h1 class="display d-l mt1">What does a lead<br>you never reach<br>really cost?</h1>
+ <p class="lede">Cost per lead is the number everyone tracks. Cost per contact is the one that hurts: <b>cost per lead ÷ contact rate</b>. Put in your own numbers.</p>
+</div></section>
+<section class="block" style="padding-top:8px"><div class="wrap split rv-calc" style="align-items:start">
+ <form class="panel panel-pad" id="calc-form" novalidate aria-describedby="calc-ex">
+  <p class="panel-title">Your numbers</p>
+  <p class="note" id="calc-ex">The starting values are example numbers only. Replace them with yours; everything updates as you type. Nothing you enter leaves this page.</p>
+  <div class="grid g2">{"".join(calc_field(*c) for c in CALC_FIELDS)}</div>
+ </form>
+ <div class="panel panel-pad rv-out" aria-live="polite">
+  <p class="panel-title">Estimates from your inputs</p>
+  <div class="rv-kpis">
+   <div class="rv-kpi"><span class="lbl">Est. cost per contact</span><b id="o-contact">—</b></div>
+   <div class="rv-kpi"><span class="lbl">Est. cost per appointment</span><b id="o-appt">—</b></div>
+   <div class="rv-kpi"><span class="lbl">Est. cost per customer</span><b id="o-cust">—</b></div>
+   <div class="rv-kpi rv-leak"><span class="lbl">Est. monthly leak</span><b id="o-leak">—</b></div>
+  </div>
+  <div class="rv-table mt2">
+   <div class="rv-row"><span>Monthly lead spend</span><span class="rv-price" id="o-spend">—</span></div>
+   <div class="rv-row"><span>People reached · booked · showed · bought</span><span class="rv-price"><span id="o-n-contacts">—</span> · <span id="o-n-appts">—</span> · <span id="o-n-shows">—</span> · <span id="o-n-cust">—</span></span></div>
+   <div class="rv-row"><span>Est. revenue at your current rates</span><span class="rv-price" id="o-rev">—</span></div>
+   <div class="rv-row"><span>Leak · leads never reached</span><span class="rv-price" id="o-l-contact">—</span></div>
+   <div class="rv-row"><span>Leak · reached, never booked</span><span class="rv-price" id="o-l-book">—</span></div>
+   <div class="rv-row"><span>Leak · booked, didn't show</span><span class="rv-price" id="o-l-show">—</span></div>
+  </div>
+  <details class="mt2"><summary class="gold">How these estimates are calculated</summary>
+   <ul class="pkg-list mt1">
+    <li>Cost per contact = cost per lead ÷ contact rate.</li>
+    <li>Cost per appointment = cost per lead ÷ (contact rate × booking rate).</li>
+    <li>Cost per customer = cost per lead ÷ (contact rate × booking rate × show rate × close rate).</li>
+    <li>Each leak line is the revenue that stage's drop-off would have produced if it had continued at <i>your own</i> later-stage rates, one stage at a time. The monthly leak is the sum of the three. Your close rate is left as you entered it.</li>
+    <li>These are estimates from the numbers you typed, not a forecast and not a promise of what ATH will recover. Real results depend on your leads, team and market.</li>
+   </ul></details>
+  <div class="ctas mt2">{diag_btn()}</div>
+  <p class="note mb0">If you request a diagnosis in this browser tab, you can choose to attach these numbers to your request.</p>
+ </div>
+</div></section>""" + CALC_JS)
+
+# ---------------------------------------------------------------- Free Business Diagnosis → the existing public ATHOS lead intake (POST /api/lead)
+DIAG_IND = [("dental", "Dental practice"), ("home-services", "Home services"), ("local-business", "Local business"), ("sales-organizations", "Sales organization"), ("creators", "Creator / personal brand"), ("other", "Something else")]
+DIAG_REACH = ["Phone calls", "Website forms", "Paid ads", "Social media DMs", "Walk-ins", "Referrals", "Bought or shared leads"]
+DIAG_HAPPEN = ["Calls get missed", "Leads wait too long for a reply", "No way to book after hours", "Appointments don't show", "Few or old reviews", "Old leads and past customers never followed up", "Website is out of date or missing"]
+def chk_group(name, q, items):
+    boxes = "".join(f'<label class="check"><input type="checkbox" name="{name}" value="{html.escape(i)}"> <span>{html.escape(i)}</span></label>' for i in items)
+    return f'<fieldset class="field rv-fs" data-q="{q}" data-group="{name}"><legend class="lbl">{q}</legend><div class="rv-checks">{boxes}</div></fieldset>'
+
+pages[DIAG_HREF] = ("Request a free business diagnosis | Above the Hill",
+ "Tell ATH how customers reach you. A person reviews where calls and leads slip and replies with a plain diagnosis and a written scope. No obligation, nothing charged.",
+ f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
+ <div><p class="eyebrow">Free · no obligation</p><h1 class="display d-l mt1">Request a free<br>business diagnosis</h1>
+  <p class="lede">Tell us how customers reach you today. A person at ATH finds where calls and leads slip away and replies with a plain answer.</p>
+  <ol class="pkg-list mt2 rv-steps"><li><b>You send this form.</b> It goes straight to ATH's lead desk.</li><li><b>A person reviews it</b> and contacts you to book a short call.</li><li><b>You get a written diagnosis and scope</b> with the working price. Nothing is charged unless you approve it and pay through the link in your scope.</li><li><b>Onboarding</b> starts after payment.</li></ol>
+  <p class="body mt2">Want the numbers first? <a class="gold" href="/consequence-calculator/">Run the Consequence Calculator</a>.</p>
+  <p class="body">Prefer to talk? <a class="gold" href="tel:+19189600164">Call or text (918) 960-0164</a>.</p></div>
+ <form class="panel panel-pad" id="lead-form" data-compose novalidate>
+  <input type="hidden" name="intent" value="business-diagnosis">
+  <div class="grid g2"><div class="field"><label class="lbl" for="d-name">Your name</label><input id="d-name" name="name" type="text" autocomplete="name" required></div>
+   <div class="field"><label class="lbl" for="d-email">Email</label><input id="d-email" name="email" type="email" autocomplete="email" required></div></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="d-phone">Phone <span class="mute">(optional)</span></label><input id="d-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40"></div>
+   <div class="field"><label class="lbl" for="d-org">Business name and city</label><input id="d-org" name="org" type="text" autocomplete="organization"></div></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="d-ind">Industry</label><select id="d-ind" name="interest" data-q="Industry">{"".join(f'<option value="{v}">{l}</option>' for v, l in DIAG_IND)}</select></div>
+   <div class="field"><label class="lbl" for="d-site">Website <span class="mute">(optional)</span></label><input id="d-site" name="website" type="url" inputmode="url"></div></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="d-leads">About how many leads or calls a month?</label><select id="d-leads" name="leads_band" data-q="Leads or calls per month"><option value="">Not sure</option><option>Under 50</option><option>50–200</option><option>200–1,000</option><option>Over 1,000</option></select></div>
+   <div class="field"><label class="lbl" for="d-loc">Locations</label><select id="d-loc" name="locations" data-q="Locations"><option>1</option><option>2–3</option><option>4–10</option><option>More than 10</option></select></div></div>
+  {chk_group("reach", "How do new customers reach you?", DIAG_REACH)}
+  {chk_group("happening", "What's happening now?", DIAG_HAPPEN)}
+  <div class="field"><label class="lbl" for="d-msg">Anything else we should know? <span class="mute">(optional)</span></label><textarea id="d-msg" name="message" maxlength="2000"></textarea></div>
+  <label class="check" id="d-calc-row" hidden><input type="checkbox" id="bd-calc" checked> <span>Attach my Consequence Calculator numbers: <span class="mute" id="d-calc-sum"></span></span></label>
+  <input type="hidden" name="package" id="l-package" value="">
+  <input type="hidden" name="catalog_version" id="l-catalog" value="">
+  <div class="pkg-note" id="pkg-note" hidden></div>
+  <input type="text" name="company_fax" tabindex="-1" autocomplete="off" class="vh" aria-hidden="true">
+  <button class="btn btn-gold" type="submit">Request my free diagnosis {ARR}</button>
+  <p class="note mt1">Nothing is charged. We use this only to reply about your business. Reply STOP to any text and we won't contact you again. Please don't include patient or medical details. See <a class="gold" href="/privacy/">Privacy</a>.</p>
+  <p class="form-status" role="status" aria-live="polite"></p>
+ </form>
+</div></section>
+<script>(() => {{
+  const q = new URLSearchParams(location.search).get("industry"), s = document.getElementById("d-ind");
+  if (q && s && [...s.options].some((o) => o.value === q)) s.value = q;
+  let c = ""; try {{ c = sessionStorage.getItem("ath_calc") || ""; }} catch (e) {{}}
+  if (c) {{ document.getElementById("d-calc-row").hidden = false; document.getElementById("d-calc-sum").textContent = c; }}
+  else document.getElementById("bd-calc").checked = false;
+}})();</script>""" + catalog_js())
+
 
 # ---------------------------------------------------------------- write
 def write():
