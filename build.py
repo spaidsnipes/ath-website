@@ -13,6 +13,9 @@ import os, html, re, datetime
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
 SITE = "https://abovethehilldev.online"
 API = "https://ath-athos.dhill5711.workers.dev"
+# Spaidbot: the one ATHOS embed (public mode). data-greet="1" = the proactive website greeter (free leak audit /
+# pricing / talk to a person), once per session, AI-labelled, no tracking. See athos-brain spaidbot-embed.mjs.
+SPAIDBOT_EMBED = "https://mission.abovethehilldev.online/spaidbot.js"
 
 # ---------------------------------------------------------------- icons (gold line)
 def ic(name, cls="icon"):
@@ -87,7 +90,7 @@ def head(title, desc, route):
 <link rel="stylesheet" href="/assets/ath.css">
 <script>window.ATH_API="{API}";</script>
 <script src="/assets/ath.js" defer></script>
-<script src="/assets/spaidbot.js" defer></script>
+<script src="{SPAIDBOT_EMBED}" data-api="{API}" data-product="ath" data-greet="1" data-compact-hero="1" data-audit-href="/business-diagnosis/" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -1165,10 +1168,12 @@ SECTION_H2 = {"/build/": "Service families", "/language/": "What the dictionary 
 
 # ---------------------------------------------------------------- revenue front door (MASTER-12HR-SHIFT 2026-10-30 §5 + §6)
 # Industry pages + Consequence Calculator + Free Business Diagnosis.
-# AI-service and website prices below are the WORKING prices in ~/ath-canon-live/ATH-MASTER-12HR-SHIFT-2026-10-30.md §5.
-# They are not in commercial/registry.json yet, and §5 website prices ($250 / $500) differ from the registry's
-# live Quick Start $100 / Business Growth $200 card packages. Founder must reconcile before these pages ship.
-# Rules carried from §5: no trial offers, no review gating, no fake proof, no guaranteed results.
+# Prices below follow "PRICE DECISIONS APPLIED 2026-10-30" in ~/ath-canon-live/ATH-MASTER-12HR-SHIFT-2026-10-30.md (the
+# Founder's "$100–8k" ladder, locked to 8 levels; athos-brain spaid-skills.mjs PRICE_BOOK is the same book).
+# The ONE open Founder item: the live Stripe one-time website packages (Quick Start $100 / Business Growth $200) vs the
+# Presence $100-a-month membership. Until the Founder changes the Stripe products, the website row shows the live
+# checkout packages and says the website price is being confirmed in the written scope.
+# Rules: no trial offers, no free months, no discounts, no review gating, no fake proof, no guaranteed results.
 SVC_AS_OF = "October 30, 2026"
 SVC = [
     # (id, name, price line, what it does)
@@ -1176,15 +1181,39 @@ SVC = [
     ("speed-to-lead", "Speed-to-Lead", "$200 / month", "New web, ad and form leads get an automatic text or call right away, then a person on your team takes over."),
     ("review-speed", "Review AI + Speed-to-Lead", "$500 / month", "Both systems together, set up as one flow."),
     ("receptionist", "AI Receptionist", "$700–$1,500 pilot, then $300–$700 / location / month", "Answers calls, answers common questions, takes messages and books into the scheduling you already use. Starts as a two-week paid pilot; the monthly price is set per location after the pilot."),
-    ("websites", "Websites", "Starter $250 · Business $500 one time", "A fast mobile site with a clear call or booking button. Larger builds ($1,000 / $2,500 / $8,000–$15,000+) are scoped in writing."),
+    ("websites", "Websites (one time)", "Quick Start $100 · Business Growth $200 one time", "A fast mobile site with a clear call or booking button. These are today's live checkout packages; ATH is confirming website pricing with the new memberships, so your written scope states the price before anything is charged."),
+    ("implementation", "Implementation (one time, scoped)", "$2.5k · $5k · $8k · $12k · $15k+", "Bigger builds and system installs. The band is set in a written scope before any work or payment."),
 ]
 SVC_FINE = [
     f"Working prices as of {SVC_AS_OF}. Every install starts with a written scope; nothing is charged on this page.",
-    "There is no trial offer. The receptionist pilot is a paid pilot.",
+    "There is no trial offer and no free month. The receptionist pilot is a paid pilot. No discounts.",
     "Missed-call text-back and reactivation campaigns are set up inside Speed-to-Lead or the Receptionist; anything extra is quoted in your scope.",
     "Results depend on your leads, your team and your market. ATH does not guarantee bookings, sales or revenue.",
     "Any third-party costs (phone numbers, messaging fees, software you already use) are listed in your scope before you pay.",
 ]
+
+# The ATH business membership ladder (monthly) — PRICE DECISIONS APPLIED 2026-10-30. No $200 rung.
+LADDER = [
+    ("Presence", "$100 / month", "+ $30 one-time setup"),
+    ("Presence Plus", "$150 / month", ""),
+    ("ClientFlow", "$250 / month", ""),
+    ("Revenue Engine", "$500 / month", ""),
+    ("Command", "$1,000 / month", ""),
+    ("Business OS", "$2,000 / month", ""),
+    ("Multi-Site", "$4,000 / month", ""),
+    ("Enterprise", "$8,000+ / month", "scoped in writing"),
+]
+LADDER_FINE = [
+    "Every membership includes the PowerTribes office. Presence and Presence Plus include the $10-level WOW Pass; ClientFlow and up include the $20 WOW Pass (WOW = World of Wealth).",
+    "Monthly. No trial, no free months, no discounts. Your written scope names the level before anything is charged.",
+    "Not sure which level? The free business diagnosis tells you where you leak first.",
+]
+
+def ladder_panel():
+    rows = "".join(f'<div class="rv-row" data-level="{html.escape(n)}"><span><b>{html.escape(n)}</b>{f"<span class=note>{html.escape(x)}</span>" if x else ""}</span><span class="rv-price">{p}</span></div>' for n, p, x in LADDER)
+    fine = "".join(f"<li>{f}</li>" for f in LADDER_FINE)
+    return f"""<div class="panel panel-pad mt2" id="pricing" data-sb-pricing><p class="panel-title">ATH memberships · $100 to $8,000+ a month</p><div class="rv-table">{rows}</div>
+ <ul class="pkg-list mt2 rv-fine">{fine}</ul></div>"""
 
 def svc_table(only=None):
     rows = "".join(
@@ -1333,6 +1362,7 @@ def industry_page(ind):
   <ul class="pkg-list mt2 rv-does">{does}</ul>{note}</div>
  {svc_table()}
 </div></section>
+<section class="block" style="padding-top:0"><div class="wrap">{ladder_panel()}</div></section>
 <section class="block"><div class="wrap"><div class="panel panel-pad rv-cta">
  <div><p class="eyebrow">Start here</p><h2 class="display d-m mt1">Request a free business diagnosis</h2>
   <p class="body mt1 mb0">Tell us how customers reach you today. A person at ATH looks at where calls and leads are slipping and replies with a plain diagnosis and a written scope. No obligation, nothing charged.</p></div>
@@ -1353,7 +1383,7 @@ pages["/industries/"] = ("Industries — Above the Hill Developments",
   <a class="panel panel-pad card rv-ind" href="/consequence-calculator/"><h3 style="margin-top:0">Consequence Calculator</h3><p>Put in your own numbers and see your cost per contact, per appointment and per customer.</p><span class="gold mt1" style="display:inline-block">Run the numbers {ARR}</span></a>
  </div>
 </div></section>
-<section class="block" style="padding-top:12px"><div class="wrap">{svc_table()}</div></section>
+<section class="block" style="padding-top:12px"><div class="wrap">{svc_table()}{ladder_panel()}</div></section>
 <section class="block"><div class="wrap"><div class="panel panel-pad rv-cta"><div><h2 class="display d-m">Not sure where you leak?</h2><p class="body mt1 mb0">That's what the diagnosis is for.</p></div><div class="ctas" style="margin:0">{diag_btn()}</div></div></div></section>""")
 
 # ---------------------------------------------------------------- Consequence Calculator (§6: cost per contact = cost per lead ÷ contact rate)
@@ -1444,7 +1474,9 @@ pages["/consequence-calculator/"] = ("Consequence Calculator — what missed con
   <div class="ctas mt2">{diag_btn()}</div>
   <p class="note mb0">If you request a diagnosis in this browser tab, you can choose to attach these numbers to your request.</p>
  </div>
-</div></section>""" + CALC_JS)
+</div></section>
+<section class="block" style="padding-top:0"><div class="wrap"><h2 class="display d-m">What fixing it costs</h2>
+ <p class="body mt1">Compare your estimated monthly leak with the membership that closes it. The diagnosis tells you which level fits; nothing is charged on this page.</p>{ladder_panel()}{svc_table()}</div></section>""" + CALC_JS)
 
 # ---------------------------------------------------------------- Free Business Diagnosis → the existing public ATHOS lead intake (POST /api/lead)
 DIAG_IND = [("dental", "Dental practice"), ("home-services", "Home services"), ("local-business", "Local business"), ("sales-organizations", "Sales organization"), ("creators", "Creator / personal brand"), ("other", "Something else")]

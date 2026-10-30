@@ -67,9 +67,9 @@ test('offer stack: real inclusions from the registry, extras not switched on kep
 });
 
 test('Spaidbot shrinks over the hero; the top ticker scrolls instead of being cut off', () => {
-  const js = readFileSync(PUB + 'assets/spaidbot.js', 'utf8'), css = readFileSync(PUB + 'assets/ath.css', 'utf8');
-  assert.match(js, /sb-compact/); assert.match(js, /IntersectionObserver/);
-  assert.match(css, /\.sb-fab\.sb-compact\{/);
+  // 2026-10-30: the site uses the one ATHOS embed; data-compact-hero="1" keeps the SP-081 round-dot-over-the-hero rule.
+  const css = readFileSync(PUB + 'assets/ath.css', 'utf8');
+  assert.match(home, /<script src="https:\/\/mission\.abovethehilldev\.online\/spaidbot\.js"[^>]* data-compact-hero="1"/);
   assert.match(home, /<div class="mantra" aria-hidden="true"><span class="mq"><span>/);
   assert.match(css, /@keyframes mantra/);
 });
