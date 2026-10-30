@@ -301,7 +301,7 @@ def wp_value(head=True, eyebrow="Passport · the whole ecosystem"):
   <article class="wpv-tier"><p class="wpv-price">Free</p><p class="wpv-t">Free Passport</p><p class="wpv-d">Come in and look around. No card.</p><ul class="wpv-list">{li(free)}</ul></article>
   <article class="wpv-tier"><p class="wpv-price">$10<span> / month, per app</span></p><p class="wpv-t">Basic</p><p class="wpv-d">One app's essentials, per app.</p><ul class="wpv-list">{li(basic)}</ul></article>
   <article class="wpv-tier wpv-feature"><span class="wpv-badge">The whole ecosystem</span><p class="wpv-price">$20<span> / month</span></p><p class="wpv-t">World Pass</p><p class="wpv-d">Everything in the free Passport, plus:</p><ul class="wpv-list">{li(wp)}</ul>
-   <p class="wpv-math">At today's list prices that is <b>$30 of app tiers for $20</b>, and it grows with every app ATH ships.</p></article>
+   <p class="wpv-math">One $20 WOW Pass opens the whole world: Premium of the app you choose, Basic of every other ATH app, and all of WOW OS: the Lounge, the Academy, Games, Events, WOW TV, WOW Music and WOW Radio, plus your way into WM Pro. That is <b>more than $30 in app tiers alone</b>, before everything else, and it grows with every app ATH ships.</p></article>
  </div>
  <p class="note wpv-fine">World Pass is $20 a month, cancel any time; your Passport identity is free. It opens Premium of the one app you choose, not the Premium or Pro tier of every app. Pro and OS tiers (from $50) are bought on their own; ATH services and third-party costs stay separate. {WP_NOTE}</p>
  <div class="ctas mt1">{btn("Get the World Pass", "https://thewow.online/passport", attrs='rel="noopener"')}{btn("Get your free Passport", "https://thewow.online/passport/claim", "line", 'rel="noopener"')}</div>
