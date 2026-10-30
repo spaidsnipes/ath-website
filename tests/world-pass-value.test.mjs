@@ -40,15 +40,15 @@ test('customers never read "$10 tier" / "$20 tier", trials, founding offers or e
   for (const f of all()) { const s = readFileSync(f, 'utf8'); for (const re of BANNED) assert.doesNotMatch(s, re, `${f.slice(PUB.length)}: ${re}`); }
 });
 
-test('packages: Quick Start gets one Basic month; $200 and up get a World Pass month', () => {
+test('packages: no free months (Founder 2026-10-30); every package offers the $20 World Pass step-up instead', () => {
   for (const p of reg.packages) {
-    const labels = p.ecosystem.map((e) => e.label);
-    if (p.id === 'quick-start') assert.ok(labels.includes("A free month of one app's Basic tier, you choose ($10 value)"), p.id);
-    else assert.ok(labels.includes('A free month of the World Pass: the whole ATH ecosystem ($20 value)'), p.id);
+    for (const e of p.ecosystem || []) assert.doesNotMatch(e.label + ' ' + e.note, /free month|30[- ]day/i, p.id);
   }
+  assert.doesNotMatch(JSON.stringify(reg.package_step_up), /free month/i);
   const offer = read('offer/index.html');
   const sec = (id) => offer.slice(offer.indexOf(`id="${id}"`), offer.indexOf('</article>', offer.indexOf(`id="${id}"`)));
-  assert.match(sec('quick-start'), /Step up to the \$20 World Pass/);
-  assert.match(sec('business-growth'), /A free month of the World Pass: the whole ATH ecosystem/);
-  assert.doesNotMatch(sec('business-growth'), /Step up to the \$20 World Pass/);
+  for (const id of ['quick-start', 'business-growth']) {
+    assert.match(sec(id), /Step up to the \$20 World Pass/, id);
+    assert.doesNotMatch(sec(id), /free month/i, id);
+  }
 });

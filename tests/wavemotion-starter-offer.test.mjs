@@ -16,14 +16,12 @@ test('guard: no 14-day / free-trial / free-days wording on any public page or th
   assert.deepEqual(hits, []);
 });
 
-test('the WAVEMOTION plans block leads with $10; the holiday special states its deadline and removes itself after it', () => {
+test('the WAVEMOTION plans block leads with $10; the holiday half-off is switched off (Founder 2026-10-30: no free months, no discounts)', () => {
   const s = readFileSync(PUB + 'build/index.html', 'utf8');
   assert.match(s, /<b>Starts at \$10 a month<\/b>: one link for all your socials, your analytics in one place, and clips from your videos/);
-  const built = /data-offer-ends="2026-12-26T05:59:59Z"/.test(s);
-  if (Date.now() <= Date.parse('2026-12-26T05:59:59Z')) {
-    assert.ok(built, 'holiday note present before the deadline');
-    assert.match(s, /first month of WAVEMOTION Creator \(Premium, \$20\) is \$10, half off, when you subscribe by December 25, 2026, 11:59 PM CT\. Then \$20\/month until you cancel\./);
-  } else assert.ok(!built, 'a build after the deadline leaves it out');
-  const js = readFileSync(PUB + 'assets/ath.js', 'utf8');
-  assert.match(js, /querySelectorAll\("\[data-offer-ends\]"\)\.forEach\(\(e\) => \{ const t = Date\.parse\(e\.getAttribute\("data-offer-ends"\)\); if \(!Number\.isFinite\(t\) \|\| Date\.now\(\) > t\) e\.remove\(\); \}\)/);
+  assert.doesNotMatch(s, /data-offer-ends|half off|Holiday special/i);
+  for (const f of ['index.html', 'build/index.html', 'offer/index.html', 'gifts/index.html']) {
+    let h = ''; try { h = readFileSync(PUB + f, 'utf8'); } catch { continue; }
+    assert.doesNotMatch(h, /half off|free month of|first month free/i, f);
+  }
 });

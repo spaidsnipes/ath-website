@@ -30,8 +30,8 @@ The factory refuses an intake with more pages than its package allows.
 Send the live link, what was included, how to ask for changes, and any recurring cost (domain, if any). Record the delivery on the lead in Mission Control.
 
 ## Ecosystem extras (Founder corrections 2026-10-24)
-- **Quick Start ($100):** a free month of ONE app's Basic tier, the buyer chooses. Today only WAVEMOTION has a code: issue a Starter code from WAVEMOTION Plans after you confirm the Stripe payment (`~/ath-canon-live/recovery/FREE-MONTH-RUNBOOK.md`).
-- **Business Growth ($200) and every package from $500:** a free month of the $20 World Pass, the whole ecosystem.
+- **Quick Start ($100):** no free month (Founder 2026-10-30). Offer the $20 World Pass step-up.
+- **Business Growth ($200) and up:** no free month (Founder 2026-10-30). Offer the $20 World Pass step-up.
   1. Sign in at thewow.online as the Founder, open Passport, press **Make ATH World Pass month code**.
   2. Send the buyer `https://thewow.online/passport?trial=ATH-XXXX-XXXX`. One code per buyer; it works once. Their card is saved at checkout; $20 a month starts only if they keep it after the month.
   3. If WAVEMOTION is their chosen Premium app, also issue a WAVEMOTION **Creator** code (Plans → "Business Growth $200 → Creator month"), because the World Pass does not switch on WAVEMOTION plans yet.

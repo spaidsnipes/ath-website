@@ -241,7 +241,9 @@ def ladder_rows():
 # deadline leaves it out, and assets/ath.js removes any [data-offer-ends] element once the deadline passes.
 HOLIDAY_ENDS = "2026-12-26T05:59:59Z"
 HOLIDAY_LINE = "Holiday special: your first month of WAVEMOTION Creator (Premium, $20) is $10, half off, when you subscribe by December 25, 2026, 11:59 PM CT. Then $20/month until you cancel."
+HOLIDAY_OPEN = False  # Founder 2026-10-30: no free months, no discounts; WAVEMOTION switched the special off (3974e98).
 def holiday_note(now=None):
+    if not HOLIDAY_OPEN: return ""
     now = now or datetime.datetime.now(datetime.timezone.utc)
     if now > datetime.datetime(2026, 12, 26, 5, 59, 59, tzinfo=datetime.timezone.utc): return ""
     return f'<p class="body holiday-note" data-offer-ends="{HOLIDAY_ENDS}"><b>{html.escape(HOLIDAY_LINE)}</b></p>'
@@ -1029,7 +1031,7 @@ if _g:
   <p class="lede">Real products from the ATH Store, checkout by Shopify. Prices shown are from {_g[1]}; your cart shows the current price and shipping before you pay. Order early: shipping times vary by item.</p>
   <div class="ctas mt2">{btn("Browse all in WOW Marketplace", "https://thewow.online/marketplace")}{btn("Gift a business a website", "/free-look/", "line")}</div></div></section>""" + _g[0] + f"""
 <section class="block"><div class="wrap"><div class="panel panel-pad"><p class="eyebrow">For the business owner on your list</p><h2 class="display d-m mt1">Get them found before the holiday rush</h2>
-  <p class="body">A mobile website for their business, <b>$100 one time</b>. Up to 3 pages, linked to the booking or ordering they already use, is $200 and comes with a free month of the World Pass, the whole ATH ecosystem. Order early for the holidays: ATH confirms the go-live date when their info arrives.</p>
+  <p class="body">A mobile website for their business, <b>$100 one time</b>. Up to 3 pages, linked to the booking or ordering they already use, is $200. Order early for the holidays: ATH confirms the go-live date when their info arrives.</p>
   <div class="ctas mt1">{btn("Get a free look", "/free-look/")}{btn("See sample sites", "/sites/", "line")}</div></div></div></section>""")
 
 pages["/start/"] = ("Start your build — ATH intake",

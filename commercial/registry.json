@@ -30,11 +30,6 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "A free month of one app's Basic tier, you choose ($10 value)",
-          "state": "LIVE",
-          "note": "Pick the app. Today the free month is WAVEMOTION Basic (Starter, 40 clips a month): after your package is paid, ATH sends a single-use code (WM-XXXX-XXXX) you enter under Plans at wavemotion.live. No card needed, and it ends on its own after 30 days. More apps join the choice as their codes switch on."
-        },
-        {
           "label": "Free Wealthy Mindsets Pro account, set up with you",
           "state": "LIVE",
           "note": "Free guest account set up with you. Paid tiers (App, Basic $10 · Premium $20 · OS $50) are optional; nothing is charged unless you choose one."
@@ -65,11 +60,6 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "A free month of the World Pass: the whole ATH ecosystem ($20 value)",
-          "state": "LIVE",
-          "note": "Premium of the app you choose, Basic of every other ATH app, all of WOW OS, WOW Academy and every new app. After your package is paid, ATH sends a single-use code you redeem on your free Passport at thewow.online/passport. If WAVEMOTION is your choice, ATH also sends a WAVEMOTION Creator code so your Premium month works there today. Your card is saved at checkout; $20 a month starts only if you keep the World Pass after the free month, and cancelling before then costs nothing. Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today."
-        },
-        {
           "label": "Free Wealthy Mindsets Pro account, set up with you",
           "state": "LIVE",
           "note": "Free guest account set up with you. Paid tiers (App, Basic $10 · Premium $20 · OS $50) are optional; nothing is charged unless you choose one."
@@ -90,11 +80,6 @@
           "label": "Free Passport identity, set up with you",
           "state": "LIVE",
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
-        },
-        {
-          "label": "A free month of the World Pass: the whole ATH ecosystem ($20 value)",
-          "state": "LIVE",
-          "note": "Premium of the app you choose, Basic of every other ATH app, all of WOW OS, WOW Academy and every new app. After your package is paid, ATH sends a single-use code you redeem on your free Passport at thewow.online/passport. If WAVEMOTION is your choice, ATH also sends a WAVEMOTION Creator code so your Premium month works there today. Your card is saved at checkout; $20 a month starts only if you keep the World Pass after the free month, and cancelling before then costs nothing. Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today."
         },
         {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
@@ -119,11 +104,6 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "A free month of the World Pass: the whole ATH ecosystem ($20 value)",
-          "state": "LIVE",
-          "note": "Premium of the app you choose, Basic of every other ATH app, all of WOW OS, WOW Academy and every new app. After your package is paid, ATH sends a single-use code you redeem on your free Passport at thewow.online/passport. If WAVEMOTION is your choice, ATH also sends a WAVEMOTION Creator code so your Premium month works there today. Your card is saved at checkout; $20 a month starts only if you keep the World Pass after the free month, and cancelling before then costs nothing. Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today."
-        },
-        {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
           "state": "NOT_ACTIVE",
           "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
@@ -143,11 +123,6 @@
           "label": "Free Passport identity, set up with you",
           "state": "LIVE",
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
-        },
-        {
-          "label": "A free month of the World Pass: the whole ATH ecosystem ($20 value)",
-          "state": "LIVE",
-          "note": "Premium of the app you choose, Basic of every other ATH app, all of WOW OS, WOW Academy and every new app. After your package is paid, ATH sends a single-use code you redeem on your free Passport at thewow.online/passport. If WAVEMOTION is your choice, ATH also sends a WAVEMOTION Creator code so your Premium month works there today. Your card is saved at checkout; $20 a month starts only if you keep the World Pass after the free month, and cancelling before then costs nothing. Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today."
         },
         {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
@@ -171,11 +146,6 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "A free month of the World Pass: the whole ATH ecosystem ($20 value)",
-          "state": "LIVE",
-          "note": "Premium of the app you choose, Basic of every other ATH app, all of WOW OS, WOW Academy and every new app. After your package is paid, ATH sends a single-use code you redeem on your free Passport at thewow.online/passport. If WAVEMOTION is your choice, ATH also sends a WAVEMOTION Creator code so your Premium month works there today. Your card is saved at checkout; $20 a month starts only if you keep the World Pass after the free month, and cancelling before then costs nothing. Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today."
-        },
-        {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
           "state": "NOT_ACTIVE",
           "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
@@ -197,11 +167,6 @@
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
         },
         {
-          "label": "A free month of the World Pass: the whole ATH ecosystem ($20 value)",
-          "state": "LIVE",
-          "note": "Premium of the app you choose, Basic of every other ATH app, all of WOW OS, WOW Academy and every new app. After your package is paid, ATH sends a single-use code you redeem on your free Passport at thewow.online/passport. If WAVEMOTION is your choice, ATH also sends a WAVEMOTION Creator code so your Premium month works there today. Your card is saved at checkout; $20 a month starts only if you keep the World Pass after the free month, and cancelling before then costs nothing. Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today."
-        },
-        {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
           "state": "NOT_ACTIVE",
           "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
@@ -221,11 +186,6 @@
           "label": "Free Passport identity, set up with you",
           "state": "LIVE",
           "note": "Your one WOW identity for every ATH app. Free, no subscription."
-        },
-        {
-          "label": "A free month of the World Pass: the whole ATH ecosystem ($20 value)",
-          "state": "LIVE",
-          "note": "Premium of the app you choose, Basic of every other ATH app, all of WOW OS, WOW Academy and every new app. After your package is paid, ATH sends a single-use code you redeem on your free Passport at thewow.online/passport. If WAVEMOTION is your choice, ATH also sends a WAVEMOTION Creator code so your Premium month works there today. Your card is saved at checkout; $20 a month starts only if you keep the World Pass after the free month, and cancelling before then costs nothing. Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today."
         },
         {
           "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
@@ -586,7 +546,7 @@
   ],
   "package_step_up": {
     "label": "Want the whole ecosystem? Step up to the $20 World Pass",
-    "note": "Premium of the app you choose and Basic of every other ATH app, WOW OS, WOW Academy and every app still to come, for $20 a month. Business Growth ($200) includes a free month of it.",
+    "note": "Premium of the app you choose and Basic of every other ATH app, WOW OS, WOW Academy and every app still to come, for $20 a month.",
     "href": "/passport/#world-pass-value"
   }
 }
