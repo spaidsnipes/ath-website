@@ -34,11 +34,11 @@ test('the Garden Check page: oil-change framing, every check, the privacy line, 
   else { assert.match(s, /Book a Garden Check/); assert.doesNotMatch(s, /buy\.stripe\.com/); assert.match(s, /Nothing is charged by this form/); }
 });
 
-test('it sits beside Quick Start and Business Growth: home map + ladder note, offer page, build pricing, catalog_js', () => {
+test('it sits with the websites: home map + ladder note, the pricing page services list, build pricing, catalog_js', () => {
   const home = read('index.html');
   assert.match(home, /data-cap="Website health check"|ct-name">Website health check</);
   assert.match(home, /Already have a site\? Start smaller: the <a class="gold" href="\/garden-check\/">Mansion Garden Check<\/a> is \$\d+ one time/);
-  for (const r of ['offer/index.html', 'build/index.html']) { const s = read(r); assert.match(s, /Mansion Garden Check/, r); assert.ok(s.includes(price), r); }
+  for (const r of ['pricing/index.html', 'build/index.html']) { const s = read(r); assert.match(s, /Mansion Garden Check/, r); assert.ok(s.includes(price), r); }
   for (const r of ['start/index.html', 'contact/index.html']) assert.match(read(r), /"garden-check": \{"label": "Mansion Garden Check/, r);
   assert.match(read('start/index.html'), /id="start-h1"/);
   assert.match(read('assets/ath.js'), /qs\.get\("offer"\)/, 'the Stripe redirect ?offer=garden-check preselects it');

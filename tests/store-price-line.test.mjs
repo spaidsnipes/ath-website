@@ -15,5 +15,6 @@ test('the store line names no floor price and no item count', () => {
 });
 
 test('the catalog version moved, so readers can tell it changed', () => {
-  assert.match(cat.version, /^2026-10-2[1-9]\.\d+$/);
+  assert.match(cat.version, /^2026-1[01]-[0-3]\d\.\d+$/);
+  assert.notEqual(cat.version, '2026-10-24.3');
 });

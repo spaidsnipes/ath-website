@@ -1,4 +1,4 @@
-// The $100 / $200 site packages, described as sites/DELIVERY.md builds them (2026-10-21).
+// The one-time website packages ($250 Starter / $500 Business since the 2026-10-31 price book), described as sites/DELIVERY.md builds them.
 // A client site links to the booking or ordering the business already uses; ATH does not build one.
 // The site factory has items, gallery and text sections — no forms. Reviews are never added unless the
 // owner supplies them. A client site is noindex until it has its own domain, so no page promises Google.
@@ -33,9 +33,9 @@ for (const re of OVERCLAIMS) {
   });
 }
 
-test('the $200 package says what it links to', () => {
+test('the $500 Business Website says what it links to', () => {
   const free = readFileSync(join(ROOT, 'free-look/index.html'), 'utf8');
-  assert.match(free, /Up to 3 pages, linked to the booking or ordering you already use/);
+  assert.match(free, /Up to 5 pages, linked to the booking or ordering you already use/);
 });
 
 test('city pages tell the owner when search engines list the site', () => {

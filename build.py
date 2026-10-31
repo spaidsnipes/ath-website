@@ -59,8 +59,8 @@ def ic(name, cls="icon"):
 
 ARR = '<span class="arr" aria-hidden="true">→</span>'
 FONTS = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap"
-HERO_ART = {"/": "home", "/diagnose/": "diagnose", "/path/": "path", "/passport/": "passport", "/build/": "build", "/ecosystem/": "ecosystem", "/language/": "path", "/diagnose/deep/": "deep", "/work/": "path", "/company/": "home", "/404/": "path", "/offer/": "build"}
-NAV = [("Company", "/company/"), ("Inventions", "/work/"), ("Services", "/build/"),
+HERO_ART = {"/": "home", "/diagnose/": "diagnose", "/path/": "path", "/passport/": "passport", "/build/": "build", "/ecosystem/": "ecosystem", "/language/": "path", "/diagnose/deep/": "deep", "/work/": "path", "/company/": "home", "/404/": "path", "/pricing/": "build"}
+NAV = [("Company", "/company/"), ("Inventions", "/work/"), ("Services", "/build/"), ("Prices", "/pricing/"),
        ("Diagnose", "/diagnose/"), ("Language", "/language/"), ("Ecosystem", "/ecosystem/")]
 
 def head(title, desc, route):
@@ -116,7 +116,7 @@ FOOT = """</main>
   <div class="foot-grid">
    <div><img src="/assets/ath-logo-lockup.webp" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
     <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
-   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/offer/">Everything you get</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
+   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/pricing/">Prices</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
    <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
    <div><p class="fh">World</p><a href="https://thewow.online/">WOW OS</a><a href="https://wavemotion.live/">Wavemotion</a><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
@@ -148,7 +148,7 @@ RUNGS = [
     ("door", "$10 / mo", "Basic", "One app's essentials, per app · WAVEMOTION Starter · WM Pro App", "", "/passport/#ladder"),
     ("lattice", "$20 / mo", "World Pass", "Premium of the app you choose + Basic of every other ATH app, WOW OS, Academy and every new app", "Best value", "/passport/#world-pass-value"),
     ("triangle", "$50+ / mo", "Pro &amp; OS", "WAVEMOTION Pro $50 · Living Cinema Studio $75 · WM Pro OS $50", "", "/ecosystem/#specialist"),
-    ("peaks", "Services", "Build it for me", "Websites $100 or $200 one time · apps from $1,000 · custom systems by quote", "", "/build/#pricing"),
+    ("peaks", "$100–$8,000 / mo", "ATH plans", "One ladder for your business: a piece of everything ATH makes, more of it at every step", "", "/pricing/"),
 ]
 
 def ladder(detail=True):
@@ -200,7 +200,7 @@ def cat_price(oid):
 # Prices come from the commercial registry above, never typed here; WM Pro shows only its free guest account
 # until a paid checkout is proven (Founder ship order, 2026-10-21).
 OUTCOMES = [
- ("site", "You run a local business", "Quick Start website", "One mobile page with your hours, services, photos and a call button, linked to the booking or ordering you already use.", lambda: cat_price("ath-quick-start"), "See it for your town", "/websites/"),
+ ("site", "You run a local business", "Presence", "Your website, missed-call text-back, the appointment setter, a PowerTribes office and a WOW Pass. Step one of one ladder.", lambda: f'${PLANS[0]["monthly"]:,} a month', "See every plan", "/pricing/"),
  ("content", "You make videos, music or sermons", "WAVEMOTION", "Turn one video into short clips. You approve before anything posts.", lambda: cat_price("wm-plans"), "Open WAVEMOTION", "https://www.wavemotion.live/"),
  ("systems", "You trade or want to learn to", "Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", lambda: "Free guest account" if "free guest account" in cat_price("wmp-pro") else None, "Take the guest tour", "https://wealthymindsetspro.com/welcome"),
  ("path", "You want to learn something new", "WOW Academy", "Price-action lessons, languages and a book library, open to browse as a guest.", lambda: cat_price("wow-academy-free"), "Visit the campus", "https://thewow.online/academy"),
@@ -221,21 +221,6 @@ def clip_rows():
     return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{n} clips</b></span><span role="cell" class="pt-price">${p}</span><span role="cell" class="pt-allowance">{per_clip(n, p)} per clip</span><span role="cell"><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package=clips-{n}" aria-label="Start {n} clips package">Start</a></span></div>' for n, p in CLIPS)
 def start_rows():
     return "".join(f'<li>{ic(i,"icon-sm")}<div style="flex:1"><b>{t}</b><span>from ${p}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={s}" aria-label="Start {t}">Start</a></li>' for t, p, s, i in STARTS)
-def pkg_cards():
-    out = []
-    for p in [x for x in PKG if not x["from"]]:
-        inc = "".join(f"<li>{html.escape(i)}</li>" for i in p["includes"])
-        eco = "".join(f'<li><span class="tag {"live" if e.get("state") == "LIVE" else "dim"}">{"Included" if e.get("state") == "LIVE" else "Not active yet"}</span> {html.escape(e["label"])}<span class="note">{html.escape(e["note"])}</span></li>' for e in p.get("ecosystem", []))
-        out.append(f'''<article class="panel panel-pad pkg{' pkg-featured' if p.get('featured') else ''}" aria-labelledby="pkg-{p['id']}">
-   {ic(p['icon'])}<h3 id="pkg-{p['id']}">{p['name']}</h3><p class="pkg-price">{money(p['price'])} <span>one time</span></p><p class="body">{html.escape(p['summary'])}</p>
-   <p class="eyebrow mb0">Included</p><ul class="pkg-list">{inc}</ul>
-   {f'<p class="eyebrow mb0">Ecosystem extras</p><ul class="pkg-list pkg-eco">{eco}</ul>' if eco else ''}
-   {f'<p class="note pkg-step"><b>{html.escape(STEP["label"])}.</b> {html.escape(STEP["note"])} <a class="gold" href="{STEP["href"]}">What it gets you</a></p>' if not has_wp(p) else ''}
-   <div class="ctas mt1">{btn(f"Pay {money(p['price'])} — start now", p['pay_url'], attrs='rel="noopener"') if p.get('pay_url') else ''}{btn("Ask a question first", f"/contact/?intent=services&amp;package={p['id']}", "line")}</div>
-   {'<p class="note mb0">Secure card checkout by Stripe. ATH emails your intake form after your payment.</p>' if p.get('pay_url') else ''}</article>''')
-    return "".join(out)
-def ladder_rows():
-    return "".join(f'<li>{ic(p["icon"],"icon-sm")}<div style="flex:1"><b>{p["name"]}</b><span>{(money(p["price"]) + "–" + money(p["price_max"])) if p.get("price_max") else "from " + money(p["price"])} · {html.escape(p["summary"])}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={p["id"]}" aria-label="Request a scope for {p["name"]}">Scope it</a></li>' for p in PKG if p["from"])
 # HOLIDAY SPECIAL (Founder ruling 2026-10-25): WAVEMOTION Creator (Premium, $20) first month $10, half off, through
 # Dec 25 2026 11:59 PM CT. WAVEMOTION charges it (WOW one-time coupon HOLIDAY50). Date-gated twice: a build after the
 # deadline leaves it out, and assets/ath.js removes any [data-offer-ends] element once the deadline passes.
@@ -255,6 +240,10 @@ def catalog_js():
         m[p["id"]] = {"label": f'{p["name"]} — {"from " if p["from"] else ""}{money(p["price"])}{"" if p["from"] else " one time"}', "terms": True}
     for t, p, s, i in STARTS: m[s] = {"label": f"{t} — from ${p}"}
     for p in WM["plans"]: m[p["id"]] = {"label": f'WAVEMOTION {p["name"]} — ${p["price"]}/month ({p["clips"]} standard clips)'}
+    for p in PLANS: m["plan-" + p["key"].replace("_", "-")] = {"label": f'{p["name"]} plan — ${p["monthly"]:,} a month + ${p["setup"]:,} one-time setup', "terms": True}
+    for g in SERVICES:
+        for i in g["items"]:
+            if i["id"] not in m and i["id"] not in ("garden-check", "business-diagnosis"): m[i["id"]] = {"label": f'{i["name"]} — {i["price"]}', "terms": True}
     m["custom"] = {"label": "Custom OS / app / platform — diagnose → scope → quote"}
     m[GC["id"]] = {"label": f'{GC["name"]} — {GC_PRICE} one time ({GC["minutes"]} minute live website check)',
                    "note": {"ask": "ATH replies with a time for your live check. Nothing is charged now, and we never ask for passwords.",
@@ -263,6 +252,85 @@ def catalog_js():
                              "body": GC["privacy"], "msg": "Your website address, and two or three times that work for a " + GC["minutes"] + " minute video call (say Zoom or Google Meet)"}}
     data = {"version": REG["version"], "payment": REG["payment"]["state"], "packages": m, "disclosures": REG["package_disclosures"]}
     return '<script type="application/json" id="ath-catalog">' + json.dumps(data).replace("</", "<\\/") + "</script>"
+
+# ---------------------------------------------------------------- THE ATH price book (Founder direction 2026-10-31)
+# ONE ladder, $100 → $8,000 a month, 15 steps, no duplicate names, no duplicate prices. Every step has a piece of
+# everything ATH makes (WOW Pass, PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist + text-back,
+# review requests, a website, seats and locations), more of each at every step ("the more you get, the better").
+# Standalone services live in their own list, never mixed into the ladder. Source of every number below:
+# commercial/price-book.json (= ~/ath-canon-live/ATH-PRICE-BOOK-2026-10-31.md). No trials, no free months, no discounts.
+# Checkout: a step or service shows card checkout ONLY when its pay_url is a Stripe Payment Link; otherwise "Book a call".
+PB = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "commercial", "price-book.json")))
+PLANS = PB["steps"]
+SERVICES = PB["services"]
+STRIPE_RE = r"^https://buy\.stripe\.com/[A-Za-z0-9_]+$"
+assert len({p["name"] for p in PLANS}) == len(PLANS) and len({p["monthly"] for p in PLANS}) == len(PLANS), "one name and one price per step"
+for p in PLANS: assert not p["pay_url"] or re.match(STRIPE_RE, p["pay_url"]), p["key"]
+def plan_href(p): return p["pay_url"] or f'/contact/?intent=services&amp;package=plan-{p["key"].replace("_", "-")}'
+def plan_cta(p, kind="gold"):
+    if p["pay_url"]: return btn(f'Start {html.escape(p["name"])}', p["pay_url"], kind, 'rel="noopener"')
+    return btn("Book a call", plan_href(p), kind, f'aria-label="Book a call about {html.escape(p["name"])}"')
+PLAN_ROWS = [  # (label, value) — the same rows on every card, so any two steps compare line by line
+    ("WOW Pass", lambda p: p["wow_pass"]),
+    ("PowerTribes office", lambda p: p["office"]),
+    ("WAVEMOTION", lambda p: f'{p["wavemotion"]} · {p["wavemotion_clips"]:,} clips a month'),
+    ("Spaidbot", lambda p: f'{p["spaidbot"]} · {p["spaid_daily"]:,} business answers a day'),
+    ("WM Pro", lambda p: p["wm_pro"]),
+    ("AI receptionist + text-back", lambda p: f'{p["receptionist_minutes"]:,} receptionist minutes · {p["texts"]:,} texts a month'),
+    ("Reviews", lambda p: f'{p["review_requests"]:,} review requests a month'),
+    ("Website", lambda p: p["website"]),
+    ("Seats & locations", lambda p: f'{p["seats"]:,} {"seat" if p["seats"] == 1 else "seats"} · {p["locations"]} {"location" if p["locations"] == 1 else "locations"} · {p["lines"]} phone {"line" if p["lines"] == 1 else "lines"}'),
+]
+EVERY_PLAN = [("lattice", "WOW Pass"), ("flow", "PowerTribes office"), ("content", "WAVEMOTION"), ("ai", "Spaidbot"), ("chart", "WM Pro"),
+              ("bolt", "AI receptionist + text-back"), ("eye", "Review requests"), ("site", "Website"), ("me", "Seats & locations")]
+def plan_strip():
+    """The staircase: every step, lowest to highest, each linking to its card on /pricing/."""
+    steps = "".join(f'<a class="pb-step" href="/pricing/#plan-{p["key"]}" style="--h:{i}"><span class="pb-price">${p["monthly"]:,}</span><span class="pb-name">{html.escape(p["name"])}</span></a>' for i, p in enumerate(PLANS))
+    return f'<nav class="pb-strip" aria-label="ATH plans, $100 to $8,000 a month, lowest to highest">{steps}</nav>'
+def plan_card(p):
+    rows = "".join(f'<div class="pc-row"><dt>{html.escape(l)}</dt><dd>{html.escape(f(p))}</dd></div>' for l, f in PLAN_ROWS)
+    setup = f'+ ${p["setup"]:,} one-time setup'
+    return f'''<article class="panel pc{" pc-feature" if p["key"] in ("presence", "clientflow", "revenue_engine") else ""}" id="plan-{p["key"]}" data-plan="{p["key"]}" aria-labelledby="pc-{p["key"]}">
+ <header class="pc-head"><p class="pc-step">Step {p["rank"]} of {len(PLANS)}</p><h3 class="pc-name" id="pc-{p["key"]}">{html.escape(p["name"])}</h3>
+  <p class="pc-price">${p["monthly"]:,}<span> a month</span></p><p class="pc-setup">{setup}</p></header>
+ <p class="pc-new"><b>{"Starts with" if p["rank"] == 1 else "Adds"}:</b> {html.escape(p["unlocks"])}</p>
+ <dl class="pc-list">{rows}</dl>
+ <div class="ctas pc-cta">{plan_cta(p)}</div>
+</article>'''
+def plan_cards(): return '<div class="pc-grid">' + "".join(plan_card(p) for p in PLANS) + '</div>'
+def plan_table(pid="pricing"):
+    """Compact ladder (industry + calculator pages): name · price · setup · what this step adds."""
+    rows = "".join(f'<div class="rv-row" data-level="{html.escape(p["name"])}"><span><b>{html.escape(p["name"])}</b><span class="note">{html.escape(p["unlocks"])}</span></span><span class="rv-price">${p["monthly"]:,} / month<span class="note">+ ${p["setup"]:,} setup</span></span></div>' for p in PLANS)
+    fine = "".join(f"<li>{html.escape(f)}</li>" for f in PB["fine"][:3])
+    return f'''<div class="panel panel-pad mt2" id="{pid}" data-sb-pricing><p class="panel-title">ATH plans · one ladder, $100 to $8,000 a month</p>
+ <p class="body">Every plan has a piece of everything: a WOW Pass (WOW = World of Wealth), a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website. Each step up gives you more of all of it. <a class="gold" href="/pricing/">See exactly what each step includes</a>.</p>
+ <div class="rv-table">{rows}</div>
+ <ul class="pkg-list mt2 rv-fine">{fine}</ul></div>'''
+def svc_href(i):
+    if i.get("pay_url"): return i["pay_url"]
+    if i.get("href"): return i["href"]
+    return f'/contact/?intent=services&amp;package={i["id"]}'
+def svc_cta(i):
+    if i.get("pay_url") and i.get("live_checkout"): return ("Subscribe", i["pay_url"])
+    if i.get("pay_url") and re.match(STRIPE_RE, i["pay_url"]): return ("Pay by card", i["pay_url"])
+    if i.get("cta"): return (i["cta"], i["href"])
+    if i.get("pay_url"): return ("See plans", i["pay_url"])
+    return ("Book a call", svc_href(i))
+def services_list(groups=None, head=True):
+    """Standalone services: bought on their own, separate from the plans."""
+    out = []
+    for g in SERVICES:
+        if groups and g["group"] not in groups: continue
+        rows = []
+        for i in g["items"]:
+            lab, href = (GC_CTA, GC_HREF) if i["id"] == "garden-check" else svc_cta(i)
+            price = f'{GC_PRICE} one time' if i["id"] == "garden-check" else i["price"]
+            ext = href.startswith("http")
+            rows.append(f'<div class="sv-row" data-svc="{i["id"]}"><div class="sv-what"><b>{html.escape(i["name"])}</b><span class="note">{html.escape(i["what"])}</span></div>'
+                        f'<p class="sv-price">{html.escape(price)}</p><a class="btn btn-line btn-sm sv-go" href="{href}"{" rel=\"noopener\"" if ext else ""}>{lab} {ARR}</a></div>')
+        out.append(f'<section class="sv-group" aria-label="{html.escape(g["group"])}"><p class="eyebrow sv-g">{html.escape(g["group"])}</p>{"".join(rows)}</section>')
+    title = '<p class="panel-title">Services on their own · not part of a plan</p>' if head else ""
+    return f'<div class="panel panel-pad sv" id="services">{title}{"".join(out)}</div>'
 
 # World Pass rule (Founder 2026-10-23, corrected 2026-10-24). One ecosystem ladder with real tier names:
 # Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · Pro/OS $50+. The $20 World Pass is THE ecosystem
@@ -276,7 +344,7 @@ CHECK = '<svg class="vs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor
 STEP = REG["package_step_up"]
 def has_wp(p): return any("World Pass" in e["label"] for e in p.get("ecosystem", []))
 def wp_value(head=True, eyebrow="Passport · the whole ecosystem"):
-    """Free / Basic / World Pass ladder plus everything the $20 World Pass gets you. Reused on /, /path/, /passport/, /offer/, /build/."""
+    """Free / Basic / World Pass ladder plus everything the $20 World Pass gets you. Reused on /path/ and /passport/ (the pricing page lists the WOW Pass once, as a service)."""
     free = [("Create your free Passport", "One identity, receipts and ownership across every ATH app"),
             ("Explore the Lounge", "WOW's social room, open to every visitor"),
             ("Listen to WOW Music and WOW Radio", "Real WOW artists, in rotation"),
@@ -331,18 +399,16 @@ def caps():
     wm = cat_price("wm-plans").replace("/month", " a month")
     return [
      ("presence", "Build your presence", "Websites & digital experience", [
-      ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'{money(P["quick-start"]["price"])} or {money(P["business-growth"]["price"])} one time', "Here's everything you get", "/offer/", True),
+      ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'{money(P["website-starter"]["price"])} or {money(P["website-business"]["price"])} one time, or in every plan', "See every price", "/pricing/#services", True),
       ("Website health check", f'The {GC["name"]}: a {GC["minutes"]} minute live check of the site you already have, on a video call you watch. You learn what needs fixing and what doesn\'t.', "ATH Web Studio", "live", f"{GC_PRICE} one time", GC_CTA if not GC_PAY else "See the Garden Check", GC_PAGE, True),
-      ("Professional website", "An expanded branded site: content management, commerce, booking and course presentation as scoped.", "ATH Web Studio", "quote", pk("professional-website"), "Scope it", "/contact/?intent=services&amp;package=professional-website", True),
       ("Brand themes & reusable sections", "Three tuned site styles built from reusable sections: menus and price lists, galleries, hours, story.", "ATH Web Studio", "inc", "In every site", "See sample sites", "/sites/", False),
-      ("Preview & approval", "You see your site on a preview link, kept out of search, before it goes live. Revisions as your package states.", "ATH Web Studio", "inc", "In every site", "How delivery works", "/offer/#how", True),
-      ("Hosting & your own domain", "Fast static hosting. Move to your own domain whenever you like; the registrar fee (about $12 a year) is yours, at cost.", "ATH Web Studio", "inc", "Hosting included", "See packages", "/offer/", False),
+      ("Preview & approval", "You see your site on a preview link, kept out of search, before it goes live. Revisions as your package states.", "ATH Web Studio", "inc", "In every site", "See every price", "/pricing/#services", True),
+      ("Hosting & your own domain", "Fast static hosting. Move to your own domain whenever you like; the registrar fee (about $12 a year) is yours, at cost.", "ATH Web Studio", "inc", "Hosting included", "See every price", "/pricing/#services", False),
      ]),
      ("content", "Create & distribute content", "Video, clips & campaigns", [
       ("Clips from your videos", "Turn one long video into short captioned clips. You approve every clip before anything posts.", "WAVEMOTION", "live", wm, "See WAVEMOTION plans", "https://www.wavemotion.live/#pricing", True),
       ("Campaign workflow", "Record, prepare, approve, publish and learn, through the accounts you connect and within each platform's permissions.", "WAVEMOTION", "live", "In every plan", "Open WAVEMOTION", "https://www.wavemotion.live/", False),
-      ("Website + two promo videos", "A scoped site plus two 30–60 second videos made from your footage and photos, and a launch campaign.", "ATH Web Studio + WAVEMOTION", "quote", pk("cinematic-launch"), "Scope it", "/contact/?intent=services&amp;package=cinematic-launch", True),
-      ("Weekly content, made for you", "Four promo videos and eight captioned clips a month, with a posting kit. Twice-weekly is " + CAT["ath-content-twice"]["price"] + ".", "WAVEMOTION + ATH", "quote", CAT["ath-content-weekly"]["price"], "Ask about it", "/contact/?intent=wavemotion", False),
+      ("WAVEMOTION in every ATH plan", "Every ATH plan includes WAVEMOTION, from Starter (40 clips a month) at $100 up to several Living Cinema Studio workspaces.", "WAVEMOTION", "inc", "In every plan", "See every plan", "/pricing/", True),
      ]),
      ("intelligence", "Intelligence & AI agents", "Diagnosis, assistants & memory", [
       ("Spaidbot assistant", "A free AI assistant on every page of this site. It answers from ATH's live price list and hands you to a person.", "ATHOS", "live", "Free", "Ask Spaidbot", "/contact/#ask", True),
@@ -351,7 +417,7 @@ def caps():
       ("Automation & business systems", "Apps, back ends, accounts, dashboards, integrations and automations, scoped in writing before any work starts.", "ATHOS + ATH Web Studio", "quote", pk("business-app-system"), "Scope it", "/contact/?intent=services&amp;package=business-app-system", False),
      ]),
      ("commerce", "Sell & get paid", "Checkout, apps & channels", [
-      ("Checkout & booking links", "Your site's buttons go to the checkout, booking or ordering tool you already use. Nothing new to learn.", "ATH Commerce + ATH Web Studio", "inc", f'In the {money(P["business-growth"]["price"])} site', "See Business Growth", "/offer/#business-growth", False),
+      ("Checkout & booking links", "Your site's buttons go to the checkout, booking or ordering tool you already use. Nothing new to learn.", "ATH Commerce + ATH Web Studio", "inc", "In every site", "See every price", "/pricing/#services", False),
       ("Installable web app", "A scoped installable web app, or a single-platform app quoted on its own.", "ATH Web Studio", "quote", pk("app-starter"), "Scope it", "/contact/?intent=services&amp;package=app-starter", True),
       ("iOS + Android apps", "Basic apps for both stores on one shared architecture, under a written scope.", "ATH Web Studio", "quote", pk("mobile-app-bundle"), "Scope it", "/contact/?intent=services&amp;package=mobile-app-bundle", False),
       ("Web, mobile, TV & SDK", "One scoped system across web, mobile, television and integrations.", "ATH Web Studio", "quote", pk("omnichannel-system"), "Scope it", "/contact/?intent=services&amp;package=omnichannel-system", False),
@@ -364,7 +430,7 @@ def caps():
      ]),
      ("teams", "Customers, teams & specialist systems", "SPAID Business · PowerTribes · specialist OS", [
       ("Prospecting, CRM & sales routing", "Find, qualify and follow up with customers, connected to your site and campaigns.", "SPAID Business", "dev", "Not sold yet", "Request access", "/contact/?intent=services", True),
-      ("Workforce & operations OS", "Business, sales, workforce and leadership operations in one system.", "PowerTribes", "dev", "Not sold yet", "Request access", "/contact/?intent=powertribes", False),
+      ("Workforce & operations OS", "Your PowerTribes office: Call Desk, appointment setter, tasks and team. A bigger office at every step of the ladder.", "PowerTribes", "inc", "In every plan", "See every plan", "/pricing/", False),
       ("Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", "Wealthy Mindsets Pro", "live", "Free guest account", "Take the guest tour", "https://wealthymindsetspro.com/welcome", True),
      ]),
     ]
@@ -411,7 +477,7 @@ COMPARE_PLATFORM = [
 ]
 def compare_plus():
     return [
-     ("Websites built for you", f'Card-payable sites at {money(P["quick-start"]["price"])} and {money(P["business-growth"]["price"])}, no sales call needed.', "live"),
+     ("Websites built for you", f'A Starter Website at {money(P["website-starter"]["price"])} or a Business Website at {money(P["website-business"]["price"])}, one time, or a website inside every ATH plan.', "live"),
      ("Video clips & campaigns", "WAVEMOTION plans " + cat_price("wm-plans").replace("/month", " a month") + ", clips included.", "live"),
      ("A free diagnosis before you buy", "ATHOS tells you what's actually in the way, including when you need nothing.", "live"),
      ("Identity, membership & community", "Passport (free), World Pass and the rooms of WOW OS.", "live"),
@@ -428,20 +494,9 @@ def compare_section(sid="compare"):
  <div class="grid cmp-grid" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:start" data-collapse>
   <div class="panel panel-pad"><p class="panel-title">The content platform essentials</p><div class="cmp" role="table" aria-label="Content platform capabilities and how ATH delivers them">{compare_rows(COMPARE_PLATFORM)}</div></div>
   <div class="panel panel-pad cmp-plus"><p class="panel-title">Plus what a content platform leaves to you</p><div class="cmp" role="table" aria-label="Business systems ATH adds">{compare_rows(compare_plus())}</div>
-   <div class="ctas mt2">{btn("Here's everything you get", "/offer/")}{btn("All prices", "/build/#pricing", "line")}</div></div>
+   <div class="ctas mt2">{btn("See every price", "/pricing/")}{btn("ATH Services", "/build/", "line")}</div></div>
  </div>
 </div></section>"""
-def pkg_ladder():
-    """The transparent package ladder, $100 → $8,000, every step from the registry."""
-    steps = []
-    for p in PKG:
-        pay = p.get("pay_url")
-        href = "/offer/#" + p["id"] if pay else f'/contact/?intent=services&amp;package={p["id"]}'
-        price = (money(p["price"]) + "–" + money(p["price_max"])) if p.get("price_max") else money(p["price"])
-        lead = "scoped range" if p.get("price_max") else ("starting at" if p["from"] else "one time")
-        steps.append(f'<a class="pl-step{" pl-card" if pay else ""}" href="{href}"><span class="pl-lead">{lead}</span><span class="pl-price">{price}</span><span class="pl-name">{html.escape(p["name"])}</span><span class="pl-how">{"Pay by card" if pay else "Written scope"}</span></a>')
-    return '<nav class="pl" aria-label="Website and app packages, lowest to highest">' + "".join(steps) + '</nav>'
-
 def gc_panel(eyebrow="Already have a website?"):
     """The Mansion Garden Check, from the registry: the oil-change offer for a site that already exists."""
     return f'''<section class="block" id="garden-check"><div class="wrap"><div class="panel panel-pad gc-panel" style="display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap">
@@ -477,7 +532,7 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
   </ul></div>
 </div></section>
 <section class="block" id="start"><div class="wrap">
- <div class="block-head"><div><p class="eyebrow">Start with what you do</p><h2 class="display d-m mt1">Find your door</h2></div>{btn("All prices", "/build/#pricing", "line")}</div>
+ <div class="block-head"><div><p class="eyebrow">Start with what you do</p><h2 class="display d-m mt1">Find your door</h2></div>{btn("All prices", "/pricing/", "line")}</div>
  <div class="grid g3">{outcome_cards()}</div>
 </div></section>
 <section class="block cap-block" id="what-we-do"><div class="wrap">
@@ -486,13 +541,12 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
  {cap_tiles()}
 </div></section>
 """ + compare_section() + f"""
-<section class="block"><div class="wrap">
- <div class="block-head"><div><p class="eyebrow">Transparent prices</p><h2 class="display d-m mt1">From $100 to $8,000.<br>Every step on the page.</h2></div>{btn("Here's everything you get", "/offer/", "line")}</div>
- {pkg_ladder()}
- <p class="note mt2">Quick Start and Business Growth are paid by card. Everything above them starts with a written scope, and that scope sets the real number before anything is charged.</p>
+<section class="block" id="plans"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">One ladder</p><h2 class="display d-m mt1">From $100 to $8,000 a month.<br>More of everything at every step.</h2></div>{btn("See every plan", "/pricing/", "line")}</div>
+ {plan_strip()}
+ <p class="note mt2">Every plan includes a piece of everything ATH makes: a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website. The higher the step, the more of it you get. No trial, no free month, no discount.</p>
  <p class="note mt1">Already have a site? Start smaller: the <a class="gold" href="{GC_PAGE}">{GC["name"]}</a> is {GC_PRICE} one time. Like an oil change: pull in, {GC["minutes"]} minutes, done.</p>
 </div></section>
-""" + wp_value() + f"""
 <section class="block"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">Inventions</p><h2 class="display d-m mt1">Built by ATH</h2></div>{btn("All inventions", "/work/", "line")}</div>
  <div class="grid g3">
@@ -590,7 +644,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
    <li>{ic("door","icon-sm")}<div><b>Basic — $10 a month per app</b><span>Wavemotion: the creator + business movement OS. Starter (Basic) $10 · Creator (Premium) $20 · Pro $50 · Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>{WP_RULE} {WP_NOTE} Available now on WOW OS, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro: a free guest account, WM Pro App (Basic) $10/month, WM Pro Premium $20/month (your World Pass when WM Pro is your choice) and WM Pro OS $50/month. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
-   <li>{ic("peaks","icon-sm")}<div><b>ATH Services — starting prices published</b><span>Websites $100 (Quick Start) and $200 (Business Growth), one time; WAVEMOTION starts at $10 a month, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/build/#pricing">See service prices</a>.</span></div></li>
+   <li>{ic("peaks","icon-sm")}<div><b>ATH plans and services — every price published</b><span>ATH plans from $100 to $8,000 a month, one ladder; websites $250 (Starter) and $500 (Business), one time; WAVEMOTION starts at $10 a month, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/pricing/">See every price</a>.</span></div></li>
   </ul></div>
 </div></section>""" + wp_value() + cta_block())
 
@@ -645,47 +699,16 @@ pages["/build/"] = ("ATH Services — You need the right path",
    ("q","Consulting","When the honest first step is clarity, not code.")])}
  </div>
  <section class="mt3" id="pricing" aria-labelledby="pricing-h">
-  <h2 class="display d-m" id="pricing-h">Website &amp; app packages</h2>
-  <p class="body">Quick Start and Business Growth can be paid by card right now. Prefer to talk first? Ask a question and ATH replies with a written scope — nothing is charged until you pay. <a class="gold" href="/sites/">See sample sites</a> to picture yours, or <a class="gold" href="/offer/">see everything you get</a>, line by line.</p>
-  <div class="grid g2 mt2" style="align-items:stretch">{pkg_cards()}</div>
-  <div class="panel panel-pad mt2" id="garden-check-price" style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
-   <div style="max-width:60ch"><p class="eyebrow mb0">Already have a website?</p><h3 class="mt1">{GC["name"]} · {GC_PRICE} one time</h3><p class="body mb0">{html.escape(GC["tagline"])} {html.escape(GC["summary"])} {html.escape(GC["fixes_note"])}</p></div>
-   <div class="ctas" style="margin:0">{btn(GC_CTA, GC_HREF, attrs='rel="noopener"' if GC_PAY else "")}{btn("What we check", GC_PAGE, "line")}</div>
-  </div>
-  <div class="grid mt2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:start" data-collapse>
-   <div class="panel panel-pad">
-    <p class="panel-title">Bigger builds — starting prices</p>
-    <ul class="rows">{ladder_rows()}</ul>
-    {"".join(f'<p class="note mt1"><span class="tag {"live" if e.get("state") == "LIVE" else "dim"}">{"Included" if e.get("state") == "LIVE" else "Not active yet"}</span> <b>Every package from $500:</b> {html.escape(e["label"])}. {html.escape(e["note"])}</p>' for e in next(p for p in PKG if p["price"] >= 500)["ecosystem"][1:])}
-    <div class="custom-os mt2"><p class="eyebrow mb0">Not sure which?</p><p class="h-serif mt1" style="font-size:24px">Diagnose → scope → quote</p><p class="note">Every “from” price becomes a real number only after a written scope.</p><div class="ctas mt1">{btn("Get a free diagnostic", "/diagnose/")}{btn("Request a quote", "/contact/?intent=services&amp;package=custom", "line")}</div></div>
-   </div>
-   <div class="panel panel-pad">
-    <p class="panel-title">What every package discloses</p>
-    <ul class="pkg-list">{"".join(f"<li>{html.escape(d)}</li>" for d in REG["package_disclosures"])}<li>Ecosystem extras marked “Not active yet” are not delivered until that product is operational. No subscription renews without your separate consent.</li></ul>
-   </div>
-  </div>
-  <h2 class="display d-m mt3" id="services-h">Done-for-you services</h2>
-  <div class="grid mt2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:start" data-collapse>
-   <div class="panel panel-pad">
-    <p class="panel-title">Clips come with your WAVEMOTION plan</p>
-    <p class="body mb0">There is no separate clip menu. Every WAVEMOTION plan includes its clips each month — see <a class="gold" href="#wavemotion-plans">WAVEMOTION plans</a> below. Orders placed before the change are honored as bought.</p>
-   </div>
-   <div class="panel panel-pad">
-    <p class="panel-title">Setup services — starting prices</p>
-    <ul class="rows">{start_rows()}</ul>
-   </div>
-  </div>
-  <div class="panel panel-pad mt2" id="wavemotion-plans">
-   <p class="panel-title" id="wavemotion-plans">WAVEMOTION plans</p>
-   <div class="price-table wm-plan-table" role="table" aria-label="WAVEMOTION monthly plans"><div class="pt-row pt-head" role="row"><span role="columnheader">Plan</span><span role="columnheader">Monthly</span><span role="columnheader">Allowance</span><span role="columnheader">Next step</span></div>{wm_rows()}</div>
-   <p class="note">Standard clip allowances are 40 / 80 / 250 / 250 per month. Cinematic generation is not open; production credits await measured provider costs. Platform publishing depends on the permissions of your connected accounts. Your clips come with your plan.</p>
-   <p class="body"><b>Starts at $10 a month</b>: one link for all your socials, your analytics in one place, and clips from your videos.</p>
-   {holiday_note()}
-   <p class="body mb0">Choose a plan inside <a class="gold" href="https://www.wavemotion.live/#pricing" rel="noopener">WAVEMOTION</a>; this site does not charge a second subscription.</p>
-  </div>
-  <p class="note mt2">“From” prices are starting points for a defined scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden. Catalog version {REG["version"]}.</p>
+  <h2 class="display d-m" id="pricing-h">Prices</h2>
+  <p class="body">ATH has one ladder of monthly plans, and a short list of services you can buy on their own. <a class="gold" href="/pricing/">See exactly what every plan includes</a>.</p>
+  <div class="panel panel-pad mt2"><p class="panel-title">ATH plans · $100 to $8,000 a month</p>{plan_strip()}
+   <p class="note mt2 mb0">Every plan has a piece of everything ATH makes, and more of it at every step. Book a call to start; card checkout opens plan by plan.</p></div>
+  <div class="mt2">{services_list()}</div>
+  <p class="body mt2"><b>Starts at $10 a month</b>: one link for all your socials, your analytics in one place, and clips from your videos. WAVEMOTION clips come with the plan; there is no separate clip menu, and orders placed before the change are honored as bought.</p>
+  {holiday_note()}
+  <p class="note mt2">Custom-build prices are starting points for a written scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden. Catalog version {REG["version"]}.</p>
  </section>
-</div></section>""" + wp_value() + f"""<section class="block"><div class="wrap">
+</div></section><section class="block"><div class="wrap">
  <div class="panel panel-pad mt3"><p class="panel-title">How an engagement works</p>
   <div class="grid g5" style="gap:0">
    {"".join(f'<div style="padding:12px 10px;border-left:1px solid var(--gold-faint)"><p class="eyebrow mb0">0{n}</p><p class="h-serif" style="font-size:22px;margin-top:6px">{t}</p><p class="note">{d}</p></div>' for n,t,d in [
@@ -702,64 +725,42 @@ pages["/build/"] = ("ATH Services — You need the right path",
   <p class="note mt2 mb0">Case frames are structural examples only — no real client claims, logos, or statistics.</p></div>
 </div></section>""" + cta_block("Build my path", "Start with the free diagnostic, or tell us about the project directly."))
 
-# ---------------------------------------------------------------- SP-085 honest offer stack (2026-10-23)
-# "Here's everything you get", from the registry only: no countdown, no invented values, no "today only".
-# A dollar value appears only where the registry itself states one; extras that are not switched on are
-# listed apart and not counted.
+# A checklist line (Garden Check page): a dollar value appears only where the registry itself states one.
 def vs_line(label, note="", dim=False):
     m = re.search(r"\s*\((\$\d+) value\)", label)
     val = f'<span class="vs-val">{m.group(1)} value</span>' if m else ""
     label = label.replace(m.group(0), "") if m else label
     return (f'<li class="vs-row{" vs-dim" if dim else ""}">{CHECK if not dim else ic("lock", "vs-ic")}<div><b>{html.escape(label)}</b>'
             + (f'<span>{html.escape(note)}</span>' if note else "") + f'</div>{val}</li>')
-def offer_stack(p):
-    live = [e for e in p.get("ecosystem", []) if e.get("state") == "LIVE"]
-    off = [e for e in p.get("ecosystem", []) if e.get("state") != "LIVE"]
-    return f'''<article class="panel vs{" vs-featured" if p.get("featured") else ""}" id="{p["id"]}" aria-labelledby="vs-{p["id"]}">
- <header class="vs-head">{ic(p["icon"])}<div><h2 class="vs-name" id="vs-{p["id"]}">{p["name"]}</h2><p class="body mb0">{html.escape(p["summary"])}</p></div></header>
- <p class="vs-sec">Your website</p><ul class="vs-list">{"".join(vs_line(i) for i in p["includes"])}</ul>
- <p class="vs-sec">Set up with you</p><ul class="vs-list">{"".join(vs_line(e["label"], e["note"]) for e in live)}</ul>
- {f'<p class="vs-sec vs-sec-dim">Not counted: not switched on yet</p><ul class="vs-list">{"".join(vs_line(e["label"], e["note"], True) for e in off)}</ul>' if off else ""}
- {f'<p class="vs-sec">Or step up</p><p class="vs-step"><b>{html.escape(STEP["label"])}.</b> {html.escape(STEP["note"])} <a class="gold" href="{STEP["href"]}">What it gets you</a></p>' if not has_wp(p) else ''}
- <footer class="vs-foot"><div><p class="vs-price">{money(p["price"])}</p><p class="note mb0">one time · no monthly fee · no contract</p></div>
-  <div class="ctas" style="margin:0">{btn(f"Pay {money(p['price'])} by card", p["pay_url"], attrs='rel="noopener"')}{btn("Ask a question first", f"/contact/?intent=services&amp;package={p['id']}", "line")}</div></footer>
-</article>'''
 
-pages["/offer/"] = ("Here's everything you get — ATH website packages",
- "Every line in the $100 Quick Start and $200 Business Growth websites, straight from ATH's price list. One price for everyone, no countdown.",
- f"""<section class="hero offer-hero" style="--pos:62% 55%;--mpos:55% 40%;min-height:auto">
+# ---------------------------------------------------------------- /pricing/: THE price book (Founder direction 2026-10-31)
+# One ladder (15 steps, one name and one price each) and, apart from it, the services you can buy on their own.
+# Replaces the /offer/ website-package page (its $100 / $200 one-time sites doubled the $100 and $200 plan prices).
+pages["/pricing/"] = ("Prices — ATH plans from $100 to $8,000 a month",
+ "One ladder of ATH plans, $100 to $8,000 a month: every step has a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes, review requests and a website, more at every step. Services you can buy on their own are listed separately.",
+ f"""<section class="hero pb-hero" style="--pos:62% 55%;--mpos:55% 40%;min-height:auto">
  <div class="hero-art"><img src="/assets/art/build.webp" alt="" fetchpriority="high"></div>
  <div class="wrap"><div class="hero-copy">
-  <p class="eyebrow">Website packages · one price for everyone</p>
-  <h1 class="display d-l">Here's everything<br>you get</h1>
-  <p class="lede">Two websites you can pay for by card right now. Every line below is in the package, and anything that isn't switched on yet is shown apart and not counted.</p>
-  <div class="ctas">{btn("See the $200 site", "#business-growth")}{btn("See the $100 site", "#quick-start", "line")}</div>
+  <p class="eyebrow">Prices · one ladder · one price for everyone</p>
+  <h1 class="display d-l">A piece of everything.<br>More at every step.</h1>
+  <p class="lede">Fifteen plans, from $100 to $8,000 a month. Every plan includes a little of everything ATH makes; the higher you go, the more of it you get.</p>
+  <div class="ctas">{btn("See the plans", "#pricing")}{btn("Services on their own", "#services", "line")}</div>
  </div></div>
 </section>
-<section class="block" style="padding-top:48px"><div class="wrap">
- <div class="vs-grid">{"".join(offer_stack(p) for p in sorted([x for x in PKG if x.get("pay_url")], key=lambda x: not x.get("featured")))}</div>
- <p class="note mt2" style="text-align:center">Secure card checkout by Stripe. ATH emails your intake form after your payment. The price above is the price: no countdown and no “today only”.</p>
-</div></section>""" + gc_panel() + wp_value(eyebrow="Included with Business Growth: a month of the whole ecosystem") + f"""
-<section class="block" id="how"><div class="wrap">
- <div class="block-head"><div><p class="eyebrow">How delivery works</p><h2 class="display d-m mt1">Pay, tell us,<br>approve, go live</h2></div>{btn("See sample sites", "/sites/", "line")}</div>
- <ol class="steps">{"".join(f'<li><span class="st-n">0{n}</span><b>{t}</b><span>{d}</span></li>' for n, t, d in [
-  (1, "Pay by card", "Checkout by Stripe. Nothing renews."),
-  (2, "Send your details", "A short intake: your services, hours, photos and the links your buttons should open."),
-  (3, "See a preview", "ATH builds your site and sends a preview link, kept out of search. Your go-live date is confirmed with you."),
-  (4, "Approve your changes", "Quick Start includes one revision. Business Growth is scoped up to three pages."),
-  (5, "Your own domain, when you want it", "Search engines list it once it is on your own domain (about $12 a year, paid to the registrar).")])}</ol>
+<section class="block pb-block" id="pricing" data-sb-pricing aria-labelledby="pb-h"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">ATH plans · monthly</p><h2 class="display d-m mt1" id="pb-h">One ladder,<br>$100 to $8,000</h2></div>
+  <p class="note" style="max-width:46ch">Each step keeps everything below it and adds more. Tap a step to jump to what it includes.</p></div>
+ {plan_strip()}
+ <div class="pb-every panel panel-pad mt2"><p class="panel-title">In every plan, from the first step</p>
+  <ul class="pb-every-list">{"".join(f'<li>{ic(i, "icon-sm")}<span>{t}</span></li>' for i, t in EVERY_PLAN)}</ul></div>
+ {plan_cards()}
+ <ul class="pkg-list mt2 pb-fine">{"".join(f"<li>{html.escape(f)}</li>" for f in PB["fine"])}<li>Price book version {PB["version"]}, {PB["as_of"]}. Card checkout opens plan by plan; until then, every plan starts with a call and a written scope.</li></ul>
 </div></section>
-<section class="block"><div class="wrap">
- <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start" data-collapse>
-  <div class="panel panel-pad"><p class="panel-title">What these two packages don't do</p><ul class="pkg-list">
-   <li>They link to the booking or ordering tool you already use. ATH doesn't build a new one at this price.</li>
-   <li>Reviews, ratings and follower counts appear only if you give them to us. Nothing is invented.</li>
-   {"".join(f"<li>{html.escape(d)}</li>" for d in REG["package_disclosures"])}
-  </ul></div>
-  <div class="panel panel-pad"><p class="panel-title">Need more than a website?</p><ul class="rows">{ladder_rows()}</ul>
-   <p class="note mt1 mb0">Each of these starts with a written scope that sets the real number. Nothing is charged before you approve it.</p></div>
- </div>
-</div></section>""" + cta_block("Not sure which?", "Start with the free diagnostic. Sometimes the honest answer is that you need nothing at all."))
+<section class="block pb-block" aria-labelledby="sv-h"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">Not part of a plan</p><h2 class="display d-m mt1" id="sv-h">Services on their own</h2></div>
+  <p class="note" style="max-width:46ch">Buy one thing by itself. These are separate from the plans above, and a plan already includes a piece of most of them.</p></div>
+ {services_list(head=False)}
+</div></section>""" + cta_block("Not sure which step?", "Start with the free business diagnosis. A person tells you where you leak first, and which step fixes it."))
 
 ECO = [
  ("ATH", "Parent builder", "live", "You're here", "The invention company. Builds, owns and routes.", ("Diagnose", "/diagnose/")),
@@ -792,7 +793,7 @@ pages["/ecosystem/"] = ("The Ecosystem — What ATH does, who owns it, what it c
  "Websites, content, AI, checkout, community and business systems: one ATH ecosystem, every capability with its owner, live status and price.",
  hero("ecosystem", "", "The<br>Ecosystem",
       "ATH builds the world.<br>Destinations open the doors.<br><span style=\"font-size:.8em;color:var(--ivory-dim)\">Not an app store. Parent builder · intelligence · identity · membership · destinations.</span>",
-      btn("See the full map", "#map") + btn("Here's everything you get", "/offer/", "line"), extra='<div class="plaques">' + "".join(f'<a class="plaque" href="#d"><b>{n}</b><span>{t}</span></a>' for n,t in [("WOW OS","Open door"),("WM Pro","Open door"),("WOW TV · WOW Radio","Open door"),("Lounge · Academy · Shop","Open door")]) + '</div>', pos="50% 50%", mpos="50% 40%", size="d-l")
+      btn("See the full map", "#map") + btn("See every price", "/pricing/", "line"), extra='<div class="plaques">' + "".join(f'<a class="plaque" href="#d"><b>{n}</b><span>{t}</span></a>' for n,t in [("WOW OS","Open door"),("WM Pro","Open door"),("WOW TV · WOW Radio","Open door"),("Lounge · Academy · Shop","Open door")]) + '</div>', pos="50% 50%", mpos="50% 40%", size="d-l")
  + '<div class="strip">One builder · Seven owners · One ecosystem</div>'
  + f"""<section class="block" id="owners"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">Who owns what</p><h2 class="display d-m mt1">Seven owners.<br>No overlap.</h2></div>
@@ -976,7 +977,7 @@ pages["/free-look/"] = ("Free website look — Above the Hill",
  f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">Free · no obligation</p><h1 class="display d-l mt1">See your business<br>online, free</h1>
   <p class="lede">Leave your name and number. A person at ATH looks at how customers find you today and sends you a free look at your new site.</p>
-  <ul class="pkg-list mt2"><li>A one-page website: <b>$100 one time</b>, free preview first; you pay only if you love it</li><li>Up to 3 pages, linked to the booking or ordering you already use: <b>$200</b></li><li>Site + 2 promo videos: <b>$500–$700</b></li><li>Weekly videos made for you: <b>$500/month</b></li></ul>
+  <ul class="pkg-list mt2"><li>Starter Website: <b>$250 one time</b>, preview first; you pay only if you love it</li><li>Up to 5 pages, linked to the booking or ordering you already use, with a year of small updates: <b>$500 one time</b></li><li>Or an ATH plan with your website, missed-call text-back and review requests in it: <b>from $100 a month</b> (Presence). <a class="gold" href="/pricing/">See every plan</a></li></ul>
   <p class="body mt2">See real examples: <a class="gold" href="/sites/">sample sites ATH built</a>.</p></div>
  <form class="panel panel-pad" id="lead-form" novalidate>
   <input type="hidden" name="intent" value="free-look">
@@ -1031,7 +1032,7 @@ if _g:
   <p class="lede">Real products from the ATH Store, checkout by Shopify. Prices shown are from {_g[1]}; your cart shows the current price and shipping before you pay. Order early: shipping times vary by item.</p>
   <div class="ctas mt2">{btn("Browse all in WOW Marketplace", "https://thewow.online/marketplace")}{btn("Gift a business a website", "/free-look/", "line")}</div></div></section>""" + _g[0] + f"""
 <section class="block"><div class="wrap"><div class="panel panel-pad"><p class="eyebrow">For the business owner on your list</p><h2 class="display d-m mt1">Get them found before the holiday rush</h2>
-  <p class="body">A mobile website for their business, <b>$100 one time</b>. Up to 3 pages, linked to the booking or ordering they already use, is $200. Order early for the holidays: ATH confirms the go-live date when their info arrives.</p>
+  <p class="body">A mobile website for their business, <b>$250 one time</b>. Up to 5 pages, linked to the booking or ordering they already use, with a year of small updates, is $500. Order early for the holidays: ATH confirms the go-live date when their info arrives.</p>
   <div class="ctas mt1">{btn("Get a free look", "/free-look/")}{btn("See sample sites", "/sites/", "line")}</div></div></div></section>""")
 
 pages["/start/"] = ("Start your build — ATH intake",
@@ -1040,7 +1041,7 @@ pages["/start/"] = ("Start your build — ATH intake",
  <div><p class="eyebrow">Payment received · Next step</p><h1 class="display d-l mt1" id="start-h1">Let's build<br>your site</h1>
   <p class="lede" id="start-lede">Thank you. Tell us about your business and ATH starts the build.</p>
   <p class="body mt2" id="start-body">Share links to your logo and photos (Google Drive, Dropbox, Instagram or your current site). A person at ATH reads every intake and replies.</p>
-  <p class="note mt2">Didn't pay yet? <a class="gold" href="/build/#pricing">See packages</a>.</p></div>
+  <p class="note mt2">Didn't pay yet? <a class="gold" href="/pricing/">See prices</a>.</p></div>
  <form class="panel panel-pad" id="intake-form" novalidate>
   <input type="hidden" name="intent" value="paid-intake">
   <div class="grid g2"><div class="field"><label class="lbl" for="i-name">Your name</label><input id="i-name" name="name" type="text" autocomplete="name" required></div>
@@ -1121,7 +1122,7 @@ pages["/terms/"] = ("Terms — Above the Hill Developments", "Ownership, diagnos
 <li>You own your materials. A diagnostic or deep diagnostic transfers no ownership of your code, content or data to ATH.</li>
 <li>ATH owns ATH intellectual property — including ATHOS, its methods, the ATH Builder Dictionary, product designs and inventions. Purchasing the Dictionary or any product licenses its use; it does not transfer ownership of ATH inventions.</li></ul>
 <h2>Deep diagnostics and services</h2><p>Deeper inspection happens only under a written scope you approve, with access you grant and may revoke. Default posture is read-only; ATH does not modify your systems during a diagnostic. Services are delivered under a separate scope and quote.</p>
-<h2>Website and app packages</h2><p>Package prices are listed on the <a class="gold" href="/build/#pricing">Build page</a>. Submitting a package request creates no charge and no obligation. ATH replies with a written scope and an invoice; work begins only after you approve the scope and pay. Timeline, revisions, ownership terms, third-party costs and refund terms are stated in that written scope. Ecosystem extras described as “not active yet” are delivered only once that product is operational, and no subscription renews without your separate consent.</p>
+<h2>Website and app packages</h2><p>Package prices are listed on the <a class="gold" href="/pricing/">Prices page</a>. Submitting a package request creates no charge and no obligation. ATH replies with a written scope and an invoice; work begins only after you approve the scope and pay. Timeline, revisions, ownership terms, third-party costs and refund terms are stated in that written scope. Ecosystem extras described as “not active yet” are delivered only once that product is operational, and no subscription renews without your separate consent.</p>
 <h2>Prices and availability</h2><p>Only products marked available can be bought. Waitlists and access requests create no obligation for either side. The World Pass is a $20-a-month plan: it includes the Premium tier of one app you choose and the Basic tier of every other app, which each app switches on from your pass; it does not include the Premium or Pro tier of every app, ATH services or third-party costs unless stated in writing.</p>
 <h2>Contact</h2><p>Questions: use the <a class="gold" href="/contact/">contact form</a>, or call or text <a class="gold" href="tel:+19189600164">(918) 960-0164</a>.</p>
 </div></section>""")
@@ -1131,7 +1132,9 @@ pages["/404/"] = ("This path doesn't exist yet — ATH", "Page not found.",
       btn("What's your hill?", "/diagnose/") + btn("Home", "/", "line"), size="d-m"))
 
 # ---------------------------------------------------------------- city pages: be findable for owners already searching (Myron: make yourself findable)
-QS_LINK, BG_LINK = "https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00", "https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01"
+# Websites (one time) come from the price book; no card checkout until the Founder creates their Stripe prices.
+WEB_STARTER, WEB_BUSINESS = P["website-starter"], P["website-business"]
+WEB_BOOK = "/contact/?intent=services&amp;package=website-starter"
 CITIES = [("tulsa", "Tulsa"), ("broken-arrow", "Broken Arrow"), ("bixby", "Bixby")]
 NICHES = [
  ("barbers-salons", "barbers and salons", "Your chair stays full", "Clients find your hours, see your work and tap Book, even at 10 pm when the shop is closed.", "A Book button to Booksy, Square, Vagaro or StyleSeat, your price list and a photo gallery"),
@@ -1144,13 +1147,13 @@ NICHES = [
 def city_page(cslug, city, n):
     nslug, who, payoff, line, gets = n
     others = "".join(f'<li><a class="gold" href="/websites/{cslug}/{o[0]}/">Websites for {o[1]} in {city}</a></li>' for o in NICHES if o[0] != nslug)
-    return (f"Websites for {who} in {city}, OK — $100 one time | Above the Hill",
-     f"{payoff}. A mobile website for {who} in {city}, Oklahoma: $100 one time, go-live date confirmed with you. Local team, no contract.",
+    return (f"Websites for {who} in {city}, OK — {money(WEB_STARTER['price'])} one time | Above the Hill",
+     f"{payoff}. A mobile website for {who} in {city}, Oklahoma: {money(WEB_STARTER['price'])} one time, go-live date confirmed with you. Local team, no contract.",
      f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">{city}, Oklahoma · local team</p><h1 class="display d-l mt1">{payoff}.</h1>
   <p class="lede">{line}</p>
-  <ul class="pkg-list mt2"><li><b>What you get:</b> {gets}</li><li><b>How soon:</b> a 5-minute form, then ATH confirms your go-live date</li><li><b>Price:</b> $100 one time, no contract, no monthly fee. Up to 3 pages, linked to the booking or ordering you already use: $200</li></ul>
-  <div class="ctas mt2">{btn("Start for $100", QS_LINK)}{btn("Get the $200 site", BG_LINK, "line")}</div>
+  <ul class="pkg-list mt2"><li><b>What you get:</b> {gets}</li><li><b>How soon:</b> a 5-minute form, then ATH confirms your go-live date</li><li><b>Price:</b> {money(WEB_STARTER['price'])} one time, no contract, no monthly fee. Up to 5 pages, linked to the booking or ordering you already use, with a year of small updates: {money(WEB_BUSINESS['price'])}. Or get your site inside an ATH plan, from $100 a month.</li></ul>
+  <div class="ctas mt2">{btn("Book a call", WEB_BOOK)}{btn("See every price", "/pricing/", "line")}</div>
   <p class="body mt2">Not ready? <a class="gold" href="/free-look/">Get a free look</a> at what your site could be, or <a class="gold" href="/sites/">open the sample sites</a> on your phone.</p></div>
  <div class="panel panel-pad"><p class="eyebrow">Why it works</p><h2 class="display d-m mt1">People are already searching</h2>
   <p class="body">Before they call, customers in {city} Google you to check your hours, prices and reviews. If all they find is a social page, they find less than you offer. A real site gives the people already looking something better to find. Search engines list it once it is on your own domain (about $12 a year, paid to the registrar).</p>
@@ -1160,70 +1163,36 @@ def city_page(cslug, city, n):
 for cslug, city in CITIES:
     for n in NICHES: pages[f"/websites/{cslug}/{n[0]}/"] = city_page(cslug, city, n)
 pages["/websites/"] = ("Websites for local businesses in Tulsa, Broken Arrow and Bixby | Above the Hill",
- "Websites for $100 one time for barbers, salons, restaurants, bakeries, auto shops, cleaners and small businesses in Tulsa, Broken Arrow and Bixby, Oklahoma.",
+ f"Websites for {money(WEB_STARTER['price'])} one time for barbers, salons, restaurants, bakeries, auto shops, cleaners and small businesses in Tulsa, Broken Arrow and Bixby, Oklahoma.",
  f"""<section class="block" style="padding-top:56px"><div class="wrap"><p class="eyebrow">Local · Tulsa area</p><h1 class="display d-l mt1">A website for the customers<br>already looking for you</h1>
- <p class="lede">$100 one time, go-live date confirmed with you. Pick your town and your kind of business.</p>
+ <p class="lede">{money(WEB_STARTER['price'])} one time, go-live date confirmed with you. Pick your town and your kind of business.</p>
  <div class="grid g3 mt2">""" + "".join(f'<div class="panel panel-pad"><h2 class="display d-m">{city}</h2><ul class="pkg-list">' + "".join(f'<li><a class="gold" href="/websites/{cslug}/{n[0]}/">{n[1].capitalize()}</a></li>' for n in NICHES) + "</ul></div>" for cslug, city in CITIES) + f"""</div>
- <div class="ctas mt2">{btn("Start for $100", QS_LINK)}{btn("Get a free look", "/free-look/", "line")}</div></div></section>""")
+ <div class="ctas mt2">{btn("Book a call", WEB_BOOK)}{btn("Get a free look", "/free-look/", "line")}</div></div></section>""")
 
 SECTION_H2 = {"/build/": "Service families", "/language/": "What the dictionary includes", "/passport/": "Membership tiers", "/report/": "What a Hill Report contains", "/work/": "ATH inventions"}
 
 # ---------------------------------------------------------------- revenue front door (MASTER-12HR-SHIFT 2026-10-30 §5 + §6)
 # Industry pages + Consequence Calculator + Free Business Diagnosis.
-# Prices below follow "PRICE DECISIONS APPLIED 2026-10-30" in ~/ath-canon-live/ATH-MASTER-12HR-SHIFT-2026-10-30.md (the
-# Founder's "$100–8k" ladder, locked to 8 levels; athos-brain spaid-skills.mjs PRICE_BOOK is the same book).
-# The ONE open Founder item: the live Stripe one-time website packages (Quick Start $100 / Business Growth $200) vs the
-# Presence $100-a-month membership. Until the Founder changes the Stripe products, the website row shows the live
-# checkout packages and says the website price is being confirmed in the written scope.
+# Prices below come from THE price book (commercial/price-book.json, Founder direction 2026-10-31): one 15-step ladder,
+# $100 → $8,000 a month, and the standalone services apart from it. athos-brain spaid-skills.mjs PRICE_BOOK and the
+# PowerTribes pt_tiers table carry the same book.
 # Rules: no trial offers, no free months, no discounts, no review gating, no fake proof, no guaranteed results.
-SVC_AS_OF = "October 30, 2026"
-SVC = [
-    # (id, name, price line, what it does)
-    ("review-ai", "Review AI", "$300 / month", "Asks every customer for a review after a visit or a finished job: happy or not. We never filter who gets asked (no review gating)."),
-    ("speed-to-lead", "Speed-to-Lead", "$200 / month", "New web, ad and form leads get an automatic text or call right away, then a person on your team takes over."),
-    ("review-speed", "Review AI + Speed-to-Lead", "$500 / month", "Both systems together, set up as one flow."),
-    ("receptionist", "AI Receptionist", "$700–$1,500 pilot, then $300–$700 / location / month", "Answers calls, answers common questions, takes messages and books into the scheduling you already use. Starts as a two-week paid pilot; the monthly price is set per location after the pilot."),
-    ("websites", "Websites (one time)", "Quick Start $100 · Business Growth $200 one time", "A fast mobile site with a clear call or booking button. These are today's live checkout packages; ATH is confirming website pricing with the new memberships, so your written scope states the price before anything is charged."),
-    ("implementation", "Implementation (one time, scoped)", "$2.5k · $5k · $8k · $12k · $15k+", "Bigger builds and system installs. The band is set in a written scope before any work or payment."),
-]
+SVC_GROUPS = ("AI services (monthly, one location)", "Websites (one time)")
 SVC_FINE = [
-    f"Working prices as of {SVC_AS_OF}. Every install starts with a written scope; nothing is charged on this page.",
+    f"Prices as of {PB['as_of']}. Every install starts with a written scope; nothing is charged on this page.",
     "There is no trial offer and no free month. The receptionist pilot is a paid pilot. No discounts.",
-    "Missed-call text-back and reactivation campaigns are set up inside Speed-to-Lead or the Receptionist; anything extra is quoted in your scope.",
+    "Missed-call text-back and reactivation texts are set up inside Speed-to-Lead or the Receptionist; anything extra is quoted in your scope.",
     "Results depend on your leads, your team and your market. ATH does not guarantee bookings, sales or revenue.",
     "Any third-party costs (phone numbers, messaging fees, software you already use) are listed in your scope before you pay.",
 ]
-
-# The ATH business membership ladder (monthly) — PRICE DECISIONS APPLIED 2026-10-30. No $200 rung.
-LADDER = [
-    ("Presence", "$100 / month", "+ $30 one-time setup"),
-    ("Presence Plus", "$150 / month", ""),
-    ("ClientFlow", "$250 / month", ""),
-    ("Revenue Engine", "$500 / month", ""),
-    ("Command", "$1,000 / month", ""),
-    ("Business OS", "$2,000 / month", ""),
-    ("Multi-Site", "$4,000 / month", ""),
-    ("Enterprise", "$8,000+ / month", "scoped in writing"),
-]
-LADDER_FINE = [
-    "Every membership includes the PowerTribes office. Presence and Presence Plus include the $10-level WOW Pass; ClientFlow and up include the $20 WOW Pass (WOW = World of Wealth).",
-    "Monthly. No trial, no free months, no discounts. Your written scope names the level before anything is charged.",
-    "Not sure which level? The free business diagnosis tells you where you leak first.",
-]
-
-def ladder_panel():
-    rows = "".join(f'<div class="rv-row" data-level="{html.escape(n)}"><span><b>{html.escape(n)}</b>{f"<span class=note>{html.escape(x)}</span>" if x else ""}</span><span class="rv-price">{p}</span></div>' for n, p, x in LADDER)
-    fine = "".join(f"<li>{f}</li>" for f in LADDER_FINE)
-    return f"""<div class="panel panel-pad mt2" id="pricing" data-sb-pricing><p class="panel-title">ATH memberships · $100 to $8,000+ a month</p><div class="rv-table">{rows}</div>
- <ul class="pkg-list mt2 rv-fine">{fine}</ul></div>"""
-
-def svc_table(only=None):
+def ladder_panel(): return plan_table()
+def svc_table():
     rows = "".join(
-        f'<div class="rv-row" data-svc="{sid}"><span><b>{n}</b><span class="note">{d}</span></span><span class="rv-price">{p}</span></div>'
-        for sid, n, p, d in SVC if not only or sid in only)
-    fine = "".join(f"<li>{f}</li>" for f in SVC_FINE)
-    return f"""<div class="panel panel-pad" id="prices"><p class="panel-title">What it costs · working prices</p><div class="rv-table">{rows}</div>
- <ul class="pkg-list mt2 rv-fine">{fine}</ul></div>"""
+        f'<div class="rv-row" data-svc="{i["id"]}"><span><b>{html.escape(i["name"])}</b><span class="note">{html.escape(i["what"])}</span></span><span class="rv-price">{html.escape(GC_PRICE + " one time" if i["id"] == "garden-check" else i["price"])}</span></div>'
+        for g in SERVICES if g["group"] in SVC_GROUPS for i in g["items"] if i["id"] != "garden-check")
+    fine = "".join(f"<li>{html.escape(f)}</li>" for f in SVC_FINE)
+    return f"""<div class="panel panel-pad" id="prices"><p class="panel-title">Services on their own · not part of a plan</p><div class="rv-table">{rows}</div>
+ <ul class="pkg-list mt2 rv-fine">{fine}</ul><p class="note mb0"><a class="gold" href="/pricing/#services">Every service and price</a></p></div>"""
 
 DIAG_HREF = "/business-diagnosis/"
 def diag_btn(ind=""):
@@ -1545,7 +1514,7 @@ def write():
     with open(os.path.join(ROOT, "404", "index.html")) as f:
         open(os.path.join(ROOT, "404.html"), "w").write(f.read().replace('href="/assets', 'href="/assets'))
     # redirects for alternate names (order lists /projects; old Base44 used /diagnosis)
-    for src, dst in {"projects": "/work/", "diagnosis": "/diagnose/", "services": "/build/", "inventions": "/work/", "pricing": "/path/"}.items():
+    for src, dst in {"projects": "/work/", "diagnosis": "/diagnose/", "services": "/build/", "inventions": "/work/", "offer": "/pricing/"}.items():
         os.makedirs(os.path.join(ROOT, src), exist_ok=True)
         open(os.path.join(ROOT, src, "index.html"), "w").write(f'<!doctype html><meta charset="utf-8"><title>Redirecting…</title><link rel="canonical" href="{SITE}{dst}"><meta http-equiv="refresh" content="0; url={dst}"><script>location.replace("{dst}"+location.search)</script><a href="{dst}">Continue</a>')
     open(os.path.join(ROOT, "CNAME"), "w").write("abovethehilldev.online\n")

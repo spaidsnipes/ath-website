@@ -1,5 +1,5 @@
 {
- "version": "2026-10-24.3",
+ "version": "2026-10-31.1",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
@@ -15,9 +15,9 @@
    "business": "ATH Developments",
    "name": "Quick Start website",
    "price": "$100 one time",
-   "status": "LIVE",
-   "buy": "https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00",
-   "fulfillment": "ATH builds from the /start/ intake (sites/DELIVERY.md); the go-live date is confirmed with the customer",
+   "status": "RETIRED",
+   "buy": null,
+   "fulfillment": "Retired 2026-10-31 (double price with Presence $100 a month). Orders already placed are honored.",
    "verified": "2026-10-19"
   },
   {
@@ -25,9 +25,9 @@
    "business": "ATH Developments",
    "name": "Business Growth website",
    "price": "$200 one time",
-   "status": "LIVE",
-   "buy": "https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01",
-   "fulfillment": "Same as Quick Start, up to three pages",
+   "status": "RETIRED",
+   "buy": null,
+   "fulfillment": "Retired 2026-10-31 (double price with LeadFlow $200 a month). Orders already placed are honored.",
    "verified": "2026-10-19"
   },
   {
@@ -41,24 +41,64 @@
    "verified": "2026-10-24"
   },
   {
+   "id": "ath-plans",
+   "business": "ATH Developments",
+   "name": "ATH plans (monthly): Presence $100 → Enterprise $8,000, 15 steps",
+   "price": "$100 to $8,000 a month",
+   "status": "BOOKABLE",
+   "buy": "https://abovethehilldev.online/pricing/",
+   "fulfillment": "One ladder: every step includes a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website, more of each at every step. Booked with a person until each Stripe price is created. Source: commercial/price-book.json.",
+   "verified": "2026-10-31"
+  },
+  {
+   "id": "ath-website-starter",
+   "business": "ATH Developments",
+   "name": "Starter Website",
+   "price": "$250 one time",
+   "status": "BOOKABLE",
+   "buy": "https://abovethehilldev.online/contact/?intent=services&package=website-starter",
+   "fulfillment": "Written scope, then build; card checkout switches on when its Stripe price is created.",
+   "verified": "2026-10-31"
+  },
+  {
+   "id": "ath-website-business",
+   "business": "ATH Developments",
+   "name": "Business Website",
+   "price": "$500 one time",
+   "status": "BOOKABLE",
+   "buy": "https://abovethehilldev.online/contact/?intent=services&package=website-business",
+   "fulfillment": "Written scope, then build; card checkout switches on when its Stripe price is created.",
+   "verified": "2026-10-31"
+  },
+  {
+   "id": "ath-ai-services",
+   "business": "ATH Developments",
+   "name": "AI services: Speed-to-Lead, Review AI, AI Receptionist",
+   "price": "Speed-to-Lead $200/month · Review AI $300/month · both $500/month · AI Receptionist paid two-week pilot $700 (one location) or $1,500 (several providers), then $300/month per location or $700 for a multi-provider location",
+   "status": "BOOKABLE",
+   "buy": "https://abovethehilldev.online/pricing/#services",
+   "fulfillment": "Written scope first. No trial, no free month, no discount; the receptionist pilot is paid.",
+   "verified": "2026-10-31"
+  },
+  {
    "id": "ath-cinematic-launch",
    "business": "ATH Developments",
    "name": "Cinematic Business Launch",
    "price": "$500–$700 one time, scoped",
-   "status": "SCOPED",
+   "status": "RETIRED",
    "buy": "https://abovethehilldev.online/contact/?intent=services&package=cinematic-launch",
-   "fulfillment": "Website by ATH; two promo videos rendered by WAVEMOTION from the client's footage",
+   "fulfillment": "Retired 2026-10-31: promo video comes through the WAVEMOTION level inside every plan.",
    "verified": "2026-10-19"
   },
   {
    "id": "ath-professional",
    "business": "ATH Developments",
-   "name": "Professional website, apps, systems",
-   "price": "from $500 / $1,000 / $2,500 / $5,000 / $8,000",
+   "name": "Custom builds: apps and systems",
+   "price": "from $1,000 / $2,500 / $5,000 / $8,000 / $12,000 / $15,000 one time",
    "status": "SCOPED",
-   "buy": "https://abovethehilldev.online/build/#pricing",
+   "buy": "https://abovethehilldev.online/pricing/#services",
    "fulfillment": "Written scope and quote first",
-   "verified": "2026-10-19"
+   "verified": "2026-10-31"
   },
   {
    "id": "ath-custom",
@@ -75,9 +115,9 @@
    "business": "ATH Developments + WAVEMOTION",
    "name": "Weekly Content Engine",
    "price": "$500 a month",
-   "status": "SCOPED",
+   "status": "RETIRED",
    "buy": null,
-   "fulfillment": "Written scope, then a monthly Stripe invoice. Each month: 4 promotional videos (one a week, 30–60 s) made from the client's footage and photos, 8 short clips with captions, and a posting kit. Limited to 3 clients until WAVEMOTION confirms production capacity.",
+   "fulfillment": "Retired 2026-10-31: content is the WAVEMOTION level inside every ATH plan (one ladder, no double prices).",
    "verified": "2026-10-19"
   },
   {
@@ -85,9 +125,9 @@
    "business": "ATH Developments + WAVEMOTION",
    "name": "Twice-Weekly Content Engine",
    "price": "$900 a month",
-   "status": "SCOPED",
+   "status": "RETIRED",
    "buy": null,
-   "fulfillment": "Written scope, then a monthly Stripe invoice. Each month: 8 promotional videos (two a week), 16 short clips with captions, a posting kit and one website content update. Limited to 3 clients until WAVEMOTION confirms production capacity.",
+   "fulfillment": "Retired 2026-10-31: content is the WAVEMOTION level inside every ATH plan (one ladder, no double prices).",
    "verified": "2026-10-19"
   },
   {
@@ -214,11 +254,11 @@
    "id": "spaidbot",
    "business": "ATHOS",
    "name": "Spaidbot",
-   "price": "Free",
+   "price": "Free · Pro $20/month · Super Max $100/month",
    "status": "LIVE",
    "buy": "https://abovethehilldev.online/",
-   "fulfillment": "Free AI assistant on every abovethehilldev.online page (Ask Spaidbot), answering from this catalog. The trading co-pilot version is inside WM Pro.",
-   "verified": "2026-10-19"
+   "fulfillment": "Free AI assistant on every abovethehilldev.online page (Ask Spaidbot), answering from this catalog. Pro and Super Max are booked with a person until their checkout opens. The trading co-pilot version is inside WM Pro.",
+   "verified": "2026-10-31"
   }
  ]
 }

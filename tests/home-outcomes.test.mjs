@@ -10,6 +10,7 @@ const PUB = new URL('../public/', import.meta.url).pathname;
 const home = readFileSync(PUB + 'index.html', 'utf8');
 const reg = JSON.parse(readFileSync(new URL('../commercial/registry.json', import.meta.url), 'utf8'));
 const cat = Object.fromEntries(reg.catalog.map((o) => [o.id, o]));
+const book = JSON.parse(readFileSync(new URL('../commercial/price-book.json', import.meta.url), 'utf8'));
 const start = home.slice(home.indexOf('id="start"'), home.indexOf('Built by ATH'));
 const cards = [...start.matchAll(/<article class="panel panel-pad card outcome" data-outcome="([^"]+)">([\s\S]*?)<\/article>/g)].map((m) => ({ name: m[1], html: m[2] }));
 const price = (c) => (c.html.match(/<b class="outcome-price">([^<]+)<\/b>/) || [])[1];
@@ -18,12 +19,13 @@ const unesc = (s) => s.replace(/&amp;/g, '&').replace(/&#x27;|&#39;/g, "'");
 
 test('six doors, after "Who we are" and before "Built by ATH"', () => {
   assert.ok(home.indexOf('Who we are') < home.indexOf('id="start"'));
-  assert.deepEqual(cards.map((c) => c.name), ['Quick Start website', 'WAVEMOTION', 'Wealthy Mindsets Pro', 'WOW Academy', 'Passport', 'ATHOS Diagnostic']);
+  assert.deepEqual(cards.map((c) => c.name), ['Presence', 'WAVEMOTION', 'Wealthy Mindsets Pro', 'WOW Academy', 'Passport', 'ATHOS Diagnostic']);
 });
 
 test('every price is the registry price of a product that is for sale', () => {
   assert.equal(cards.length, 6);
-  const want = { 'Quick Start website': 'ath-quick-start', WAVEMOTION: 'wm-plans', 'WOW Academy': 'wow-academy-free', Passport: 'wow-passport' };
+  assert.equal(price(cards[0]), `$${book.steps[0].monthly} a month`, 'the local-business door is step one of the one ladder');
+  const want = { WAVEMOTION: 'wm-plans', 'WOW Academy': 'wow-academy-free', Passport: 'wow-passport' };
   for (const c of cards) if (want[c.name]) {
     const o = cat[want[c.name]];
     assert.equal(o.status, 'LIVE', c.name);

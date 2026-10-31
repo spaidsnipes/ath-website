@@ -1,114 +1,49 @@
 {
-  "version": "2026-10-24.3",
+  "version": "2026-10-31.1",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
   "payment": {
     "method": "stripe_payment_link",
-    "state": "LIVE_CARD_FOR_FIXED_PACKAGES",
-    "note": "Quick Start and Business Growth can be paid by card through Stripe Payment Links (account AboveTheHilldevelopments). Scoped packages (from $500) stay scope → quote → invoice."
+    "state": "BOOK_A_CALL_UNTIL_STRIPE_PRICES",
+    "note": "2026-10-31: no plan or service on abovethehilldev.online has a live Stripe checkout; each shows 'Book a call' until the Founder creates its Stripe price and pastes the Payment Link into commercial/price-book.json (pay_url). WAVEMOTION and the World Pass keep their own live checkouts on wavemotion.live and thewow.online."
   },
   "packages": [
     {
-      "id": "quick-start",
-      "name": "Quick Start",
-      "price": 100,
+      "id": "website-starter",
+      "name": "Starter Website",
+      "price": 250,
       "billing": "one_time",
       "from": false,
       "icon": "site",
-      "summary": "A mobile-friendly landing page for your business.",
+      "summary": "A fast mobile site: your services, hours, photos and a call or booking button.",
       "includes": [
-        "Mobile-friendly business landing page",
-        "Your services, contact information, photos and links",
-        "Basic search metadata",
-        "One revision"
+        "Mobile-friendly business site",
+        "Your services, hours, contact information, photos and links",
+        "Linked to the booking or ordering tool you already use",
+        "One round of changes",
+        "Hosting included"
       ],
-      "ecosystem": [
-        {
-          "label": "Free Passport identity, set up with you",
-          "state": "LIVE",
-          "note": "Your one WOW identity for every ATH app. Free, no subscription."
-        },
-        {
-          "label": "Free Wealthy Mindsets Pro account, set up with you",
-          "state": "LIVE",
-          "note": "Free guest account set up with you. Paid tiers (App, Basic $10 · Premium $20 · OS $50) are optional; nothing is charged unless you choose one."
-        }
-      ],
-      "pay_url": "https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00"
+      "ecosystem": [],
+      "pay_url": ""
     },
     {
-      "id": "business-growth",
-      "name": "Business Growth",
-      "price": 200,
+      "id": "website-business",
+      "name": "Business Website",
+      "price": 500,
       "billing": "one_time",
       "from": false,
-      "icon": "peaks",
-      "featured": true,
-      "summary": "A small business website that captures leads and links to your offers.",
+      "icon": "systems",
+      "summary": "Up to 5 pages, linked to the booking or ordering you already use, with a year of small updates.",
       "includes": [
-        "Up to three pages (or equivalent scoped sections)",
-        "Lead capture through the booking or ordering tool you already use",
+        "Up to five pages (or equivalent scoped sections)",
+        "Linked to the booking or ordering tool you already use",
         "Contact and social links",
-        "A clear conversion path for your visitors",
-        "Course, offer and booking links"
+        "A year of small updates",
+        "Hosting included"
       ],
-      "ecosystem": [
-        {
-          "label": "Free Passport identity, set up with you",
-          "state": "LIVE",
-          "note": "Your one WOW identity for every ATH app. Free, no subscription."
-        },
-        {
-          "label": "Free Wealthy Mindsets Pro account, set up with you",
-          "state": "LIVE",
-          "note": "Free guest account set up with you. Paid tiers (App, Basic $10 · Premium $20 · OS $50) are optional; nothing is charged unless you choose one."
-        }
-      ],
-      "pay_url": "https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01"
-    },
-    {
-      "id": "professional-website",
-      "name": "Professional Website",
-      "price": 500,
-      "billing": "one_time",
-      "from": true,
-      "icon": "site",
-      "summary": "Expanded branded website; content management, commerce, booking and Academy course presentation as scoped.",
-      "ecosystem": [
-        {
-          "label": "Free Passport identity, set up with you",
-          "state": "LIVE",
-          "note": "Your one WOW identity for every ATH app. Free, no subscription."
-        },
-        {
-          "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
-          "state": "NOT_ACTIVE",
-          "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
-        }
-      ]
-    },
-    {
-      "id": "cinematic-launch",
-      "name": "Cinematic Business Launch",
-      "price": 500,
-      "price_max": 700,
-      "billing": "one_time",
-      "from": true,
-      "icon": "content",
-      "summary": "A scoped business website plus two 30–60 second promotional videos made from your footage and photos, and a WAVEMOTION campaign set up for launch.",
-      "ecosystem": [
-        {
-          "label": "Free Passport identity, set up with you",
-          "state": "LIVE",
-          "note": "Your one WOW identity for every ATH app. Free, no subscription."
-        },
-        {
-          "label": "One month of Pro: WAVEMOTION Pro ($50), plus a free Wealthy Mindsets Pro account",
-          "state": "NOT_ACTIVE",
-          "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
-        }
-      ]
+      "ecosystem": [],
+      "pay_url": ""
     },
     {
       "id": "app-starter",
@@ -193,6 +128,24 @@
           "note": "Turns on when each app can grant a month that ends on its own. Nothing renews unless you choose a plan."
         }
       ]
+    },
+    {
+      "id": "enterprise-plus",
+      "name": "Enterprise Plus",
+      "price": 12000,
+      "billing": "one_time",
+      "from": true,
+      "icon": "lattice",
+      "summary": "A larger system across more teams and tools, under a written scope."
+    },
+    {
+      "id": "multi-location-custom",
+      "name": "Multi-Location Custom",
+      "price": 15000,
+      "billing": "one_time",
+      "from": true,
+      "icon": "peaks",
+      "summary": "Many locations or a custom platform, quoted after a written scope."
     }
   ],
   "garden_check": {
@@ -340,6 +293,57 @@
         "professional-website"
       ],
       "on": "2026-10-13"
+    },
+    {
+      "id": "quick-start",
+      "name": "Quick Start — $100 one time",
+      "replaced_by": [
+        "website-starter",
+        "plan-presence"
+      ],
+      "on": "2026-10-31",
+      "note": "Retired from the site: $100 is the Presence plan's monthly price, so a $100 one-time website was a double price (Founder, 2026-10-31). Its Stripe Payment Link https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00 is still active in Stripe: the Founder deactivates it. Orders already placed are honored."
+    },
+    {
+      "id": "business-growth",
+      "name": "Business Growth — $200 one time",
+      "replaced_by": [
+        "website-starter",
+        "website-business",
+        "plan-leadflow"
+      ],
+      "on": "2026-10-31",
+      "note": "Retired from the site: $200 is the LeadFlow plan's monthly price (double price). Its Stripe Payment Link https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01 is still active in Stripe: the Founder deactivates it. Orders already placed are honored."
+    },
+    {
+      "id": "professional-website",
+      "name": "Professional Website — from $500",
+      "replaced_by": [
+        "website-business"
+      ],
+      "on": "2026-10-31",
+      "note": "Same $500 as the Business Website: one name per price."
+    },
+    {
+      "id": "cinematic-launch",
+      "name": "Cinematic Business Launch — $500–$700",
+      "replaced_by": [
+        "website-business",
+        "plan-presence"
+      ],
+      "on": "2026-10-31",
+      "note": "A range (Founder: no ranges) that overlapped the $500 Business Website; promo video now comes through the WAVEMOTION level inside every plan."
+    },
+    {
+      "id": "implementation-band-names",
+      "name": "Professional Business Build $2.5k / Advanced Business System $5k / Enterprise Build $8k",
+      "replaced_by": [
+        "mobile-app-bundle",
+        "business-app-system",
+        "omnichannel-system"
+      ],
+      "on": "2026-10-31",
+      "note": "Second set of names for the same one-time price points: one name per price."
     }
   ],
   "catalog": [
@@ -348,9 +352,9 @@
       "business": "ATH Developments",
       "name": "Quick Start website",
       "price": "$100 one time",
-      "status": "LIVE",
-      "buy": "https://buy.stripe.com/3cI4gA1KkdPkbvJ2oG97G00",
-      "fulfillment": "ATH builds from the /start/ intake (sites/DELIVERY.md); the go-live date is confirmed with the customer",
+      "status": "RETIRED",
+      "buy": null,
+      "fulfillment": "Retired 2026-10-31 (double price with Presence $100 a month). Orders already placed are honored.",
       "verified": "2026-10-19"
     },
     {
@@ -358,30 +362,70 @@
       "business": "ATH Developments",
       "name": "Business Growth website",
       "price": "$200 one time",
-      "status": "LIVE",
-      "buy": "https://buy.stripe.com/eVq4gAcoY4eKarF1kC97G01",
-      "fulfillment": "Same as Quick Start, up to three pages",
+      "status": "RETIRED",
+      "buy": null,
+      "fulfillment": "Retired 2026-10-31 (double price with LeadFlow $200 a month). Orders already placed are honored.",
       "verified": "2026-10-19"
+    },
+    {
+      "id": "ath-plans",
+      "business": "ATH Developments",
+      "name": "ATH plans (monthly): Presence $100 → Enterprise $8,000, 15 steps",
+      "price": "$100 to $8,000 a month",
+      "status": "BOOKABLE",
+      "buy": "https://abovethehilldev.online/pricing/",
+      "fulfillment": "One ladder: every step includes a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website, more of each at every step. Booked with a person until each Stripe price is created. Source: commercial/price-book.json.",
+      "verified": "2026-10-31"
+    },
+    {
+      "id": "ath-website-starter",
+      "business": "ATH Developments",
+      "name": "Starter Website",
+      "price": "$250 one time",
+      "status": "BOOKABLE",
+      "buy": "https://abovethehilldev.online/contact/?intent=services&package=website-starter",
+      "fulfillment": "Written scope, then build; card checkout switches on when its Stripe price is created.",
+      "verified": "2026-10-31"
+    },
+    {
+      "id": "ath-website-business",
+      "business": "ATH Developments",
+      "name": "Business Website",
+      "price": "$500 one time",
+      "status": "BOOKABLE",
+      "buy": "https://abovethehilldev.online/contact/?intent=services&package=website-business",
+      "fulfillment": "Written scope, then build; card checkout switches on when its Stripe price is created.",
+      "verified": "2026-10-31"
+    },
+    {
+      "id": "ath-ai-services",
+      "business": "ATH Developments",
+      "name": "AI services: Speed-to-Lead, Review AI, AI Receptionist",
+      "price": "Speed-to-Lead $200/month · Review AI $300/month · both $500/month · AI Receptionist paid two-week pilot $700 (one location) or $1,500 (several providers), then $300/month per location or $700 for a multi-provider location",
+      "status": "BOOKABLE",
+      "buy": "https://abovethehilldev.online/pricing/#services",
+      "fulfillment": "Written scope first. No trial, no free month, no discount; the receptionist pilot is paid.",
+      "verified": "2026-10-31"
     },
     {
       "id": "ath-cinematic-launch",
       "business": "ATH Developments",
       "name": "Cinematic Business Launch",
       "price": "$500–$700 one time, scoped",
-      "status": "SCOPED",
+      "status": "RETIRED",
       "buy": "https://abovethehilldev.online/contact/?intent=services&package=cinematic-launch",
-      "fulfillment": "Website by ATH; two promo videos rendered by WAVEMOTION from the client's footage",
+      "fulfillment": "Retired 2026-10-31: promo video comes through the WAVEMOTION level inside every plan.",
       "verified": "2026-10-19"
     },
     {
       "id": "ath-professional",
       "business": "ATH Developments",
-      "name": "Professional website, apps, systems",
-      "price": "from $500 / $1,000 / $2,500 / $5,000 / $8,000",
+      "name": "Custom builds: apps and systems",
+      "price": "from $1,000 / $2,500 / $5,000 / $8,000 / $12,000 / $15,000 one time",
       "status": "SCOPED",
-      "buy": "https://abovethehilldev.online/build/#pricing",
+      "buy": "https://abovethehilldev.online/pricing/#services",
       "fulfillment": "Written scope and quote first",
-      "verified": "2026-10-19"
+      "verified": "2026-10-31"
     },
     {
       "id": "ath-custom",
@@ -398,9 +442,9 @@
       "business": "ATH Developments + WAVEMOTION",
       "name": "Weekly Content Engine",
       "price": "$500 a month",
-      "status": "SCOPED",
+      "status": "RETIRED",
       "buy": null,
-      "fulfillment": "Written scope, then a monthly Stripe invoice. Each month: 4 promotional videos (one a week, 30–60 s) made from the client's footage and photos, 8 short clips with captions, and a posting kit. Limited to 3 clients until WAVEMOTION confirms production capacity.",
+      "fulfillment": "Retired 2026-10-31: content is the WAVEMOTION level inside every ATH plan (one ladder, no double prices).",
       "verified": "2026-10-19"
     },
     {
@@ -408,9 +452,9 @@
       "business": "ATH Developments + WAVEMOTION",
       "name": "Twice-Weekly Content Engine",
       "price": "$900 a month",
-      "status": "SCOPED",
+      "status": "RETIRED",
       "buy": null,
-      "fulfillment": "Written scope, then a monthly Stripe invoice. Each month: 8 promotional videos (two a week), 16 short clips with captions, a posting kit and one website content update. Limited to 3 clients until WAVEMOTION confirms production capacity.",
+      "fulfillment": "Retired 2026-10-31: content is the WAVEMOTION level inside every ATH plan (one ladder, no double prices).",
       "verified": "2026-10-19"
     },
     {
@@ -537,11 +581,11 @@
       "id": "spaidbot",
       "business": "ATHOS",
       "name": "Spaidbot",
-      "price": "Free",
+      "price": "Free · Pro $20/month · Super Max $100/month",
       "status": "LIVE",
       "buy": "https://abovethehilldev.online/",
-      "fulfillment": "Free AI assistant on every abovethehilldev.online page (Ask Spaidbot), answering from this catalog. The trading co-pilot version is inside WM Pro.",
-      "verified": "2026-10-19"
+      "fulfillment": "Free AI assistant on every abovethehilldev.online page (Ask Spaidbot), answering from this catalog. Pro and Super Max are booked with a person until their checkout opens. The trading co-pilot version is inside WM Pro.",
+      "verified": "2026-10-31"
     }
   ],
   "package_step_up": {

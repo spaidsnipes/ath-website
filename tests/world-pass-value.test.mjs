@@ -15,7 +15,8 @@ const reg = JSON.parse(readFileSync(new URL('../commercial/registry.json', impor
 const all = () => [...files(PUB), PUB + 'catalog.json', PUB + 'assets/ath.js'];
 
 test('the ladder and value block sit on every page that sells or explains the pass', () => {
-  for (const r of ['index.html', 'path/index.html', 'passport/index.html', 'offer/index.html', 'build/index.html']) {
+  // 2026-10-31 price book: the full value block lives on /path/ and /passport/; the front page and /pricing/ show the WOW Pass once (no double prices).
+  for (const r of ['path/index.html', 'passport/index.html']) {
     const s = read(r);
     assert.match(s, /id="world-pass-value"/, r);
     assert.match(s, /What the \$20 World Pass(<br>| )gets you/, r);
@@ -40,15 +41,10 @@ test('customers never read "$10 tier" / "$20 tier", trials, founding offers or e
   for (const f of all()) { const s = readFileSync(f, 'utf8'); for (const re of BANNED) assert.doesNotMatch(s, re, `${f.slice(PUB.length)}: ${re}`); }
 });
 
-test('packages: no free months (Founder 2026-10-30); every package offers the $20 World Pass step-up instead', () => {
+test('packages: no free months (Founder 2026-10-30), and the pricing page offers none', () => {
   for (const p of reg.packages) {
     for (const e of p.ecosystem || []) assert.doesNotMatch(e.label + ' ' + e.note, /free month|30[- ]day/i, p.id);
   }
   assert.doesNotMatch(JSON.stringify(reg.package_step_up), /free month/i);
-  const offer = read('offer/index.html');
-  const sec = (id) => offer.slice(offer.indexOf(`id="${id}"`), offer.indexOf('</article>', offer.indexOf(`id="${id}"`)));
-  for (const id of ['quick-start', 'business-growth']) {
-    assert.match(sec(id), /Step up to the \$20 World Pass/, id);
-    assert.doesNotMatch(sec(id), /free month/i, id);
-  }
+  for (const r of ['pricing/index.html', 'build/index.html', 'index.html']) assert.doesNotMatch(read(r), /free month of|first month free|half off/i, r);
 });

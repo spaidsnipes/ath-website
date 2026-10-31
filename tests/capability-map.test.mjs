@@ -8,7 +8,8 @@ const PUB = new URL('../public/', import.meta.url).pathname;
 const read = (r) => readFileSync(PUB + r, 'utf8');
 const reg = JSON.parse(readFileSync(new URL('../commercial/registry.json', import.meta.url), 'utf8'));
 const files = (d) => readdirSync(d).flatMap((n) => { const p = join(d, n); return statSync(p).isDirectory() ? files(p) : /\.(html|json|js)$/.test(n) ? [p] : []; });
-const home = read('index.html'), eco = read('ecosystem/index.html'), offer = read('offer/index.html');
+const home = read('index.html'), eco = read('ecosystem/index.html'), pricing = read('pricing/index.html');
+const book = JSON.parse(readFileSync(new URL('../commercial/price-book.json', import.meta.url), 'utf8'));
 const OWNERS = /^(ATH|ATH Web Studio|ATH Commerce|WAVEMOTION|ATHOS|Atlas|SPAID Business|PowerTribes|WOW OS|Wealthy Mindsets Pro)$/;
 const cards = [...eco.matchAll(/<article class="cap" data-cap="([^"]+)" data-status="(\w+)">([\s\S]*?)<\/article>/g)].map((m) => ({ name: m[1], st: m[2], html: m[3] }));
 
@@ -32,11 +33,13 @@ test('every dollar figure on the map comes from the registry', () => {
   for (const c of cards) for (const d of c.html.match(/\$[\d,]+/g) || []) assert.ok(known.has(d), `${c.name}: ${d} is not in the registry`);
 });
 
-test('homepage shows the grouped map, the comparison and the $100 → $8,000 ladder', () => {
+test('homepage shows the grouped map, the comparison and the ONE $100 → $8,000 plan ladder (price book 2026-10-31)', () => {
   assert.equal((home.match(/<article class="ct" id="tile-/g) || []).length, 6);
   assert.match(home, /Everything a content platform gives you/);
-  const steps = [...home.matchAll(/<span class="pl-price">([^<]+)<\/span>/g)].map((m) => m[1]);
-  assert.equal(steps[0], '$100'); assert.equal(steps.at(-1), '$8,000'); assert.equal(steps.length, reg.packages.length);
+  const steps = [...home.matchAll(/<span class="pb-price">([^<]+)<\/span><span class="pb-name">([^<]+)<\/span>/g)].map((m) => [m[1], m[2]]);
+  assert.equal(steps.length, book.steps.length); assert.equal(steps[0][0], '$100'); assert.equal(steps.at(-1)[0], '$8,000');
+  assert.deepEqual(steps.map((s) => s[1]), book.steps.map((s) => s.name));
+  assert.doesNotMatch(home, /class="pl"|pl-price|What the \$20 World Pass/, 'no second price ladder or pass block on the front page');
 });
 
 test('the comparison names no competitor and admits what is not built', () => {
@@ -55,15 +58,12 @@ test('WOW OS is the live system; WOW World is only ever the future', () => {
   }
 });
 
-test('offer stack: real inclusions from the registry, extras not switched on kept apart, no urgency', () => {
-  for (const p of reg.packages.filter((x) => x.pay_url)) {
-    const sec = offer.slice(offer.indexOf(`id="${p.id}"`), offer.indexOf('</article>', offer.indexOf(`id="${p.id}"`)));
-    for (const i of p.includes) assert.ok(sec.includes(i.replace(/&/g, '&amp;')), `${p.id}: ${i}`);
-    const notCounted = sec.slice(sec.indexOf('Not counted'));
-    for (const e of p.ecosystem.filter((e) => e.state !== 'LIVE')) assert.ok(notCounted.includes(e.label.replace(/\s*\(\$\d+ value\)/, '')), `${p.id}: ${e.label} must sit under Not counted`);
-    assert.ok(sec.includes(p.pay_url));
+test('pricing page: every plan card lists the same rows, nothing urgent', () => {
+  for (const p of book.steps) {
+    const sec = pricing.slice(pricing.indexOf(`id="plan-${p.key}"`), pricing.indexOf('</article>', pricing.indexOf(`id="plan-${p.key}"`)));
+    for (const row of ['WOW Pass', 'PowerTribes office', 'WAVEMOTION', 'Spaidbot', 'WM Pro', 'AI receptionist + text-back', 'Reviews', 'Website', 'Seats &amp; locations']) assert.ok(sec.includes(`<dt>${row}</dt>`), `${p.key}: ${row}`);
   }
-  assert.doesNotMatch(offer.replace(/no countdown|no “today only”/gi, ''), /today only|countdown|hurry|ends (soon|tonight)|only \d+ left|act now/i);
+  assert.doesNotMatch(pricing, /today only|countdown|hurry|ends (soon|tonight)|only \d+ left|act now/i);
 });
 
 test('Spaidbot shrinks over the hero; the top ticker scrolls instead of being cut off', () => {
@@ -92,5 +92,5 @@ test('World Pass rule (Founder, 2026-10-23, corrected 10-24) is stated with its 
     assert.match(s, /Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today/, r);
     assert.doesNotMatch(s, /as each app connects/, r);
   }
-  for (const r of ['index.html', 'ecosystem/index.html', 'offer/index.html']) assert.doesNotMatch(read(r), /3 clients/, r);
+  for (const r of ['index.html', 'ecosystem/index.html', 'pricing/index.html']) assert.doesNotMatch(read(r), /3 clients/, r);
 });
