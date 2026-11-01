@@ -860,8 +860,9 @@
           "price": "$250 one time",
           "cents": 25000,
           "billing": "one_time",
-          "what": "A fast mobile site: your services, hours, photos and a call or booking button, linked to the booking or ordering you already use. One round of changes.",
-          "pay_url": "https://buy.stripe.com/bJe5kE0GgdPkarF9R897G02"
+          "what": "A fast mobile site: your services, hours, photos and a call or booking button, linked to the booking or ordering you already use. One round of changes. Plus a one-time $25 hosting setup: your domain connected, HTTPS and the site put live.",
+          "pay_url": "https://buy.stripe.com/bJe5kE0GgdPkarF9R897G02",
+          "hosting_setup": 25
         },
         {
           "id": "website-business",
@@ -869,8 +870,9 @@
           "price": "$500 one time",
           "cents": 50000,
           "billing": "one_time",
-          "what": "Up to 5 pages, linked to the booking or ordering you already use, plus a year of small updates. Hosting included.",
-          "pay_url": "https://buy.stripe.com/8x23cw4WwaD843hbZg97G03"
+          "what": "Up to 5 pages, linked to the booking or ordering you already use, plus a year of small updates. Hosting included. Plus a one-time $75 hosting setup: your domain connected, HTTPS and the site put live.",
+          "pay_url": "https://buy.stripe.com/8x23cw4WwaD843hbZg97G03",
+          "hosting_setup": 75
         },
         {
           "id": "garden-check",

@@ -11,7 +11,7 @@ const LIVE_STRIPE = cat.offers.filter((o) => o.status === 'LIVE' && /^https:\/\/
 // 2026-11-01: the price book (commercial/price-book.json) is the one source of prices; a card button appears only where its pay_url is set.
 const PB = JSON.parse(readFileSync(new URL('../commercial/price-book.json', import.meta.url), 'utf8'));
 const PB_ITEMS = PB.services.flatMap((g) => g.items);
-const PB_PRICES = new Set(PB_ITEMS.flatMap((i) => String(i.price || '').match(/\$[\d,]+/g) || []));
+const PB_PRICES = new Set(PB_ITEMS.flatMap((i) => [...(String(i.price || '').match(/\$[\d,]+/g) || []), ...(i.hosting_setup ? [`$${i.hosting_setup}`] : [])]));
 const PB_PAY = new Set(PB_ITEMS.map((i) => i.pay_url).filter((u) => /^https:\/\/buy\.stripe\.com\//.test(u || '')));
 const ROUTES = ['ai/', 'ai/receptionist/', 'ai/site-builder/', 'ai/chat-assistant/', 'ai/growing-with-ai/'];
 const page = (r) => readFileSync(PUB + r + 'index.html', 'utf8');
