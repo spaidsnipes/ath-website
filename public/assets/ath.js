@@ -157,6 +157,8 @@
         }
         let calc = ""; try { calc = sessionStorage.getItem("ath_calc") || ""; } catch {}
         if (calc && f.querySelector("#bd-calc")?.checked) lines.push("Consequence Calculator (visitor's estimates): " + calc);
+        let grow = ""; try { grow = sessionStorage.getItem("ath_grow") || ""; } catch {}
+        if (grow && f.querySelector("#bd-grow")?.checked) lines.push("Growing with AI quiz (visitor's answers): " + grow);
         data.message = [lines.join("\n"), (data.message || "").trim()].filter(Boolean).join("\n\n").slice(0, 3000);
       }
       if (!data.name?.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email || "")) { st.className = "form-status err"; st.textContent = "Please add your name and a valid email."; return; }

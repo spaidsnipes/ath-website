@@ -1,5 +1,5 @@
 {
- "version": "2026-10-24.3",
+ "version": "2026-10-24.4",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
@@ -39,6 +39,26 @@
    "buy": "https://abovethehilldev.online/garden-check/",
    "fulfillment": "A 5–10 minute live check of the client's website on Zoom or Google Meet that the client watches: links, speed, mobile, SSL and security, forms, booking and checkout buttons, Google listing, search basics and broken pages, then a plain list of what needs fixing and what does not. Passwords are never asked for. Fixes are quoted separately. Monthly upkeep is the Mansion Garden Pass, included with Passport Pro.",
    "verified": "2026-10-24"
+  },
+  {
+   "id": "ath-ai-services",
+   "business": "ATH Developments",
+   "name": "AI services: AI receptionist, Speed-to-Lead, Review AI, reactivation, chat assistant for your site",
+   "price": "set in a written scope after a short call",
+   "status": "SCOPED",
+   "buy": "https://abovethehilldev.online/ai/",
+   "fulfillment": "Request this service on /ai/ (contact form, nothing charged). A person scopes it in writing with the price before anything is charged. No trial, no free month, no discount; the AI receptionist starts as a short paid pilot.",
+   "verified": "2026-10-31"
+  },
+  {
+   "id": "spaidbot-build",
+   "business": "ATHOS",
+   "name": "Spaidbot Build (AI app and site builder)",
+   "price": "not priced yet",
+   "status": "NOT_ACTIVE",
+   "buy": "https://abovethehilldev.online/ai/site-builder/",
+   "fulfillment": "The AI builder inside the Spaidbot app is being built and is not open. /ai/site-builder/ has an in-browser template sketch (not AI); websites today are the live Quick Start and Business Growth checkouts.",
+   "verified": "2026-10-31"
   },
   {
    "id": "ath-cinematic-launch",
@@ -216,7 +236,7 @@
    "name": "Spaidbot",
    "price": "Free",
    "status": "LIVE",
-   "buy": "https://abovethehilldev.online/",
+   "buy": "https://abovethehilldev.online/ai/chat-assistant/",
    "fulfillment": "Free AI assistant on every abovethehilldev.online page (Ask Spaidbot), answering from this catalog. The trading co-pilot version is inside WM Pro.",
    "verified": "2026-10-19"
   }

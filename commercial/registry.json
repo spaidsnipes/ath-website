@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-24.3",
+  "version": "2026-10-24.4",
   "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
@@ -364,6 +364,26 @@
       "verified": "2026-10-19"
     },
     {
+      "id": "ath-ai-services",
+      "business": "ATH Developments",
+      "name": "AI services: AI receptionist, Speed-to-Lead, Review AI, reactivation, chat assistant for your site",
+      "price": "set in a written scope after a short call",
+      "status": "SCOPED",
+      "buy": "https://abovethehilldev.online/ai/",
+      "fulfillment": "Request this service on /ai/ (contact form, nothing charged). A person scopes it in writing with the price before anything is charged. No trial, no free month, no discount; the AI receptionist starts as a short paid pilot.",
+      "verified": "2026-10-31"
+    },
+    {
+      "id": "spaidbot-build",
+      "business": "ATHOS",
+      "name": "Spaidbot Build (AI app and site builder)",
+      "price": "not priced yet",
+      "status": "NOT_ACTIVE",
+      "buy": "https://abovethehilldev.online/ai/site-builder/",
+      "fulfillment": "The AI builder inside the Spaidbot app is being built and is not open. /ai/site-builder/ has an in-browser template sketch (not AI); websites today are the live Quick Start and Business Growth checkouts.",
+      "verified": "2026-10-31"
+    },
+    {
       "id": "ath-cinematic-launch",
       "business": "ATH Developments",
       "name": "Cinematic Business Launch",
@@ -539,7 +559,7 @@
       "name": "Spaidbot",
       "price": "Free",
       "status": "LIVE",
-      "buy": "https://abovethehilldev.online/",
+      "buy": "https://abovethehilldev.online/ai/chat-assistant/",
       "fulfillment": "Free AI assistant on every abovethehilldev.online page (Ask Spaidbot), answering from this catalog. The trading co-pilot version is inside WM Pro.",
       "verified": "2026-10-19"
     }
