@@ -49,7 +49,7 @@
         "spaidbot",
         "wow"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/cNi6oIbkU4eKgQ3bZg97G04"
     },
     {
       "rank": 2,
@@ -97,7 +97,7 @@
         "wow",
         "team_view"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/bJefZi1Kk9z4fLZ2oG97G05"
     },
     {
       "rank": 3,
@@ -146,7 +146,7 @@
         "team_view",
         "speed_to_lead"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/14AbJ21Kk5iO6bpd3k97G06"
     },
     {
       "rank": 4,
@@ -197,7 +197,7 @@
         "call_coach",
         "objection_tags"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/4gM7sM4Ww8v0arF8N497G07"
     },
     {
       "rank": 5,
@@ -249,7 +249,7 @@
         "objection_tags",
         "reactivation"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/14A28sagQfXsczN2oG97G08"
     },
     {
       "rank": 6,
@@ -302,7 +302,7 @@
         "reactivation",
         "pipeline_reports"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/8x228s74EcLg0R5gfw97G09"
     },
     {
       "rank": 7,
@@ -357,7 +357,7 @@
         "local_presence",
         "review_ai_full"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/7sYeVefBa7qW1V99R897G0a"
     },
     {
       "rank": 8,
@@ -413,7 +413,7 @@
         "review_ai_full",
         "second_location"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/fZu8wQfBa26CdDR1kC97G0b"
     },
     {
       "rank": 9,
@@ -470,7 +470,7 @@
         "second_location",
         "owner_command_plus"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/4gM7sM1KkdPkdDRaVc97G0c"
     },
     {
       "rank": 10,
@@ -528,7 +528,7 @@
         "owner_command_plus",
         "campaign_dialer_plus"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/14A7sM2Oo8v07ft7J097G0d"
     },
     {
       "rank": 11,
@@ -587,7 +587,7 @@
         "campaign_dialer_plus",
         "multi_team"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/fZudRa4WwdPkdDRbZg97G0e"
     },
     {
       "rank": 12,
@@ -647,7 +647,7 @@
         "multi_team",
         "priority_build"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/dRm14o88I12y57l5AS97G0f"
     },
     {
       "rank": 13,
@@ -708,7 +708,7 @@
         "priority_build",
         "multi_site"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/6oU7sMcoYeTo6bpd3k97G0g"
     },
     {
       "rank": 14,
@@ -770,7 +770,7 @@
         "multi_site",
         "regional"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/9B6fZibkU3aG57lbZg97G0h"
     },
     {
       "rank": 15,
@@ -833,7 +833,7 @@
         "regional",
         "enterprise"
       ],
-      "pay_url": ""
+      "pay_url": "https://buy.stripe.com/cNidRa3SsdPkgQ3aVc97G0i"
     }
   ],
   "services": [
