@@ -45,10 +45,10 @@ test('the ONE price book (2026-10-31) on industry + calculator pages: 15 steps $
   assert.ok(inds.length >= 5);
   for (const r of [...inds.map((d) => `industries/${d}/index.html`), 'industries/index.html', 'consequence-calculator/index.html']) {
     const s = read(r), panel = s.slice(s.indexOf('id="pricing"'), s.indexOf('</ul></div>', s.indexOf('id="pricing"')));
-    const levels = [...panel.matchAll(/data-level="([^"]+)"><span><b>[^<]+<\/b><span class="note">[^<]*<\/span><\/span><span class="rv-price">([^<]+)<span class="note">\+ \$[\d,]+ setup<\/span><\/span>/g)].map((m) => [m[1], m[2]]);
+    const levels = [...panel.matchAll(/data-level="([^"]+)"><span><b>[^<]+<\/b><span class="note">[^<]*<\/span><\/span><span class="rv-price">([^<]+)<span class="note">\$[\d,]+ setup today · monthly starts in 30 days<\/span><\/span>/g)].map((m) => [m[1], m[2]]);
     assert.deepEqual(levels, want, r);
     assert.match(panel, /WOW Pass \(WOW = World of Wealth\)/, r);
-    assert.match(panel, /No trial, no free month, no discount/, r);
+    assert.match(panel, /You pay the one-time setup today\. Your monthly plan starts 30 days later/, r); // Founder 2026-11-01: setup is the upfront charge
     assert.doesNotMatch(s, /free trial|free month of|\bWild\b|Quick Start|Business Growth/i, r);
     assert.match(s, /Services on their own · not part of a plan/, r);
     for (const t of ['Speed-to-Lead', '$200 a month', 'Review AI', '$300 a month', '$500 a month', 'Starter Website', '$250 one time', 'Business Website', '$500 one time']) assert.ok(s.includes(t), `${r}: ${t}`);

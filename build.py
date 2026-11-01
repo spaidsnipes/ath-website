@@ -240,7 +240,7 @@ def catalog_js():
         m[p["id"]] = {"label": f'{p["name"]} — {"from " if p["from"] else ""}{money(p["price"])}{"" if p["from"] else " one time"}', "terms": True}
     for t, p, s, i in STARTS: m[s] = {"label": f"{t} — from ${p}"}
     for p in WM["plans"]: m[p["id"]] = {"label": f'WAVEMOTION {p["name"]} — ${p["price"]}/month ({p["clips"]} standard clips)'}
-    for p in PLANS: m["plan-" + p["key"].replace("_", "-")] = {"label": f'{p["name"]} plan — ${p["monthly"]:,} a month + ${p["setup"]:,} one-time setup', "terms": True}
+    for p in PLANS: m["plan-" + p["key"].replace("_", "-")] = {"label": f'{p["name"]} plan — ${p["setup"]:,} setup today, then ${p["monthly"]:,} a month starting 30 days later', "terms": True}
     for g in SERVICES:
         for i in g["items"]:
             if i["id"] not in m and i["id"] not in ("garden-check", "business-diagnosis"): m[i["id"]] = {"label": f'{i["name"]} — {i["price"]}', "terms": True}
@@ -289,7 +289,7 @@ def plan_strip():
     return f'<nav class="pb-strip" aria-label="ATH plans, $100 to $8,000 a month, lowest to highest">{steps}</nav>'
 def plan_card(p):
     rows = "".join(f'<div class="pc-row"><dt>{html.escape(l)}</dt><dd>{html.escape(f(p))}</dd></div>' for l, f in PLAN_ROWS)
-    setup = f'+ ${p["setup"]:,} one-time setup'
+    setup = f'${p["setup"]:,} setup today · your ${p["monthly"]:,} a month starts 30 days later'
     return f'''<article class="panel pc{" pc-feature" if p["key"] in ("presence", "clientflow", "revenue_engine") else ""}" id="plan-{p["key"]}" data-plan="{p["key"]}" aria-labelledby="pc-{p["key"]}">
  <header class="pc-head"><p class="pc-step">Step {p["rank"]} of {len(PLANS)}</p><h3 class="pc-name" id="pc-{p["key"]}">{html.escape(p["name"])}</h3>
   <p class="pc-price">${p["monthly"]:,}<span> a month</span></p><p class="pc-setup">{setup}</p></header>
@@ -300,7 +300,7 @@ def plan_card(p):
 def plan_cards(): return '<div class="pc-grid">' + "".join(plan_card(p) for p in PLANS) + '</div>'
 def plan_table(pid="pricing"):
     """Compact ladder (industry + calculator pages): name · price · setup · what this step adds."""
-    rows = "".join(f'<div class="rv-row" data-level="{html.escape(p["name"])}"><span><b>{html.escape(p["name"])}</b><span class="note">{html.escape(p["unlocks"])}</span></span><span class="rv-price">${p["monthly"]:,} / month<span class="note">+ ${p["setup"]:,} setup</span></span></div>' for p in PLANS)
+    rows = "".join(f'<div class="rv-row" data-level="{html.escape(p["name"])}"><span><b>{html.escape(p["name"])}</b><span class="note">{html.escape(p["unlocks"])}</span></span><span class="rv-price">${p["monthly"]:,} / month<span class="note">${p["setup"]:,} setup today · monthly starts in 30 days</span></span></div>' for p in PLANS)
     fine = "".join(f"<li>{html.escape(f)}</li>" for f in PB["fine"][:3])
     return f'''<div class="panel panel-pad mt2" id="{pid}" data-sb-pricing><p class="panel-title">ATH plans · one ladder, $100 to $8,000 a month</p>
  <p class="body">Every plan has a piece of everything: a WOW Pass (WOW = World of Wealth), a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website. Each step up gives you more of all of it. <a class="gold" href="/pricing/">See exactly what each step includes</a>.</p>

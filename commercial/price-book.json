@@ -1029,10 +1029,11 @@
     }
   ],
   "fine": [
-    "Monthly, cancel with 30 days' notice. No trial, no free month, no discount, anywhere.",
-    "The one-time setup fee builds your site, your office and your phone line in the first two weeks.",
+    "You pay the one-time setup today. Your monthly plan starts 30 days later on the same card, after your site and office are built. Monthly after that, cancel with 30 days' notice. One price for everyone.",
+    "The setup fee builds your site, your office and your phone line in the first two weeks, before your first monthly charge.",
     "Every limit is a real number; none of it is unlimited. When an allowance runs out, ATH tells you; nothing is charged automatically.",
     "Phone numbers, domains and messaging carrier fees are passed through at cost and listed in your scope before you pay.",
     "Results depend on your leads, your team and your market. ATH does not guarantee bookings, sales or revenue."
-  ]
+  ],
+  "setup_rule_1101": "Founder 2026-11-01: the setup fee is the upfront charge; the monthly plan begins 30 days after checkout (Stripe Payment Link delay of 30 days, card required at checkout)."
 }
