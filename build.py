@@ -60,7 +60,7 @@ def ic(name, cls="icon"):
 ARR = '<span class="arr" aria-hidden="true">→</span>'
 FONTS = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap"
 HERO_ART = {"/": "home", "/diagnose/": "diagnose", "/path/": "path", "/passport/": "passport", "/build/": "build", "/ecosystem/": "ecosystem", "/language/": "path", "/diagnose/deep/": "deep", "/work/": "path", "/company/": "home", "/404/": "path", "/pricing/": "build"}
-NAV = [("Company", "/company/"), ("Inventions", "/work/"), ("Services", "/build/"), ("Prices", "/pricing/"),
+NAV = [("Company", "/company/"), ("Inventions", "/work/"), ("Services", "/build/"), ("Prices", "/pricing/"), ("AI", "/ai/"),
        ("Diagnose", "/diagnose/"), ("Language", "/language/"), ("Ecosystem", "/ecosystem/")]
 
 def head(title, desc, route):
@@ -116,7 +116,7 @@ FOOT = """</main>
   <div class="foot-grid">
    <div><img src="/assets/ath-logo-lockup.webp" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
     <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
-   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/pricing/">Prices</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
+   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/pricing/">Prices</a><a href="/ai/">AI services</a><a href="/ai/growing-with-ai/">Growing with AI</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
    <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
    <div><p class="fh">World</p><a href="https://thewow.online/">WOW OS</a><a href="https://wavemotion.live/">Wavemotion</a><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
@@ -552,7 +552,7 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
  <div class="grid g3">
   <article class="panel panel-pad card"><span class="tag live">Live today</span><h3>ATHOS Diagnostic</h3><p>The free hill-finder on this site. Inspects public evidence, separates what it observed from what it inferred, and says "unknown" when it doesn't know.</p><p class="mt2">{btn("Run it", "/diagnose/", "line")}</p></article>
   <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. Free guest account, then Basic $10, Premium $20 or OS $50 a month. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
-  <article class="panel panel-pad card"><span class="tag live">Open door</span><h3>Wavemotion</h3><p>Creator + business movement OS — record, prepare, launch, distribute, learn. One permanent Living Destination. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month.</p><p class="mt2">{btn("Open Wavemotion", "https://www.wavemotion.live/", "line")}</p></article>
+  <article class="panel panel-pad card"><span class="tag live">Open door</span><h3>WAVEMOTION</h3><p>One video in, a week of clips out. Drop in one long video (a sermon, a podcast, a live, a song) and get it back as short vertical clips for TikTok, Reels and YouTube Shorts: 40 a month on Starter, 80 on Creator, 250 on Pro and Living Cinema Studio. You approve every clip before anything posts, and it goes out on the schedule you pick. Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 a month.</p><p class="mt2">{btn("Open Wavemotion", "https://www.wavemotion.live/", "line")}</p></article>
  </div>
 </div></section>
 """ + cta_block())
@@ -641,7 +641,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
  <div class="panel panel-pad mt2"><p class="panel-title">Availability today</p>
   <ul class="rows">
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
-   <li>{ic("door","icon-sm")}<div><b>Basic — $10 a month per app</b><span>Wavemotion: the creator + business movement OS. Starter (Basic) $10 · Creator (Premium) $20 · Pro $50 · Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
+   <li>{ic("door","icon-sm")}<div><b>Basic — $10 a month per app</b><span>WAVEMOTION turns one long video into a week of short clips you approve before they post. Starter (Basic) $10 · Creator (Premium) $20 · Pro $50 · Living Cinema Studio $75 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>{WP_RULE} {WP_NOTE} Available now on WOW OS, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro: a free guest account, WM Pro App (Basic) $10/month, WM Pro Premium $20/month (your World Pass when WM Pro is your choice) and WM Pro OS $50/month. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH plans and services — every price published</b><span>ATH plans from $100 to $8,000 a month, one ladder; websites $250 (Starter) and $500 (Business), one time; WAVEMOTION starts at $10 a month, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/pricing/">See every price</a>.</span></div></li>
@@ -767,7 +767,7 @@ ECO = [
  ("ATHOS", "Intelligence", "live", "Diagnostic live", "Diagnosis, evidence, routing. The free diagnostic on this site is ATHOS working today; deeper capabilities are in development.", ("Run it", "/diagnose/")),
  ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW OS.", ("Get Passport", "https://thewow.online/passport/claim")),
  ("World Pass", "On WOW OS · $20/mo", "live", "Open door", WP_RULE + " " + WP_NOTE + " Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
- ("Wavemotion", "Creator + Business Movement OS", "live", "Open door", "Record → prepare → launch → distribute → learn. Living Destination + Channeler.", ("Visit Wavemotion", "https://wavemotion.live/")),
+ ("WAVEMOTION", "One video in, a week of clips out", "live", "Open door", "Drop in one long video (a sermon, a podcast, a live, a song) and get it back as short vertical clips for TikTok, Reels and YouTube Shorts: 40 a month on Starter, 80 on Creator, 250 on Pro and Living Cinema Studio. You approve every clip before anything posts, and it goes out on the schedule you pick.", ("Visit Wavemotion", "https://wavemotion.live/")),
  ("WM Pro", "Wealthy Mindsets Pro · free guest tour", "", "Open door", "Free guest account · App (Basic) $10/mo · Premium $20/mo (your World Pass if it's your choice) · OS $50/mo. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
  ("PowerTribes", "Business · sales · workforce · leadership OS", "dim", "In development", "Specialist system — plans vary; not yet priced.", ("Request access", "/contact/?intent=powertribes")),
  ("Dreamboard", "Human-potential &amp; creative OS", "dim", "In development", "Idea → clarity → project → finished work. Not yet priced; when it opens, World Pass members get its Basic tier.", ("Request access", "/contact/?intent=dreamboard")),
@@ -1478,6 +1478,7 @@ pages[DIAG_HREF] = ("Request a free business diagnosis | Above the Hill",
   {chk_group("reach", "How do new customers reach you?", DIAG_REACH)}
   {chk_group("happening", "What's happening now?", DIAG_HAPPEN)}
   <div class="field"><label class="lbl" for="d-msg">Anything else we should know? <span class="mute">(optional)</span></label><textarea id="d-msg" name="message" maxlength="2000"></textarea></div>
+  <label class="check" id="d-grow-row" hidden><input type="checkbox" id="bd-grow" checked> <span>Attach my Growing with AI answers: <span class="mute" id="d-grow-sum"></span></span></label>
   <label class="check" id="d-calc-row" hidden><input type="checkbox" id="bd-calc" checked> <span>Attach my Consequence Calculator numbers: <span class="mute" id="d-calc-sum"></span></span></label>
   <input type="hidden" name="package" id="l-package" value="">
   <input type="hidden" name="catalog_version" id="l-catalog" value="">
@@ -1494,7 +1495,230 @@ pages[DIAG_HREF] = ("Request a free business diagnosis | Above the Hill",
   let c = ""; try {{ c = sessionStorage.getItem("ath_calc") || ""; }} catch (e) {{}}
   if (c) {{ document.getElementById("d-calc-row").hidden = false; document.getElementById("d-calc-sum").textContent = c; }}
   else document.getElementById("bd-calc").checked = false;
+  let g = ""; try {{ g = sessionStorage.getItem("ath_grow") || ""; }} catch (e) {{}}
+  if (g) {{ document.getElementById("d-grow-row").hidden = false; document.getElementById("d-grow-sum").textContent = g; }}
+  else document.getElementById("bd-grow").checked = false;
 }})();</script>""" + catalog_js())
+
+
+# ---------------------------------------------------------------- AI services, LIVE-CATALOG OPTION (Founder order 2026-10-31,
+# option B "AI pages only"): the four IONOS-style doors on today's live catalog (registry 2026-10-24.x). A price is shown
+# ONLY where the live catalog has it AND it has a working checkout link (Stripe Payment Link or the app's own live checkout).
+# Everything else says "Request this service" and goes to the contact form; nothing is charged there.
+# Every AI is labelled. No testimonials, no invented metrics, no trial, no free month, no discount.
+SPAIDBOT_BUILD_URL = ""  # Spaidbot Build's public URL (its own domain, never workers.dev) the day it opens.
+REQ_HREF = "/contact/?intent=services"
+AI_NOTE = "Every ATH AI says it is an AI. A person at ATH sets it up, and your customers can always reach a person."
+def live_buy(oid):
+    """(price, stripe_url) for a live-catalog offer with a working card checkout, else None."""
+    o = CAT.get(oid)
+    if o and o["status"] == "LIVE" and re.match(r"^https://buy\.stripe\.com/[A-Za-z0-9_]+$", o.get("buy") or ""): return o["price"], o["buy"]
+    return None
+def pb_site(pid):
+    """(name, price, pay_url or '', what) for a price-book website; the price book (commercial/price-book.json) is the one source."""
+    pb = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "commercial", "price-book.json")))
+    it = next(i for g in pb["services"] for i in g["items"] if i["id"] == pid)
+    return it["name"], it["price"], it.get("pay_url") or "", it["what"]
+SITE_S, SITE_B = pb_site("website-starter"), pb_site("website-business")
+def req_btn(kind="line", label="Request this service"): return btn(label, REQ_HREF, kind)
+def ai_try_chat(label="Try Spaidbot now", kind="gold"): return f'<a class="btn btn-{kind}" href="/contact/#ask" data-sb-open>{label} {ARR}</a>'
+def ai_card(icon, eyebrow, name, does, price, cta_html, href):
+    pr = f'<p class="mt1"><b class="outcome-price">{price}</b></p>' if price else ""
+    return (f'<article class="panel panel-pad card ai-card">{ic(icon, "icon-sm")}<p class="eyebrow mt1">{eyebrow}</p><h3><a href="{href}">{name}</a></h3>'
+            f'<p>{does}</p>{pr}<div class="ctas mt2">{cta_html}</div></article>')
+def ai_tabs(route):
+    items = [("/ai/", "All AI services"), ("/ai/receptionist/", "AI receptionist"), ("/ai/site-builder/", "AI app & site builder"),
+             ("/ai/chat-assistant/", "AI chat assistant"), ("/ai/growing-with-ai/", "Growing with AI")]
+    return '<nav class="ai-tabs" aria-label="ATH AI services">' + "".join(f'<a href="{h}"{" aria-current=\"page\"" if h == route else ""}>{n}</a>' for h, n in items) + '</nav>'
+def ai_head(route, eyebrow, h1, lede, ctas):
+    return f"""<section class="block ai-top" style="padding-top:40px"><div class="wrap">{ai_tabs(route)}
+ <p class="eyebrow mt2">{eyebrow}</p><h1 class="display d-l mt1">{h1}</h1><p class="lede">{lede}</p>
+ <div class="ctas mt2">{ctas}</div><p class="note ai-label">{ic("ai", "icon-sm")} {AI_NOTE}</p></div></section>"""
+def site_rows():
+    rows = []
+    for name, price, pay, what in (SITE_S, SITE_B):
+        cta = f'<a class="btn btn-line btn-sm" href="{pay}" rel="noopener">Pay by card {ARR}</a>' if pay else f'<a class="btn btn-line btn-sm" href="{REQ_HREF}">Request it {ARR}</a>'
+        rows.append(f'<div class="rv-row"><span><b>{name}</b><span class="note">{html.escape(what)}</span></span><span class="rv-price">{html.escape(price)}<span class="note">{cta}</span></span></div>')
+    return "".join(rows)
+REQ_NOTE = "Prices for this service are set in a written scope after a short call. Nothing is charged when you send a request."
+
+pages["/ai/"] = ("AI services for your business — receptionist, site builder, chat assistant | Above the Hill",
+ "ATH's AI services: an AI receptionist that answers and books, an AI app and site builder, the Spaidbot AI chat assistant, and Growing with AI recommendations from a short quiz. Labelled AI, a person behind every one.",
+ ai_head("/ai/", "AI services · built by ATH, run on ATH's own engines", "AI that answers,<br>builds and follows up",
+   "Four ways ATH puts AI to work for your business. Each one is labelled as an AI and set up by a person.",
+   btn("Find what fits you", "/ai/growing-with-ai/") + ai_try_chat("Try the chat assistant", "line"))
+ + f"""<section class="block" style="padding-top:8px"><div class="wrap"><h2 class="vh">The four AI services</h2><div class="grid g2 ai-grid">
+ {ai_card("bolt", "Never miss a call", "AI receptionist", "Answers your phone when you can't, takes the message or books the appointment into the calendar you already use, and texts back anyone who hangs up.", "", btn("See how it works", "/ai/receptionist/") + req_btn(), "/ai/receptionist/")}
+ {ai_card("site", "Get online fast", "AI app &amp; site builder", "Sketch your homepage in seconds, then get a real mobile site. Spaidbot Build, the AI builder, is being built; until it opens, ATH builds your site with you.", f'{SITE_S[0]} {html.escape(SITE_S[1])}' , btn("Sketch my site", "/ai/site-builder/"), "/ai/site-builder/")}
+ {ai_card("ai", "Answer questions all day", "AI chat assistant", "Spaidbot answers questions from real prices and pages, cites what it used, says when it does not know, and hands people to a person.", "Free to try on this site", ai_try_chat("Try it now"), "/ai/chat-assistant/")}
+ {ai_card("path", "Know your next step", "Growing with AI: our recommendations for you", "Answer six short questions and see which ATH services fit your business, and why.", "Free, two minutes", btn("Take the quiz", "/ai/growing-with-ai/"), "/ai/growing-with-ai/")}
+</div>
+<div class="panel panel-pad mt2"><p class="panel-title">The plain rules</p><ul class="pkg-list">
+ <li>Every ATH AI tells people it is an AI. It never pretends to be a person.</li>
+ <li>No trial, no free month and no discount. The free business diagnosis is the one free step: a person names your biggest leak.</li>
+ <li>A card button appears only where checkout is open today. Everything else starts with "Request this service" and a written scope; nothing is charged when you ask.</li>
+ <li>ATH does not promise bookings, sales or revenue. Results depend on your leads, your team and your market.</li>
+</ul></div></div></section>""" + cta_block("Not sure where AI helps first?", "Start with the free business diagnosis. A person looks at how you answer calls, follow up and get reviews, and names the biggest leak."))
+
+pages["/ai/receptionist/"] = ("AI receptionist — answers, books and texts back | Above the Hill",
+ "ATH's AI receptionist answers calls you can't, books into the scheduling you already use, takes messages and texts back missed callers. Request it and ATH sends a written scope.",
+ ai_head("/ai/receptionist/", "AI receptionist · voice AI for your phone line", "Your phone,<br>answered every time",
+   "When you're with a customer, on a job or closed for the night, the AI receptionist picks up. It says it is an AI, answers common questions, books the appointment or takes a clear message, and texts you the details.",
+   req_btn("gold") + diag_btn())
+ + f"""<section class="block" style="padding-top:8px"><div class="wrap split" style="align-items:start">
+ <div><h2 class="display d-m">What it does</h2><ul class="pkg-list mt2">
+  <li><b>Answers when you can't.</b> During jobs, lunch, busy hours and after hours.</li>
+  <li><b>Books into what you already use.</b> Your calendar or booking tool stays the same.</li>
+  <li><b>Takes a clear message.</b> Name, number, what they need and how urgent, sent to you by text.</li>
+  <li><b>Texts back missed callers</b> from your business number so the conversation keeps going.</li>
+  <li><b>Hands off to a person.</b> Anything it can't handle goes to you or your team, with the notes.</li></ul>
+  <h2 class="display d-m mt2">What it won't do</h2><ul class="pkg-list mt2">
+  <li>Pretend to be a person. It says it is an AI.</li><li>Give medical, legal or financial advice.</li>
+  <li>Record a call without consent, or text people who haven't agreed to it. Opt-outs work on every flow.</li></ul></div>
+ <div class="panel panel-pad"><p class="panel-title">How to start</p><ol class="pkg-list"><li>Request the service, or the free business diagnosis.</li><li>A person at ATH calls you and maps how your phone is answered today.</li><li>You get a written scope with the price before anything is charged.</li></ol>
+  <div class="ctas mt2">{req_btn("gold")}</div><p class="note mb0">{REQ_NOTE} It starts as a short paid pilot, not a trial.</p></div>
+</div></section>
+<section class="block" style="padding-top:0"><div class="wrap"><div class="panel panel-pad ai-script"><p class="panel-title">What a call sounds like</p>
+  <p class="note">An example script ATH wrote to show the flow. It is not a recording of a real customer.</p>
+  <dl class="ai-call">
+   <dt>Receptionist</dt><dd>Thanks for calling Example Plumbing. I'm the business's AI assistant. How can I help?</dd>
+   <dt>Caller</dt><dd>My water heater is leaking. Can someone come out today?</dd>
+   <dt>Receptionist</dt><dd>I can help with that. Can I get your name and the address of the job?</dd>
+   <dt>Caller</dt><dd>Jordan, 1200 Main Street.</dd>
+   <dt>Receptionist</dt><dd>Thanks, Jordan. The first opening on the calendar is 2:30 this afternoon. Should I book it?</dd>
+   <dt>Caller</dt><dd>Yes, please.</dd>
+   <dt>Receptionist</dt><dd>You're booked for 2:30. I've texted you the confirmation, and the owner has your details.</dd>
+  </dl></div></div></section>""" + cta_block("Find your missed calls first", "The free business diagnosis looks at how your calls are answered today."))
+
+AI_BUILD_STATUS = ("Spaidbot Build is open." if SPAIDBOT_BUILD_URL else
+  "Spaidbot Build, the AI builder inside the Spaidbot app, is being built and is not open yet. Until it opens, ATH builds your site with you.")
+AI_SKETCH_JS = r"""<script>
+(() => {
+  const f = document.getElementById("sketch-form"), out = document.getElementById("sketch-out"); if (!f || !out) return;
+  const KIND = {
+    "home-services": { tag: "Fast, honest service at your door", items: ["Repairs", "Installations", "Maintenance plans", "Estimates"], cta: "Request an estimate" },
+    "beauty": { tag: "Look good. Feel better.", items: ["Cuts & styling", "Color", "Treatments", "Gift cards"], cta: "Book a visit" },
+    "food": { tag: "Made fresh, served with love", items: ["Today's menu", "Catering", "Hours & location", "Specials"], cta: "See the menu" },
+    "health": { tag: "Care that makes time for you", items: ["New patients", "Services", "Insurance we accept", "Hours"], cta: "Request an appointment" },
+    "creator": { tag: "Work with me", items: ["About", "Services", "Media kit", "Contact"], cta: "Book a call" },
+    "other": { tag: "Here to help, every time", items: ["What we do", "About us", "Hours", "Contact"], cta: "Get in touch" },
+  };
+  const t = (s) => (s || "").toString().trim().slice(0, 60);
+  function draw() {
+    const fd = new FormData(f), k = KIND[fd.get("kind")] || KIND.other;
+    const name = t(fd.get("bname")) || "Your Business", city = t(fd.get("city"));
+    out.dataset.tone = fd.get("tone") || "gold";
+    out.querySelector("[data-s=name]").textContent = name;
+    out.querySelector("[data-s=tag]").textContent = k.tag + (city ? " in " + city : "");
+    out.querySelector("[data-s=cta]").textContent = k.cta;
+    const ul = out.querySelector("[data-s=items]"); ul.textContent = "";
+    k.items.forEach((i) => { const li = document.createElement("li"); li.textContent = i; ul.appendChild(li); });
+    out.querySelector("[data-s=foot]").textContent = name + (city ? " · " + city : "") + " · Call · Directions · Hours";
+  }
+  f.addEventListener("input", draw); f.addEventListener("submit", (e) => { e.preventDefault(); draw(); }); draw();
+})();
+</script>"""
+pages["/ai/site-builder/"] = ("AI app and site builder — Spaidbot Build | Above the Hill",
+ "Sketch your homepage in seconds, then get a real mobile website from ATH. Spaidbot Build, ATH's AI builder, is being built.",
+ ai_head("/ai/site-builder/", "AI app &amp; site builder · Spaidbot Build", "Tell us your business.<br>See your site.",
+   "Type your business name and what you do, and watch a first sketch of your homepage appear. When you're ready, ATH turns it into a real site.",
+   btn("Sketch my site", "#sketch") + btn("See real sites ATH built", "/sites/", "line"))
+ + f"""<section class="block" id="sketch" style="padding-top:8px"><div class="wrap split" style="align-items:start">
+ <form class="panel panel-pad" id="sketch-form" novalidate><p class="panel-title">Build me a site · try it</p>
+  <p class="note">This sketch is a template filled in by your browser, not AI, so you can see the idea in seconds. Nothing you type leaves this page.</p>
+  <div class="field"><label class="lbl" for="s-name">Business name</label><input id="s-name" name="bname" type="text" maxlength="60" placeholder="Example: Sunrise Plumbing"></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="s-kind">What you do</label><select id="s-kind" name="kind"><option value="home-services">Home services</option><option value="beauty">Salon, barber or beauty</option><option value="food">Restaurant or food truck</option><option value="health">Dental or health practice</option><option value="creator">Creator or coach</option><option value="other">Something else</option></select></div>
+   <div class="field"><label class="lbl" for="s-city">City <span class="mute">(optional)</span></label><input id="s-city" name="city" type="text" maxlength="40" placeholder="Tulsa"></div></div>
+  <fieldset class="field rv-fs"><legend class="lbl">Style</legend><div class="rv-checks">
+   <label class="check"><input type="radio" name="tone" value="gold" checked> <span>Black &amp; gold</span></label>
+   <label class="check"><input type="radio" name="tone" value="light"> <span>Clean &amp; light</span></label>
+   <label class="check"><input type="radio" name="tone" value="bold"> <span>Bold colour</span></label></div></fieldset>
+ </form>
+ <div class="sketch" id="sketch-out" data-tone="gold" aria-live="polite" aria-label="Your homepage sketch">
+  <div class="sk-bar"><span></span><span></span><span></span><em>Sketch · not a real site yet</em></div>
+  <div class="sk-hero"><p class="sk-name" data-s="name">Your Business</p><p class="sk-tag" data-s="tag"></p><span class="sk-btn" data-s="cta">Get in touch</span></div>
+  <ul class="sk-items" data-s="items"></ul><p class="sk-foot" data-s="foot"></p>
+ </div>
+</div></section>
+<section class="block" style="padding-top:0"><div class="wrap split" style="align-items:start">
+ <div class="panel panel-pad"><p class="panel-title">Spaidbot Build · the AI builder</p><p class="body">{AI_BUILD_STATUS}</p>
+  <div class="ctas mt2">{btn("Get a free look first", "/free-look/", "line")}{req_btn("line", "Request an app or bigger build")}</div></div>
+ <div class="panel panel-pad" id="prices" data-sb-pricing><p class="panel-title">Websites you can buy today</p><div class="rv-table">{site_rows()}</div>
+  <p class="note mb0">Card checkout by Stripe. Apps and bigger systems: "Request this service" and ATH sends a written scope.</p></div>
+</div></section>""" + cta_block("Want ATH to look first?", "The free business diagnosis checks how customers find and reach you today, website included.") + AI_SKETCH_JS)
+
+pages["/ai/chat-assistant/"] = ("AI chat assistant — Spaidbot | Above the Hill",
+ "Spaidbot is ATH's AI chat assistant. It answers from real prices and pages, cites what it used, says when it doesn't know and hands people to a person. Free to try on this site.",
+ ai_head("/ai/chat-assistant/", "AI chat assistant · Spaidbot", "Questions answered,<br>day and night",
+   "Spaidbot is the AI assistant on this website. Ask it anything about ATH right now: it answers from ATH's real price list and pages, shows what it used, and says so when it doesn't know.",
+   ai_try_chat() + req_btn("line", "Request it for your website"))
+ + f"""<section class="block" style="padding-top:8px"><div class="wrap split" style="align-items:start">
+ <div><h2 class="display d-m">Why people use it</h2><ul class="pkg-list mt2">
+  <li><b>Real answers, not guesses.</b> It reads from real prices and pages, and names the source it used.</li>
+  <li><b>It knows when to stop.</b> When it doesn't know, it says so, and offers a person.</li>
+  <li><b>Labelled as an AI.</b> Every chat opens by saying it is an AI assistant.</li>
+  <li><b>Voice if you want it.</b> Tap the mic and talk; nothing is sent until you press Send.</li>
+  <li><b>No tracking.</b> On this site it sets no cookies and stores no chat history.</li></ul>
+  <div class="ctas mt2">{ai_try_chat("Ask Spaidbot a question")}</div></div>
+ <div class="panel panel-pad"><p class="panel-title">For your own business</p><p class="body">Spaidbot is free to try here. Putting a chat assistant on your own website is set up in a written scope.</p>
+  <div class="ctas mt2">{req_btn("gold")}</div><p class="note mb0">{REQ_NOTE}</p></div>
+</div></section>""" + cta_block("See where a chat assistant would help", "The free business diagnosis looks at how people reach you and what they ask before they buy."))
+
+GROW_NEEDS = [  # (value, label, recommendation key)
+    ("missed", "Calls get missed", "receptionist"), ("allday", "The phone is busy all day", "receptionist"),
+    ("leads", "New leads wait too long for a reply", "speed"), ("reviews", "We have few or old reviews", "reviews"),
+    ("website", "No website, or it's out of date", "website"), ("reactivate", "Past customers don't come back", "reactivate"),
+    ("questions", "People ask the same questions over and over", "chat"),
+]
+GROW_RECS = {
+    "receptionist": {"name": "AI receptionist", "why": "Answers when you can't, books into your calendar and texts back missed callers.", "href": "/ai/receptionist/", "cta": "Request this service"},
+    "speed": {"name": "Speed-to-Lead", "why": "New web, ad and form leads get a reply right away, then a person on your team takes over.", "href": REQ_HREF, "cta": "Request this service"},
+    "reviews": {"name": "Review AI", "why": "Asks every customer for a review after a visit or a job. Every customer, happy or not.", "href": REQ_HREF, "cta": "Request this service"},
+    "reactivate": {"name": "Reactivation texts", "why": "Past customers you choose get a message you approve, with opt-outs honoured.", "href": REQ_HREF, "cta": "Request this service"},
+    "chat": {"name": "AI chat assistant (Spaidbot)", "why": "Answers the same questions every time, from your real prices and pages, and hands off to a person.", "href": "/ai/chat-assistant/", "cta": "Try it now"},
+    "website": {"name": SITE_S[0], "why": "A fast mobile site with a clear call or booking button.", "href": SITE_S[2] or REQ_HREF, "cta": "Pay by card" if SITE_S[2] else "Request this service", "price": SITE_S[1]},
+}
+GROW_JS = r"""<script>
+(() => {
+  const D = JSON.parse(document.getElementById("grow-data").textContent), f = document.getElementById("grow-form"), out = document.getElementById("grow-out");
+  if (!f || !out) return;
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+  f.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const needs = new FormData(f).getAll("need"), msg = document.getElementById("grow-msg");
+    if (!needs.length) { msg.textContent = "Tick at least one thing that's happening now."; return; } msg.textContent = "";
+    const keys = [...new Set(needs.map((n) => (D.needs.find((x) => x[0] === n) || [])[2]).filter(Boolean))];
+    out.textContent = ""; const grid = el("div", "grid g3");
+    keys.forEach((k, i) => { const r = D.recs[k]; const a = el("article", "panel panel-pad card grow-card");
+      a.append(el("p", "eyebrow", i === 0 ? "Start here" : "Also fits"), el("h3", "", r.name)); if (r.price) a.append(el("p", "outcome-price", r.price));
+      a.append(el("p", "", r.why)); const b = el("a", "btn btn-line btn-sm mt1", r.cta + " →"); b.href = r.href; if (/^https:/.test(r.href)) b.rel = "noopener"; a.append(b); grid.append(a); });
+    out.append(el("h2", "display d-m", "Our recommendations for you"), grid);
+    out.append(el("p", "note mt2", "These come from simple rules ATH wrote, not an AI guess. They are a starting point, not a quote; a person confirms the right fit in your free diagnosis."));
+    const go = el("div", "ctas mt2"), a = el("a", "btn btn-gold", "Request my free diagnosis →"); a.href = "/business-diagnosis/"; go.append(a); out.append(go);
+    const labels = needs.map((n) => (D.needs.find((x) => x[0] === n) || [, n])[1]);
+    try { sessionStorage.setItem("ath_grow", `needs: ${labels.join(", ")} → recommended ${keys.map((k) => D.recs[k].name).join(", ")}`); } catch {}
+    out.hidden = false; out.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  });
+})();
+</script>"""
+pages["/ai/growing-with-ai/"] = ("Growing with AI: our recommendations for you | Above the Hill",
+ "Answer a few short questions about your business. ATH shows which AI services fit, and why. Free, two minutes, no sign-up.",
+ ai_head("/ai/growing-with-ai/", "Growing with AI · free · two minutes", "Our recommendations<br>for you",
+   "Tell us a little about your business. We'll show you which ATH services fit, and why.", btn("Start the quiz", "#grow"))
+ + f"""<section class="block" id="grow" style="padding-top:8px"><div class="wrap">
+ <form class="panel panel-pad" id="grow-form" novalidate><p class="panel-title">A few questions</p>
+  <p class="note">Your answers stay in this browser tab. Nothing is sent unless you later choose to attach them to a free diagnosis request.</p>
+  <div class="grid g2">
+   <div class="field"><label class="lbl" for="g-kind">What kind of business?</label><select id="g-kind" name="kind"><option>Local business</option><option>Home services</option><option>Dental or health practice</option><option>Sales team</option><option>Creator or coach</option><option>Something else</option></select></div>
+   <div class="field"><label class="lbl" for="g-calls">About how many calls a day?</label><select id="g-calls" name="calls"><option>Under 5</option><option>5 to 20</option><option>20 to 50</option><option>More than 50</option></select></div>
+  </div>
+  <fieldset class="field rv-fs"><legend class="lbl">What's happening now? Tick all that apply.</legend><div class="rv-checks">{"".join(f'<label class="check"><input type="checkbox" name="need" value="{v}"> <span>{html.escape(l)}</span></label>' for v, l, _ in GROW_NEEDS)}</div></fieldset>
+  <button class="btn btn-gold" type="submit">Show my recommendations {ARR}</button>
+  <p class="form-status" id="grow-msg" role="status" aria-live="polite"></p>
+ </form>
+ <div class="grow-out mt2" id="grow-out" hidden aria-live="polite"></div>
+</div></section>
+<script type="application/json" id="grow-data">{json.dumps({"needs": GROW_NEEDS, "recs": GROW_RECS}).replace("</", "<\\/")}</script>""" + GROW_JS)
 
 
 # ---------------------------------------------------------------- write

@@ -1,5 +1,5 @@
 {
- "version": "2026-10-31.1",
+ "version": "2026-11-01.1",
  "statuses": {
   "LIVE": "can be bought now",
   "SCOPED": "sold through a written quote",
@@ -78,6 +78,16 @@
    "status": "BOOKABLE",
    "buy": "https://abovethehilldev.online/pricing/#services",
    "fulfillment": "Written scope first. No trial, no free month, no discount; the receptionist pilot is paid.",
+   "verified": "2026-10-31"
+  },
+  {
+   "id": "spaidbot-build",
+   "business": "ATHOS",
+   "name": "Spaidbot Build (AI app and site builder)",
+   "price": "not priced yet",
+   "status": "NOT_ACTIVE",
+   "buy": "https://abovethehilldev.online/ai/site-builder/",
+   "fulfillment": "The AI builder inside the Spaidbot app is being built and is not open. /ai/site-builder/ has an in-browser template sketch (not AI); websites today are the Starter Website ($250) and the Business Website ($500).",
    "verified": "2026-10-31"
   },
   {
@@ -256,7 +266,7 @@
    "name": "Spaidbot",
    "price": "Free · Pro $20/month · Super Max $100/month",
    "status": "LIVE",
-   "buy": "https://abovethehilldev.online/",
+   "buy": "https://abovethehilldev.online/ai/chat-assistant/",
    "fulfillment": "Free AI assistant on every abovethehilldev.online page (Ask Spaidbot), answering from this catalog. Pro and Super Max are booked with a person until their checkout opens. The trading co-pilot version is inside WM Pro.",
    "verified": "2026-10-31"
   }

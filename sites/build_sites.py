@@ -223,7 +223,7 @@ def build():
             open(os.path.join(d, "index.html"), "w").write(page_html(c, p, pages))
         clients.append(c)
     samples = [c for c in clients if c.get("sample")]
-    cards = "".join(f'<a class="card" href="/sites/{c["slug"]}/"><span class="k">{E({"quick-start": "Quick Start · $100", "business-growth": "Business Growth · $200"}.get(c.get("package"), ""))}</span><b>{E(c["name"])}</b><span>{E(c.get("category_label"))} · {E(c.get("theme"))} style</span></a>' for c in samples)
+    cards = "".join(f'<a class="card" href="/sites/{c["slug"]}/"><span class="k">{E({"quick-start": "Starter Website · $250", "business-growth": "Business Website · $500"}.get(c.get("package"), ""))}</span><b>{E(c["name"])}</b><span>{E(c.get("category_label"))} · {E(c.get("theme"))} style</span></a>' for c in samples)
     os.makedirs(ROOT, exist_ok=True)
     open(os.path.join(ROOT, "index.html"), "w").write(f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>Sample sites — Above the Hill</title><link rel="icon" href="/favicon.png" type="image/png"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap">
