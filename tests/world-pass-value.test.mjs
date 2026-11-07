@@ -1,8 +1,10 @@
 // World Pass value (Founder order 2026-10-24, with his corrections the same day).
-// One ladder with real names: Free (Passport) · Basic $10 (one app's essentials) · World Pass $20 · Pro/OS $50+.
+// One ladder with real names: Free (Passport) · Basic $10 (one app's essentials) · World Pass $20 · app plans $19+.
 // The World Pass is THE ecosystem pass: Premium of the app you choose + Basic of every other ATH app, WOW OS,
-// Academy, Dreamboard, future apps, WOW World when it opens. Never "$10 tier"/"$20 tier" to customers, no trials,
-// no founding discounts, never the Premium/Pro tier of every app. Quick Start: a Basic month; $200 and up: a World Pass month.
+// Academy, Dreamboard, future apps, WOW World when it opens. Never "$10 tier"/"$20 tier" to customers, never the
+// Premium/Pro tier of every app. SUPERSEDED 2026-11-06/07 (Founder rulings): the old "no trials, no founding offers" rule
+// now allows exactly the World Pass 7-day trial (card required), FOUNDING 100 and FOUNDING 500; offer-rulings.test.mjs
+// forbids every other trial / discount / coupon / free month. Quick Start: a Basic month; $200 and up: a World Pass month.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
@@ -36,8 +38,8 @@ test('the top ladder says Free Passport / Basic / World Pass with real content',
   assert.doesNotMatch(lad, /Focused door|Join the world|Come in<|news/i);
 });
 
-test('customers never read "$10 tier" / "$20 tier", trials, founding offers or every-top-tier claims', () => {
-  const BANNED = [/\$10 tier/, /\$20 tier/, /\$20 or \$50 tier/, /every app at its \$20/i, /Passport \$20/, /30[- ]day (world pass )?trial/i, /world pass trial/i, /Founding (500|1,?000)/i, /\bSPADE\b|Spade Business|Spade ?bot/];
+test('customers never read "$10 tier" / "$20 tier", other trials, other founding offers or every-top-tier claims', () => {
+  const BANNED = [/\$10 tier/, /\$20 tier/, /\$20 or \$50 tier/, /every app at its \$20/i, /Passport \$20/, /30[- ]day (world pass )?trial/i, /world pass trial/i, /Founding (?!(500|100)\b)\d[\d,]*/i, /\bSPADE\b|Spade Business|Spade ?bot/];
   for (const f of all()) { const s = readFileSync(f, 'utf8'); for (const re of BANNED) assert.doesNotMatch(s, re, `${f.slice(PUB.length)}: ${re}`); }
 });
 

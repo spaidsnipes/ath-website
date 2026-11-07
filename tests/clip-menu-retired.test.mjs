@@ -1,4 +1,4 @@
-// Founder, 2026-10-22: WAVEMOTION clips come with its $10/$20/$50/$75 plans.
+// Founder, 2026-10-22: WAVEMOTION clips come with its plans ($10/$20/$50 since the 2026-11-07 matrix; $75 retired).
 // The separate clip-bundle menu (10/$75 … 40/$225) is retired everywhere on this site.
 import test from "node:test";
 import assert from "node:assert/strict";

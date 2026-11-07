@@ -72,3 +72,13 @@ test('every card button is a real Stripe Payment Link or a booking request, neve
   for (const p of steps) assert.ok(p.pay_url === '' || /^https:\/\/buy\.stripe\.com\/[A-Za-z0-9_]+$/.test(p.pay_url), p.key);
   for (const i of book.services.flatMap((g) => g.items)) if (i.pay_url) assert.match(i.pay_url, /^https:\/\/(buy\.stripe\.com\/|www\.wavemotion\.live\/|thewow\.online\/|wealthymindsetspro\.com\/)/, i.id);
 });
+
+test('matrix 2026-11-07: the book names only current app tiers (WM Pro Basic/Auto-trading, Spaidbot Personal/Builder/Operations)', () => {
+  const raw = JSON.stringify(book);
+  assert.doesNotMatch(raw, /Super ?Max|WM Pro (App|OS)\b|Spaidbot Pro\b|\bPro ×|OS \$50|Pro \$20 · Super/i);
+  const svc = Object.fromEntries(book.services.flatMap((g) => g.items).map((i) => [i.id, i]));
+  assert.equal(svc.spaidbot.price, 'Free · Personal $19 · Builder $49 · Operations $99');
+  assert.equal(svc.spaidbot.pay_url, 'https://thewow.online/plans');
+  assert.equal(svc['wm-pro'].price, 'Free guest · Basic $10 · Premium $20 · Auto-trading $30');
+  for (const s of steps) assert.match(s.wm_pro, /^WM Pro Basic on every seat( \+ \d+ WM Pro Auto-trading seats?)?$/, s.key);
+});

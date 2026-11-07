@@ -2,9 +2,9 @@
 """ATH Official Website — static page generator.
 
 Canon: Visual Canon Atlas v1, slide athWebsiteCanonPass3 (Founder finder doc 2026-10-07).
-Prices: commercial/registry.json (v2026-10-13, Founder Super Max order) — see commercial/RECONCILIATION-2026-10-13.md.
-Lineage: one ecosystem ladder (Founder 2026-10-24): Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · Pro/OS $50+. The $20 World Pass = Premium of the app you choose + Basic of every other ATH app. WM Pro: Free / App (Basic) $10 / Premium $20 / OS $50; other specialist systems "plans vary";
-Services show Founder-approved starting prices; WAVEMOTION clips come with its $10/$20/$50/$75 plans (the separate clip-bundle menu was retired by the Founder on 2026-10-22). Nothing on this
+Prices: commercial/registry.json (v2026-11-07.1, Founder price matrix ATH-PRICE-MATRIX-1107) — see commercial/RECONCILIATION-2026-10-13.md for history.
+Lineage: one ecosystem ladder (Founder 2026-10-24): Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · app plans $19+. The $20 World Pass = Premium of the app you choose + Basic of every other ATH app. WM Pro: Free / Basic $10 / Premium $20 / Auto-trading $30; Spaidbot Personal $19 / Builder $49 / Operations $99; WOW Studios $29/$59/$119; PowerTribes launch $29/$79/$179; Creator Passport $40/$75/$100/$150;
+Services show Founder-approved starting prices; WAVEMOTION clips come with its $10/$20/$50 plans (the separate clip-bundle menu was retired by the Founder on 2026-10-22). Nothing on this
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
 """
@@ -145,9 +145,9 @@ def btn(label, href, kind="gold", attrs=""):
 # ---------------------------------------------------------------- shared blocks
 RUNGS = [
     ("free", "Free", "Free Passport", "Your free Passport · the Lounge · WOW Music, WOW Radio &amp; WOW TV · WOW Academy's free lessons", "", "/passport/#ladder"),
-    ("door", "$10 / mo", "Basic", "One app's essentials, per app · WAVEMOTION Starter · WM Pro App", "", "/passport/#ladder"),
+    ("door", "$10 / mo", "Basic", "One app's essentials, per app · WAVEMOTION Starter · WM Pro Basic", "", "/passport/#ladder"),
     ("lattice", "$20 / mo", "World Pass", "Premium of the app you choose + Basic of every other ATH app, WOW OS, Academy and every new app", "Best value", "/passport/#world-pass-value"),
-    ("triangle", "$50+ / mo", "Pro &amp; OS", "WAVEMOTION Pro $50 · WM Pro OS $50", "", "/ecosystem/#specialist"),
+    ("triangle", "$19–$179 / mo", "App plans", "WM Pro Auto-trading $30 · WAVEMOTION Pro $50 · Spaidbot from $19 · WOW Studios from $29 · PowerTribes from $29 · Creator Passport from $40", "", "/ecosystem/#plans"),
     ("peaks", "$100–$8,000 / mo", "ATH plans", "One ladder for your business: a piece of everything ATH makes, more of it at every step", "", "/pricing/"),
 ]
 
@@ -333,10 +333,11 @@ def services_list(groups=None, head=True):
     return f'<div class="panel panel-pad sv" id="services">{title}{"".join(out)}</div>'
 
 # World Pass rule (Founder 2026-10-23, corrected 2026-10-24). One ecosystem ladder with real tier names:
-# Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · Pro/OS $50+. The $20 World Pass is THE ecosystem
+# Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · app plans $19+. The $20 World Pass is THE ecosystem
 # pass (that is why it is a passport): Premium of the one app you choose + Basic of every other ATH app, WOW OS,
 # WOW Academy, Dreamboard and every future app, and WOW World (the future metaverse) when it opens.
-# Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no trials (WAVEMOTION included, Founder 2026-10-25), no founding discounts.
+# Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no other trials or founding offers. Founder rulings 2026-11-06/07: the ONLY trial/offers are the World Pass 7-day trial (card required),
+# FOUNDING 100 (30 days free after a real first action, no charge) and FOUNDING 500 ($10/mo while subscribed, first 500 per app).
 WP_RULE = "The $20 World Pass is your passport across the whole ATH ecosystem: Premium of the one app you choose — WAVEMOTION, WealthyMindsets Pro and more — and Basic of every other ATH app, including apps still to come."
 WP_NOTE = "Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today, and every app as it opens."
 WP_SHORT = "$20: Premium of the app you choose, Basic of every other ATH app."
@@ -351,10 +352,10 @@ def wp_value(head=True, eyebrow="Passport · the whole ecosystem"):
             ("Watch WOW TV", "Films and shows in WOW OS"),
             ("Step into WOW Academy", "Free lessons: the Idea Library, languages, Student of the Game")]
     basic = [("WAVEMOTION Basic · Starter", "40 clips a month: turn one video into short clips"),
-             ("WM Pro Basic · App", "The chart, workspace and journal on your own account"),
+             ("WM Pro Basic", "The chart, workspace and journal on your own account"),
              ("Every app has one", "Pick Basic for just the app you need")]
     wp = [("Premium of the app you choose", "WAVEMOTION Premium (Creator, 80 clips a month) or WM Pro Premium — your favourite app, fully opened"),
-          ("Basic of every other ATH app", "WAVEMOTION Starter or WM Pro App, whichever you didn't choose — and every app after them"),
+          ("Basic of every other ATH app", "WAVEMOTION Starter or WM Pro Basic, whichever you didn't choose — and every app after them"),
           ("All of WOW OS on one pass", "Lounge, WOW TV, WOW Music, WOW Radio and the WOW Shop, carried by your Passport"),
           ("WOW Academy", "Classes and tracks: ideas, languages, the game of the market"),
           ("The WOW Marketplace", "Shop it, and apply to sell there as a WOW Creator Partner"),
@@ -371,7 +372,7 @@ def wp_value(head=True, eyebrow="Passport · the whole ecosystem"):
   <article class="wpv-tier wpv-feature"><span class="wpv-badge">The whole ecosystem</span><p class="wpv-price">$20<span> / month</span></p><p class="wpv-t">World Pass</p><p class="wpv-d">Everything in the free Passport, plus:</p><ul class="wpv-list">{li(wp)}</ul>
    <p class="wpv-math">One $20 WOW Pass opens the whole world: Premium of the app you choose, Basic of every other ATH app, and all of WOW OS: the Lounge, the Academy, Games, Events, WOW TV, WOW Music and WOW Radio, plus your way into WM Pro. That is <b>more than $30 in app tiers alone</b>, before everything else, and it grows with every app ATH ships.</p></article>
  </div>
- <p class="note wpv-fine">World Pass is $20 a month, cancel any time; your Passport identity is free. It opens Premium of the one app you choose, not the Premium or Pro tier of every app. Pro and OS tiers (from $50) are bought on their own; ATH services and third-party costs stay separate. {WP_NOTE}</p>
+ <p class="note wpv-fine">World Pass is $20 a month after a 7-day free try (card required), cancel any time; your Passport identity is free. It opens Premium of the one app you choose, not the Premium or Pro tier of every app. Top tiers (WM Pro Auto-trading $30, WAVEMOTION Pro $50) are bought on their own; ATH services and third-party costs stay separate. {WP_NOTE}</p>
  <div class="ctas mt1">{btn("Get the World Pass", "https://thewow.online/passport", attrs='rel="noopener"')}{btn("Get your free Passport", "https://thewow.online/passport/claim", "line", 'rel="noopener"')}</div>
 </div></div></section>"""
 # ---------------------------------------------------------------- capability map (SP-055 / R41, 2026-10-23)
@@ -408,10 +409,11 @@ def caps():
      ("content", "Create & distribute content", "Video, clips & campaigns", [
       ("Clips from your videos", "Turn one long video into short captioned clips. You approve every clip before anything posts.", "WAVEMOTION", "live", wm, "See WAVEMOTION plans", "https://www.wavemotion.live/#pricing", True),
       ("Campaign workflow", "Record, prepare, approve, publish and learn, through the accounts you connect and within each platform's permissions.", "WAVEMOTION", "live", "In every plan", "Open WAVEMOTION", "https://www.wavemotion.live/", False),
+      ("WOW Studios", "Timelines, music workflows, character continuity and collaborative workspaces. Bought with your Passport.", "WOW OS", "live", cat_price("wow-studios-plans"), "See the plans", "https://thewow.online/plans", False),
       ("WAVEMOTION in every ATH plan", "Every ATH plan includes WAVEMOTION, from Starter (40 clips a month) at $100 up to many Pro workspaces (250 clips a month each).", "WAVEMOTION", "inc", "In every plan", "See every plan", "/pricing/", True),
      ]),
      ("intelligence", "Intelligence & AI agents", "Diagnosis, assistants & memory", [
-      ("Spaidbot assistant", "A free AI assistant on every page of this site. It answers from ATH's live price list and hands you to a person.", "ATHOS", "live", "Free", "Ask Spaidbot", "/contact/#ask", True),
+      ("Spaidbot assistant", "A free AI assistant on every page of this site. It answers from ATH's live price list and hands you to a person.", "ATHOS", "live", cat_price("spaidbot"), "Ask Spaidbot", "/contact/#ask", True),
       ("ATHOS Diagnostic", "Reads one public page, separates what it observed from what it inferred, and says unknown when it doesn't know.", "ATHOS", "live", "Free", "What's your hill?", "/diagnose/", True),
       ("Deep diagnostic", "Read-only inspection of the sources you authorize (code, docs, analytics, flows), delivered as a Hill Report.", "ATHOS · Atlas", "quote", "By written quote", "Request one", "/diagnose/deep/", False),
       ("Automation & business systems", "Apps, back ends, accounts, dashboards, integrations and automations, scoped in writing before any work starts.", "ATHOS + ATH Web Studio", "quote", pk("business-app-system"), "Scope it", "/contact/?intent=services&amp;package=business-app-system", False),
@@ -425,13 +427,16 @@ def caps():
      ("community", "Identity, community & learning", "WOW OS", [
       ("Passport", "One identity across ATH apps: permissions, ownership and receipts that stay with you.", "WOW OS", "live", cat_price("wow-passport"), "Get a Passport", "https://thewow.online/passport", True),
       ("World Pass", WP_RULE + " " + WP_NOTE, "WOW OS", "live", cat_price("wow-world-pass").replace("/month", " a month"), "Get World Pass", "https://thewow.online/passport", True),
+      ("FOUNDING 500", "The Passport at half price for the first 500 members of each app, for as long as you stay subscribed.", "WOW OS", "live", cat_price("wow-founding-500"), "Claim a seat", "https://thewow.online/passport#founding", False),
+      ("Creator Passport", "WOW Studios + WAVEMOTION + Spaidbot on one bill, Passport included.", "WOW OS", "live", cat_price("creator-passport"), "See the plans", "https://thewow.online/plans", False),
       ("WOW Academy", "Idea Library, The Polyglot's Mind and Student of the Game. Stamps come from proof, not attendance.", "WOW OS", "live", cat_price("wow-academy-free"), "Visit the campus", "https://thewow.online/academy", False),
       ("Lounge, TV, Music, Radio & Shop", "Rooms to connect, watch, listen and shop, entered from WOW OS. Guests welcome.", "WOW OS", "live", "Free to enter", "Enter WOW OS", "https://thewow.online/", False),
      ]),
      ("teams", "Customers, teams & specialist systems", "SPAID Business · PowerTribes · specialist OS", [
       ("Prospecting, CRM & sales routing", "Find, qualify and follow up with customers, connected to your site and campaigns.", "SPAID Business", "dev", "Not sold yet", "Request access", "/contact/?intent=services", True),
       ("Workforce & operations OS", "Your PowerTribes office: Call Desk, appointment setter, tasks and team. A bigger office at every step of the ladder.", "PowerTribes", "inc", "In every plan", "See every plan", "/pricing/", False),
-      ("Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", "Wealthy Mindsets Pro", "live", "Free guest account", "Take the guest tour", "https://wealthymindsetspro.com/welcome", True),
+      ("PowerTribes on its own", "Solo, Team or Business OS: CRM and pipeline, then team, dialer and coaching, then the full business OS. Launch prices; Enterprise by quote.", "PowerTribes", "live", cat_price("powertribes-plans"), "See the plans", "https://thewow.online/plans", False),
+      ("Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", "Wealthy Mindsets Pro", "live", "Free guest · Basic $10 · Premium $20 · Auto-trading $30 a month", "Take the guest tour", "https://wealthymindsetspro.com/welcome", True),
      ]),
     ]
 def cap_card(name, does, owner, st, price, cta, href, *_):
@@ -551,7 +556,7 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
  <div class="block-head"><div><p class="eyebrow">Inventions</p><h2 class="display d-m mt1">Built by ATH</h2></div>{btn("All inventions", "/work/", "line")}</div>
  <div class="grid g3">
   <article class="panel panel-pad card"><span class="tag live">Live today</span><h3>ATHOS Diagnostic</h3><p>The free hill-finder on this site. Inspects public evidence, separates what it observed from what it inferred, and says "unknown" when it doesn't know.</p><p class="mt2">{btn("Run it", "/diagnose/", "line")}</p></article>
-  <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. Free guest account, then Basic $10, Premium $20 or OS $50 a month. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
+  <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. Free guest account, then Basic $10, Premium $20 or Auto-trading $30 a month. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
   <article class="panel panel-pad card"><span class="tag live">Open door</span><h3>WAVEMOTION</h3><p>One video in, a week of clips out. Drop in one long video (a sermon, a podcast, a live, a song) and get it back as short vertical clips for TikTok, Reels and YouTube Shorts: 40 a month on Starter ($10), 80 on Creator ($20), 250 on Pro ($50). You approve every clip before anything posts, and it goes out on the schedule you pick. Starter $10 · Creator $20 · Pro $50 a month, clips included.</p><p class="mt2">{btn("Open Wavemotion", "https://www.wavemotion.live/", "line")}</p></article>
  </div>
 </div></section>
@@ -631,7 +636,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
 <section class="block"><div class="wrap">
  <div class="grid g2">
   <div class="panel panel-pad"><p class="panel-title">Basic opens one app. The World Pass opens the ecosystem.</p>
-   <p class="body"><b>Basic, $10/month per app</b>: one app's essentials, like WAVEMOTION Starter or WM Pro App. <b>World Pass, $20/month</b>: Premium of the app you choose and Basic of every other ATH app, including apps still to come. {WP_NOTE} Pro and OS tiers start at $50/month.</p>
+   <p class="body"><b>Basic, $10/month per app</b>: one app's essentials, like WAVEMOTION Starter or WM Pro Basic. <b>World Pass, $20/month</b>: Premium of the app you choose and Basic of every other ATH app, including apps still to come. {WP_NOTE} Try the World Pass 7 days free (card required). WM Pro Auto-trading is $30/month and WAVEMOTION Pro $50/month.</p>
    <p class="panel-title mt2">What $20 is — and isn't</p>
    <p class="body">The World Pass is the $20 purchase itself, carried on your free Passport: Premium of one app, Basic of every other app. It does <b>not</b> unlock the Premium or Pro tier of every app, ATH services, third-party costs, or unlimited expensive infrastructure.</p>
    <dl class="hpa mt2"><dt>Identity</dt><dd>≠ membership</dd><dt>Membership</dt><dd>≠ owning every product</dd><dt>Membership</dt><dd>≠ professional infrastructure</dd></dl></div>
@@ -643,7 +648,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
    <li>{ic("door","icon-sm")}<div><b>Basic — $10 a month per app</b><span>WAVEMOTION turns one long video into a week of short clips you approve before they post. Starter (Basic) $10 · Creator (Premium) $20 · Pro $50 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>{WP_RULE} {WP_NOTE} Available now on WOW OS, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
-   <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro: a free guest account, WM Pro App (Basic) $10/month, WM Pro Premium $20/month (your World Pass when WM Pro is your choice) and WM Pro OS $50/month. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
+   <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro: a free guest account, WM Pro Basic $10/month, Premium $20/month and Auto-trading $30/month. Spaidbot: Personal $19, Builder $49, Operations $99 a month. WOW Studios: Solo $29, Creator $59, Pro $119 a month. PowerTribes launch prices: Solo $29 (standard <s>$49</s>), Team $79 (<s>$149</s>), Business OS $179 (<s>$349</s>) a month. Creator Passport: Launch $40, Grow $75, Pro $100, Studio $150 a month. <a class="gold" href="https://thewow.online/plans" rel="noopener">See the plans</a>. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH plans and services — every price published</b><span>ATH plans from $100 to $8,000 a month, one ladder; websites $250 (Starter) and $500 (Business), one time; WAVEMOTION starts at $10 a month, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/pricing/">See every price</a>.</span></div></li>
   </ul></div>
 </div></section>""" + wp_value() + cta_block())
@@ -672,12 +677,12 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
    ("eye","Guest","No account","Explore appropriate public experiences without an account. Guest is a legitimate state, not a broken one."),
    ("me","Passport Free","Identity","Persistent identity only where it is actually required — receipts, permissions, ownership proof."),
    ("lattice","World Pass","$20 / month",WP_RULE + " " + WP_NOTE),
-   ("triangle","Specialist Entitlements","Plans vary","WealthyMindsets Pro: free guest, App (Basic) $10, Premium $20 (your World Pass if it's your choice), OS $50. Pro and OS tiers are bought on their own. PowerTribes, Dreamboard and future systems carry their own plans."),
+   ("triangle","Specialist Entitlements","Plans vary","WealthyMindsets Pro: free guest, Basic $10, Premium $20, Auto-trading $30. Spaidbot $19 / $49 / $99, WOW Studios $29 / $59 / $119, PowerTribes from $29 at launch and Creator Passport $40 to $150 are bought with your Passport. Dreamboard and future systems carry their own plans."),
    ("own","Purchases &amp; Ownership","Yours","What you bought and what remains yours, carried by Passport where supported.")])}
  </div>
  <div class="grid g2 mt3" id="benefits">
   <div class="panel panel-pad"><p class="panel-title">If a member cancels</p><p class="body mb0">The person doesn't stop existing. Identity, lawful ownership, receipts and applicable durable rights persist. Membership-only benefits end.</p></div>
-  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free. The World Pass is $20/month. Both are live on WOW OS today, with a real Stripe checkout, and you can cancel any time.</p><p class="body">{WP_RULE} {WP_NOTE}</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
+  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free. The World Pass is $20/month; try it 7 days free (card required). FOUNDING 500: the first 500 members of each app get the Passport at half price, $10/month while subscribed. All live on WOW OS today, with a real Stripe checkout, and you can cancel any time.</p><p class="body">{WP_RULE} {WP_NOTE}</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
  </div>
 </div></section>""" + wp_value(eyebrow="Passport · the whole ecosystem"))
 
@@ -768,20 +773,24 @@ ECO = [
  ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW OS.", ("Get Passport", "https://thewow.online/passport/claim")),
  ("World Pass", "On WOW OS · $20/mo", "live", "Open door", WP_RULE + " " + WP_NOTE + " Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
  ("WAVEMOTION", "One video in, a week of clips out", "live", "Open door", "Drop in one long video (a sermon, a podcast, a live, a song) and get it back as short vertical clips for TikTok, Reels and YouTube Shorts: 40 a month on Starter ($10), 80 on Creator ($20), 250 on Pro ($50). You approve every clip before anything posts, and it goes out on the schedule you pick.", ("Visit Wavemotion", "https://wavemotion.live/")),
- ("WM Pro", "Wealthy Mindsets Pro · free guest tour", "", "Open door", "Free guest account · App (Basic) $10/mo · Premium $20/mo (your World Pass if it's your choice) · OS $50/mo. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
+ ("WM Pro", "Wealthy Mindsets Pro · free guest tour", "", "Open door", "Free guest account · Basic $10/mo · Premium $20/mo · Auto-trading $30/mo. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
  ("PowerTribes", "Business · sales · workforce · leadership OS", "live", "Live · in every plan", "Your company's office: AI staff at their desks, CRM, dialer, team chat and operations. Included in every ATH plan; team sizes by plan.", ("See the plans", "/pricing/")),
  ("Dreamboard", "Human-potential &amp; creative OS", "dim", "Built · opening to members", "Idea → clarity → project → finished work. When it opens, World Pass members get its Basic tier.", ("Join the list", "/contact/?intent=dreamboard")),
  ("WOW OS", "The operating system · Guest welcome", "live", "Open door", "One home, many rooms — Lounge, Academy (Idea Library, Visual Learns, Student of the Game), Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://thewow.online/")),
  ("WOW TV · WOW Radio", "Watch · Listen", "live", "Open door", "Viewer and listener destinations — separate rooms in WOW OS.", ("Enter", "https://thewow.online/wow-tv")),
  ("Lounge · Academy · Shop", "Connect · Learn · Own", "live", "Open door", "Community, learning and commerce places, entered from WOW OS.", ("Enter", "https://thewow.online/lounge")),
  ("WOW Academy", "Learn · Free to practise", "live", "Open door", "Three real tracks, open now: The Idea Library (read, question, remember, apply), Visual Learns · The Polyglot&#8217;s Mind (Spanish, Hebrew, Japanese), and Student of the Game (risk, candles, orders). A stamp is earned from proof and memory, never attendance.", ("Open the Academy", "https://thewow.online/academy")),
- ("WOW Studios", "Creation infrastructure", "dim", "Future", "Deeper production infrastructure.", None),
+ ("WOW Studios", "Creation studio · Solo $29 · Creator $59 · Pro $119 a month", "live", "Open door", "Timelines, then music workflows and character continuity, then collaborative workspaces and top exports. Bought with your Passport.", ("See the plans", "https://thewow.online/plans")),
+ ("Spaidbot", "AI assistant · Personal $19 · Builder $49 · Operations $99 a month", "live", "Open door", "Free on every page of this site. Personal: generous chat, research and drafts. Builder adds automation, projects and integrations. Operations adds cloud jobs and team runs.", ("See the plans", "https://thewow.online/plans")),
+ ("PowerTribes plans", "Solo $29 · Team $79 · Business OS $179 a month (launch prices)", "live", "Open door", "Standard value <s>$49</s> · <s>$149</s> · <s>$349</s>. CRM and pipeline, then team, dialer and coaching, then the full business OS. Enterprise by quote.", ("See the plans", "https://thewow.online/plans")),
+ ("Creator Passport", "Launch $40 · Grow $75 · Pro $100 · Studio $150 a month", "live", "Open door", "One bill for creators, Passport included: WOW Studios + WAVEMOTION + Spaidbot together. Launch: Studios Solo, WAVEMOTION Starter, Spaidbot Personal. Grow: Creator, Creator, Builder. Pro: Pro, Pro, Builder. Studio: Pro, Pro, Operations, with team seats.", ("See the plans", "https://thewow.online/plans")),
+ ("FOUNDING 500", "$10 a month while subscribed", "live", "First 500 per app", "The Passport at half price for the first 500 members of each app (WM Pro, WOW OS, WAVEMOTION), for as long as you stay subscribed.", ("Claim a seat", "https://thewow.online/passport#founding")),
  ("WOW World", "The future metaverse", "dim", "Future", "A future world for the whole ecosystem. Not open and not for sale; WOW OS is the live home today.", None),
 ]
 def eco_cards():
     out = []
     for n, r, cls, st, d, c in ECO:
-        anchor = "wavemotion" if n == "Wavemotion" else ("specialist" if n == "WM Pro" else "")
+        anchor = "wavemotion" if n == "Wavemotion" else ("specialist" if n == "WM Pro" else ("plans" if n == "Creator Passport" else ""))
         cbtn = ""
         if c:
             ext = c[1].startswith("http")
@@ -908,7 +917,7 @@ pages["/work/"] = ("Inventions & Work — Above the Hill Developments",
  + f"""<section class="block"><div class="wrap"><div class="grid g2">
   {"".join(f'<article class="panel panel-pad card"><span class="tag {c}">{s}</span><h3>{t}</h3><dl class="hpa mt1"><dt>The hill</dt><dd>{h}</dd><dt>The path</dt><dd>{p}</dd><dt>Now</dt><dd>{n}</dd></dl>{l}</article>' for c,s,t,h,p,n,l in [
    ("live","Live","ATHOS Diagnostic","Businesses can't see what's actually stopping them — and most \"audits\" invent certainty.","An evidence-first diagnostic that separates observed, inferred and unknown.","Running on this site.", f'<p class="mt2 mb0">{btn("Run it","/diagnose/","line")}</p>'),
-   ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. Free guest account, then App (Basic) $10, Premium $20 (your World Pass if it's your choice) or OS $50 a month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
+   ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. Free guest account, then Basic $10, Premium $20 or Auto-trading $30 a month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
    ("","Open door","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","Plans $10 / $20 / $50 per month, clips included. Cinematic generation is not open.", f'<p class="mt2 mb0">{btn("Open Wavemotion","https://www.wavemotion.live/","line")}</p>'),
    ("dim","Built · opening","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","Built; opening to members next.", ""),
    ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW OS; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),
@@ -1660,7 +1669,7 @@ pages["/ai/chat-assistant/"] = ("AI chat assistant — Spaidbot | Above the Hill
   <li><b>Voice if you want it.</b> Tap the mic and talk; nothing is sent until you press Send.</li>
   <li><b>No tracking.</b> On this site it sets no cookies and stores no chat history.</li></ul>
   <div class="ctas mt2">{ai_try_chat("Ask Spaidbot a question")}</div></div>
- <div class="panel panel-pad"><p class="panel-title">For your own business</p><p class="body">Spaidbot is free to try here. Putting a chat assistant on your own website is set up in a written scope.</p>
+ <div class="panel panel-pad"><p class="panel-title">For your own business</p><p class="body">Spaidbot is free to try here. Your own Spaidbot: Personal at $19 a month, Builder at $49 a month or Operations at $99 a month, bought with your WOW Passport at <a class="gold" href="https://thewow.online/plans" rel="noopener">thewow.online/plans</a>. Putting a chat assistant on your own website is set up in a written scope.</p>
   <div class="ctas mt2">{req_btn("gold")}</div><p class="note mb0">{REQ_NOTE}</p></div>
 </div></section>""" + cta_block("See where a chat assistant would help", "The free business diagnosis looks at how people reach you and what they ask before they buy."))
 
