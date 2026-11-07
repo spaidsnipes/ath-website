@@ -11,7 +11,7 @@ import { join } from 'node:path';
 const PUB = new URL('../public/', import.meta.url).pathname;
 const pages = (d) => readdirSync(d).flatMap((n) => { const p = join(d, n); return statSync(p).isDirectory() ? pages(p) : n === 'index.html' ? [p] : []; });
 const read = (r) => readFileSync(PUB + r, 'utf8');
-const TAG = /<script src="https:\/\/mission\.abovethehilldev\.online\/spaidbot\.js" data-api="https:\/\/ath-athos\.dhill5711\.workers\.dev" data-product="ath" data-greet="1" data-compact-hero="1" data-audit-href="\/business-diagnosis\/" defer><\/script>/;
+const TAG = /<script src="https:\/\/mission\.abovethehilldev\.online\/spaidbot\.js" data-api="https:\/\/mission\.abovethehilldev\.online" data-product="ath" data-greet="1" data-compact-hero="1" data-audit-href="\/business-diagnosis\/" defer><\/script>/;
 
 test('every built ATH page loads the ATHOS embed once, public ATH product, greeter on; the old local Spaidbot is gone', () => {
   const built = pages(PUB).filter((p) => !/\/(sites|preview)\//.test(p) && !/http-equiv="refresh"/.test(readFileSync(p, 'utf8')));

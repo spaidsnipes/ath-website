@@ -12,7 +12,7 @@ import os, html, re, datetime
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
 SITE = "https://abovethehilldev.online"
-API = "https://ath-athos.dhill5711.workers.dev"
+API = "https://mission.abovethehilldev.online"  # canonical domain of the ath-athos Worker (same service; no workers.dev on guest pages)
 # Spaidbot: the one ATHOS embed (public mode). data-greet="1" = the proactive website greeter (free leak audit /
 # pricing / talk to a person), once per session, AI-labelled, no tracking. See athos-brain spaidbot-embed.mjs.
 SPAIDBOT_EMBED = "https://mission.abovethehilldev.online/spaidbot.js"
@@ -63,8 +63,12 @@ HERO_ART = {"/": "home", "/diagnose/": "diagnose", "/path/": "path", "/passport/
 NAV = [("Company", "/company/"), ("Inventions", "/work/"), ("Services", "/build/"), ("Prices", "/pricing/"), ("AI", "/ai/"),
        ("Diagnose", "/diagnose/"), ("Language", "/language/"), ("Ecosystem", "/ecosystem/")]
 
+# Utility pages a guest should never land on from search (post-payment intake, empty result shell, 404).
+NOINDEX = {"/start/", "/diagnose/result/", "/404/"}
+
 def head(title, desc, route):
     art = HERO_ART.get(route)
+    robots = '<meta name="robots" content="noindex">' if route in NOINDEX else ""
     preload = f'<link rel="preload" as="image" href="/assets/art/{art}.webp" fetchpriority="high">' if art else ""
     return f"""<!doctype html>
 <html lang="en">
@@ -73,7 +77,7 @@ def head(title, desc, route):
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
-<link rel="canonical" href="{SITE}{route}">
+<link rel="canonical" href="{SITE}{route}">{robots}
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:type" content="website">
@@ -1755,7 +1759,7 @@ def write():
     # master catalog (registry "catalog"): every ATH offer with an honest status, for Spaidbot and partners
     open(os.path.join(ROOT, "catalog.json"), "w").write(json.dumps({"version": REG["version"], "statuses": {"LIVE": "can be bought now", "SCOPED": "sold through a written quote", "NOT_ACTIVE": "named but not deliverable yet", "PROPOSED": "a plan, not for sale", "LIVE_IN_WM_PRO": "available inside WM Pro", "RETIRED": "no longer sold; orders already placed are honored", "BOOKABLE": "book now: ATH confirms a time; card checkout switches on when its payment link is added"}, "offers": OFFERS}, indent=1, ensure_ascii=False))
     open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
-    urls = "".join(f"<url><loc>{SITE}{r}</loc></url>" for r in pages if r != "/404/")
+    urls = "".join(f"<url><loc>{SITE}{r}</loc></url>" for r in pages if r not in NOINDEX)
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
     print("wrote", len(pages), "pages")
 
