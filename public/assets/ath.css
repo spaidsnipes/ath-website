@@ -552,3 +552,6 @@ details summary{cursor:pointer}
 .sketch[data-tone=bold]{background:#0f1630}.sketch[data-tone=bold] .sk-hero{background:linear-gradient(160deg,#c2410c,#7c1d6f)}
 .sketch[data-tone=bold] .sk-name{color:#fff}.sketch[data-tone=bold] .sk-tag{color:#fde7d3}.sketch[data-tone=bold] .sk-btn{background:#fff;color:#7c1d6f}
 .grow-card h3{margin:.3em 0}
+/* touch pass (2026-11-07, every-device audit): footer links, the price-ladder steps and the shaar mark get 44px targets on touch */
+@media (pointer:coarse){.foot-grid a{padding:12px 0;min-height:44px;box-sizing:border-box}.pb-step{min-height:44px}.sha-ar{display:inline-block;min-width:44px;min-height:44px;line-height:44px;text-align:center}}
+@media (pointer:coarse) and (min-width:961px){.nav a{min-height:44px;display:inline-flex;align-items:center}}
