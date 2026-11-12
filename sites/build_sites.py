@@ -92,7 +92,7 @@ table.hours{{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nu
 .sample-ribbon b{{letter-spacing:.16em;text-transform:uppercase;font-weight:700;border:1.5px solid currentColor;border-radius:3px;padding:4px 7px}}
 .sample-ribbon a{{color:inherit}}.sample-ribbon .sr-short{{display:none}}
 .is-sample .top{{top:36px}}
-@media (max-width:640px){{.sample-ribbon .sr-long{{display:none}}.sample-ribbon .sr-short{{display:inline}}}}
+@media (max-width:640px){{.sample-ribbon .sr-long{{display:none}}.sample-ribbon .sr-short{{display:inline}}.sample-ribbon b{{letter-spacing:.06em;padding:3px 5px}}.sample-ribbon{{gap:.4em;padding:0 8px}}}}
 #sample-note{{scroll-margin-top:80px;border:1px solid var(--accent);border-radius:var(--r);padding:20px;margin-top:8px;background:var(--surface)}}
 @media (max-width:640px){{.top .wrap{{flex-wrap:wrap;gap:0 12px;padding-block:8px}}.pages{{order:3;flex-basis:100%;margin:0;overflow-x:auto;gap:20px;border-top:1px solid var(--line)}}.hero{{padding-block:48px 40px}}}}
 @media (prefers-reduced-motion:reduce){{html{{scroll-behavior:auto}}}}
@@ -134,7 +134,7 @@ def page_html(c, page, pages):
     offer = PACKAGE_OFFER.get(c.get("package"), PACKAGE_OFFER["quick-start"])
     ribbon = (f'<div class="sample-ribbon" role="note" aria-label="Showcase site: {E(c["name"])} is not a real business"><b>Showcase</b>'
               f'<span class="sr-long">Built by Above the Hill · {E(c["name"])} is not a real business ·</span><span class="sr-short">Not a real business ·</span>'
-              f' <a href="{SITE}/pricing/#services"><span class="sr-long">Get yours: {offer}</span><span class="sr-short">{offer.replace(" Website", "")}</span></a></div>') if c.get("sample") else ""
+              f' <a href="{SITE}/pricing/#services"><span class="sr-long">Get yours: {offer}</span><span class="sr-short">{offer.split(" Website ")[1]}</span></a></div>') if c.get("sample") else ""
 
     body = []
     if is_home:
