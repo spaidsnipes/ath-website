@@ -15,7 +15,7 @@
     [/(^|\.)(facebook|fb)\.com$/, "Facebook"], [/(^|\.)instagram\.com$/, "Instagram"], [/(^|\.)tiktok\.com$/, "TikTok"], [/(^|\.)(x|twitter)\.com$/, "X"],
     [/(^|\.)youtube\.com$|(^|\.)youtu\.be$/, "YouTube"], [/(^|\.)linkedin\.com$/, "LinkedIn"], [/(^|\.)yelp\.com$/, "Yelp"], [/(^|\.)nextdoor\.com$/, "Nextdoor"],
     [/(^|\.)linktr\.ee$/, "Linktree"], [/(^|\.)beacons\.ai$/, "Beacons"], [/(^|\.)stan\.store$/, "Stan"], [/^g\.page$|(^|\.)business\.site$|^maps\.app\.goo\.gl$|^goo\.gl$|^share\.google$|^maps\.google\./, "Google"],
-    [/(^|\.)(doordash|ubereats|grubhub|toasttab|vagaro|styleseat|booksy|square\.site|clover)\.com$|\.square\.site$/, "a booking or ordering app"],
+    [/(^|\.)(doordash|ubereats|grubhub|toasttab|vagaro|styleseat|booksy|square\.site|clover|fresha|glossgenius|gettimely|setmore|schedulicity|mindbodyonline|acuityscheduling|booker|squareup)\.com$|\.square\.site$/, "a booking or ordering app"],
   ];
   const BUILDERS = [
     [/\.wixsite\.com$/, "Wix"], [/\.godaddysites\.com$/, "GoDaddy"], [/\.weebly\.com$/, "Weebly"], [/\.wordpress\.com$/, "WordPress.com"], [/\.squarespace\.com$/, "Squarespace"],
