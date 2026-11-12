@@ -871,7 +871,7 @@ def eco_cards():
 pages["/ecosystem/"] = ("The Ecosystem — What ATH does, who owns it, what it costs",
  "Websites, content, AI, checkout, community and business systems: one ATH ecosystem, every capability with its owner, live status and price.",
  hero("ecosystem", "", "The<br>Ecosystem",
-      "ATH builds the world.<br>Destinations open the doors.<br><span style=\"font-size:.8em;color:var(--ivory-dim)\">Not an app store. Parent builder · intelligence · identity · membership · destinations.</span>",
+      "ATH builds the world.<br>Destinations open the doors.<br><span style=\"font-size:max(13px, .8em);color:var(--ivory-dim)\">Not an app store. Parent builder · intelligence · identity · membership · destinations.</span>",
       btn("See the full map", "#map") + btn("See every price", "/pricing/", "line"), extra='<div class="plaques">' + "".join(f'<a class="plaque" href="#d"><b>{n}</b><span>{t}</span></a>' for n,t in [("WOW OS","Open door"),("WM Pro","Open door"),("WOW TV · WOW Radio","Open door"),("Lounge · Academy · Shop","Open door")]) + '</div>', pos="50% 50%", mpos="50% 40%", size="d-l")
  + '<div class="strip">One builder · Seven owners · One ecosystem</div>'
  + f"""<section class="block" id="owners"><div class="wrap">
