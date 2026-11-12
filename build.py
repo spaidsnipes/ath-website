@@ -406,7 +406,7 @@ def caps():
     wm = cat_price("wm-plans").replace("/month", " a month")
     return [
      ("presence", "Build your presence", "Websites & digital experience", [
-      ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'{site_price("website-starter")} or {site_price("website-business")} one time, or in every plan', "See every price", "/pricing/#services", True),
+      ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'{site_price("website-starter")} or {site_price("website-business")}, one time, or in every plan', "See every price", "/pricing/#services", True),
       ("Website health check", f'The {GC["name"]}: a {GC["minutes"]} minute live check of the site you already have, on a video call you watch. You learn what needs fixing and what doesn\'t.', "ATH Web Studio", "live", f"{GC_PRICE} one time", GC_CTA if not GC_PAY else "See the Garden Check", GC_PAGE, True),
       ("Brand themes & reusable sections", "Three tuned site styles built from reusable sections: menus and price lists, galleries, hours, story.", "ATH Web Studio", "inc", "In every site", "See sample sites", "/sites/", False),
       ("Preview & approval", "You see your site on a preview link, kept out of search, before it goes live. Revisions as your package states.", "ATH Web Studio", "inc", "In every site", "See every price", "/pricing/#services", True),
@@ -521,6 +521,69 @@ def gc_panel(eyebrow="Already have a website?"):
 # ---------------------------------------------------------------- pages
 pages = {}
 
+# Commercials (2026-11-12): the Master "Welcome to Above The Hill" walkthrough as the home page feature film, plus the 30 s
+# app spots. Real live-app footage, AI voice (labelled in the frame), captions burned in. Files live in the public Supabase
+# bucket "radio" (commercials/ath-1112/), web encodes of ~/Desktop/COMMERCIALS-1112. Nothing loads until the film is on screen.
+FILM_BASE = "https://zrzaifaxecwgpfrqctkp.supabase.co/storage/v1/object/public/radio/commercials/ath-1112/"
+FILM_SCRIPT = ("Ah, you made it. Here's your key. Welcome to Above The Hill. They told you that you needed a website. But what if your business had a whole headquarters? "
+  "Step inside. First door: WOW TV, your own channel, live 24/7, on a real rolling guide. Down the hall: WAVEMOTION. Your website. Your content. One link. "
+  "Pick an atmosphere (Stage, Studio, Business) and it's yours for $20 a month. Now take the elevator. PowerTribes Tower: fifteen floors, one business. "
+  "The Sales Floor. AI Workforce Command. Your whole company under one roof. Next door: WOW Studios. Record it. Mix it. Cut the video. Build the world. "
+  "This is Spaidbot. Say what you need, and Spaidbot builds it. And the penthouse: WM Pro. Read the market before you risk a dollar. WM Pro: $10, $20, $30. "
+  "One key opens every door: your WOW Passport. Free to start. Founding 500: just $10 a month, locked in while you stay. One key. Every door. Above The Hill. There's more.")
+SPOTS = [
+ ("ath-02-wow-tv", "WOW TV", "Your channel, live 24/7", "25 s", "https://thewow.online/wow-tv",
+  "Hold up. Is that a TV channel on a website? That's WOW TV, World of Wealth Television, live 24/7. A real rolling guide. Real channels. Got music, a podcast, a show? Request your own channel. And your WOW Passport is free."),
+ ("ath-03-wavemotion-sites", "WAVEMOTION", "Your website. Your content. One link.", "28 s", "https://www.wavemotion.live/sites",
+  "They said you needed a link in bio. You need a home. WAVEMOTION builds your whole website: music, video, episodes, shop, booking. Five cinematic atmospheres. Real click analytics. Your Creator site: $20 a month."),
+ ("ath-04-powertribes-tower", "PowerTribes", "Your company's own tower", "27 s", "https://powertribes.cloud",
+  "Your business isn't a contact list. It's a tower. Fifteen floors, one business: the Sales Floor, the dialer, the deals board, AI Workforce Command, the Executive Suite. Plans from $29 a month."),
+ ("ath-05-wow-studios", "WOW Studios", "A production house in your browser", "29 s", "https://wowstudios.cloud",
+  "Make the record. Cut the video. Build the world. The Edit Suite, the Arrange window, the Mixer, the Booth. Your WOW Passport is free to start. Plans from $29 a month."),
+ ("ath-08-founding-500", "Founding 500", "$10 a month, every door", "29 s", "https://thewow.online/passport",
+  "One key opens every door: your WOW Passport, free to start. WOW TV, WAVEMOTION and more. Founding 500: just $10 a month, locked in while you stay."),
+]
+def film_section():
+    spots = "".join(
+        f'<li class="spot"><button type="button" class="spot-btn" data-film-spot="{FILM_BASE}{k}-16x9.mp4" aria-label="Play the {html.escape(n)} commercial, {d}, with sound">'
+        f'<img src="{FILM_BASE}{k}-16x9.jpg" alt="" loading="lazy" decoding="async" width="960" height="540"><span class="spot-play" aria-hidden="true">&#9654;</span></button>'
+        f'<p class="spot-name"><b>{html.escape(n)}</b> <span class="note">{d}</span></p><p class="spot-line">{html.escape(t)}</p>'
+        f'<details class="film-script"><summary>Read the script</summary><p>{html.escape(sc)}</p></details>'
+        f'<a class="gold spot-door" href="{u}" rel="noopener">Open {html.escape(n)} {ARR}</a></li>' for k, n, t, d, u, sc in SPOTS)
+    return f"""<section class="block film-block" id="watch" aria-labelledby="watch-h"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">Welcome to Above The Hill</p><h2 class="display d-m mt1" id="watch-h">One key. Every door.</h2></div>
+  <p class="body mb0" style="max-width:46ch">A one-minute walk through every ATH app: WOW TV, WAVEMOTION, PowerTribes, WOW Studios, Spaidbot and WM Pro. Real app screens.</p></div>
+ <figure class="film-frame" data-film data-src16="{FILM_BASE}ath-master-16x9.mp4" data-src9="{FILM_BASE}ath-master-9x16.mp4" data-poster16="{FILM_BASE}ath-master-16x9.jpg" data-poster9="{FILM_BASE}ath-master-9x16.jpg">
+  <video class="film-video" muted playsinline loop preload="none" poster="{FILM_BASE}ath-master-16x9.jpg" aria-label="Commercial: Welcome to Above The Hill, 69 seconds. Captions are in the picture."></video>
+  <button type="button" class="film-sound" data-film-sound aria-pressed="false"><span aria-hidden="true">&#128263;</span> <span data-film-sound-label>Tap for sound</span></button>
+ </figure>
+ <div class="film-under"><p class="note mb0">AI voice · real app screens · captions on · 69 s</p><details class="film-script"><summary>Read the script</summary><p>{html.escape(FILM_SCRIPT)}</p></details></div>
+ <h3 class="display d-s mt3 film-row-h">Watch the apps</h3>
+ <ul class="spot-row" role="list">{spots}</ul>
+</div></section>""" + FILM_JS
+FILM_JS = r"""<script>(() => {
+  const f = document.querySelector('[data-film]'); if (!f) return;
+  const v = f.querySelector('video'), snd = f.querySelector('[data-film-sound]'), lab = f.querySelector('[data-film-sound-label]');
+  const tall = matchMedia('(max-width:700px) and (orientation:portrait)'), calm = matchMedia('(prefers-reduced-motion:reduce)');
+  const pick = () => { const t = tall.matches; f.classList.toggle('is-tall', t); v.poster = f.dataset[t ? 'poster9' : 'poster16']; return f.dataset[t ? 'src9' : 'src16']; };
+  let want = pick(), loaded = false;
+  const load = () => { if (loaded && v.dataset.src === want) return; const at = v.currentTime || 0, was = !v.paused; v.src = want; v.dataset.src = want; loaded = true; if (at) v.currentTime = at; if (was) v.play().catch(() => {}); };
+  const sound = (on) => { v.muted = !on; snd.setAttribute('aria-pressed', String(on)); lab.textContent = on ? 'Sound on' : 'Tap for sound'; snd.firstElementChild.innerHTML = on ? '&#128266;' : '&#128263;'; };
+  tall.addEventListener?.('change', () => { want = pick(); if (loaded) load(); });
+  new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting && e.intersectionRatio >= 0.35) { load(); if (!calm.matches || !v.muted) v.play().catch(() => {}); }
+    else if (!v.paused) v.pause();
+  }), { threshold: [0, 0.35, 0.7] }).observe(f);
+  snd.addEventListener('click', () => { load(); const on = v.muted; if (on) { v.loop = false; if (v.ended) v.currentTime = 0; } else v.loop = true; sound(on); v.play().catch(() => {}); });
+  v.addEventListener('click', () => snd.click());
+  v.addEventListener('ended', () => { sound(false); v.loop = true; v.currentTime = 0; v.play().catch(() => {}); });
+  document.querySelectorAll('[data-film-spot]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.spot video').forEach((o) => o.pause()); v.pause(); sound(false); v.loop = true;
+    const sv = document.createElement('video'); sv.src = b.dataset.filmSpot; sv.controls = true; sv.playsInline = true; sv.autoplay = true; sv.preload = 'auto';
+    sv.className = 'spot-video'; sv.setAttribute('aria-label', b.getAttribute('aria-label').replace('Play the ', ''));
+    b.replaceWith(sv); sv.play().catch(() => {}); sv.addEventListener('play', () => { document.querySelectorAll('.spot video').forEach((o) => { if (o !== sv) o.pause(); }); v.pause(); sound(false); v.loop = true; });
+  }));
+})();</script>"""
 pages["/"] = ("Above the Hill Developments — We build the way over it",
  "ATH is an invention company. Tell ATHOS what's stopping you — get an evidence-aware diagnosis, a clear path, and a builder who can take you above.",
  hero("home", "", "Above<br>the Hill",
@@ -529,6 +592,7 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
       extra='<div class="stack" aria-hidden="true">Plain truth<br>Higher ground<br>Real creation<br>For generations</div>',
       pos="72% 35%", mpos="58% 30%")
  + f'<div class="wrap ladder-dock">{ladder()}</div>'
+ + film_section()
  + f"""
 <section class="block"><div class="wrap split">
  <div><p class="eyebrow">Who we are</p><h2 class="display d-l mt1">Plain truth.<br>Higher ground.</h2>
