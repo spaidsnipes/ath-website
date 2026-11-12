@@ -121,7 +121,7 @@ FOOT = """</main>
    <div><img src="/assets/ath-logo-lockup.webp" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
     <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
    <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/pricing/">Prices</a><a href="/ai/">AI services</a><a href="/ai/growing-with-ai/">Growing with AI</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
-   <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a></div>
+   <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a><a href="/partners/">Partners &amp; Creator Crew</a></div>
    <div><p class="fh">World</p><a href="https://thewow.online/">WOW OS</a><a href="https://wavemotion.live/">Wavemotion</a><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
   <div class="foot-line"><span class="mantra2">Heavens above · A realm to explore · Multiple destinations · One builder</span><span>© <span data-year>2026</span> Above the Hill Developments Inc. <a class="sha-ar" href="https://mission.abovethehilldev.online/founders/login" rel="nofollow" aria-label="Founders" title="שַׁעַר">שַׁעַר</a></span></div>
@@ -1798,6 +1798,186 @@ pages["/ai/growing-with-ai/"] = ("Growing with AI: our recommendations for you |
  <div class="grow-out mt2" id="grow-out" hidden aria-live="polite"></div>
 </div></section>
 <script type="application/json" id="grow-data">{json.dumps({"needs": GROW_NEEDS, "recs": GROW_RECS}).replace("</", "<\\/")}</script>""" + GROW_JS)
+
+
+
+# ---------------------------------------------------------------- partners + creator crew (Founder order 2026-11-12, "WAP" = Whop campaign)
+# One page for everyone who wants to earn with ATH: the apartment tour, every door the key opens, the WOW Partner Program
+# (cash, run and paid by WOW: $10 of each different customer's first qualifying $20 World Pass payment, 7-day hold, Stripe
+# Connect, no multi-level), artists/podcasters placements (reviewed, never promised), and the ATH Creator Crew (NON-CASH:
+# 5 verified free-Passport sign-ups = a 30-day Creator Pass, granted by hand). Crew sign-ups and referred "claim my key"
+# requests go to ATHOS /api/lead (intents creator-crew / crew-key) so they land in the Call Desk lead list; nothing is counted
+# until ATH matches a real, distinct Passport. The same content runs on ATH's Whop store (whop.com/abovethehilldev).
+WOW = "https://thewow.online"
+PT_DOORS = [
+ ("WOW Passport", "Free", "Your one key. One sign-in for every ATH app, the Lounge, WOW Music, WOW Radio, WOW TV and WOW Academy's free lessons.", f"{WOW}/passport"),
+ ("World Pass", "$20 / month", "Premium of the one app you choose first, plus Basic of every other ATH app, WOW OS and every new app we open.", f"{WOW}/pass"),
+ ("WAVEMOTION", "$10 · $20 · $50", "Your home on the internet: music, videos, shop and bookings behind one link, with click analytics.", "https://wavemotion.live/"),
+ ("PowerTribes", "From $29 / month", "Your company's own tower: the sales floor, the dialer, the deals board and your AI workforce.", "https://powertribes.cloud/"),
+ ("WOW Studios", "From $29 / month", "Record, mix and cut the video in your browser, then send it straight to your channel.", "https://wowstudios.cloud/"),
+ ("Spaidbot", "From $19 / month", "Say what you need and Spaidbot builds it: pages, posts, plans.", "https://spaidbot.cloud/"),
+ ("WM Pro", "$10 · $20 · $30", "Market intelligence: who's buying, who's selling and where they're stacked, before you risk a dollar.", "https://wealthymindsetspro.com/"),
+ ("WOW Academy", "Free lessons with Passport", "Learn languages, money, business and history inside WOW OS. Teachers can run classes there.", f"{WOW}/"),
+]
+PT_CSS = """<style>
+.pt-doors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.pt-door{display:flex;flex-direction:column;gap:8px;padding:22px 20px;border:1px solid var(--gold-line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(201,164,92,.07),rgba(8,9,12,.4));text-decoration:none;min-height:100%}
+.pt-door:hover{border-color:var(--gold-hi)}
+.pt-door .n{font:500 21px/1.2 var(--display);color:var(--ivory)}
+.pt-door .p{font:600 13px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-hi)}
+.pt-door .d{font-size:15px;color:var(--ivory-dim)}
+.pt-earn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pt-earn .panel{display:flex;flex-direction:column;gap:10px}
+.pt-earn .big{font:500 clamp(30px,4vw,44px)/1 var(--display);color:var(--gold-hi)}
+.pt-earn ul{margin:0;padding-left:18px;color:var(--ivory-dim);font-size:15px}
+.pt-earn li{margin:4px 0}
+.pt-earn .ctas{margin-top:auto}
+.pt-kind{font:600 13px/1.2 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ivory-mute)}
+.pt-crew{font:500 clamp(28px,5vw,58px)/1.05 var(--display);letter-spacing:.06em;color:var(--ivory)}
+.pt-crew span{color:var(--gold-hi)}
+.pt-link{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.pt-link code{font:500 15px/1.4 ui-monospace,Menlo,monospace;color:var(--gold-hi);background:rgba(201,164,92,.08);border:1px solid var(--gold-line);border-radius:4px;padding:10px 12px;word-break:break-all;flex:1 1 260px}
+.pt-disc{border-left:2px solid var(--gold);padding:4px 0 4px 16px;color:var(--ivory-dim);font-size:15px}
+.pt-key{border:1px solid var(--gold);border-radius:var(--radius);padding:18px 20px;background:rgba(201,164,92,.08);margin-bottom:24px}
+@media (max-width:1100px){.pt-doors{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.pt-earn{grid-template-columns:1fr}}
+@media (max-width:560px){.pt-doors{grid-template-columns:1fr}}
+</style>"""
+PT_JS = r"""<script>(() => {
+  const API = window.ATH_API, qs = new URLSearchParams(location.search);
+  const slug = (s) => String(s || "").toLowerCase().replace(/^@/, "").replace(/[^a-z0-9_.-]+/g, "").slice(0, 32);
+  const crew = slug(qs.get("crew"));
+  try { if (crew) sessionStorage.setItem("ath_crew", crew); } catch {}
+  const crewNow = () => { try { return crew || sessionStorage.getItem("ath_crew") || ""; } catch { return crew; } };
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  async function post(body) {
+    const r = await fetch(API + "/api/lead", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || "ATH could not take that request right now. Please try again.");
+    return j;
+  }
+  const src = () => { let s = {}; try { s = JSON.parse(sessionStorage.getItem("ath_src") || "{}"); } catch {} return { ...s, crew: crewNow() || null, channel: qs.get("utm_source") || s.utm || "" }; };
+  // A visitor who arrived on someone's crew link: show who sent them, and take the claim before the Passport door.
+  const kb = document.getElementById("pt-keybox");
+  if (kb && crewNow()) { kb.hidden = false; kb.querySelector("[data-crew-name]").textContent = "@" + crewNow(); }
+  const kf = document.getElementById("pt-key-form");
+  kf?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const st = kf.querySelector(".form-status"), b = kf.querySelector("button[type=submit]"), d = Object.fromEntries(new FormData(kf).entries());
+    if (!d.name?.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email || "")) { st.className = "form-status err"; st.textContent = "Add your name and the email you'll use for your Passport."; return; }
+    b.disabled = true; st.className = "form-status"; st.textContent = "Saving…";
+    try {
+      await post({ name: d.name, email: d.email, company_fax: d.company_fax, intent: "crew-key", interest: "Free WOW Passport", message: "Claimed a free WOW Passport from the Creator Crew link of @" + crewNow() + ". Count only after a Passport with this email exists.", page: location.pathname, source: src() });
+      st.textContent = "Saved. Opening the Passport door…";
+      location.href = "https://thewow.online/passport";
+    } catch (err) { st.className = "form-status err"; st.textContent = err.message; b.disabled = false; }
+  });
+  // Creator Crew sign-up
+  const cf = document.getElementById("crew-form");
+  cf?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const st = cf.querySelector(".form-status"), b = cf.querySelector("button[type=submit]"), fd = new FormData(cf), d = Object.fromEntries(fd.entries());
+    const code = slug(d.handle);
+    if (!d.name?.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email || "")) { st.className = "form-status err"; st.textContent = "Please add your name and a valid email."; return; }
+    if (code.length < 2) { st.className = "form-status err"; st.textContent = "Add the handle you post from (letters, numbers, dots, dashes)."; return; }
+    if (d.rules !== "yes") { st.className = "form-status err"; st.textContent = "Please confirm the Creator Crew rules."; return; }
+    b.disabled = true; st.className = "form-status"; st.textContent = "Sending…";
+    const link = location.origin + "/partners/?crew=" + encodeURIComponent(code);
+    try {
+      const r = await post({ name: d.name, email: d.email, company_fax: d.company_fax, phone: d.phone || "", website: d.profile || "", intent: "creator-crew", interest: "ATH Creator Crew · " + (d.platform || ""),
+        message: ["Creator Crew sign-up", "Handle: @" + code, "Platform: " + (d.platform || "-"), "Profile: " + (d.profile || "-"), "Also wants: " + (fd.getAll("also").join(", ") || "-"), "Agreed to the Creator Crew rules and disclosure: yes", "Crew link: " + link].join("\n"), page: location.pathname, source: src() });
+      cf.innerHTML = `<p class="panel-title">You're in the Crew</p><p class="h-serif" style="font-size:26px">Welcome, ${esc(d.name)}.</p>
+        <p class="body">Your crew link:</p><div class="pt-link"><code id="pt-mylink">${esc(link)}</code><button type="button" class="btn btn-line btn-sm" id="pt-copy">Copy link</button></div>
+        <p class="body mt2">Post it with <b>#ad</b> or <b>“I'm in the ATH Creator Crew”</b>. When 5 different people get their free Passport through it, ATH checks them and turns on your 30-day Creator Pass.</p>
+        <p class="note">Next: get your own free Passport so ATH has somewhere to put your pass.</p>
+        <div class="ctas mt1"><a class="btn btn-gold" href="https://thewow.online/passport">Get my free Passport →</a></div>
+        ${r && r.lead ? `<p class="note mt2">Your reference: <b>${esc(r.lead)}</b></p>` : ""}`;
+      document.getElementById("pt-copy")?.addEventListener("click", async (ev) => { try { await navigator.clipboard.writeText(link); ev.target.textContent = "Copied"; } catch { ev.target.textContent = "Select and copy"; } });
+    } catch (err) { st.className = "form-status err"; st.textContent = err.message; b.disabled = false; }
+  });
+})();</script>"""
+
+def pt_door(n, p, d, h):
+    return f'<a class="pt-door" href="{h}" rel="noopener"><span class="n">{html.escape(n)}</span><span class="p">{html.escape(p)}</span><span class="d">{html.escape(d)}</span></a>'
+
+pages["/partners/"] = ("Partners & Creator Crew — earn with Above the Hill",
+ "Tour the Above the Hill apartment, see every door your WOW Passport opens, and the three ways to earn with ATH: the WOW Partner Program, artist and podcaster placements, and the ATH Creator Crew.",
+ PT_CSS + hero("ecosystem", "Partners · Creator Crew · Whop", "Come up the hill.<br>Bring people with you.",
+   "Above the Hill is a whole headquarters: your site, your channel, your studio, your sales tower and a market penthouse, all behind one free key. Here's every door, and every honest way to earn with us.",
+   btn("Join the Creator Crew", "#crew") + btn("Take the tour", "#tour", "line"), size="d-l")
+ + f"""<section class="block" id="tour" aria-labelledby="tour-h"><div class="wrap">
+ <div id="pt-keybox" class="pt-key" hidden><p class="panel-title" style="margin-bottom:6px">You were invited by <span data-crew-name></span></p>
+  <p class="body mb1">Claim your free WOW Passport. Leave the email you'll sign in with so your invite counts for them. It costs nothing, and no card is asked for.</p>
+  <form id="pt-key-form" class="grid g2" novalidate style="align-items:end">
+   <div class="field"><label class="lbl" for="k-name">Your name</label><input id="k-name" name="name" type="text" autocomplete="name" required></div>
+   <div class="field"><label class="lbl" for="k-email">Email for your Passport</label><input id="k-email" name="email" type="email" autocomplete="email" required></div>
+   <input type="text" name="company_fax" tabindex="-1" autocomplete="off" class="vh" aria-hidden="true">
+   <div><button class="btn btn-gold" type="submit">Claim my free key {ARR}</button><p class="form-status" role="status" aria-live="polite"></p></div>
+  </form></div>
+ <div class="block-head"><div><p class="eyebrow">The apartment tour</p><h2 class="display d-m mt1" id="tour-h">Here's your key.<br>Walk every room.</h2></div>
+  <p class="body mb0" style="max-width:46ch">A one-minute walk through the Above the Hill apartment: the living room is your WAVEMOTION home, then WOW TV, the PowerTribes tower, WOW Studios, Spaidbot and the WM Pro penthouse.</p></div>
+ <figure class="film-frame" data-film data-src16="{FILM_BASE}ath-master-16x9.mp4" data-src9="{FILM_BASE}ath-master-9x16.mp4" data-poster16="{FILM_BASE}ath-master-16x9.jpg" data-poster9="{FILM_BASE}ath-master-9x16.jpg">
+  <video class="film-video" muted playsinline loop preload="none" poster="{FILM_BASE}ath-master-16x9.jpg" aria-label="Commercial: Welcome to Above The Hill, the apartment tour. Captions are in the picture."></video>
+  <button type="button" class="film-sound" data-film-sound aria-pressed="false"><span aria-hidden="true">&#128263;</span> <span data-film-sound-label>Tap for sound</span></button>
+ </figure>
+ <div class="film-under"><p class="note mb0">AI voice · real app screens · captions on</p><details class="film-script"><summary>Read the script</summary><p>{html.escape(FILM_SCRIPT)}</p></details></div>
+</div></section>
+<section class="block" id="doors" aria-labelledby="doors-h"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">Everything we offer</p><h2 class="display d-m mt1" id="doors-h">One key.<br>Every door.</h2></div>
+  <p class="body mb0" style="max-width:46ch">The Passport is free. The first app you take at $20 becomes your World Pass: Premium of that app plus Basic of every other. Prices are monthly unless marked.</p></div>
+ <div class="pt-doors">{"".join(pt_door(*d) for d in PT_DOORS)}</div>
+ <p class="note mt2">Need it built for you? <a class="gold" href="/websites/">ATH websites</a> · <a class="gold" href="/pricing/">ATH plans</a> · <a class="gold" href="/build/">ATH services</a>.</p>
+</div></section>
+<section class="block" id="earn" aria-labelledby="earn-h"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">How people make money with us</p><h2 class="display d-m mt1" id="earn-h">Three honest ways<br>to earn with ATH</h2></div>
+  <p class="body mb0" style="max-width:46ch">No income promises. What you earn depends on the real people who join through you. Nobody earns for recruiting other partners.</p></div>
+ <div class="pt-earn">
+  <div class="panel panel-pad"><p class="pt-kind">Cash · for creators and businesses</p><h3 class="display d-s">WOW Partner Program</h3><p class="big">$10</p>
+   <p class="body mb0">from each different customer's first qualifying $20 World Pass payment through your WOW link.</p>
+   <ul><li>Apply with your free Passport. ATH approves each partner.</li><li>7-day refund hold, then a transfer to your connected Stripe account.</li><li>Renewals don't earn a second commission. One level only, never for recruiting.</li></ul>
+   <div class="ctas">{btn("Apply as a partner", WOW + "/partner")}</div></div>
+  <div class="panel panel-pad"><p class="pt-kind">Artists · podcasters · shows</p><h3 class="display d-s">Your link + a placement</h3><p class="big">$10 <span style="font-size:.5em;color:var(--ivory-dim)">+ airtime</span></p>
+   <p class="body mb0">Use your Partner link with your fans, and ask ATH to place your music, podcast or show on WOW Radio and WOW TV.</p>
+   <ul><li>Same Partner terms: $10 per different customer's first $20 World Pass payment.</li><li>ATH reviews every placement request. Placement is not guaranteed.</li><li>Your channel page and your WAVEMOTION home work together.</li></ul>
+   <div class="ctas">{btn("Ask for a placement", "#crew", "line")}</div></div>
+  <div class="panel panel-pad"><p class="pt-kind">Non-cash · anyone who posts</p><h3 class="display d-s">ATH Creator Crew</h3><p class="big">5 = 30</p>
+   <p class="body mb0">Bring 5 people to a free WOW Passport with your crew link and unlock a 30-day Creator Pass.</p>
+   <ul><li>A reward of access, not money. No cash is paid.</li><li>Every sign-up is checked: a real, different person with their own Passport.</li><li>Label your posts #ad or “I'm in the ATH Creator Crew”.</li></ul>
+   <div class="ctas">{btn("Join the Crew", "#crew")}</div></div>
+ </div>
+</div></section>
+<section class="block" id="crew" aria-labelledby="crew-h"><div class="wrap split" style="align-items:start">
+ <div><p class="eyebrow">ATH Creator Crew</p><h2 class="pt-crew mt1" id="crew-h">POST.<br><span>CONNECT.</span><br>UNLOCK.</h2>
+  <ol class="steps mt2" style="grid-template-columns:1fr">
+   <li><span class="st-n">01 · POST</span><b>Get your crew link and post about ATH</b><span>Clips of the tour, your own take, a walk through an app. Label it #ad or “I'm in the ATH Creator Crew”.</span></li>
+   <li><span class="st-n">02 · CONNECT</span><b>People claim a free Passport through your link</b><span>They leave the email they sign in with, so ATH can match the Passport to you.</span></li>
+   <li><span class="st-n">03 · UNLOCK</span><b>5 verified sign-ups = 30-day Creator Pass</b><span>ATH checks each one, then turns the pass on for your own Passport.</span></li>
+  </ol>
+  <div class="pt-disc mt2"><b>Disclosure.</b> The Creator Crew reward is access to ATH apps for 30 days. It is not cash and has no cash value. ATH's paid Content Rewards campaign on Whop is not open yet; when it is, it will be announced here with its own budget and rules. Buying sign-ups, fake or duplicate accounts, spam and misleading claims don't count and can end your membership. ATH can change or end the Crew with notice on this page.</div>
+ </div>
+ <form class="panel panel-pad" id="crew-form" novalidate>
+  <p class="panel-title">Join the Creator Crew</p>
+  <div class="grid g2"><div class="field"><label class="lbl" for="c-name">Your name</label><input id="c-name" name="name" type="text" autocomplete="name" required></div>
+   <div class="field"><label class="lbl" for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required></div></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="c-handle">Handle you post from</label><input id="c-handle" name="handle" type="text" autocapitalize="off" spellcheck="false" maxlength="40" placeholder="@yourname" required></div>
+   <div class="field"><label class="lbl" for="c-platform">Main platform</label><select id="c-platform" name="platform"><option>TikTok</option><option>Instagram</option><option>YouTube</option><option>X</option><option>Facebook</option><option>Twitch</option><option>Podcast</option><option>Other</option></select></div></div>
+  <div class="grid g2"><div class="field"><label class="lbl" for="c-profile">Profile link <span class="mute">(optional)</span></label><input id="c-profile" name="profile" type="url" inputmode="url" autocomplete="url"></div>
+   <div class="field"><label class="lbl" for="c-phone">Phone <span class="mute">(optional)</span></label><input id="c-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40"></div></div>
+  <fieldset class="field rv-fs"><legend class="lbl">I'm also interested in <span class="mute">(optional)</span></legend><div class="rv-checks">
+   <label class="check"><input type="checkbox" name="also" value="WOW Partner Program (cash)"> <span>The WOW Partner Program (cash)</span></label>
+   <label class="check"><input type="checkbox" name="also" value="Placement on WOW Radio / WOW TV"> <span>A placement on WOW Radio or WOW TV</span></label>
+   <label class="check"><input type="checkbox" name="also" value="A site or plan for my own business"> <span>A site or plan for my own business</span></label></div></fieldset>
+  <label class="check"><input type="checkbox" name="rules" value="yes" required> <span>I'll label my posts #ad or “I'm in the ATH Creator Crew”, I understand the reward is 30 days of access (not cash), and I won't buy or fake sign-ups.</span></label>
+  <input type="text" name="company_fax" tabindex="-1" autocomplete="off" class="vh" aria-hidden="true">
+  <button class="btn btn-gold mt2" type="submit">Get my crew link {ARR}</button>
+  <p class="note mt1">ATH uses this only to run the Crew and reply to you. See <a class="gold" href="/privacy/">Privacy</a>.</p>
+  <p class="form-status" role="status" aria-live="polite"></p>
+ </form>
+</div></section>
+<section class="block"><div class="wrap"><div class="panel panel-pad" style="display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+ <div><p class="eyebrow">Start with the key</p><h2 class="display d-m mt1">Your WOW Passport is free</h2><p class="body mt1 mb0">One sign-in for every ATH app. Take the World Pass when you're ready.</p></div>
+ <div class="ctas" style="margin:0">{btn("Get my free Passport", WOW + "/passport")}{btn("See the World Pass", WOW + "/pass", "line")}</div>
+</div></div></section>""" + FILM_JS + PT_JS)
 
 
 # ---------------------------------------------------------------- write
