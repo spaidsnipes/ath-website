@@ -120,7 +120,7 @@ FOOT = """</main>
   <div class="foot-grid">
    <div><img src="/assets/ath-logo-lockup.webp" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
     <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
-   <div><p class="fh">Start</p><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/pricing/">Prices</a><a href="/ai/">AI services</a><a href="/ai/growing-with-ai/">Growing with AI</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
+   <div><p class="fh">Start</p><a href="/line-check/">15-second Line Check</a><a href="/tour/">Key Fob Tour</a><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/pricing/">Prices</a><a href="/ai/">AI services</a><a href="/ai/growing-with-ai/">Growing with AI</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
    <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a><a href="/partners/">Partners &amp; Creator Crew</a></div>
    <div><p class="fh">World</p><a href="https://thewow.online/">WOW OS</a><a href="https://wavemotion.live/">Wavemotion</a><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
@@ -680,6 +680,7 @@ pages["/diagnose/"] = ("What's your hill? — ATHOS Diagnostic",
    <div class="ctas">
     <button class="btn btn-gold" type="submit" id="diag-go">Begin diagnosis {ARR}</button>
     <a class="btn btn-line" href="/contact/?intent=describe">I prefer to describe it myself {ARR}</a>
+    <a class="btn btn-line" href="/line-check/">15-second Line Check {ARR}</a>
    </div>
    <p class="form-status" id="diag-status" role="status" aria-live="polite"></p>
   </form>
@@ -1985,6 +1986,86 @@ pages["/partners/"] = ("Partners & Creator Crew — earn with Above the Hill",
  <div class="ctas" style="margin:0">{btn("Get my free Passport", WOW + "/passport")}{btn("See the World Pass", WOW + "/pass", "line")}</div>
 </div></div></section>""" + FILM_JS + PT_JS)
 
+
+# ---------------------------------------------------------------- WOWZER lab (2026-11-12): Line Check + Key Fob Tour
+# The Founder's sales motion as two live tools: consultation (the 15-second "quality service check", shared line vs
+# dedicated line) and the apartment tour (hand over the key fob, walk every room). Real measurements only: the ATHOS
+# reader (/api/diagnose), public DNS-over-HTTPS, and live pings of each ATH destination from the visitor's own device.
+# No prices on either page (value before price); the close is one step to the Call Desk (/api/lead, intent key-fob-tour).
+LC_HEAD = '<link rel="stylesheet" href="/assets/line.css"><script src="/assets/line.js" defer></script>'
+pages["/line-check/"] = ("Line Check — is your business on a shared line or its own? | Above the Hill",
+ "A 15-second check of the line customers use to reach your business: your own address or someone else's, does it answer, is it secure, phone-ready, and is your email on your own name. Real measurements, unknowns marked.",
+ LC_HEAD + f"""<section class="lc-hero"><div class="wrap lc-grid">
+ <div>
+  <p class="eyebrow">Line Check · 15 seconds · free</p>
+  <h1 class="display d-l mt1">Shared line,<br>or your own?</h1>
+  <p class="lede">Most businesses are on a shared line: customers find them inside Facebook, Yelp or a builder's free address, right next to the competition. Type the link people use to find you and watch the line draw itself.</p>
+  <form id="lc-form" class="lc-form mt2" novalidate>
+   <div class="row">
+    <div><label class="lbl" for="lc-url">The link customers use</label><input id="lc-url" name="u" type="url" inputmode="url" autocomplete="url" placeholder="yourbusiness.com or facebook.com/yourpage" required></div>
+    <div><label class="lbl" for="lc-biz">Business name <span class="mute">(optional)</span></label><input id="lc-biz" name="b" type="text" autocomplete="organization" maxlength="80" placeholder="Your business"></div>
+   </div>
+   <div class="ctas"><button class="btn btn-gold" type="submit" id="lc-go">Check my line {ARR}</button></div>
+   <p class="form-status" id="lc-status" role="status" aria-live="polite"></p>
+  </form>
+  <p class="note mt2">How it measures: the ATHOS reader opens your one public page from our server (answer, HTTPS, phone setting, buttons and contact links), and your browser asks public DNS about your email records. It can't see your traffic, sales or what customers think; those stay <b>unknown</b>. Nothing is charged and nothing is sent to you.</p>
+ </div>
+ <div>
+  <div class="panel lc-panel"><div class="lc-stage"><svg id="lc-svg" viewBox="0 0 600 160" role="img" aria-label="Your line: seven checkpoints that light up as each one is measured"></svg></div><ol class="lc-points" id="lc-points"></ol></div>
+  <div class="panel lc-verdict" id="lc-verdict" hidden aria-live="polite"></div>
+  <div class="lc-next" id="lc-next" hidden><a class="btn btn-gold" id="lc-tour" href="/tour/">Walk your apartment {ARR}</a> <a class="btn btn-line" href="/sites/">See lines we've built {ARR}</a></div>
+ </div>
+</div></section>""")
+
+TOUR_ROOMS = [
+ ("lobby", "Lobby", "Your line, measured", '<span id="lobby-line">Loading your Line Check…</span>', "/line-check/", "Open your Line Check", None),
+ ("site", "Room 1", "Your dedicated line", "Your own address, made for phones: your name, your number and a button that books or buys. The front door that's yours, not a platform's.", "/sites/", "See real sites", "/sites/"),
+ ("wave", "Room 2", "WAVEMOTION studio", "One video in, a week of clips out. Your long videos come back as short vertical clips for TikTok, Reels and Shorts.", "https://wavemotion.live/", "Open the studio", "https://wavemotion.live/"),
+ ("passport", "Room 3", "WOW Passport", "One free key for the whole World of Wealth. Every ATH app signs in with it.", "https://thewow.online/passport", "Open the Passport door", "https://thewow.online/passport"),
+ ("lounge", "Room 4", "WOW Lounge", "The members' room of WOW OS, where your customers can meet you and each other.", "https://thewow.online/lounge", "Step into the Lounge", "https://thewow.online/lounge"),
+ ("academy", "Room 5", "WOW Academy", "Free lessons and whole schools, including The Orchard: the Money Tree and Quantum-ply, taught in our own words.", "https://thewow.online/academy", "Open the Academy", "https://thewow.online/academy"),
+ ("market", "Room 6", "WOW Marketplace", "Where your products and services sit in front of every Passport holder.", "https://thewow.online/marketplace", "Walk the Marketplace", "https://thewow.online/marketplace"),
+ ("tribes", "Room 7", "PowerTribes office", "Your team's tower: leads, pipeline and follow-ups in one office.", "https://powertribes.cloud/", "Open the office", "https://powertribes.cloud/"),
+ ("spaid", "Room 8", "Spaidbot concierge", "Your AI teammate. Ask it to answer, build or follow up, and it gets to work.", "https://spaidbot.cloud/", "Meet Spaidbot", "https://spaidbot.cloud/"),
+]
+def tour_room(k, door, name, does, href, cta, ping):
+    ext = href.startswith("http")
+    return f"""<article class="room" id="room-{k}" data-state="dark"{f' data-ping="{ping}"' if ping else ''} hidden>
+ <div class="room-art"><img src="/assets/art/tour/{k}.webp" alt="" loading="lazy"><span class="room-door">{door}</span></div>
+ <div class="room-body"><h3>{name}</h3><p>{does}</p><p class="room-chip" aria-live="polite">{'Lights off until you walk in' if ping else 'Your lobby'}</p>
+ <a class="btn btn-line btn-sm" href="{href}"{' target="_blank" rel="noopener"' if ext else ''}>{cta} {ARR}</a></div>
+</article>"""
+pages["/tour/"] = ("Key Fob Tour — walk every room of your Above the Hill building",
+ "Hand over the key fob and walk the whole building: your own website line, WAVEMOTION, the WOW Passport, Lounge, Academy, Marketplace, PowerTribes and Spaidbot. Each room lights up only when that live app answers from your device.",
+ LC_HEAD + f"""<section class="tour-hero"><img src="/assets/art/tour/lobby.webp" alt="" fetchpriority="high"><div class="wrap">
+ <p class="eyebrow">Key Fob Tour · <span data-biz>your building</span></p>
+ <h1 class="display d-l mt1">This isn't a website.<br>It's a smart building.</h1>
+ <p class="lede" style="max-width:40ch">Tap the key fob and walk every room. A room's lights come on only when that real app answers from your device, right now. If one is dark, it says so.</p>
+ <button class="fob" id="fob" type="button"><span class="fob-key" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#140f06" stroke-width="2"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M21 12v2"/></svg></span>Tap your key fob</button>
+ <p class="tour-count" id="tour-count" aria-live="polite">9 rooms · lights off</p>
+ <p class="form-status" id="tour-status" role="status" aria-live="polite"></p>
+ <p class="room-note mt1">Room pictures are AI-made scenes; every door opens a real, live app.</p>
+</div></section>
+<section class="block" style="padding-top:36px"><div class="wrap" id="tour">
+ <div class="rooms">{"".join(tour_room(*r) for r in TOUR_ROOMS)}</div>
+ <div class="panel key-room" id="key-room" hidden>
+  <p class="eyebrow">Last room · your key</p>
+  <h2 class="display d-m mt1">The keys are yours, <span data-biz>neighbor</span>.</h2>
+  <p class="body" style="max-width:60ch">You've seen every room with the lights on. Pick the time that works and a real person from Above The Hill walks you through moving in, with your Line Check already open. All we need is your name.</p>
+  <form id="key-form" class="key-form mt2" novalidate>
+   <div class="row">
+    <div><label class="lbl" for="k-name">Your name</label><input id="k-name" name="name" type="text" autocomplete="name" required></div>
+    <div><label class="lbl" for="k-email">Email you check</label><input id="k-email" name="email" type="email" autocomplete="email" required></div>
+    <div><label class="lbl" for="k-phone">Phone <span class="mute">(optional)</span></label><input id="k-phone" name="phone" type="tel" autocomplete="tel"></div>
+   </div>
+   <fieldset style="border:0;padding:0;margin:14px 0 0"><legend class="lbl">What time works best?</legend>
+    <div class="when"><label><input type="radio" name="when" value="today" checked> Later today</label><label><input type="radio" name="when" value="tomorrow-am"> Tomorrow morning</label><label><input type="radio" name="when" value="tomorrow-pm"> Tomorrow afternoon</label></div></fieldset>
+   <div class="hp" aria-hidden="true"><label>Company fax<input name="company_fax" tabindex="-1" autocomplete="off"></label></div>
+   <div class="ctas"><button class="btn btn-gold" type="submit">Get my key {ARR}</button><a class="btn btn-line" href="tel:+19189600164">Call (918) 960-0164</a></div>
+   <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+ </div>
+</div></section>""")
 
 # ---------------------------------------------------------------- write
 def write():
