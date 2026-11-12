@@ -20,7 +20,7 @@ const text = (s) => main(s).replace(/<script(?![^>]*application\/json)[\s\S]*?<\
 
 test('the retired $100 / $200 website checkouts are not live; the websites come from the price book', () => {
   for (const id of ['ath-quick-start', 'ath-business-growth']) assert.notEqual(cat.offers.find((o) => o.id === id)?.status, 'LIVE', id);
-  assert.ok(PB_ITEMS.some((i) => i.id === 'website-starter' && i.price === '$250 one time'));
+  assert.ok(PB_ITEMS.some((i) => i.id === 'website-starter' && i.price === '$250 + $25 setup, one time'));
 });
 for (const r of ROUTES) test(`/${r}: AI labelled; every price is a price-book price; every card button is a price-book or live Stripe link`, () => {
   const s = page(r), t = text(s);

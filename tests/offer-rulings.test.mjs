@@ -77,8 +77,8 @@ test('catalog.json carries the 2026-11-07 matrix (what the public Spaidbot answe
 
 test('the ATH Developments business offers are untouched by the matrix', () => {
   assert.match(offer('ath-plans').price, /^\$100 to \$8,000 a month$/);
-  assert.equal(offer('ath-website-starter').price, '$250 one time');
-  assert.equal(offer('ath-website-business').price, '$500 one time');
+  assert.equal(offer('ath-website-starter').price, '$250 + $25 setup, one time');
+  assert.equal(offer('ath-website-business').price, '$500 + $75 setup, one time');
   assert.match(offer('ath-ai-services').price, /^Speed-to-Lead \$200\/month/);
   assert.equal(offer('ath-garden-check').price, '$20 one time');
 });

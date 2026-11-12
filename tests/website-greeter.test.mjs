@@ -51,6 +51,6 @@ test('the ONE price book (2026-10-31) on industry + calculator pages: 15 steps $
     assert.match(panel, /You pay the one-time setup today\. Your monthly plan starts 30 days later/, r); // Founder 2026-11-01: setup is the upfront charge
     assert.doesNotMatch(s, /free trial|free month of|\bWild\b|Quick Start|Business Growth/i, r);
     assert.match(s, /Services on their own · not part of a plan/, r);
-    for (const t of ['Speed-to-Lead', '$200 a month', 'Review AI', '$300 a month', '$500 a month', 'Starter Website', '$250 one time', 'Business Website', '$500 one time']) assert.ok(s.includes(t), `${r}: ${t}`);
+    for (const t of ['Speed-to-Lead', '$200 a month', 'Review AI', '$300 a month', '$500 a month', 'Starter Website', '$250 + $25 setup, one time', 'Business Website', '$500 + $75 setup, one time']) assert.ok(s.includes(t), `${r}: ${t}`);
   }
 });

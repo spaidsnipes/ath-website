@@ -25,7 +25,8 @@
         "Hosting included"
       ],
       "ecosystem": [],
-      "pay_url": ""
+      "pay_url": "",
+      "setup": 25
     },
     {
       "id": "website-business",
@@ -43,7 +44,8 @@
         "Hosting included"
       ],
       "ecosystem": [],
-      "pay_url": ""
+      "pay_url": "",
+      "setup": 75
     },
     {
       "id": "app-starter",
@@ -228,24 +230,7 @@
   },
   "services_retained": {
     "note": "Oct 7 prices the Oct 13 order did not address. Kept published until the Founder decides (see decision D-006).",
-    "clips": [
-      [
-        10,
-        75
-      ],
-      [
-        20,
-        125
-      ],
-      [
-        30,
-        175
-      ],
-      [
-        40,
-        225
-      ]
-    ],
+    "clips": [],
     "starts": [
       {
         "id": "living-destination",
@@ -373,7 +358,7 @@
       "id": "ath-website-starter",
       "business": "ATH Developments",
       "name": "Starter Website",
-      "price": "$250 one time",
+      "price": "$250 + $25 setup, one time",
       "status": "BOOKABLE",
       "buy": "https://abovethehilldev.online/contact/?intent=services&package=website-starter",
       "fulfillment": "Written scope, then build; card checkout switches on when its Stripe price is created.",
@@ -383,7 +368,7 @@
       "id": "ath-website-business",
       "business": "ATH Developments",
       "name": "Business Website",
-      "price": "$500 one time",
+      "price": "$500 + $75 setup, one time",
       "status": "BOOKABLE",
       "buy": "https://abovethehilldev.online/contact/?intent=services&package=website-business",
       "fulfillment": "Written scope, then build; card checkout switches on when its Stripe price is created.",

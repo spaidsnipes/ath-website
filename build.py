@@ -241,7 +241,7 @@ def wm_rows():
 def catalog_js():
     m = {}
     for p in PKG:
-        m[p["id"]] = {"label": f'{p["name"]} — {"from " if p["from"] else ""}{money(p["price"])}{"" if p["from"] else " one time"}', "terms": True}
+        m[p["id"]] = {"label": f'{p["name"]} — {"from " if p["from"] else ""}{money(p["price"])}{(" + " + money(p["setup"]) + " setup") if p.get("setup") else ""}{"" if p["from"] else " one time"}', "terms": True}
     for t, p, s, i in STARTS: m[s] = {"label": f"{t} — from ${p}"}
     for p in WM["plans"]: m[p["id"]] = {"label": f'WAVEMOTION {p["name"]} — ${p["price"]}/month ({p["clips"]} standard clips)'}
     for p in PLANS: m["plan-" + p["key"].replace("_", "-")] = {"label": f'{p["name"]} plan — ${p["setup"]:,} setup today, then ${p["monthly"]:,} a month starting 30 days later', "terms": True}
@@ -384,6 +384,8 @@ def wp_value(head=True, eyebrow="Passport · the whole ecosystem"):
 # One grouped "what we do" map. Every card names the ATH owner (Founder ownership order, 2026-10-21: no new
 # standalone Content OS brand), an honest status, a price from the registry or "By quote", and a real next step.
 P = {p["id"]: p for p in PKG}
+# ATH websites always show the one-time hosting setup the card checkout charges (Founder 2026-11-01; "+ setup" on every page, 2026-11-12).
+def site_price(pid): return f'{money(P[pid]["price"])} + {money(P[pid]["setup"])} setup'
 def pk(pid):
     p = P[pid]
     if p.get("price_max"): return f'{money(p["price"])}–{money(p["price_max"])}'
@@ -404,7 +406,7 @@ def caps():
     wm = cat_price("wm-plans").replace("/month", " a month")
     return [
      ("presence", "Build your presence", "Websites & digital experience", [
-      ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'{money(P["website-starter"]["price"])} or {money(P["website-business"]["price"])} one time, or in every plan', "See every price", "/pricing/#services", True),
+      ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'{site_price("website-starter")} or {site_price("website-business")} one time, or in every plan', "See every price", "/pricing/#services", True),
       ("Website health check", f'The {GC["name"]}: a {GC["minutes"]} minute live check of the site you already have, on a video call you watch. You learn what needs fixing and what doesn\'t.', "ATH Web Studio", "live", f"{GC_PRICE} one time", GC_CTA if not GC_PAY else "See the Garden Check", GC_PAGE, True),
       ("Brand themes & reusable sections", "Three tuned site styles built from reusable sections: menus and price lists, galleries, hours, story.", "ATH Web Studio", "inc", "In every site", "See sample sites", "/sites/", False),
       ("Preview & approval", "You see your site on a preview link, kept out of search, before it goes live. Revisions as your package states.", "ATH Web Studio", "inc", "In every site", "See every price", "/pricing/#services", True),
@@ -486,7 +488,7 @@ COMPARE_PLATFORM = [
 ]
 def compare_plus():
     return [
-     ("Websites built for you", f'A Starter Website at {money(P["website-starter"]["price"])} or a Business Website at {money(P["website-business"]["price"])}, one time, or a website inside every ATH plan.', "live"),
+     ("Websites built for you", f'A Starter Website at {site_price("website-starter")} or a Business Website at {site_price("website-business")}, one time, or a website inside every ATH plan.', "live"),
      ("Video clips & campaigns", "WAVEMOTION plans " + cat_price("wm-plans").replace("/month", " a month") + ", clips included.", "live"),
      ("A free diagnosis before you buy", "ATHOS tells you what's actually in the way, including when you need nothing.", "live"),
      ("Identity, membership & community", "Passport (free), World Pass and the rooms of WOW OS.", "live"),
@@ -653,7 +655,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
    <li>{ic("door","icon-sm")}<div><b>Basic — $10 a month per app</b><span>WAVEMOTION turns one long video into a week of short clips you approve before they post. Starter (Basic) $10 · Creator (Premium) $20 · Pro $50 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>{WP_RULE} {WP_NOTE} Available now on WOW OS, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
    <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro: a free guest account, WM Pro Basic $10/month, Premium $20/month and Auto-trading $30/month. Spaidbot: Personal $19, Builder $49, Operations $99 a month. WOW Studios: Solo $29, Creator $59, Pro $119 a month. PowerTribes launch prices: Solo $29 (standard <s>$49</s>), Team $79 (<s>$149</s>), Business OS $179 (<s>$349</s>) a month. Creator Passport: Launch $40, Grow $75, Pro $100, Studio $150 a month. <a class="gold" href="https://thewow.online/plans" rel="noopener">See the plans</a>. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
-   <li>{ic("peaks","icon-sm")}<div><b>ATH plans and services — every price published</b><span>ATH plans from $100 to $8,000 a month, one ladder; websites $250 (Starter) and $500 (Business), one time; WAVEMOTION starts at $10 a month, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/pricing/">See every price</a>.</span></div></li>
+   <li>{ic("peaks","icon-sm")}<div><b>ATH plans and services — every price published</b><span>ATH plans from $100 to $8,000 a month, one ladder; websites {site_price("website-starter")} (Starter) and {site_price("website-business")} (Business), one time; WAVEMOTION starts at $10 a month, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/pricing/">See every price</a>.</span></div></li>
   </ul></div>
 </div></section>""" + wp_value() + cta_block())
 
@@ -990,7 +992,7 @@ pages["/free-look/"] = ("Free website look — Above the Hill",
  f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">Free · no obligation</p><h1 class="display d-l mt1">See your business<br>online, free</h1>
   <p class="lede">Leave your name and number. A person at ATH looks at how customers find you today and sends you a free look at your new site.</p>
-  <ul class="pkg-list mt2"><li>Starter Website: <b>$250 one time</b>, preview first; you pay only if you love it</li><li>Up to 5 pages, linked to the booking or ordering you already use, with a year of small updates: <b>$500 one time</b></li><li>Or an ATH plan with your website, missed-call text-back and review requests in it: <b>from $100 a month</b> (Presence). <a class="gold" href="/pricing/">See every plan</a></li></ul>
+  <ul class="pkg-list mt2"><li>Starter Website: <b>{site_price("website-starter")}, one time</b>, preview first; you pay only if you love it</li><li>Up to 5 pages, linked to the booking or ordering you already use, with a year of small updates: <b>{site_price("website-business")}, one time</b></li><li>Or an ATH plan with your website, missed-call text-back and review requests in it: <b>from $100 a month</b> (Presence). <a class="gold" href="/pricing/">See every plan</a></li></ul>
   <p class="body mt2">See real examples: <a class="gold" href="/sites/">sample sites ATH built</a>.</p></div>
  <form class="panel panel-pad" id="lead-form" novalidate>
   <input type="hidden" name="intent" value="free-look">
@@ -1045,7 +1047,7 @@ if _g:
   <p class="lede">Real products from the ATH Store, checkout by Shopify. Prices shown are from {_g[1]}; your cart shows the current price and shipping before you pay. Order early: shipping times vary by item.</p>
   <div class="ctas mt2">{btn("Browse all in WOW Marketplace", "https://thewow.online/marketplace")}{btn("Gift a business a website", "/free-look/", "line")}</div></div></section>""" + _g[0] + f"""
 <section class="block"><div class="wrap"><div class="panel panel-pad"><p class="eyebrow">For the business owner on your list</p><h2 class="display d-m mt1">Get them found before the holiday rush</h2>
-  <p class="body">A mobile website for their business, <b>$250 one time</b>. Up to 5 pages, linked to the booking or ordering they already use, with a year of small updates, is $500. Order early for the holidays: ATH confirms the go-live date when their info arrives.</p>
+  <p class="body">A mobile website for their business, <b>{site_price("website-starter")}, one time</b>. Up to 5 pages, linked to the booking or ordering they already use, with a year of small updates, is {site_price("website-business")}. Order early for the holidays: ATH confirms the go-live date when their info arrives.</p>
   <div class="ctas mt1">{btn("Get a free look", "/free-look/")}{btn("See sample sites", "/sites/", "line")}</div></div></div></section>""")
 
 pages["/start/"] = ("Start your build — ATH intake",
@@ -1160,12 +1162,12 @@ NICHES = [
 def city_page(cslug, city, n):
     nslug, who, payoff, line, gets = n
     others = "".join(f'<li><a class="gold" href="/websites/{cslug}/{o[0]}/">Websites for {o[1]} in {city}</a></li>' for o in NICHES if o[0] != nslug)
-    return (f"Websites for {who} in {city}, OK — {money(WEB_STARTER['price'])} one time | Above the Hill",
-     f"{payoff}. A mobile website for {who} in {city}, Oklahoma: {money(WEB_STARTER['price'])} one time, go-live date confirmed with you. Local team, no contract.",
+    return (f"Websites for {who} in {city}, OK — {site_price('website-starter')}, one time | Above the Hill",
+     f"{payoff}. A mobile website for {who} in {city}, Oklahoma: {site_price('website-starter')}, one time, go-live date confirmed with you. Local team, no contract.",
      f"""<section class="block" style="padding-top:56px"><div class="wrap split" style="align-items:start">
  <div><p class="eyebrow">{city}, Oklahoma · local team</p><h1 class="display d-l mt1">{payoff}.</h1>
   <p class="lede">{line}</p>
-  <ul class="pkg-list mt2"><li><b>What you get:</b> {gets}</li><li><b>How soon:</b> a 5-minute form, then ATH confirms your go-live date</li><li><b>Price:</b> {money(WEB_STARTER['price'])} one time, no contract, no monthly fee. Up to 5 pages, linked to the booking or ordering you already use, with a year of small updates: {money(WEB_BUSINESS['price'])}. Or get your site inside an ATH plan, from $100 a month.</li></ul>
+  <ul class="pkg-list mt2"><li><b>What you get:</b> {gets}</li><li><b>How soon:</b> a 5-minute form, then ATH confirms your go-live date</li><li><b>Price:</b> {site_price('website-starter')}, one time, no contract, no monthly fee. Up to 5 pages, linked to the booking or ordering you already use, with a year of small updates: {site_price('website-business')}. Or get your site inside an ATH plan, from $100 a month.</li></ul>
   <div class="ctas mt2">{btn("Book a call", WEB_BOOK)}{btn("See every price", "/pricing/", "line")}</div>
   <p class="body mt2">Not ready? <a class="gold" href="/free-look/">Get a free look</a> at what your site could be, or <a class="gold" href="/sites/">open the sample sites</a> on your phone.</p></div>
  <div class="panel panel-pad"><p class="eyebrow">Why it works</p><h2 class="display d-m mt1">People are already searching</h2>
@@ -1176,9 +1178,9 @@ def city_page(cslug, city, n):
 for cslug, city in CITIES:
     for n in NICHES: pages[f"/websites/{cslug}/{n[0]}/"] = city_page(cslug, city, n)
 pages["/websites/"] = ("Websites for local businesses in Tulsa, Broken Arrow and Bixby | Above the Hill",
- f"Websites for {money(WEB_STARTER['price'])} one time for barbers, salons, restaurants, bakeries, auto shops, cleaners and small businesses in Tulsa, Broken Arrow and Bixby, Oklahoma.",
+ f"Websites for {site_price('website-starter')}, one time for barbers, salons, restaurants, bakeries, auto shops, cleaners and small businesses in Tulsa, Broken Arrow and Bixby, Oklahoma.",
  f"""<section class="block" style="padding-top:56px"><div class="wrap"><p class="eyebrow">Local · Tulsa area</p><h1 class="display d-l mt1">A website for the customers<br>already looking for you</h1>
- <p class="lede">{money(WEB_STARTER['price'])} one time, go-live date confirmed with you. Pick your town and your kind of business.</p>
+ <p class="lede">{site_price('website-starter')}, one time, go-live date confirmed with you. Pick your town and your kind of business.</p>
  <div class="grid g3 mt2">""" + "".join(f'<div class="panel panel-pad"><h2 class="display d-m">{city}</h2><ul class="pkg-list">' + "".join(f'<li><a class="gold" href="/websites/{cslug}/{n[0]}/">{n[1].capitalize()}</a></li>' for n in NICHES) + "</ul></div>" for cslug, city in CITIES) + f"""</div>
  <div class="ctas mt2">{btn("Book a call", WEB_BOOK)}{btn("Get a free look", "/free-look/", "line")}</div></div></section>""")
 
