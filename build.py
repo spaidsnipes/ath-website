@@ -64,7 +64,7 @@ NAV = [("Company", "/company/"), ("Inventions", "/work/"), ("Services", "/build/
        ("Diagnose", "/diagnose/"), ("Language", "/language/"), ("Ecosystem", "/ecosystem/")]
 
 # Utility pages a guest should never land on from search (post-payment intake, empty result shell, 404).
-NOINDEX = {"/start/", "/diagnose/result/", "/404/"}
+NOINDEX = {"/start/", "/diagnose/result/", "/404/", "/taproot/q/", "/taproot/results/"}
 
 def head(title, desc, route):
     art = HERO_ART.get(route)
@@ -120,7 +120,7 @@ FOOT = """</main>
   <div class="foot-grid">
    <div><img src="/assets/ath-logo-lockup.webp" width="138" height="72" alt="Above the Hill Developments" loading="lazy">
     <p class="note mt2" style="max-width:34ch">Every dream, business and creator eventually meets a hill. We build the way over it.</p></div>
-   <div><p class="fh">Start</p><a href="/line-check/">15-second Line Check</a><a href="/tour/">Key Fob Tour</a><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/pricing/">Prices</a><a href="/ai/">AI services</a><a href="/ai/growing-with-ai/">Growing with AI</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
+   <div><p class="fh">Start</p><a href="/line-check/">15-second Line Check</a><a href="/tour/">Key Fob Tour</a><a href="/taproot/">Taproot Interviews</a><a href="/diagnose/">What's your hill?</a><a href="/diagnose/deep/">Deep diagnostic</a><a href="/build/">ATH Services</a><a href="/pricing/">Prices</a><a href="/ai/">AI services</a><a href="/ai/growing-with-ai/">Growing with AI</a><a href="/garden-check/">Garden Check</a><a href="/industries/">Industries</a><a href="/consequence-calculator/">Consequence Calculator</a><a href="/business-diagnosis/">Free business diagnosis</a><a href="/contact/">Contact ATH</a><a href="tel:+19189600164" aria-label="Call or text ATH at (918) 960-0164">Call or text (918) 960-0164</a></div>
    <div><p class="fh">Company</p><a href="/company/">Company</a><a href="/work/">Inventions &amp; work</a><a href="/path/">How ATH works</a><a href="/report/">The Hill Report</a><a href="/partners/">Partners &amp; Creator Crew</a></div>
    <div><p class="fh">World</p><a href="https://thewow.online/">WOW OS</a><a href="https://wavemotion.live/">Wavemotion</a><a href="/ecosystem/">Ecosystem</a><a href="/passport/">Passport &amp; World Pass</a><a href="/language/">Builder Dictionary</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
@@ -2066,6 +2066,56 @@ pages["/tour/"] = ("Key Fob Tour — walk every room of your Above the Hill buil
   </form>
  </div>
 </div></section>""")
+
+# ---------------------------------------------------------------- WOWZER lab: Taproot Interviews (Spaidbot, ATHOS /api/taproot/*)
+TP_HEAD = '<link rel="stylesheet" href="/assets/line.css"><script src="/assets/taproot.js" defer></script>'
+pages["/taproot/"] = ("Taproot Interviews — let your customers tell you what to sell | Above the Hill",
+ "Spaidbot writes one question for your market, you send it to your own customers, and Spaidbot grows a $100 / $500 / $2,000 offer ladder from their real answers. Every rung cites the answers behind it.",
+ TP_HEAD + f"""<section class="lc-hero"><div class="wrap lc-grid">
+ <div>
+  <p class="eyebrow">Taproot Interviews · with Spaidbot · free</p>
+  <h1 class="display d-l mt1">Ask your market<br>one question.</h1>
+  <p class="lede">A money tree grows from its taproot: what the market actually wants. Spaidbot writes the one question that finds it, you send the link to your own customers, and Spaidbot grows your offer ladder from their real words.</p>
+  <ol class="tp-steps mt2"><li><b>Ask.</b> &ldquo;What's your single biggest challenge with &hellip; right now?&rdquo;</li><li><b>Listen.</b> Answers arrive with no names attached.</li><li><b>Grow.</b> From 5 answers, Spaidbot groups them into themes and drafts a $100 / $500 / $2,000 ladder. Every rung shows the answers that justify it.</li></ol>
+  <p class="note mt2">The taproot and offer-ladder ideas come from Myron Golden, taught here in our own words. Not affiliated. We never message your customers; you share the link.</p>
+ </div>
+ <div class="panel panel-pad">
+  <form id="tp-new" novalidate>
+   <p class="panel-title">Plant your taproot</p>
+   <label class="lbl" for="tp-market">Your market, in a few words</label><input id="tp-market" name="market" type="text" maxlength="80" placeholder="lawn care, fresh haircuts, tacos for lunch" required>
+   <label class="lbl mt1" for="tp-bizn">Business name</label><input id="tp-bizn" name="biz" type="text" maxlength="80" autocomplete="organization">
+   <label class="lbl mt1" for="tp-name">Your name</label><input id="tp-name" name="name" type="text" autocomplete="name" required>
+   <label class="lbl mt1" for="tp-email">Email you check</label><input id="tp-email" name="email" type="email" autocomplete="email" required>
+   <div class="hp" aria-hidden="true"><label>Company fax<input name="company_fax" tabindex="-1" autocomplete="off"></label></div>
+   <div class="ctas"><button class="btn btn-gold" type="submit">Write my question {ARR}</button></div>
+   <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+  <div id="tp-made" hidden>
+   <p class="panel-title">Your question is ready</p>
+   <p class="lede" id="tp-question"></p>
+   <label class="lbl" for="tp-ask">1 · Send this link to your customers</label><div class="tp-copy"><input id="tp-ask" readonly><button class="btn btn-line btn-sm" type="button" data-copy="#tp-ask">Copy</button></div>
+   <label class="lbl mt1" for="tp-own">2 · Keep this private link: it's your results page</label><div class="tp-copy"><input id="tp-own" readonly><button class="btn btn-line btn-sm" type="button" data-copy="#tp-own">Copy</button></div>
+   <div class="ctas mt2"><a class="btn btn-gold" id="tp-own-open" href="/taproot/results/">Open my results {ARR}</a></div>
+   <p class="note">Anyone with the private link can see the answers, so keep it to yourself.</p>
+  </div>
+ </div>
+</div></section>""")
+pages["/taproot/q/"] = ("One question — Taproot Interview",
+ "A business you know wants to hear your single biggest challenge. One answer, no name needed.",
+ TP_HEAD + f"""<section class="lc-hero"><div class="wrap" style="max-width:760px">
+ <p class="eyebrow" id="tp-biz">One question</p>
+ <h1 class="display d-l mt1" id="tp-q">Loading the question…</h1>
+ <form id="tp-answer" class="mt2" hidden novalidate>
+  <label class="lbl" for="tp-a">Your answer</label><textarea id="tp-a" name="answer" maxlength="600" required placeholder="Be as honest as you like."></textarea>
+  <div class="hp" aria-hidden="true"><label>Company fax<input name="company_fax" tabindex="-1" autocomplete="off"></label></div>
+  <div class="ctas"><button class="btn btn-gold" type="submit">Send my answer {ARR}</button></div>
+  <p class="form-status" role="status" aria-live="polite"></p>
+  <p class="note">No name, email or phone is asked. Your answer goes to the business that sent you this link.</p>
+ </form>
+</div></section>""")
+pages["/taproot/results/"] = ("Your taproot — answers and offer ladder",
+ "Private owner page: the real answers to your Taproot Interview and the offer ladder Spaidbot grew from them.",
+ TP_HEAD + """<section class="lc-hero"><div class="wrap" id="tp-results" aria-live="polite"><p class="body"><span class="spinner"></span>Loading your answers…</p></div></section>""")
 
 # ---------------------------------------------------------------- write
 def write():
