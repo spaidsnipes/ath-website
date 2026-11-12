@@ -195,7 +195,7 @@
       room.dataset.state = "checking"; const chip = room.querySelector(".room-chip"); chip.textContent = "Checking the lights…";
       const url = room.dataset.ping; const r = url ? await ping(url) : { ok: true, ms: null };
       room.dataset.state = r.ok ? "on" : "off"; lit[room.id] = r.ok;
-      chip.textContent = r.ok ? (r.ms != null ? `Lights on · answered in ${(r.ms / 1000).toFixed(2)} s, just now` : "Lights on") : "Dark · not answering from your device right now";
+      chip.textContent = r.ok ? (r.ms != null ? `Lights on · answered in ${r.ms < 10 ? "under 0.01" : (r.ms / 1000).toFixed(2)} s, just now` : (mine ? "Lit by your Line Check" : "Run your Line Check to light it")) : "Dark · not answering from your device right now";
       const n = Object.values(lit).filter(Boolean).length; $("#tour-count").textContent = `${n} of ${rooms.length} rooms lit`;
     }
     fob.addEventListener("click", async () => {
