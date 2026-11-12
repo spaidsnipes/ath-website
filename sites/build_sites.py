@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """ATH website factory: one client intake (sites/clients/<slug>.json) -> a finished site.
 
-Quick Start ($100) = one page. Business Growth ($200) = up to three pages.
-Output: public/sites/<slug>/ (and /<page>/ for extra pages), plus a gallery of samples at /sites/.
+Package keys (legacy names): "quick-start" = Starter Website $250 + $25 setup; "business-growth" = Business Website $500 + $75 setup.
+Output: public/sites/<slug>/ (and /<page>/ for extra pages), plus a gallery of showcases at /sites/.
 
 Rules the factory enforces:
 - Real clients: every button does what it says (tel:, sms:, mailto:, a booking or order URL, a map link).
 - Samples ("sample": true): fictional businesses. Buttons never dial or link anywhere fake; they jump to
-  a note that says what the button does on a real site. Samples are noindex and carry a SAMPLE ribbon.
+  a note that says what the button does on a real site. Samples are noindex and carry a SHOWCASE ribbon.
 - No invented reviews, ratings, follower counts or awards. A section only renders when the intake has it.
 Run: python3 sites/build_sites.py   (build.py also calls it)
 """
@@ -17,6 +17,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(os.path.dirname(HERE), "public", "sites")
 SITE = "https://abovethehilldev.online"
 E = lambda s: html.escape(str(s or ""), quote=True)
+# One price book (commercial/registry.json): the website package each showcase uses, by its intake "package" key.
+PACKAGE_OFFER = {"quick-start": "Starter Website $250 + $25 setup", "business-growth": "Business Website $500 + $75 setup"}
 
 THEMES = {
     # food & cafe: espresso dark, warm gold
@@ -85,7 +87,7 @@ h2{{font:600 clamp(28px,4vw,40px)/1.1 var(--display);margin:0 0 24px}}
 table.hours{{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}}table.hours td{{padding:8px 0;border-bottom:1px solid var(--line)}}table.hours td+td{{text-align:right;color:var(--dim)}}
 .contact a{{display:block;padding:10px 0;border-bottom:1px solid var(--line);text-decoration:none}}.contact span{{color:var(--dim);font-size:13px;display:block}}
 .foot{{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--dim);font-size:13px}}.foot .wrap{{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}}
-/* SP-082: the SAMPLE ribbon stays pinned on screen for the whole visit, above the sticky header. */
+/* SP-082: the SHOWCASE ribbon stays pinned on screen for the whole visit, above the sticky header. */
 .sample-ribbon{{position:sticky;top:0;z-index:6;height:36px;display:flex;align-items:center;justify-content:center;gap:.5em;white-space:nowrap;overflow:hidden;background:repeating-linear-gradient(135deg,var(--accent) 0 14px,color-mix(in srgb,var(--accent) 86%,#000) 14px 28px);color:var(--on-accent);font:600 13px/1 var(--body);padding:0 12px;box-shadow:0 2px 10px rgba(0,0,0,.25)}}
 .sample-ribbon b{{letter-spacing:.16em;text-transform:uppercase;font-weight:700;border:1.5px solid currentColor;border-radius:3px;padding:4px 7px}}
 .sample-ribbon a{{color:inherit}}.sample-ribbon .sr-short{{display:none}}
@@ -127,9 +129,12 @@ def page_html(c, page, pages):
     nav = "".join(f'<a href="{base}{p.get("slug","") + "/" if p.get("slug") else ""}"{" aria-current=\"page\"" if p is page else ""}>{E(p["title"])}</a>' for p in pages) if len(pages) > 1 else ""
     pc = c.get("primary_cta") or {}
     top_cta = f'<a class="btn btn-solid" href="{href(c, pc.get("href"))}">{E(pc.get("label", "Call"))}</a>' if pc else ""
-    ribbon = (f'<div class="sample-ribbon" role="note" aria-label="Sample site: {E(c["name"])} is not a real business"><b>Sample</b>'
+    # Founder 2026-11-12: never "sample site" or "Get yours: $100". These are SHOWCASE sites; the ribbon names the real
+    # product and its price-book price (Starter Website $250 + $25 setup / Business Website $500 + $75 setup).
+    offer = PACKAGE_OFFER.get(c.get("package"), PACKAGE_OFFER["quick-start"])
+    ribbon = (f'<div class="sample-ribbon" role="note" aria-label="Showcase site: {E(c["name"])} is not a real business"><b>Showcase</b>'
               f'<span class="sr-long">Built by Above the Hill · {E(c["name"])} is not a real business ·</span><span class="sr-short">Not a real business ·</span>'
-              f' <a href="{SITE}/offer/">Get yours: $100</a></div>') if c.get("sample") else ""
+              f' <a href="{SITE}/pricing/#services"><span class="sr-long">Get yours: {offer}</span><span class="sr-short">{offer.replace(" Website", "")}</span></a></div>') if c.get("sample") else ""
 
     body = []
     if is_home:
@@ -145,9 +150,9 @@ def page_html(c, page, pages):
     if is_home or page.get("show_visit"):
         body.append(visit(c))
     if c.get("sample"):
-        body.append(f"""<section class="block"><div class="wrap"><div id="sample-note"><h2 style="font-size:24px;margin-bottom:8px">This is a sample</h2>
+        body.append(f"""<section class="block"><div class="wrap"><div id="sample-note"><h2 style="font-size:24px;margin-bottom:8px">This is a showcase site</h2>
 <p class="about" style="margin:0">On a real ATH site every button works: <b>Call</b> rings the shop, <b>Text</b> opens a message, <b>Directions</b> opens maps, and <b>Book</b> or <b>Order</b> goes to the booking or ordering tool the business already uses. Photos, prices and hours come from the owner's intake.</p>
-<p style="margin:16px 0 0"><a class="btn btn-solid" href="{SITE}/build/#pricing">See ATH website packages</a></p></div></div></section>""")
+<p style="margin:16px 0 0"><a class="btn btn-solid" href="{SITE}/pricing/#services">See ATH website prices</a></p></div></div></section>""")
     links = " · ".join(f'<a href="{href(c, l["href"])}">{E(l["label"])}</a>' for l in c.get("links", []))
     credit = f'Website by <a href="{SITE}/?utm_source=client-site&utm_medium=footer&utm_campaign={E(c["slug"])}">Above the Hill</a>'
     foot = f'<footer class="foot"><div class="wrap"><span>© {E(c["name"])}{" · " + links if links else ""}</span><span>{credit}</span></div></footer>'
@@ -226,11 +231,11 @@ def build():
     cards = "".join(f'<a class="card" href="/sites/{c["slug"]}/"><span class="k">{E({"quick-start": "Starter Website · $250 + $25 setup", "business-growth": "Business Website · $500 + $75 setup"}.get(c.get("package"), ""))}</span><b>{E(c["name"])}</b><span>{E(c.get("category_label"))} · {E(c.get("theme"))} style</span></a>' for c in samples)
     os.makedirs(ROOT, exist_ok=True)
     open(os.path.join(ROOT, "index.html"), "w").write(f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
-<title>Sample sites — Above the Hill</title><meta name="description" content="Sample websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients."><link rel="canonical" href="https://abovethehilldev.online/sites/"><meta property="og:title" content="Sample sites — Above the Hill"><meta property="og:description" content="Sample websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients."><meta property="og:type" content="website"><meta property="og:url" content="https://abovethehilldev.online/sites/"><meta property="og:image" content="https://abovethehilldev.online/assets/art/home.jpg"><link rel="icon" href="/favicon.png" type="image/png"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<title>Website showcase — Above the Hill</title><meta name="description" content="Showcase websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients."><link rel="canonical" href="https://abovethehilldev.online/sites/"><meta property="og:title" content="Website showcase — Above the Hill"><meta property="og:description" content="Showcase websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients."><meta property="og:type" content="website"><meta property="og:url" content="https://abovethehilldev.online/sites/"><meta property="og:image" content="https://abovethehilldev.online/assets/art/home.jpg"><link rel="icon" href="/favicon.png" type="image/png"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap">
 <style>body{{margin:0;background:#0b0c0f;color:#efe7d6;font:16px/1.6 Inter,system-ui,sans-serif}}.w{{max-width:960px;margin:0 auto;padding:56px 20px}}h1{{font:600 clamp(36px,6vw,56px)/1.05 'Cormorant Garamond',Georgia,serif;margin:0 0 12px}}p{{color:#b3ab9a;max-width:60ch}}
 .g{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:28px}}.card{{display:grid;gap:4px;padding:20px;border:1px solid rgba(201,164,92,.35);border-radius:8px;text-decoration:none;color:inherit;background:#121318}}.card:hover,.card:focus-visible{{border-color:#d8b46a;outline:none}}.card b{{font:600 24px/1.2 'Cormorant Garamond',Georgia,serif}}.card span{{color:#b3ab9a;font-size:14px}}.k{{color:#d8b46a!important;font-size:13px!important;letter-spacing:.14em;text-transform:uppercase;font-weight:600}}a.back{{color:#d8b46a}}</style></head>
 <body><main class="w"><p><a class="back" href="/build/#pricing">← ATH website packages</a></p><h1>What your website could look like</h1>
-<p>Each sample below is a fictional business, built with the same templates ATH uses for paying clients. Your site uses your name, photos, prices, hours and the booking or ordering tool you already have.</p>
+<p>Each showcase below is a fictional business, built with the same templates ATH uses for paying clients. Your site uses your name, photos, prices, hours and the booking or ordering tool you already have.</p>
 <div class="g">{cards}</div></main></body></html>""")
     print("factory wrote", len(clients), "site(s)")
 

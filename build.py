@@ -340,8 +340,8 @@ def services_list(groups=None, head=True):
 # Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · app plans $19+. The $20 World Pass is THE ecosystem
 # pass (that is why it is a passport): Premium of the one app you choose + Basic of every other ATH app, WOW OS,
 # WOW Academy, Dreamboard and every future app, and WOW World (the future metaverse) when it opens.
-# Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no other trials or founding offers. Founder rule 2026-11-12 (stress-1112): no trial offers outside Founding programs, so the World Pass is the plain $20/month
-# offer (price book); the ONLY trial/offers are FOUNDING 100 (30 days free after a real first action, no charge) and FOUNDING 500 ($10/mo while subscribed, first 500 per app).
+# Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no other trials or founding offers. Founder rulings 2026-11-06/07: the ONLY trial/offers are the World Pass 7-day trial (card required),
+# FOUNDING 100 (30 days free after a real first action, no charge) and FOUNDING 500 ($10/mo while subscribed, first 500 per app).
 WP_RULE = "The $20 World Pass is your passport across the whole ATH ecosystem: Premium of the one app you choose — WAVEMOTION, WealthyMindsets Pro and more — and Basic of every other ATH app, including apps still to come."
 WP_NOTE = "Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today, and every app as it opens."
 WP_SHORT = "$20: Premium of the app you choose, Basic of every other ATH app."
@@ -376,7 +376,7 @@ def wp_value(head=True, eyebrow="Passport · the whole ecosystem"):
   <article class="wpv-tier wpv-feature"><span class="wpv-badge">The whole ecosystem</span><p class="wpv-price">$20<span> / month</span></p><p class="wpv-t">World Pass</p><p class="wpv-d">Everything in the free Passport, plus:</p><ul class="wpv-list">{li(wp)}</ul>
    <p class="wpv-math">One $20 WOW Pass opens the whole world: Premium of the app you choose, Basic of every other ATH app, and all of WOW OS: the Lounge, the Academy, Games, Events, WOW TV, WOW Music and WOW Radio, plus your way into WM Pro. That is <b>more than $30 in app tiers alone</b>, before everything else, and it grows with every app ATH ships.</p></article>
  </div>
- <p class="note wpv-fine">World Pass is $20 a month, cancel any time; your Passport identity is free. It opens Premium of the one app you choose, not the Premium or Pro tier of every app. Top tiers (WM Pro Auto-trading $30, WAVEMOTION Pro $50) are bought on their own; ATH services and third-party costs stay separate. {WP_NOTE}</p>
+ <p class="note wpv-fine">World Pass is $20 a month after a 7-day free try (card required), cancel any time; your Passport identity is free. It opens Premium of the one app you choose, not the Premium or Pro tier of every app. Top tiers (WM Pro Auto-trading $30, WAVEMOTION Pro $50) are bought on their own; ATH services and third-party costs stay separate. {WP_NOTE}</p>
  <div class="ctas mt1">{btn("Get the World Pass", "https://thewow.online/passport", attrs='rel="noopener"')}{btn("Get your free Passport", "https://thewow.online/passport/claim", "line", 'rel="noopener"')}</div>
 </div></div></section>"""
 # ---------------------------------------------------------------- capability map (SP-055 / R41, 2026-10-23)
@@ -408,7 +408,7 @@ def caps():
      ("presence", "Build your presence", "Websites & digital experience", [
       ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'{site_price("website-starter")} or {site_price("website-business")}, one time, or in every plan', "See every price", "/pricing/#services", True),
       ("Website health check", f'The {GC["name"]}: a {GC["minutes"]} minute live check of the site you already have, on a video call you watch. You learn what needs fixing and what doesn\'t.', "ATH Web Studio", "live", f"{GC_PRICE} one time", GC_CTA if not GC_PAY else "See the Garden Check", GC_PAGE, True),
-      ("Brand themes & reusable sections", "Three tuned site styles built from reusable sections: menus and price lists, galleries, hours, story.", "ATH Web Studio", "inc", "In every site", "See sample sites", "/sites/", False),
+      ("Brand themes & reusable sections", "Three tuned site styles built from reusable sections: menus and price lists, galleries, hours, story.", "ATH Web Studio", "inc", "In every site", "See the website showcase", "/sites/", False),
       ("Preview & approval", "You see your site on a preview link, kept out of search, before it goes live. Revisions as your package states.", "ATH Web Studio", "inc", "In every site", "See every price", "/pricing/#services", True),
       ("Hosting & your own domain", "Fast static hosting. Move to your own domain whenever you like; the registrar fee (about $12 a year) is yours, at cost.", "ATH Web Studio", "inc", "Hosting included", "See every price", "/pricing/#services", False),
      ]),
@@ -709,7 +709,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
 <section class="block"><div class="wrap">
  <div class="grid g2">
   <div class="panel panel-pad"><p class="panel-title">Basic opens one app. The World Pass opens the ecosystem.</p>
-   <p class="body"><b>Basic, $10/month per app</b>: one app's essentials, like WAVEMOTION Starter or WM Pro Basic. <b>World Pass, $20/month</b>: Premium of the app you choose and Basic of every other ATH app, including apps still to come. {WP_NOTE} Cancel any time. WM Pro Auto-trading is $30/month and WAVEMOTION Pro $50/month.</p>
+   <p class="body"><b>Basic, $10/month per app</b>: one app's essentials, like WAVEMOTION Starter or WM Pro Basic. <b>World Pass, $20/month</b>: Premium of the app you choose and Basic of every other ATH app, including apps still to come. {WP_NOTE} Try the World Pass 7 days free (card required). WM Pro Auto-trading is $30/month and WAVEMOTION Pro $50/month.</p>
    <p class="panel-title mt2">What $20 is — and isn't</p>
    <p class="body">The World Pass is the $20 purchase itself, carried on your free Passport: Premium of one app, Basic of every other app. It does <b>not</b> unlock the Premium or Pro tier of every app, ATH services, third-party costs, or unlimited expensive infrastructure.</p>
    <dl class="hpa mt2"><dt>Identity</dt><dd>≠ membership</dd><dt>Membership</dt><dd>≠ owning every product</dd><dt>Membership</dt><dd>≠ professional infrastructure</dd></dl></div>
@@ -755,7 +755,7 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
  </div>
  <div class="grid g2 mt3" id="benefits">
   <div class="panel panel-pad"><p class="panel-title">If a member cancels</p><p class="body mb0">The person doesn't stop existing. Identity, lawful ownership, receipts and applicable durable rights persist. Membership-only benefits end.</p></div>
-  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free. The World Pass is $20/month. FOUNDING 500: the first 500 members of each app get the Passport at half price, $10/month while subscribed. All live on WOW OS today, with a real Stripe checkout, and you can cancel any time.</p><p class="body">{WP_RULE} {WP_NOTE}</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
+  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free. The World Pass is $20/month; try it 7 days free (card required). FOUNDING 500: the first 500 members of each app get the Passport at half price, $10/month while subscribed. All live on WOW OS today, with a real Stripe checkout, and you can cancel any time.</p><p class="body">{WP_RULE} {WP_NOTE}</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
  </div>
 </div></section>""" + wp_value(eyebrow="Passport · the whole ecosystem"))
 
@@ -1060,7 +1060,7 @@ pages["/free-look/"] = ("Free website look — Above the Hill",
  <div><p class="eyebrow">Free · no obligation</p><h1 class="display d-l mt1">See your business<br>online, free</h1>
   <p class="lede">Leave your name and number. A person at ATH looks at how customers find you today and sends you a free look at your new site.</p>
   <ul class="pkg-list mt2"><li>Starter Website: <b>{site_price("website-starter")}, one time</b>, preview first; you pay only if you love it</li><li>Up to 5 pages, linked to the booking or ordering you already use, with a year of small updates: <b>{site_price("website-business")}, one time</b></li><li>Or an ATH plan with your website, missed-call text-back and review requests in it: <b>from $100 a month</b> (Presence). <a class="gold" href="/pricing/">See every plan</a></li></ul>
-  <p class="body mt2">See real examples: <a class="gold" href="/sites/">sample sites ATH built</a>.</p></div>
+  <p class="body mt2">See real examples: <a class="gold" href="/sites/">showcase sites ATH built</a>.</p></div>
  <form class="panel panel-pad" id="lead-form" novalidate>
   <input type="hidden" name="intent" value="free-look">
   <div class="grid g2"><div class="field"><label class="lbl" for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
@@ -1115,7 +1115,7 @@ if _g:
   <div class="ctas mt2">{btn("Browse all in WOW Marketplace", "https://thewow.online/marketplace")}{btn("Gift a business a website", "/free-look/", "line")}</div></div></section>""" + _g[0] + f"""
 <section class="block"><div class="wrap"><div class="panel panel-pad"><p class="eyebrow">For the business owner on your list</p><h2 class="display d-m mt1">Get them found before the holiday rush</h2>
   <p class="body">A mobile website for their business, <b>{site_price("website-starter")}, one time</b>. Up to 5 pages, linked to the booking or ordering they already use, with a year of small updates, is {site_price("website-business")}. Order early for the holidays: ATH confirms the go-live date when their info arrives.</p>
-  <div class="ctas mt1">{btn("Get a free look", "/free-look/")}{btn("See sample sites", "/sites/", "line")}</div></div></div></section>""")
+  <div class="ctas mt1">{btn("Get a free look", "/free-look/")}{btn("See the website showcase", "/sites/", "line")}</div></div></div></section>""")
 
 pages["/start/"] = ("Start your build — ATH intake",
  "Tell ATH about your business so we can start building.",
@@ -1236,7 +1236,7 @@ def city_page(cslug, city, n):
   <p class="lede">{line}</p>
   <ul class="pkg-list mt2"><li><b>What you get:</b> {gets}</li><li><b>How soon:</b> a 5-minute form, then ATH confirms your go-live date</li><li><b>Price:</b> {site_price('website-starter')}, one time, no contract, no monthly fee. Up to 5 pages, linked to the booking or ordering you already use, with a year of small updates: {site_price('website-business')}. Or get your site inside an ATH plan, from $100 a month.</li></ul>
   <div class="ctas mt2">{btn("Book a call", WEB_BOOK)}{btn("See every price", "/pricing/", "line")}</div>
-  <p class="body mt2">Not ready? <a class="gold" href="/free-look/">Get a free look</a> at what your site could be, or <a class="gold" href="/sites/">open the sample sites</a> on your phone.</p></div>
+  <p class="body mt2">Not ready? <a class="gold" href="/free-look/">Get a free look</a> at what your site could be, or <a class="gold" href="/sites/">open the website showcase</a> on your phone.</p></div>
  <div class="panel panel-pad"><p class="eyebrow">Why it works</p><h2 class="display d-m mt1">People are already searching</h2>
   <p class="body">Before they call, customers in {city} Google you to check your hours, prices and reviews. If all they find is a social page, they find less than you offer. A real site gives the people already looking something better to find. Search engines list it once it is on your own domain (about $12 a year, paid to the registrar).</p>
   <h3 class="mt2">What you stop doing</h3><p class="body">Answering "what are your hours?" in DMs, and losing customers who can't find you at night.</p>
@@ -2019,6 +2019,6 @@ if __name__ == "__main__":
     write()
 
 if __name__ == "__main__":
-    # Website factory: client and sample sites from sites/clients/*.json (see sites/DELIVERY.md)
+    # Website factory: client and showcase sites from sites/clients/*.json (see sites/DELIVERY.md)
     import runpy
     runpy.run_path(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sites", "build_sites.py"), run_name="__main__")

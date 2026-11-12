@@ -74,12 +74,14 @@ test('Spaidbot shrinks over the hero; the top ticker scrolls instead of being cu
   assert.match(css, /@keyframes mantra/);
 });
 
-test('every sample site carries a pinned SAMPLE ribbon', () => {
+test('every showcase site carries a pinned SHOWCASE ribbon naming the real product + price (never "Sample" / "Get yours: $100", Founder 2026-11-12)', () => {
   const dirs = readdirSync(PUB + 'sites').filter((d) => d.endsWith('-sample'));
   assert.ok(dirs.length >= 3);
   for (const d of dirs) {
     const s = read(`sites/${d}/index.html`);
-    assert.match(s, /<body class="is-sample"><div class="sample-ribbon" role="note"[^>]*><b>Sample<\/b>/, d);
+    assert.match(s, /<body class="is-sample"><div class="sample-ribbon" role="note"[^>]*><b>Showcase<\/b>/, d);
+    assert.match(s, /Get yours: (Starter Website \$250 \+ \$25 setup|Business Website \$500 \+ \$75 setup)/, d);
+    assert.doesNotMatch(s, /Get yours: \$100|>Sample<|[Ss]ample site/, d);
     assert.match(s, /\.sample-ribbon\{position:sticky;top:0/, d);
   }
 });
