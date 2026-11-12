@@ -63,7 +63,7 @@ a{{color:inherit}}img{{max-width:100%;display:block}}
 .btn{{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:var(--r);font:600 15px/1 var(--body);text-decoration:none;border:1px solid var(--accent)}}
 .btn-solid{{background:var(--accent);color:var(--on-accent)}}.btn-line{{color:var(--ink);border-color:var(--line)}}
 .btn:focus-visible,a:focus-visible{{outline:2px solid var(--accent);outline-offset:3px}}
-.hero{{padding-block:72px 56px}}.eyebrow{{font:600 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}}
+.hero{{padding-block:72px 56px}}.eyebrow{{font:600 13px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}}
 h1{{font:600 clamp(42px,8vw,84px)/1.02 var(--display);margin:0 0 18px;text-wrap:balance}}
 .lede{{font-size:clamp(18px,2.2vw,21px);color:var(--dim);max-width:46ch;margin:0 0 28px}}
 .ctas{{display:flex;gap:12px;flex-wrap:wrap}}
@@ -79,7 +79,7 @@ h2{{font:600 clamp(28px,4vw,40px)/1.1 var(--display);margin:0 0 24px}}
 .ph img{{width:100%;height:100%;object-fit:cover}}
 .ph.art{{display:flex;align-items:flex-end;padding:14px;font:600 15px/1.2 var(--display);color:{t["art_ink"]}}}
 .ph.art::before{{content:"";position:absolute;inset:0;opacity:.9;background:var(--g)}}
-.ph.art span{{position:relative}}.ph .tag{{position:absolute;top:10px;right:10px;font:600 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;background:var(--bg);color:var(--dim);padding:5px 7px;border-radius:99px}}
+.ph.art span{{position:relative}}.ph .tag{{position:absolute;top:10px;right:10px;font:600 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;background:var(--bg);color:var(--dim);padding:5px 7px;border-radius:99px}}
 .about{{max-width:62ch;color:var(--dim);font-size:17px}}
 .visit{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}}
 table.hours{{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}}table.hours td{{padding:8px 0;border-bottom:1px solid var(--line)}}table.hours td+td{{text-align:right;color:var(--dim)}}
@@ -228,7 +228,7 @@ def build():
     open(os.path.join(ROOT, "index.html"), "w").write(f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>Sample sites — Above the Hill</title><meta name="description" content="Sample websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients."><link rel="canonical" href="https://abovethehilldev.online/sites/"><meta property="og:title" content="Sample sites — Above the Hill"><meta property="og:description" content="Sample websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients."><meta property="og:type" content="website"><meta property="og:url" content="https://abovethehilldev.online/sites/"><meta property="og:image" content="https://abovethehilldev.online/assets/art/home.jpg"><link rel="icon" href="/favicon.png" type="image/png"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap">
 <style>body{{margin:0;background:#0b0c0f;color:#efe7d6;font:16px/1.6 Inter,system-ui,sans-serif}}.w{{max-width:960px;margin:0 auto;padding:56px 20px}}h1{{font:600 clamp(36px,6vw,56px)/1.05 'Cormorant Garamond',Georgia,serif;margin:0 0 12px}}p{{color:#b3ab9a;max-width:60ch}}
-.g{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:28px}}.card{{display:grid;gap:4px;padding:20px;border:1px solid rgba(201,164,92,.35);border-radius:8px;text-decoration:none;color:inherit;background:#121318}}.card:hover,.card:focus-visible{{border-color:#d8b46a;outline:none}}.card b{{font:600 24px/1.2 'Cormorant Garamond',Georgia,serif}}.card span{{color:#b3ab9a;font-size:14px}}.k{{color:#d8b46a!important;font-size:12px!important;letter-spacing:.14em;text-transform:uppercase;font-weight:600}}a.back{{color:#d8b46a}}</style></head>
+.g{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:28px}}.card{{display:grid;gap:4px;padding:20px;border:1px solid rgba(201,164,92,.35);border-radius:8px;text-decoration:none;color:inherit;background:#121318}}.card:hover,.card:focus-visible{{border-color:#d8b46a;outline:none}}.card b{{font:600 24px/1.2 'Cormorant Garamond',Georgia,serif}}.card span{{color:#b3ab9a;font-size:14px}}.k{{color:#d8b46a!important;font-size:13px!important;letter-spacing:.14em;text-transform:uppercase;font-weight:600}}a.back{{color:#d8b46a}}</style></head>
 <body><main class="w"><p><a class="back" href="/build/#pricing">← ATH website packages</a></p><h1>What your website could look like</h1>
 <p>Each sample below is a fictional business, built with the same templates ATH uses for paying clients. Your site uses your name, photos, prices, hours and the booking or ordering tool you already have.</p>
 <div class="g">{cards}</div></main></body></html>""")

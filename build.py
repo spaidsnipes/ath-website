@@ -340,8 +340,8 @@ def services_list(groups=None, head=True):
 # Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · app plans $19+. The $20 World Pass is THE ecosystem
 # pass (that is why it is a passport): Premium of the one app you choose + Basic of every other ATH app, WOW OS,
 # WOW Academy, Dreamboard and every future app, and WOW World (the future metaverse) when it opens.
-# Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no other trials or founding offers. Founder rulings 2026-11-06/07: the ONLY trial/offers are the World Pass 7-day trial (card required),
-# FOUNDING 100 (30 days free after a real first action, no charge) and FOUNDING 500 ($10/mo while subscribed, first 500 per app).
+# Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no other trials or founding offers. Founder rule 2026-11-12 (stress-1112): no trial offers outside Founding programs, so the World Pass is the plain $20/month
+# offer (price book); the ONLY trial/offers are FOUNDING 100 (30 days free after a real first action, no charge) and FOUNDING 500 ($10/mo while subscribed, first 500 per app).
 WP_RULE = "The $20 World Pass is your passport across the whole ATH ecosystem: Premium of the one app you choose — WAVEMOTION, WealthyMindsets Pro and more — and Basic of every other ATH app, including apps still to come."
 WP_NOTE = "Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today, and every app as it opens."
 WP_SHORT = "$20: Premium of the app you choose, Basic of every other ATH app."
@@ -376,7 +376,7 @@ def wp_value(head=True, eyebrow="Passport · the whole ecosystem"):
   <article class="wpv-tier wpv-feature"><span class="wpv-badge">The whole ecosystem</span><p class="wpv-price">$20<span> / month</span></p><p class="wpv-t">World Pass</p><p class="wpv-d">Everything in the free Passport, plus:</p><ul class="wpv-list">{li(wp)}</ul>
    <p class="wpv-math">One $20 WOW Pass opens the whole world: Premium of the app you choose, Basic of every other ATH app, and all of WOW OS: the Lounge, the Academy, Games, Events, WOW TV, WOW Music and WOW Radio, plus your way into WM Pro. That is <b>more than $30 in app tiers alone</b>, before everything else, and it grows with every app ATH ships.</p></article>
  </div>
- <p class="note wpv-fine">World Pass is $20 a month after a 7-day free try (card required), cancel any time; your Passport identity is free. It opens Premium of the one app you choose, not the Premium or Pro tier of every app. Top tiers (WM Pro Auto-trading $30, WAVEMOTION Pro $50) are bought on their own; ATH services and third-party costs stay separate. {WP_NOTE}</p>
+ <p class="note wpv-fine">World Pass is $20 a month, cancel any time; your Passport identity is free. It opens Premium of the one app you choose, not the Premium or Pro tier of every app. Top tiers (WM Pro Auto-trading $30, WAVEMOTION Pro $50) are bought on their own; ATH services and third-party costs stay separate. {WP_NOTE}</p>
  <div class="ctas mt1">{btn("Get the World Pass", "https://thewow.online/passport", attrs='rel="noopener"')}{btn("Get your free Passport", "https://thewow.online/passport/claim", "line", 'rel="noopener"')}</div>
 </div></div></section>"""
 # ---------------------------------------------------------------- capability map (SP-055 / R41, 2026-10-23)
@@ -709,7 +709,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
 <section class="block"><div class="wrap">
  <div class="grid g2">
   <div class="panel panel-pad"><p class="panel-title">Basic opens one app. The World Pass opens the ecosystem.</p>
-   <p class="body"><b>Basic, $10/month per app</b>: one app's essentials, like WAVEMOTION Starter or WM Pro Basic. <b>World Pass, $20/month</b>: Premium of the app you choose and Basic of every other ATH app, including apps still to come. {WP_NOTE} Try the World Pass 7 days free (card required). WM Pro Auto-trading is $30/month and WAVEMOTION Pro $50/month.</p>
+   <p class="body"><b>Basic, $10/month per app</b>: one app's essentials, like WAVEMOTION Starter or WM Pro Basic. <b>World Pass, $20/month</b>: Premium of the app you choose and Basic of every other ATH app, including apps still to come. {WP_NOTE} Cancel any time. WM Pro Auto-trading is $30/month and WAVEMOTION Pro $50/month.</p>
    <p class="panel-title mt2">What $20 is — and isn't</p>
    <p class="body">The World Pass is the $20 purchase itself, carried on your free Passport: Premium of one app, Basic of every other app. It does <b>not</b> unlock the Premium or Pro tier of every app, ATH services, third-party costs, or unlimited expensive infrastructure.</p>
    <dl class="hpa mt2"><dt>Identity</dt><dd>≠ membership</dd><dt>Membership</dt><dd>≠ owning every product</dd><dt>Membership</dt><dd>≠ professional infrastructure</dd></dl></div>
@@ -755,7 +755,7 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
  </div>
  <div class="grid g2 mt3" id="benefits">
   <div class="panel panel-pad"><p class="panel-title">If a member cancels</p><p class="body mb0">The person doesn't stop existing. Identity, lawful ownership, receipts and applicable durable rights persist. Membership-only benefits end.</p></div>
-  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free. The World Pass is $20/month; try it 7 days free (card required). FOUNDING 500: the first 500 members of each app get the Passport at half price, $10/month while subscribed. All live on WOW OS today, with a real Stripe checkout, and you can cancel any time.</p><p class="body">{WP_RULE} {WP_NOTE}</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
+  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free. The World Pass is $20/month. FOUNDING 500: the first 500 members of each app get the Passport at half price, $10/month while subscribed. All live on WOW OS today, with a real Stripe checkout, and you can cancel any time.</p><p class="body">{WP_RULE} {WP_NOTE}</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
  </div>
 </div></section>""" + wp_value(eyebrow="Passport · the whole ecosystem"))
 

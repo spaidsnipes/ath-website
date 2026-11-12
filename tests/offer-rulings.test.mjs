@@ -1,6 +1,6 @@
 // Founder price matrix 2026-11-07 (ATH-PRICE-MATRIX-1107) + Founder rulings 2026-11-06/07.
 // SUPERSEDES the old "customers never read trials or founding offers" rule, narrowly: exactly these are allowed —
-//   1. World Pass: try 7 days free, card required.
+//   1. (REMOVED 2026-11-12, Founder rule: no free trials outside Founding programs) World Pass is the plain $20/month offer.
 //   2. FOUNDING 100: 30 days free after a real first action, no charge.
 //   3. FOUNDING 500: the Passport at half price, $10/month while subscribed, first 500 per app.
 // Everything else stays banned: other trials, coupons, promo codes, % off / half off, free months, every-top-tier claims.
@@ -23,7 +23,6 @@ const OFFER_WORDS = /\btrial|\bdays? free|\bfree for \d+ days|\bfree month|\bhal
 function allowed(t, i, word) {
   const before = t.slice(Math.max(0, i - 30), i), win = t.slice(Math.max(0, i - 160), i + 160), w = word.toLowerCase();
   if (/\b(no|not a|never)\b[^.;]{0,25}$/i.test(before)) return 'negation';                       // "No trial, no free month…", "a paid pilot, not a trial"
-  if (/days? free/.test(w) && /World Pass/i.test(win) && /\b7[- ]days?\b/.test(win) && /card required/i.test(win)) return 'world-pass-7';
   if (w === 'founding') {
     const after = t.slice(i, i + 12);
     if (/^founding[ -](500|100)\b/i.test(after)) return 'founding-n';
@@ -45,12 +44,12 @@ test('only the three Founder-approved trials/offers appear; every other trial, f
       kinds.add(k);
     }
   }
-  assert.ok(kinds.has('world-pass-7') && kinds.has('founding-n'), 'the World Pass trial and FOUNDING 500 are on the site');
+  assert.ok(kinds.has('founding-n'), 'FOUNDING 500 is on the site');
 });
 
 test('no coupons, promo codes, percent-off, half-off, first-month deals or every-top-tier claims anywhere', () => {
   const BANNED = [/coupon/i, /promo code/i, /\d+ ?% off/i, /half off/i, /first month (free|\$\d+|for \$)/i, /intro(ductory)?:? first month/i,
-    /every app at its (\$\d+|premium|pro|top)/i, /\b(gets?|includes?|unlocks?|opens?) (the )?(premium|pro|top) tier of every app/i, /free for \d+ days/i, /free trial/i];
+    /every app at its (\$\d+|premium|pro|top)/i, /\b(gets?|includes?|unlocks?|opens?) (the )?(premium|pro|top) tier of every app/i, /free for \d+ days/i, /free trial/i, /World Pass[^.]{0,80}\b(7|seven)[- ]days?\b/i, /days free \(card required\)/i];
   for (const f of targets) { const t = text(f); for (const re of BANNED) assert.doesNotMatch(t, re, `${f.slice(PUB.length)}: ${re}`); }
 });
 
@@ -71,7 +70,7 @@ test('catalog.json carries the 2026-11-07 matrix (what the public Spaidbot answe
   assert.match(offer('creator-passport').price, /\$40 · \$75 · \$100 · \$150/);
   assert.equal(offer('wow-passport').price, 'Free');
   assert.match(offer('wow-founding-500').price, /^\$10\/month while subscribed$/);
-  assert.match(offer('wow-world-pass').price, /^\$20\/month · try 7 days free \(card required\)$/);
+  assert.equal(offer('wow-world-pass').price, '$20/month');
   for (const id of ['spaidbot', 'wow-studios-plans', 'powertribes-plans', 'creator-passport']) assert.equal(offer(id).buy, 'https://thewow.online/plans', id);
 });
 
