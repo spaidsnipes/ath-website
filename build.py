@@ -1903,6 +1903,9 @@ PT_JS = r"""<script>(() => {
 def pt_door(n, p, d, h):
     return f'<a class="pt-door" href="{h}" rel="noopener"><span class="n">{html.escape(n)}</span><span class="p">{html.escape(p)}</span><span class="d">{html.escape(d)}</span></a>'
 
+# Partner cut of the apartment tour (2026-11-12): the v3 master walkthrough with the Creator Crew close. No money claims in the film.
+PARTNER_SCRIPT = FILM_SCRIPT.split(" Get your key at thewow.online.")[0] + (" Come up the hill. Bring people with you. Join the Creator Crew at "
+  "abovethehilldev.online/partners. Above The Hill. There's more.")
 pages["/partners/"] = ("Partners & Creator Crew — earn with Above the Hill",
  "Tour the Above the Hill apartment, see every door your WOW Passport opens, and the three ways to earn with ATH: the WOW Partner Program, artist and podcaster placements, and the ATH Creator Crew.",
  PT_CSS + hero("ecosystem", "Partners · Creator Crew · Whop", "Come up the hill.<br>Bring people with you.",
@@ -1919,11 +1922,11 @@ pages["/partners/"] = ("Partners & Creator Crew — earn with Above the Hill",
   </form></div>
  <div class="block-head"><div><p class="eyebrow">The apartment tour</p><h2 class="display d-m mt1" id="tour-h">Here's your key.<br>Walk every room.</h2></div>
   <p class="body mb0" style="max-width:46ch">A one-minute walk through the Above the Hill apartment: the living room is your WAVEMOTION home, then WOW TV, the PowerTribes tower, WOW Studios, Spaidbot and the WM Pro penthouse.</p></div>
- <figure class="film-frame" data-film data-src16="{FILM_BASE}ath-master-16x9.mp4" data-src9="{FILM_BASE}ath-master-9x16.mp4" data-poster16="{FILM_BASE}ath-master-16x9.jpg" data-poster9="{FILM_BASE}ath-master-9x16.jpg">
-  <video class="film-video" muted playsinline loop preload="none" poster="{FILM_BASE}ath-master-16x9.jpg" aria-label="Commercial: Welcome to Above The Hill, the apartment tour. Captions are in the picture."></video>
+ <figure class="film-frame" data-film data-src16="{FILM_BASE}ath-partner-tour-16x9.mp4" data-src9="{FILM_BASE}ath-partner-tour-9x16.mp4" data-poster16="{FILM_BASE}ath-partner-tour-16x9.jpg" data-poster9="{FILM_BASE}ath-partner-tour-9x16.jpg">
+  <video class="film-video" muted playsinline loop preload="none" poster="{FILM_BASE}ath-partner-tour-16x9.jpg" aria-label="Commercial: the Above The Hill apartment tour for the Creator Crew, 65 seconds. Captions are in the picture."></video>
   <button type="button" class="film-sound" data-film-sound aria-pressed="false"><span aria-hidden="true">&#128263;</span> <span data-film-sound-label>Tap for sound</span></button>
  </figure>
- <div class="film-under"><p class="note mb0">AI voice · real app screens · captions on</p><details class="film-script"><summary>Read the script</summary><p>{html.escape(FILM_SCRIPT)}</p></details></div>
+ <div class="film-under"><p class="note mb0">AI voice · AI rooms, real app screens · captions on · 65 s</p><details class="film-script"><summary>Read the script</summary><p>{html.escape(PARTNER_SCRIPT)}</p></details></div>
 </div></section>
 <section class="block" id="doors" aria-labelledby="doors-h"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">Everything we offer</p><h2 class="display d-m mt1" id="doors-h">One key.<br>Every door.</h2></div>
