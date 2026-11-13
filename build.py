@@ -265,7 +265,7 @@ def catalog_js():
         m[p["id"]] = {"label": f'{p["name"]} — {"from " if p["from"] else ""}{money(p["price"])}{(" + " + money(p["setup"]) + " setup") if p.get("setup") else ""}{"" if p["from"] else " one time"}', "terms": True}
     for t, p, s, i in STARTS: m[s] = {"label": f"{t} — from ${p}"}
     for p in WM["plans"]: m[p["id"]] = {"label": f'WAVEMOTION {p["name"]} — ${p["price"]}/month ({p["clips"]} standard clips)'}
-    for p in PLANS: m["plan-" + p["key"].replace("_", "-")] = {"label": f'{p["name"]} plan — ${p["setup"]:,} setup today, then ${p["monthly"]:,} a month starting 30 days later', "terms": True}
+    for p in PLANS: m["plan-" + p["key"].replace("_", "-")] = {"label": f'{p["name"]} plan — ${p["setup"] + p["monthly"]:,} today (${p["setup"]:,} setup + first month), then ${p["monthly"]:,} a month', "terms": True}
     for g in SERVICES:
         for i in g["items"]:
             if i["id"] not in m and i["id"] not in ("garden-check", "business-diagnosis"): m[i["id"]] = {"label": f'{i["name"]} — {i["price"]}', "terms": True}
@@ -314,7 +314,7 @@ def plan_strip():
     return f'<nav class="pb-strip" aria-label="ATH plans, $100 to $8,000 a month, lowest to highest">{steps}</nav>'
 def plan_card(p):
     rows = "".join(f'<div class="pc-row"><dt>{html.escape(l)}</dt><dd>{html.escape(f(p))}</dd></div>' for l, f in PLAN_ROWS)
-    setup = f'${p["setup"]:,} setup today · your ${p["monthly"]:,} a month starts 30 days later'
+    setup = f'${p["setup"] + p["monthly"]:,} today: ${p["setup"]:,} setup + your first month · then ${p["monthly"]:,} a month'
     return f'''<article class="panel pc{" pc-feature" if p["key"] in ("presence", "clientflow", "revenue_engine") else ""}" id="plan-{p["key"]}" data-plan="{p["key"]}" aria-labelledby="pc-{p["key"]}">
  <header class="pc-head"><p class="pc-step">Step {p["rank"]} of {len(PLANS)}</p><h3 class="pc-name" id="pc-{p["key"]}">{html.escape(p["name"])}</h3>
   <p class="pc-price">${p["monthly"]:,}<span> a month</span></p><p class="pc-setup">{setup}</p></header>
@@ -325,7 +325,7 @@ def plan_card(p):
 def plan_cards(): return '<div class="pc-grid">' + "".join(plan_card(p) for p in PLANS) + '</div>'
 def plan_table(pid="pricing"):
     """Compact ladder (industry + calculator pages): name · price · setup · what this step adds."""
-    rows = "".join(f'<div class="rv-row" data-level="{html.escape(p["name"])}"><span><b>{html.escape(p["name"])}</b><span class="note">{html.escape(p["unlocks"])}</span></span><span class="rv-price">${p["monthly"]:,} / month<span class="note">${p["setup"]:,} setup today · monthly starts in 30 days</span></span></div>' for p in PLANS)
+    rows = "".join(f'<div class="rv-row" data-level="{html.escape(p["name"])}"><span><b>{html.escape(p["name"])}</b><span class="note">{html.escape(p["unlocks"])}</span></span><span class="rv-price">${p["monthly"]:,} / month<span class="note">${p["setup"] + p["monthly"]:,} today (setup + first month)</span></span></div>' for p in PLANS)
     fine = "".join(f"<li>{html.escape(f)}</li>" for f in PB["fine"][:3])
     return f'''<div class="panel panel-pad mt2" id="{pid}" data-sb-pricing><p class="panel-title">ATH plans · one ladder, $100 to $8,000 a month</p>
  <p class="body">Every plan has a piece of everything: a WOW Pass (WOW = World of Wealth), a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website. Each step up gives you more of all of it. <a class="gold" href="/pricing/">See exactly what each step includes</a>.</p>
@@ -1223,13 +1223,14 @@ pages["/privacy/"] = ("Privacy — Above the Hill Developments", "What ATH colle
 
 pages["/terms/"] = ("Terms — Above the Hill Developments", "Ownership, diagnostics, and use of the ATH website.",
  """<section class="block"><div class="wrap prose" style="max-width:820px"><p class="eyebrow">Policy</p><h1 class="display d-m">Terms</h1>
-<p>Effective October 7, 2026; packages section added October 13, 2026; World Pass app tiers updated October 24, 2026. These terms cover use of abovethehilldev.online, operated by Above the Hill Developments Inc. ("ATH").</p>
+<p>Effective October 7, 2026; packages section added October 13, 2026; World Pass app tiers updated October 24, 2026; card payments added November 13, 2026. These terms cover use of abovethehilldev.online, operated by Above the Hill Developments Inc. ("ATH").</p>
 <h2>The free diagnostic</h2><p>ATHOS reports what it observed on one public page, what it infers from that, and what it cannot know. It is informational, not a guarantee of results. Where evidence is missing, the result says "unknown".</p>
 <h2>Ownership</h2><ul>
 <li>You own your materials. A diagnostic or deep diagnostic transfers no ownership of your code, content or data to ATH.</li>
 <li>ATH owns ATH intellectual property — including ATHOS, its methods, the ATH Builder Dictionary, product designs and inventions. Purchasing the Dictionary or any product licenses its use; it does not transfer ownership of ATH inventions.</li></ul>
 <h2>Deep diagnostics and services</h2><p>Deeper inspection happens only under a written scope you approve, with access you grant and may revoke. Default posture is read-only; ATH does not modify your systems during a diagnostic. Services are delivered under a separate scope and quote.</p>
 <h2>Website and app packages</h2><p>Package prices are listed on the <a class="gold" href="/pricing/">Prices page</a>. Submitting a package request creates no charge and no obligation. ATH replies with a written scope and an invoice; work begins only after you approve the scope and pay. Timeline, revisions, ownership terms, third-party costs and refund terms are stated in that written scope. Ecosystem extras described as “not active yet” are delivered only once that product is operational, and no subscription renews without your separate consent.</p>
+<h2>Paying by card</h2><p>The ATH plans and the Starter and Business Websites can be paid by card through Stripe. A website card payment is one time: the package price plus its setup. A monthly plan card payment charges the setup plus your first month today, then renews every month on the same card until you cancel. To cancel a monthly plan, give 30 days’ notice by calling or texting <a class="gold" href="tel:+19189600164">(918) 960-0164</a> or through the <a class="gold" href="/contact/">contact form</a>. After you pay, send your details on the <a class="gold" href="/start/">intake page</a> so ATH can start your build. Questions about a charge go to the same phone line or contact form.</p>
 <h2>Prices and availability</h2><p>Only products marked available can be bought. Waitlists and access requests create no obligation for either side. The World Pass is a $20-a-month plan: it includes the Premium tier of one app you choose and the Basic tier of every other app, which each app switches on from your pass; it does not include the Premium or Pro tier of every app, ATH services or third-party costs unless stated in writing.</p>
 <h2>Contact</h2><p>Questions: use the <a class="gold" href="/contact/">contact form</a>, or call or text <a class="gold" href="tel:+19189600164">(918) 960-0164</a>.</p>
 </div></section>""")
