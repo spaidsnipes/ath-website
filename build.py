@@ -2093,8 +2093,8 @@ pages["/taproot/"] = ("Taproot Interviews — let your customers tell you what t
   <div id="tp-made" hidden>
    <p class="panel-title">Your question is ready</p>
    <p class="lede" id="tp-question"></p>
-   <label class="lbl" for="tp-ask">1 · Send this link to your customers</label><div class="tp-copy"><input id="tp-ask" readonly><button class="btn btn-line btn-sm" type="button" data-copy="#tp-ask">Copy</button></div>
-   <label class="lbl mt1" for="tp-own">2 · Keep this private link: it's your results page</label><div class="tp-copy"><input id="tp-own" readonly><button class="btn btn-line btn-sm" type="button" data-copy="#tp-own">Copy</button></div>
+   <label class="lbl" for="tp-ask">1 · Send this link to your customers</label><div class="tp-copy"><input id="tp-ask" type="text" readonly><button class="btn btn-line btn-sm" type="button" data-copy="#tp-ask">Copy</button></div>
+   <label class="lbl mt1" for="tp-own">2 · Keep this private link: it's your results page</label><div class="tp-copy"><input id="tp-own" type="text" readonly><button class="btn btn-line btn-sm" type="button" data-copy="#tp-own">Copy</button></div>
    <div class="ctas mt2"><a class="btn btn-gold" id="tp-own-open" href="/taproot/results/">Open my results {ARR}</a></div>
    <p class="note">Anyone with the private link can see the answers, so keep it to yourself.</p>
   </div>

@@ -62,7 +62,7 @@
         <p class="note mt1">Grown ${new Date(g.at).toLocaleString()} from ${g.count} answers${j.stale ? " · new answers since, grow again to include them" : ""}. Rung prices follow the $100 / $500 / $2,000 ladder (an idea from Myron Golden, in our words); the offers are drafts for you to shape.</p>`;
       out.innerHTML = `<p class="eyebrow">${esc(j.biz || "Your business")} · ${esc(j.market)}</p><h1 class="display d-l mt1">${esc(j.question)}</h1>
         <p class="lede">${j.answers.length} real answer${j.answers.length === 1 ? "" : "s"} so far.</p>
-        <div class="panel panel-pad mt2"><label class="lbl" for="tp-ask2">Your survey link (send it to your own customers)</label><div class="tp-copy"><input id="tp-ask2" readonly value="${esc(ask)}"><button class="btn btn-line btn-sm" type="button" data-copy2>Copy</button></div></div>
+        <div class="panel panel-pad mt2"><label class="lbl" for="tp-ask2">Your survey link (send it to your own customers)</label><div class="tp-copy"><input id="tp-ask2" type="text" readonly value="${esc(ask)}"><button class="btn btn-line btn-sm" type="button" data-copy2>Copy</button></div></div>
         <div class="ctas mt2"><button class="btn btn-gold" id="tp-grow" type="button" ${j.answers.length < j.min ? "disabled" : ""}>Grow my offer ladder</button></div>
         <p class="form-status" id="tp-gs" role="status" aria-live="polite">${j.answers.length < j.min ? `Spaidbot grows a ladder from at least ${j.min} real answers. ${j.min - j.answers.length} to go.` : ""}</p>
         ${grownHtml}<h3 class="display d-m mt3">Every answer</h3>${ans}`;
