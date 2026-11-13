@@ -67,7 +67,7 @@ test('catalog.json carries the 2026-11-07 matrix (what the public Spaidbot answe
   assert.match(offer('spaidbot').price, /Personal \$19.*Builder \$49.*Operations \$99/);
   assert.equal(offer('wm-plans').price, '$10–$50/month');
   assert.match(offer('wow-studios-plans').price, /\$29 · \$59 · \$119/);
-  assert.match(offer('powertribes-plans').price, /\$29 · \$79 · \$179.*standard \$49 · \$149 · \$349/);
+  assert.match(offer('powertribes-plans').price, /Solo \$29 · Team \$79 · Tower \$179/); assert.doesNotMatch(offer('powertribes-plans').price, /standard|Business OS/); // Founder 11-13: one plain price
   assert.match(offer('creator-passport').price, /\$40 · \$75 · \$100 · \$150/);
   assert.equal(offer('wow-passport').price, 'Free');
   assert.match(offer('wow-founding-500').price, /^\$10\/month while subscribed$/);
