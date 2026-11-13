@@ -20,6 +20,9 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap"></noscript>
 
 <link rel="stylesheet" href="/assets/ath.css">
+<link rel="stylesheet" href="/assets/cine.css">
+<script>document.documentElement.classList.add("cj");setTimeout(function(){if(!window.ATH_CINE)document.documentElement.classList.remove("cj")},4000)</script>
+<script src="/assets/cine.js" defer></script>
 <script>window.ATH_API="https://mission.abovethehilldev.online";</script>
 <script src="/assets/ath.js" defer></script>
 <script src="https://mission.abovethehilldev.online/spaidbot.js" data-api="https://mission.abovethehilldev.online" data-product="ath" data-greet="1" data-compact-hero="1" data-audit-href="/business-diagnosis/" defer></script>
@@ -35,14 +38,15 @@
  </div>
 </header>
 <main id="main">
-<link rel="stylesheet" href="/assets/line.css"><script src="/assets/line.js" defer></script><section class="tour-hero"><img src="/assets/art/tour/lobby.webp" alt="" fetchpriority="high"><div class="wrap">
+<link rel="stylesheet" href="/assets/line.css"><script src="/assets/line.js" defer></script><section class="tour-hero"><div class="cine-layer"><img class="cine-poster" src="/assets/cine/ath-hq-16x9.jpg" alt="" fetchpriority="high" style="--vpos:45% 50%"><video class="cine-video" data-cine data-src16="/assets/cine/ath-hq-16x9.mp4" data-src9="/assets/cine/ath-hq-9x16.mp4" data-poster16="/assets/cine/ath-hq-16x9.jpg" data-poster9="/assets/cine/ath-hq-9x16.jpg" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" style="--vpos:45% 50%"></video><div class="cine-atmo" aria-hidden="true"><i class="sweep"></i><i class="dust"></i><i class="grain"></i><i class="vig"></i></div></div><div class="wrap">
+ <p class="beats" data-beats><span>Aye. You made it.</span><span>Here's your key.</span></p>
  <p class="eyebrow">Key Fob Tour · <span data-biz>your building</span></p>
  <h1 class="display d-l mt1">This isn't a website.<br>It's a smart building.</h1>
  <p class="lede" style="max-width:40ch">Tap the key fob and walk every room. A room's lights come on only when that real app answers from your device, right now. If one is dark, it says so.</p>
  <button class="fob" id="fob" type="button"><span class="fob-key" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#140f06" stroke-width="2"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M21 12v2"/></svg></span>Tap your key fob</button>
  <p class="tour-count" id="tour-count" aria-live="polite">9 rooms · lights off</p>
  <p class="form-status" id="tour-status" role="status" aria-live="polite"></p>
- <p class="room-note mt1">Room pictures are AI-made scenes; every door opens a real, live app.</p>
+ <p class="room-note mt1">Room pictures and the hallway film are AI-made scenes from our commercial; every door opens a real, live app.</p>
 </div></section>
 <section class="block" style="padding-top:36px"><div class="wrap" id="tour">
  <div class="rooms"><article class="room" id="room-lobby" data-state="dark" hidden>

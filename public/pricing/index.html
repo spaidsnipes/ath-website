@@ -18,8 +18,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap"></noscript>
-<link rel="preload" as="image" href="/assets/art/build.webp" fetchpriority="high">
+
 <link rel="stylesheet" href="/assets/ath.css">
+<link rel="stylesheet" href="/assets/cine.css">
+<script>document.documentElement.classList.add("cj");setTimeout(function(){if(!window.ATH_CINE)document.documentElement.classList.remove("cj")},4000)</script>
+<script src="/assets/cine.js" defer></script>
 <script>window.ATH_API="https://mission.abovethehilldev.online";</script>
 <script src="/assets/ath.js" defer></script>
 <script src="https://mission.abovethehilldev.online/spaidbot.js" data-api="https://mission.abovethehilldev.online" data-product="ath" data-greet="1" data-compact-hero="1" data-audit-href="/business-diagnosis/" defer></script>
@@ -35,13 +38,14 @@
  </div>
 </header>
 <main id="main">
-<section class="hero pb-hero" style="--pos:62% 55%;--mpos:55% 40%;min-height:auto">
- <div class="hero-art"><img src="/assets/art/build.webp" alt="" fetchpriority="high"></div>
+<section class="hero cine pb-hero" style="--pos:62% 55%;--mpos:55% 40%">
+ <div class="hero-art cine-art"><img class="cine-poster" src="/assets/cine/ath-tower-band.jpg" alt="" fetchpriority="high"><video class="cine-video" data-cine data-src16="/assets/cine/ath-tower-band.mp4" data-src9="/assets/cine/ath-hq-9x16.mp4" data-poster16="/assets/cine/ath-tower-band.jpg" data-poster9="/assets/cine/ath-hq-9x16.jpg" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video><div class="cine-atmo" aria-hidden="true"><i class="sweep"></i><i class="dust"></i><i class="grain"></i><i class="vig"></i></div></div>
  <div class="wrap"><div class="hero-copy">
+  <p class="beats" data-beats><span>Take the elevator.</span><span>Your sales floor. Your AI workforce.</span><span>Your whole company, in one tower.</span></p>
   <p class="eyebrow">Prices · one ladder · one price for everyone</p>
   <h1 class="display d-l">A piece of everything.<br>More at every step.</h1>
   <p class="lede">Fifteen plans, from $100 to $8,000 a month. Every plan includes a little of everything ATH makes; the higher you go, the more of it you get.</p>
-  <div class="ctas"><a class="btn btn-gold" href="#pricing" >See the plans <span class="arr" aria-hidden="true">→</span></a><a class="btn btn-line" href="#services" >Services on their own <span class="arr" aria-hidden="true">→</span></a></div>
+  <div class="ctas"><a class="btn btn-gold" href="#pricing" >See the plans <span class="arr" aria-hidden="true">→</span></a><a class="btn btn-line" href="#services" >Services on their own <span class="arr" aria-hidden="true">→</span></a></div><a class="film-link" href="/#watch"><b aria-hidden="true">&#9654;</b>Watch the film · 67 s</a><p class="ai-note">Footage from our commercial: AI-made rooms, real app screens.</p>
  </div></div>
 </section>
 <section class="block pb-block" id="pricing" data-sb-pricing aria-labelledby="pb-h"><div class="wrap">
