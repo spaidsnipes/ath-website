@@ -1,6 +1,6 @@
 {
   "version": "2026-11-07.1",
-  "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status). · Founder price matrix 2026-11-07 (ATH-PRICE-MATRIX-1107): WM Pro Basic $10 / Premium $20 / Auto-trading $30; WAVEMOTION $10/$20/$50 (Living Cinema Studio retired); Spaidbot Personal $19 / Builder $49 / Operations $99; WOW Studios $29/$59/$119; Power Tribes launch $29/$79/$179 (standard $49/$149/$349); Creator Passport $40/$75/$100/$150; Passport free; FOUNDING 500 $10/mo; World Pass $20 with a 7-day trial (card required).",
+  "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status). · Founder price matrix 2026-11-07 (ATH-PRICE-MATRIX-1107): WM Pro Basic $10 / Premium $20 / Auto-trading $30; WAVEMOTION $10/$20/$50 (Living Cinema Studio retired); Spaidbot Free / Pro $20 / Super Max $100 (Founder 11-13); WOW Studios $29/$59/$119; Power Tribes launch $29/$79/$179 (standard $49/$149/$349); Creator Passport $40/$75/$100/$150; Passport free; FOUNDING 500 $10/mo; World Pass $20 with a 7-day trial (card required).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
   "payment": {
@@ -568,10 +568,10 @@
       "id": "spaidbot",
       "business": "ATHOS",
       "name": "Spaidbot",
-      "price": "Free · Personal $19/month · Builder $49/month · Operations $99/month",
+      "price": "Free · Pro $20 · Super Max $100 a month",
       "status": "LIVE",
       "buy": "https://thewow.online/plans",
-      "fulfillment": "Free AI assistant on every abovethehilldev.online page. Personal, Builder and Operations are bought with your WOW Passport at thewow.online/plans (Stripe, cancel any time).",
+      "fulfillment": "Free AI assistant on every abovethehilldev.online page. Pro and Super Max are bought with your WOW Passport at thewow.online/plans (Stripe, cancel any time).",
       "verified": "2026-11-07"
     },
     {
@@ -611,7 +611,7 @@
       "price": "$40 · $75 · $100 · $150 a month",
       "status": "LIVE",
       "buy": "https://thewow.online/plans",
-      "fulfillment": "One bill: WOW Studios + WAVEMOTION + Spaidbot tiers together, Passport included. Launch = Studios Solo + WAVEMOTION Starter + Spaidbot Personal; Grow = Studios Creator + WAVEMOTION Creator + Spaidbot Builder; Pro = Studios Pro + WAVEMOTION Pro + Spaidbot Builder; Studio = Studios Pro + WAVEMOTION Pro + Spaidbot Operations.",
+      "fulfillment": "One bill: WOW Studios + WAVEMOTION + Spaidbot tiers together, Passport included. Launch = Studios Solo + WAVEMOTION Starter + Spaidbot Pro; Grow = Studios Creator + WAVEMOTION Creator + Spaidbot Pro; Pro = Studios Pro + WAVEMOTION Pro + Spaidbot Pro; Studio = Studios Pro + WAVEMOTION Pro + Spaidbot Super Max.",
       "verified": "2026-11-07"
     }
   ],

@@ -3,7 +3,7 @@
 
 Canon: Visual Canon Atlas v1, slide athWebsiteCanonPass3 (Founder finder doc 2026-10-07).
 Prices: commercial/registry.json (v2026-11-07.1, Founder price matrix ATH-PRICE-MATRIX-1107) — see commercial/RECONCILIATION-2026-10-13.md for history.
-Lineage: one ecosystem ladder (Founder 2026-10-24): Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · app plans $19+. The $20 World Pass = Premium of the app you choose + Basic of every other ATH app. WM Pro: Free / Basic $10 / Premium $20 / Auto-trading $30; Spaidbot Personal $19 / Builder $49 / Operations $99; WOW Studios $29/$59/$119; PowerTribes launch $29/$79/$179; Creator Passport $40/$75/$100/$150;
+Lineage: one ecosystem ladder (Founder 2026-10-24): Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · app plans $19+. The $20 World Pass = Premium of the app you choose + Basic of every other ATH app. WM Pro: Free / Basic $10 / Premium $20 / Auto-trading $30; Spaidbot Free / Pro $20 / Super Max $100 (Founder 11-13); WOW Studios $29/$59/$119; PowerTribes $29/$79/$179 (Tower); Creator Passport $40/$75/$100/$150;
 Services show Founder-approved starting prices; WAVEMOTION clips come with its $10/$20/$50 plans (the separate clip-bundle menu was retired by the Founder on 2026-10-22). Nothing on this
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
@@ -172,7 +172,7 @@ RUNGS = [
     ("free", "Free", "Free Passport", "Your free Passport · the Lounge · WOW Music, WOW Radio &amp; WOW TV · WOW Academy's free lessons", "", "/passport/#ladder"),
     ("door", "$10 / mo", "Basic", "One app's essentials, per app · WAVEMOTION Starter · WM Pro Basic", "", "/passport/#ladder"),
     ("lattice", "$20 / mo", "World Pass", "Premium of the app you choose + Basic of every other ATH app, WOW OS, Academy and every new app", "Best value", "/passport/#world-pass-value"),
-    ("triangle", "$19–$179 / mo", "App plans", "WM Pro Auto-trading $30 · WAVEMOTION Pro $50 · Spaidbot from $19 · WOW Studios from $29 · PowerTribes from $29 · Creator Passport from $40", "", "/ecosystem/#plans"),
+    ("triangle", "$19–$179 / mo", "App plans", "WM Pro Auto-trading $30 · WAVEMOTION Pro $50 · Spaidbot from $20 · WOW Studios from $29 · PowerTribes from $29 · Creator Passport from $40", "", "/ecosystem/#plans"),
     ("peaks", "$100–$8,000 / mo", "ATH plans", "One ladder for your business: a piece of everything ATH makes, more of it at every step", "", "/pricing/"),
 ]
 
@@ -745,7 +745,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
    <li>{ic("door","icon-sm")}<div><b>Basic — $10 a month per app</b><span>WAVEMOTION turns one long video into a week of short clips you approve before they post. Starter (Basic) $10 · Creator (Premium) $20 · Pro $50 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>{WP_RULE} {WP_NOTE} Available now on WOW OS, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
-   <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro: a free guest account, WM Pro Basic $10/month, Premium $20/month and Auto-trading $30/month. Spaidbot: Personal $19, Builder $49, Operations $99 a month. WOW Studios: Solo $29, Creator $59, Pro $119 a month. PowerTribes: Solo $29, Team $79, Tower $179 a month. Creator Passport: Launch $40, Grow $75, Pro $100, Studio $150 a month. <a class="gold" href="https://thewow.online/plans" rel="noopener">See the plans</a>. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
+   <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro: a free guest account, WM Pro Basic $10/month, Premium $20/month and Auto-trading $30/month. Spaidbot: Free, Pro $20 or Super Max $100 a month. WOW Studios: Solo $29, Creator $59, Pro $119 a month. PowerTribes: Solo $29, Team $79, Tower $179 a month. Creator Passport: Launch $40, Grow $75, Pro $100, Studio $150 a month. <a class="gold" href="https://thewow.online/plans" rel="noopener">See the plans</a>. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH plans and services — every price published</b><span>ATH plans from $100 to $8,000 a month, one ladder; websites {site_price("website-starter")} (Starter) and {site_price("website-business")} (Business), one time; WAVEMOTION starts at $10 a month, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/pricing/">See every price</a>.</span></div></li>
   </ul></div>
 </div></section>""" + wp_value() + cta_block())
@@ -774,7 +774,7 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
    ("eye","Guest","No account","Explore appropriate public experiences without an account. Guest is a legitimate state, not a broken one."),
    ("me","Passport Free","Identity","Persistent identity only where it is actually required — receipts, permissions, ownership proof."),
    ("lattice","World Pass","$20 / month",WP_RULE + " " + WP_NOTE),
-   ("triangle","Specialist Entitlements","Plans vary","WealthyMindsets Pro: free guest, Basic $10, Premium $20, Auto-trading $30. Spaidbot $19 / $49 / $99, WOW Studios $29 / $59 / $119, PowerTribes from $29 at launch and Creator Passport $40 to $150 are bought with your Passport. Dreamboard and future systems carry their own plans."),
+   ("triangle","Specialist Entitlements","Plans vary","WealthyMindsets Pro: free guest, Basic $10, Premium $20, Auto-trading $30. Spaidbot $20 / $100, WOW Studios $29 / $59 / $119, PowerTribes from $29 and Creator Passport $40 to $150 are bought with your Passport. Dreamboard and future systems carry their own plans."),
    ("own","Purchases &amp; Ownership","Yours","What you bought and what remains yours, carried by Passport where supported.")])}
  </div>
  <div class="grid g2 mt3" id="benefits">
@@ -879,9 +879,9 @@ ECO = [
  ("Lounge · Academy · Shop", "Connect · Learn · Own", "live", "Open door", "Community, learning and commerce places, entered from WOW OS.", ("Enter", "https://thewow.online/lounge")),
  ("WOW Academy", "Learn · Free to practise", "live", "Open door", "Three real tracks, open now: The Idea Library (read, question, remember, apply), Visual Learns · The Polyglot&#8217;s Mind (Spanish, Hebrew, Japanese), and Student of the Game (risk, candles, orders). A stamp is earned from proof and memory, never attendance.", ("Open the Academy", "https://thewow.online/academy")),
  ("WOW Studios", "Creation studio · Solo $29 · Creator $59 · Pro $119 a month", "live", "Open door", "Timelines, then music workflows and character continuity, then collaborative workspaces and top exports. Bought with your Passport.", ("See the plans", "https://thewow.online/plans")),
- ("Spaidbot", "AI assistant · Personal $19 · Builder $49 · Operations $99 a month", "live", "Open door", "Free on every page of this site. Personal: generous chat, research and drafts. Builder adds automation, projects and integrations. Operations adds cloud jobs and team runs.", ("See the plans", "https://thewow.online/plans")),
+ ("Spaidbot", "AI assistant · Free · Pro $20 · Super Max $100 a month", "live", "Open door", "Free on every page of this site. Pro: generous chat, research and drafts, plus automation, projects and integrations. Super Max adds the most room, cloud jobs and team runs.", ("See the plans", "https://thewow.online/plans")),
  ("PowerTribes plans", "Solo $29 · Team $79 · Tower $179 a month", "live", "Open door", "One plain price each. CRM and pipeline, then team, dialer and coaching, then every floor of the tower. Enterprise by quote.", ("See the plans", "https://thewow.online/plans")),
- ("Creator Passport", "Launch $40 · Grow $75 · Pro $100 · Studio $150 a month", "live", "Open door", "One bill for creators, Passport included: WOW Studios + WAVEMOTION + Spaidbot together. Launch: Studios Solo, WAVEMOTION Starter, Spaidbot Personal. Grow: Creator, Creator, Builder. Pro: Pro, Pro, Builder. Studio: Pro, Pro, Operations, with team seats.", ("See the plans", "https://thewow.online/plans")),
+ ("Creator Passport", "Launch $40 · Grow $75 · Pro $100 · Studio $150 a month", "live", "Open door", "One bill for creators, Passport included: WOW Studios + WAVEMOTION + Spaidbot together. Launch: Studios Solo, WAVEMOTION Starter, Spaidbot Pro. Grow: Creator, Creator, Pro. Pro: Pro, Pro, Pro. Studio: Pro, Pro, Super Max, with team seats.", ("See the plans", "https://thewow.online/plans")),
  ("FOUNDING 500", "$10 a month while subscribed", "live", "First 500 per app", "The Passport at half price for the first 500 members of each app (WM Pro, WOW OS, WAVEMOTION), for as long as you stay subscribed.", ("Claim a seat", "https://thewow.online/passport#founding")),
  ("WOW World", "The future metaverse", "dim", "Future", "A future world for the whole ecosystem. Not open and not for sale; WOW OS is the live home today.", None),
 ]
@@ -1768,7 +1768,7 @@ pages["/ai/chat-assistant/"] = ("AI chat assistant — Spaidbot | Above the Hill
   <li><b>Voice if you want it.</b> Tap the mic and talk; nothing is sent until you press Send.</li>
   <li><b>No tracking.</b> On this site it sets no cookies and stores no chat history.</li></ul>
   <div class="ctas mt2">{ai_try_chat("Ask Spaidbot a question")}</div></div>
- <div class="panel panel-pad"><p class="panel-title">For your own business</p><p class="body">Spaidbot is free to try here. Your own Spaidbot: Personal at $19 a month, Builder at $49 a month or Operations at $99 a month, bought with your WOW Passport at <a class="gold" href="https://thewow.online/plans" rel="noopener">thewow.online/plans</a>. Putting a chat assistant on your own website is set up in a written scope.</p>
+ <div class="panel panel-pad"><p class="panel-title">For your own business</p><p class="body">Spaidbot is free to try here. Your own Spaidbot: Pro at $20 a month or Super Max at $100 a month, bought with your WOW Passport at <a class="gold" href="https://thewow.online/plans" rel="noopener">thewow.online/plans</a>. Putting a chat assistant on your own website is set up in a written scope.</p>
   <div class="ctas mt2">{req_btn("gold")}</div><p class="note mb0">{REQ_NOTE}</p></div>
 </div></section>""" + cta_block("See where a chat assistant would help", "The free business diagnosis looks at how people reach you and what they ask before they buy."))
 

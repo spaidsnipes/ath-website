@@ -264,10 +264,10 @@
    "id": "spaidbot",
    "business": "ATHOS",
    "name": "Spaidbot",
-   "price": "Free · Personal $19/month · Builder $49/month · Operations $99/month",
+   "price": "Free · Pro $20 · Super Max $100 a month",
    "status": "LIVE",
    "buy": "https://thewow.online/plans",
-   "fulfillment": "Free AI assistant on every abovethehilldev.online page. Personal, Builder and Operations are bought with your WOW Passport at thewow.online/plans (Stripe, cancel any time).",
+   "fulfillment": "Free AI assistant on every abovethehilldev.online page. Pro and Super Max are bought with your WOW Passport at thewow.online/plans (Stripe, cancel any time).",
    "verified": "2026-11-07"
   },
   {
@@ -307,7 +307,7 @@
    "price": "$40 · $75 · $100 · $150 a month",
    "status": "LIVE",
    "buy": "https://thewow.online/plans",
-   "fulfillment": "One bill: WOW Studios + WAVEMOTION + Spaidbot tiers together, Passport included. Launch = Studios Solo + WAVEMOTION Starter + Spaidbot Personal; Grow = Studios Creator + WAVEMOTION Creator + Spaidbot Builder; Pro = Studios Pro + WAVEMOTION Pro + Spaidbot Builder; Studio = Studios Pro + WAVEMOTION Pro + Spaidbot Operations.",
+   "fulfillment": "One bill: WOW Studios + WAVEMOTION + Spaidbot tiers together, Passport included. Launch = Studios Solo + WAVEMOTION Starter + Spaidbot Pro; Grow = Studios Creator + WAVEMOTION Creator + Spaidbot Pro; Pro = Studios Pro + WAVEMOTION Pro + Spaidbot Pro; Studio = Studios Pro + WAVEMOTION Pro + Spaidbot Super Max.",
    "verified": "2026-11-07"
   }
  ]

@@ -55,7 +55,7 @@ test('no coupons, promo codes, percent-off, half-off, first-month deals or every
 });
 
 test('retired prices and tier names are gone from every built page and the catalog', () => {
-  const RETIRED = [/OS \$50/, /WM Pro OS/, /\bApp \(Basic\)/, /WM Pro App\b/, /Super ?Max/i, /Pro \$20\/month · Super/, /Spaidbot[^.]{0,40}\bPro \$20/,
+  const RETIRED = [/OS \$50/, /WM Pro OS/, /\bApp \(Basic\)/, /WM Pro App\b/, /Spaidbot[^.]{0,40}\b(?:Personal|Builder|Operations)\b/, /Personal \$19|Builder \$49|Operations \$99/, // Founder 11-13: Spaidbot = Free / Pro $20 / Super Max $100
     /Living Cinema/i, /\$10–\$75/, /\$10\/\$20\/\$50\/\$75/, /Studio \$75/];
   for (const f of targets) { const s = readFileSync(f, 'utf8'); for (const re of RETIRED) assert.doesNotMatch(s, re, `${f.slice(PUB.length)}: ${re}`); }
 });
@@ -64,7 +64,7 @@ test('catalog.json carries the 2026-11-07 matrix (what the public Spaidbot answe
   assert.equal(cat.version, '2026-11-07.1');
   assert.match(offer('wmp-pro').price, /Basic \$10.*Premium \$20.*Auto-trading \$30/);
   assert.match(offer('wmp-tiers').price, /Basic \$10 · Premium \$20 · Auto-trading \$30/);
-  assert.match(offer('spaidbot').price, /Personal \$19.*Builder \$49.*Operations \$99/);
+  assert.match(offer('spaidbot').price, /Pro \$20.*Super Max \$100/); assert.doesNotMatch(offer('spaidbot').price, /\$19|\$49|\$99/); // Founder 11-13
   assert.equal(offer('wm-plans').price, '$10–$50/month');
   assert.match(offer('wow-studios-plans').price, /\$29 · \$59 · \$119/);
   assert.match(offer('powertribes-plans').price, /Solo \$29 · Team \$79 · Tower \$179/); assert.doesNotMatch(offer('powertribes-plans').price, /standard|Business OS/); // Founder 11-13: one plain price
