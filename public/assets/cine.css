@@ -1,0 +1,101 @@
+/* ATH cinema layer (2026-11-13): the site wears the commercials. Hero loops are caption-free cuts of the v3 commercial
+   footage (key fob door -> headquarters wall; elevator -> sales floor -> penthouse). Atmosphere = warm light sweep,
+   gold dust, film grain, vignette. Everything stops for prefers-reduced-motion (poster frame only). */
+.cine-layer,.hero-art.cine-art{position:absolute;inset:0;z-index:-2;overflow:hidden;background:#07080b}
+.cine-layer>img,.cine-art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cine-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--vpos,50% 50%);
+  opacity:0;transition:opacity 1.2s ease;filter:brightness(var(--vb,.92)) contrast(1.06) saturate(1.06)}
+.cine-video.is-rolling{opacity:1}
+.cine-poster{filter:brightness(var(--vb,.92)) contrast(1.06) saturate(1.06);object-position:var(--vpos,50% 50%)}
+.cine-art>img.cine-poster{filter:brightness(var(--vb,.92)) contrast(1.06) saturate(1.06)}
+.cine-atmo{position:absolute;inset:0;pointer-events:none}
+.cine-atmo i{position:absolute;inset:0;display:block}
+.cine-atmo .vig{background:radial-gradient(120% 95% at 62% 42%,transparent 38%,rgba(4,4,6,.62) 100%)}
+.cine-atmo .sweep{inset:-10% -60%;background:linear-gradient(104deg,transparent 42%,rgba(230,200,138,.09) 49%,rgba(255,236,196,.13) 50%,rgba(230,200,138,.09) 51%,transparent 58%);
+  mix-blend-mode:screen;animation:cineSweep 11s cubic-bezier(.45,0,.55,1) infinite}
+.cine-atmo .dust{opacity:.55;background-image:
+  radial-gradient(1.4px 1.4px at 12% 78%,rgba(240,214,150,.9),transparent 60%),radial-gradient(1px 1px at 28% 32%,rgba(240,214,150,.7),transparent 60%),
+  radial-gradient(1.6px 1.6px at 46% 64%,rgba(240,214,150,.8),transparent 60%),radial-gradient(1px 1px at 63% 22%,rgba(240,214,150,.7),transparent 60%),
+  radial-gradient(1.3px 1.3px at 81% 58%,rgba(240,214,150,.85),transparent 60%),radial-gradient(1px 1px at 92% 86%,rgba(240,214,150,.6),transparent 60%);
+  background-size:520px 420px;animation:cineDust 38s linear infinite}
+.cine-atmo .grain{opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:cineGrain .9s steps(4) infinite}
+@keyframes cineSweep{0%{transform:translateX(-32%)}100%{transform:translateX(32%)}}
+@keyframes cineDust{from{background-position:0 0}to{background-position:-120px -420px}}
+@keyframes cineGrain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-1%,3%)}}
+
+/* the commercial's story beats, revealed line by line (they read like the voice-over) */
+.beats{margin:0 0 20px;font:italic 500 clamp(19px,2.1vw,26px)/1.38 var(--serif);color:var(--ivory-dim);max-width:36ch;text-shadow:0 2px 18px rgba(0,0,0,.7)}
+.beats span{display:block;transition:opacity 1s ease,transform 1s ease,color 1s ease}
+.cj .beats span{opacity:0;transform:translateY(10px)}
+.cj .beats span.on{opacity:1;transform:none}
+.beats span:last-child{color:var(--gold-hi)}
+.beats span.dim{color:var(--ivory-mute)}
+.film-link{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font:600 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold-hi);text-decoration:none}
+.film-link b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--gold-line);background:rgba(8,9,12,.5);font-size:11px;box-shadow:0 0 0 0 rgba(230,200,138,.4);animation:cinePulse 2.8s ease-out infinite}
+.film-link:hover b{border-color:var(--gold-hi)}
+@keyframes cinePulse{0%{box-shadow:0 0 0 0 rgba(230,200,138,.35)}70%{box-shadow:0 0 0 14px rgba(230,200,138,0)}100%{box-shadow:0 0 0 0 rgba(230,200,138,0)}}
+.ai-note{font:400 11.5px/1.4 var(--sans);color:var(--ivory-mute);margin:14px 0 0;letter-spacing:.02em}
+
+/* cinematic hero: taller, letterboxed, copy anchored low like a title card */
+.hero.cine{min-height:min(820px,calc(100svh - 96px));align-items:flex-end}
+.hero.cine::before{background:
+  linear-gradient(90deg,rgba(6,7,9,.95) 0%,rgba(6,7,9,.86) 30%,rgba(6,7,9,.55) 48%,rgba(6,7,9,.12) 72%,rgba(6,7,9,0) 100%),
+  linear-gradient(0deg,rgba(8,9,12,1) 0%,rgba(8,9,12,0) 30%),
+  linear-gradient(180deg,rgba(4,4,6,.75) 0%,rgba(4,4,6,0) 16%)}
+.hero.cine .wrap{padding-bottom:84px}
+.hero.cine::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(230,200,138,.7),transparent);opacity:.7}
+@media (max-width:960px){
+  .hero.cine{min-height:calc(100svh - 70px)}
+  .hero.cine::before{background:linear-gradient(0deg,rgba(8,9,12,1) 4%,rgba(8,9,12,.86) 40%,rgba(8,9,12,.2) 78%,rgba(4,4,6,.55) 100%)}
+  .hero.cine .wrap{padding-top:42svh;padding-bottom:36px}
+}
+
+/* desktop: the film sits to the right of the copy (title-card layout) and melts into black on the left, so the lit
+   wall screen never sits behind the words */
+@media (min-width:961px) and (min-aspect-ratio:4/5){
+  .hero.cine .cine-art>img,.hero.cine .cine-art>video{left:30%;width:70%;--vpos:22% 50%;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
+  .hero.cine.pb-hero .cine-art>img,.hero.cine.pb-hero .cine-art>video{--vpos:45% 50%}
+  .hero.cine::before{background:
+    linear-gradient(90deg,rgba(6,7,9,.9) 0%,rgba(6,7,9,.55) 34%,rgba(6,7,9,0) 58%),
+    linear-gradient(0deg,rgba(8,9,12,1) 0%,rgba(8,9,12,0) 30%),
+    linear-gradient(180deg,rgba(4,4,6,.75) 0%,rgba(4,4,6,0) 16%)}
+  .cine-layer{--vpos:20% 50%}
+}
+
+/* reveal on scroll (only when JS is on and motion is allowed) */
+/* opacity only: a transform here would re-parent absolutely placed children and widen the page */
+.cj .rv{opacity:0;transition:opacity 1.1s ease}
+.cj .rv.rv-in{opacity:1}
+
+/* gold hairline between sections, like light under a door */
+main>.block{position:relative}
+main>.block::before{content:"";position:absolute;top:0;left:50%;width:min(720px,70%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(201,164,92,.45),transparent);pointer-events:none}
+
+/* Line Check + Tour heroes get the building around them */
+.lc-hero.cine-wrap,.tour-hero{position:relative;isolation:isolate;overflow:hidden}
+.lc-hero.cine-wrap{background:#07080b}
+.lc-hero.cine-wrap .cine-layer{--vb:.5}
+.lc-hero.cine-wrap .cine-layer::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,8,11,.94) 0%,rgba(7,8,11,.72) 46%,rgba(7,8,11,.5) 100%),linear-gradient(0deg,#08090c 0%,transparent 40%)}
+.lc-hero.cine-wrap .lc-panel{background:rgba(10,11,14,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.tour-hero .cine-layer{--vb:.66}
+
+/* /sites/ showcase */
+.site-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.site-card{display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--gold-line);border-radius:var(--radius);overflow:hidden;background:linear-gradient(180deg,rgba(201,164,92,.06),rgba(8,9,12,.6));transition:transform .4s ease,border-color .4s ease,box-shadow .4s ease}
+.site-card:hover,.site-card:focus-visible{transform:translateY(-4px);border-color:var(--gold-hi);box-shadow:0 30px 70px -40px rgba(230,200,138,.45)}
+.site-card .shot{position:relative;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--gold-faint)}
+.site-card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 6s ease}
+.site-card:hover .shot img{transform:translateY(-6%)}
+.site-card .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,9,12,.55),transparent 45%)}
+.site-card .meta{padding:18px 20px 22px;display:grid;gap:6px}
+.site-card .k{font:600 11.5px/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.site-card b{font:500 24px/1.15 var(--serif);color:var(--ivory)}
+.site-card span.s{color:var(--ivory-dim);font-size:14px}
+@media (max-width:900px){.site-cards{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){.cine-video{display:none}.cj .beats span,.cj .rv{opacity:1;transform:none}}
+
+/* the decorative mantra stack would sit on the film; the beats carry the voice now */
+.hero.cine .stack{display:none}

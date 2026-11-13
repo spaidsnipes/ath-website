@@ -59,12 +59,12 @@ def ic(name, cls="icon"):
 
 ARR = '<span class="arr" aria-hidden="true">→</span>'
 FONTS = "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap"
-HERO_ART = {"/": "home", "/diagnose/": "diagnose", "/path/": "path", "/passport/": "passport", "/build/": "build", "/ecosystem/": "ecosystem", "/language/": "path", "/diagnose/deep/": "deep", "/work/": "path", "/company/": "home", "/404/": "path", "/pricing/": "build"}
+HERO_ART = {"/diagnose/": "diagnose", "/path/": "path", "/passport/": "passport", "/build/": "build", "/ecosystem/": "ecosystem", "/language/": "path", "/diagnose/deep/": "deep", "/work/": "path", "/company/": "home", "/404/": "path"}
 NAV = [("Company", "/company/"), ("Inventions", "/work/"), ("Services", "/build/"), ("Prices", "/pricing/"), ("AI", "/ai/"),
        ("Diagnose", "/diagnose/"), ("Language", "/language/"), ("Ecosystem", "/ecosystem/")]
 
 # Utility pages a guest should never land on from search (post-payment intake, empty result shell, 404).
-NOINDEX = {"/start/", "/diagnose/result/", "/404/", "/taproot/q/", "/taproot/results/"}
+NOINDEX = {"/sites/", "/start/", "/diagnose/result/", "/404/", "/taproot/q/", "/taproot/results/"}
 
 def head(title, desc, route):
     art = HERO_ART.get(route)
@@ -92,6 +92,9 @@ def head(title, desc, route):
 <noscript><link rel="stylesheet" href="{FONTS}"></noscript>
 {preload}
 <link rel="stylesheet" href="/assets/ath.css">
+<link rel="stylesheet" href="/assets/cine.css">
+<script>document.documentElement.classList.add("cj");setTimeout(function(){{if(!window.ATH_CINE)document.documentElement.classList.remove("cj")}},4000)</script>
+<script src="/assets/cine.js" defer></script>
 <script>window.ATH_API="{API}";</script>
 <script src="/assets/ath.js" defer></script>
 <script src="{SPAIDBOT_EMBED}" data-api="{API}" data-product="ath" data-greet="1" data-compact-hero="1" data-audit-href="/business-diagnosis/" defer></script>
@@ -131,14 +134,32 @@ FOOT = """</main>
 </html>
 """
 
-def hero(art, eyebrow, title, lede, ctas="", extra="", pos="70% 40%", mpos="62% 30%", size="d-xl"):
-    return f"""<section class="hero" style="--pos:{pos};--mpos:{mpos}">
- <div class="hero-art"><img src="/assets/art/{art}.webp" alt="" fetchpriority="high"></div>
+# ---------------------------------------------------------------- cinema layer (2026-11-13: the site wears the commercials)
+# Loops in /assets/cine/ are caption-free cuts of the v3 commercial footage (ATH-01 master + the Flow door-open clip):
+# ath-hq = key fob -> door opens -> headquarters wall; ath-tower-band = elevator -> sales floor -> penthouse. Silent, ≤1 MB.
+CINE = "/assets/cine/"
+CINE_LOOPS = {"hq": ("ath-hq-16x9", "ath-hq-9x16"), "tower": ("ath-tower-band", "ath-hq-9x16")}
+def cine_media(kind="hq", vpos=""):
+    k16, k9 = CINE_LOOPS[kind]
+    st = f' style="--vpos:{vpos}"' if vpos else ""
+    return (f'<img class="cine-poster" src="{CINE}{k16}.jpg" alt="" fetchpriority="high"{st}>'
+            f'<video class="cine-video" data-cine data-src16="{CINE}{k16}.mp4" data-src9="{CINE}{k9}.mp4" data-poster16="{CINE}{k16}.jpg" data-poster9="{CINE}{k9}.jpg" '
+            f'muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"{st}></video>'
+            '<div class="cine-atmo" aria-hidden="true"><i class="sweep"></i><i class="dust"></i><i class="grain"></i><i class="vig"></i></div>')
+def cine_layer(kind="hq", vpos=""): return f'<div class="cine-layer">{cine_media(kind, vpos)}</div>'
+def beats(*lines): return '<p class="beats" data-beats>' + "".join(f"<span>{l}</span>" for l in lines) + '</p>'
+def film_link(href="/#watch"): return f'<a class="film-link" href="{href}"><b aria-hidden="true">&#9654;</b>Watch the film · {FILM_LEN}</a>'
+AI_NOTE = '<p class="ai-note">Footage from our commercial: AI-made rooms, real app screens.</p>'
+
+def hero(art, eyebrow, title, lede, ctas="", extra="", pos="70% 40%", mpos="62% 30%", size="d-xl", cine=None, pre="", post=""):
+    art_html = f'<div class="hero-art cine-art">{cine_media(cine)}</div>' if cine else f'<div class="hero-art"><img src="/assets/art/{art}.webp" alt="" fetchpriority="high"></div>'
+    return f"""<section class="hero{' cine' if cine else ''}" style="--pos:{pos};--mpos:{mpos}">
+ {art_html}
  <div class="wrap"><div class="hero-copy">
-  {f'<p class="eyebrow">{eyebrow}</p>' if eyebrow else ''}
+  {pre}{f'<p class="eyebrow">{eyebrow}</p>' if eyebrow else ''}
   <h1 class="display {size}">{title}</h1>
   {f'<p class="lede">{lede}</p>' if lede else ''}
-  {f'<div class="ctas">{ctas}</div>' if ctas else ''}
+  {f'<div class="ctas">{ctas}</div>' if ctas else ''}{post}
  </div>{extra}</div>
 </section>
 """
@@ -593,7 +614,9 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
       "Every dream, business and creator eventually meets a hill.<br>We build the way over it.",
       btn("What's your hill?", "/diagnose/") + btn("Explore ATH", "/company/", "line"),
       extra='<div class="stack" aria-hidden="true">Plain truth<br>Higher ground<br>Real creation<br>For generations</div>',
-      pos="72% 35%", mpos="58% 30%")
+      pos="72% 35%", mpos="58% 30%", cine="hq",
+      pre=beats("Aye. You made it.", "They told you all you needed was a website.", "Nah. You need a whole headquarters."),
+      post=film_link("#watch") + AI_NOTE)
  + f'<div class="wrap ladder-dock">{ladder()}</div>'
  + film_section()
  + f"""
@@ -817,13 +840,14 @@ def vs_line(label, note="", dim=False):
 # Replaces the /offer/ website-package page (its $100 / $200 one-time sites doubled the $100 and $200 plan prices).
 pages["/pricing/"] = ("Prices — ATH plans from $100 to $8,000 a month",
  "One ladder of ATH plans, $100 to $8,000 a month: every step has a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes, review requests and a website, more at every step. Services you can buy on their own are listed separately.",
- f"""<section class="hero pb-hero" style="--pos:62% 55%;--mpos:55% 40%;min-height:auto">
- <div class="hero-art"><img src="/assets/art/build.webp" alt="" fetchpriority="high"></div>
+ f"""<section class="hero cine pb-hero" style="--pos:62% 55%;--mpos:55% 40%">
+ <div class="hero-art cine-art">{cine_media("tower")}</div>
  <div class="wrap"><div class="hero-copy">
+  {beats("Take the elevator.", "Your sales floor. Your AI workforce.", "Your whole company, in one tower.")}
   <p class="eyebrow">Prices · one ladder · one price for everyone</p>
   <h1 class="display d-l">A piece of everything.<br>More at every step.</h1>
   <p class="lede">Fifteen plans, from $100 to $8,000 a month. Every plan includes a little of everything ATH makes; the higher you go, the more of it you get.</p>
-  <div class="ctas">{btn("See the plans", "#pricing")}{btn("Services on their own", "#services", "line")}</div>
+  <div class="ctas">{btn("See the plans", "#pricing")}{btn("Services on their own", "#services", "line")}</div>{film_link()}{AI_NOTE}
  </div></div>
 </section>
 <section class="block pb-block" id="pricing" data-sb-pricing aria-labelledby="pb-h"><div class="wrap">
@@ -1911,7 +1935,8 @@ pages["/partners/"] = ("Partners & Creator Crew — earn with Above the Hill",
  "Tour the Above the Hill apartment, see every door your WOW Passport opens, and the three ways to earn with ATH: the WOW Partner Program, artist and podcaster placements, and the ATH Creator Crew.",
  PT_CSS + hero("ecosystem", "Partners · Creator Crew · Whop", "Come up the hill.<br>Bring people with you.",
    "Above the Hill is a whole headquarters: your site, your channel, your studio, your sales tower and a market penthouse, all behind one free key. Here's every door, and every honest way to earn with us.",
-   btn("Join the Creator Crew", "#crew") + btn("Take the tour", "#tour", "line"), size="d-l")
+   btn("Join the Creator Crew", "#crew") + btn("Take the tour", "#tour", "line"), size="d-l", cine="hq",
+   pre=beats("Here's your key.", "Walk every room.", "Then bring people with you."), post=AI_NOTE)
  + f"""<section class="block" id="tour" aria-labelledby="tour-h"><div class="wrap">
  <div id="pt-keybox" class="pt-key" hidden><p class="panel-title" style="margin-bottom:6px">You were invited by <span data-crew-name></span></p>
   <p class="body mb1">Claim your free WOW Passport. Leave the email you'll sign in with so your invite counts for them. It costs nothing, and no card is asked for.</p>
@@ -1995,8 +2020,9 @@ pages["/partners/"] = ("Partners & Creator Crew — earn with Above the Hill",
 LC_HEAD = '<link rel="stylesheet" href="/assets/line.css"><script src="/assets/line.js" defer></script>'
 pages["/line-check/"] = ("Line Check — is your business on a shared line or its own? | Above the Hill",
  "A 15-second check of the line customers use to reach your business: your own address or someone else's, does it answer, is it secure, phone-ready, and is your email on your own name. Real measurements, unknowns marked.",
- LC_HEAD + f"""<section class="lc-hero"><div class="wrap lc-grid">
+ LC_HEAD + f"""<section class="lc-hero cine-wrap">{cine_layer("hq")}<div class="wrap lc-grid">
  <div>
+  {beats("They told you all you needed was a website.", "Whose line is it on?")}
   <p class="eyebrow">Line Check · 15 seconds · free</p>
   <h1 class="display d-l mt1">Shared line,<br>or your own?</h1>
   <p class="lede">Most businesses are on a shared line: customers find them inside Facebook, Yelp or a builder's free address, right next to the competition. Type the link people use to find you and watch the line draw itself.</p>
@@ -2037,14 +2063,15 @@ def tour_room(k, door, name, does, href, cta, ping):
 </article>"""
 pages["/tour/"] = ("Key Fob Tour — walk every room of your Above the Hill building",
  "Hand over the key fob and walk the whole building: your own website line, WAVEMOTION, the WOW Passport, Lounge, Academy, Marketplace, PowerTribes and Spaidbot. Each room lights up only when that live app answers from your device.",
- LC_HEAD + f"""<section class="tour-hero"><img src="/assets/art/tour/lobby.webp" alt="" fetchpriority="high"><div class="wrap">
+ LC_HEAD + f"""<section class="tour-hero">{cine_layer("hq", "45% 50%")}<div class="wrap">
+ {beats("Aye. You made it.", "Here's your key.")}
  <p class="eyebrow">Key Fob Tour · <span data-biz>your building</span></p>
  <h1 class="display d-l mt1">This isn't a website.<br>It's a smart building.</h1>
  <p class="lede" style="max-width:40ch">Tap the key fob and walk every room. A room's lights come on only when that real app answers from your device, right now. If one is dark, it says so.</p>
  <button class="fob" id="fob" type="button"><span class="fob-key" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#140f06" stroke-width="2"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M21 12v2"/></svg></span>Tap your key fob</button>
  <p class="tour-count" id="tour-count" aria-live="polite">9 rooms · lights off</p>
  <p class="form-status" id="tour-status" role="status" aria-live="polite"></p>
- <p class="room-note mt1">Room pictures are AI-made scenes; every door opens a real, live app.</p>
+ <p class="room-note mt1">Room pictures and the hallway film are AI-made scenes from our commercial; every door opens a real, live app.</p>
 </div></section>
 <section class="block" style="padding-top:36px"><div class="wrap" id="tour">
  <div class="rooms">{"".join(tour_room(*r) for r in TOUR_ROOMS)}</div>
@@ -2117,8 +2144,39 @@ pages["/taproot/results/"] = ("Your taproot — answers and offer ladder",
  "Private owner page: the real answers to your Taproot Interview and the offer ladder Spaidbot grew from them.",
  TP_HEAD + """<section class="lc-hero"><div class="wrap" id="tp-results" aria-live="polite"><p class="body"><span class="spinner"></span>Loading your answers…</p></div></section>""")
 
+# ---------------------------------------------------------------- /sites/ showcase (2026-11-13 cinema pass): the ATH-09 commercial's
+# "This wall right here is your home on the internet" in the house shell. Samples are fictional businesses built on the client
+# templates (sites/clients/*sample*.json); thumbnails are screenshots of those live sample pages.
+def site_showcase():
+    import glob as _g
+    pk = {"quick-start": "Starter Website · $250 + $25 setup", "business-growth": "Business Website · $500 + $75 setup"}
+    cards = []
+    for f in sorted(_g.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sites", "clients", "*.json"))):
+        if os.path.basename(f).startswith("_"): continue
+        c = json.load(open(f))
+        if not c.get("sample"): continue
+        cards.append(f'<a class="site-card" href="/sites/{c["slug"]}/"><span class="shot"><img src="{CINE}{c["slug"]}.webp" alt="" loading="lazy" decoding="async" width="720" height="450"></span>'
+                     f'<span class="meta"><span class="k">{html.escape(pk.get(c.get("package"), ""))}</span><b>{html.escape(c["name"])}</b>'
+                     f'<span class="s">{html.escape(c.get("category_label", ""))} · {html.escape(c.get("theme", ""))} style</span></span></a>')
+    return "".join(cards)
+pages["/sites/"] = ("Website showcase — what your website could look like | Above the Hill",
+ "Showcase websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients.",
+ hero("", "Website showcase", "Your home<br>on the internet.",
+      "Each showcase below is a fictional business, built with the same templates ATH uses for paying clients. Your site uses your name, photos, prices, hours and the booking or ordering tool you already have.",
+      btn("See the showcases", "#showcase") + btn("ATH website packages", "/build/#pricing", "line"), size="d-l", cine="hq",
+      pre=beats("This wall right here is your home on the internet.", "Pick the look, and it's live."), post=film_link() + AI_NOTE)
+ + f"""<section class="block" id="showcase" aria-labelledby="sc-h"><div class="wrap">
+ <div class="block-head"><div><p class="eyebrow">Three styles · real templates</p><h2 class="display d-m mt1" id="sc-h">What your website<br>could look like</h2></div>
+  <p class="body mb0" style="max-width:46ch">Open one on your phone: the call, directions and booking buttons work the way they will on yours.</p></div>
+ <div class="site-cards">{site_showcase()}</div>
+</div></section>""" + cta_block())
+
 # ---------------------------------------------------------------- write
 def write():
+    # Website factory first (client + showcase sites from sites/clients/*.json, see sites/DELIVERY.md); the /sites/ index
+    # page itself comes from pages["/sites/"] below so it wears the house shell.
+    import runpy
+    runpy.run_path(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sites", "build_sites.py"), run_name="__main__")
     for route, (title, desc, body) in pages.items():
         d = os.path.join(ROOT, route.strip("/"))
         os.makedirs(d, exist_ok=True)
@@ -2149,7 +2207,4 @@ def write():
 if __name__ == "__main__":
     write()
 
-if __name__ == "__main__":
-    # Website factory: client and showcase sites from sites/clients/*.json (see sites/DELIVERY.md)
-    import runpy
-    runpy.run_path(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sites", "build_sites.py"), run_name="__main__")
+
