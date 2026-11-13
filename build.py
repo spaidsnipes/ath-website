@@ -524,9 +524,9 @@ pages = {}
 # Commercials v3 (2026-11-12): the Master "Welcome to Above The Hill" walkthrough as the home page feature film, plus the app
 # spots. AI rooms (Google Flow, labelled on the end card) whose screens carry real live-app footage, AI voice, captions burned in.
 # Value first: no prices on screen or in the voice (price text in the app footage is blurred). Files live in the public Supabase
-# bucket "radio" (commercials/ath-1112-v3/), web encodes of ~/Desktop/COMMERCIALS-1112/v3. Nothing loads until the film is on screen.
-FILM_BASE = "https://zrzaifaxecwgpfrqctkp.supabase.co/storage/v1/object/public/radio/commercials/ath-1112-v3/"
-FILM_LEN = "63 s"
+# bucket "radio" (commercials/ath-1112-v3r/: VOICES 11-12 re-voice, narrator "Royal", an original Kokoro blend; same picture, music and words), web encodes of ~/Desktop/COMMERCIALS-1112/v3-voices. Nothing loads until the film is on screen.
+FILM_BASE = "https://zrzaifaxecwgpfrqctkp.supabase.co/storage/v1/object/public/radio/commercials/ath-1112-v3r/"
+FILM_LEN = "67 s"
 FILM_SCRIPT = ("Aye. You made it. Here's your key. Welcome to Above The Hill. They told you all you needed was a website. Nah. You need a whole headquarters. "
   "This wall right here is your home on the internet. Your music, your videos, your shop, your bookings. All behind one link. Pick the look, and it's live. "
   "Down the hall, your own TV channel. Not a playlist. A channel. On air 24/7, with a guide that shows what's on now, and what's on next. "
@@ -535,15 +535,15 @@ FILM_SCRIPT = ("Aye. You made it. Here's your key. Welcome to Above The Hill. Th
   "Last stop, the penthouse. WM Pro shows you who's buying, who's selling, and where they're stacked. All before you risk a dollar. "
   "One key opens every door. Your WOW Passport. World of Wealth. Get your key at thewow.online. First 500 only. One key. Every door. Above The Hill. There's more.")
 SPOTS = [
- ("ath-02-wow-tv", "WOW TV", "Your channel. On air tonight.", "24 s", "https://thewow.online/wow-tv",
+ ("ath-02-wow-tv", "WOW TV", "Your channel. On air tonight.", "25 s", "https://thewow.online/wow-tv",
   "Your music deserves more than a three-second scroll. So picture this. The lights go down, and your show comes on. Your channel. On air all night, with a real guide. People tune in for what's on now, and stay for what's next. Got music, a podcast, a show? Ask for your channel. Get your key at thewow.online. First 500 only."),
- ("ath-03-wavemotion", "WAVEMOTION", "Give your work a home.", "19 s", "https://www.wavemotion.live/sites",
+ ("ath-03-wavemotion", "WAVEMOTION", "Give your work a home.", "21 s", "https://www.wavemotion.live/sites",
   "They said put it in your bio. Nah. Give it a home. Your name on the door, the lights on, and everything you make on the wall. Your music, your videos, your shop, your bookings. One link. Pick the room that feels like you, and it's live. Then watch who actually clicks. WAVEMOTION. Give your work a home."),
- ("ath-04-powertribes", "PowerTribes", "Your company's own tower", "20 s", "https://powertribes.cloud",
+ ("ath-04-powertribes", "PowerTribes", "Your company's own tower", "22 s", "https://powertribes.cloud",
   "Your business isn't a contact list. It's a tower. Walk into the boardroom, and the whole company is on the wall. Ride the elevator. The sales floor: the desks, the dialer, the deals, the coaching room. Your AI workforce, one floor up. Everybody in one building. PowerTribes. Your company's own tower."),
- ("ath-05-wow-studios", "WOW Studios", "Make it here. Air it tonight.", "19 s", "https://wowstudios.cloud",
+ ("ath-05-wow-studios", "WOW Studios", "Make it here. Air it tonight.", "21 s", "https://wowstudios.cloud",
   "Midnight. The idea hits. No waiting on a session. The studio's already on. Lay the record. Mix it. Cut the video, right in your browser. Your takes stay yours, on your device. And when it's done, it goes straight to your channel on WOW TV. WOW Studios. Make it here. Air it tonight."),
- ("ath-09-ath-websites", "Above The Hill websites", "Business websites that book", "18 s", "/websites/",
+ ("ath-09-ath-websites", "Above The Hill websites", "Business websites that book", "20 s", "/websites/",
   "It's ten at night. Somebody's ready to book you, right now. Can they? Or does your site say call back tomorrow? Above The Hill builds the site that answers. Booking, calls, directions, on any phone. And we build it before you pay a dime. We build it first."),
 ]
 def film_section():
@@ -1924,10 +1924,10 @@ pages["/partners/"] = ("Partners & Creator Crew — earn with Above the Hill",
  <div class="block-head"><div><p class="eyebrow">The apartment tour</p><h2 class="display d-m mt1" id="tour-h">Here's your key.<br>Walk every room.</h2></div>
   <p class="body mb0" style="max-width:46ch">A one-minute walk through the Above the Hill apartment: the living room is your WAVEMOTION home, then WOW TV, the PowerTribes tower, WOW Studios, Spaidbot and the WM Pro penthouse.</p></div>
  <figure class="film-frame" data-film data-src16="{FILM_BASE}ath-partner-tour-16x9.mp4" data-src9="{FILM_BASE}ath-partner-tour-9x16.mp4" data-poster16="{FILM_BASE}ath-partner-tour-16x9.jpg" data-poster9="{FILM_BASE}ath-partner-tour-9x16.jpg">
-  <video class="film-video" muted playsinline loop preload="none" poster="{FILM_BASE}ath-partner-tour-16x9.jpg" aria-label="Commercial: the Above The Hill apartment tour for the Creator Crew, 65 seconds. Captions are in the picture."></video>
+  <video class="film-video" muted playsinline loop preload="none" poster="{FILM_BASE}ath-partner-tour-16x9.jpg" aria-label="Commercial: the Above The Hill apartment tour for the Creator Crew, 69 seconds. Captions are in the picture."></video>
   <button type="button" class="film-sound" data-film-sound aria-pressed="false"><span aria-hidden="true">&#128263;</span> <span data-film-sound-label>Tap for sound</span></button>
  </figure>
- <div class="film-under"><p class="note mb0">AI voice · AI rooms, real app screens · captions on · 65 s</p><details class="film-script"><summary>Read the script</summary><p>{html.escape(PARTNER_SCRIPT)}</p></details></div>
+ <div class="film-under"><p class="note mb0">AI voice · AI rooms, real app screens · captions on · 69 s</p><details class="film-script"><summary>Read the script</summary><p>{html.escape(PARTNER_SCRIPT)}</p></details></div>
 </div></section>
 <section class="block" id="doors" aria-labelledby="doors-h"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">Everything we offer</p><h2 class="display d-m mt1" id="doors-h">One key.<br>Every door.</h2></div>
