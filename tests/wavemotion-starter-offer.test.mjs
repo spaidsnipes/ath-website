@@ -12,7 +12,9 @@ const files = (dir) => readdirSync(dir).flatMap((n) => { const p = join(dir, n);
 test('guard: no 14-day / free-trial / free-days wording on any public page or the catalog', () => {
   const banned = [/14[- ]day/i, /free trial/i, /trial needs no card/i, /free for \d+ days/i];
   const sources = [...files(PUB), new URL('../commercial/registry.json', import.meta.url).pathname, new URL('../build.py', import.meta.url).pathname];
-  const hits = sources.flatMap((p) => { const s = readFileSync(p, 'utf8'); return banned.filter((re) => re.test(s)).map((re) => `${p} matches ${re}`); });
+  // Founder 11-14 refund rule (published verbatim on /terms/ and /pricing/) says "Free trials cancel anytime at no charge." — exactly that sentence is allowed.
+  const REFUND_TRIALS = 'Free trials cancel anytime at no charge.';
+  const hits = sources.flatMap((p) => { const s = readFileSync(p, 'utf8').split(REFUND_TRIALS).join(''); return banned.filter((re) => re.test(s)).map((re) => `${p} matches ${re}`); });
   assert.deepEqual(hits, []);
 });
 

@@ -3,7 +3,7 @@
 
 Canon: Visual Canon Atlas v1, slide athWebsiteCanonPass3 (Founder finder doc 2026-10-07).
 Prices: commercial/registry.json (v2026-11-07.1, Founder price matrix ATH-PRICE-MATRIX-1107) — see commercial/RECONCILIATION-2026-10-13.md for history.
-Lineage: one ecosystem ladder (Founder 2026-10-24): Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · app plans $19+. The $20 World Pass = Premium of the app you choose + Basic of every other ATH app. WM Pro: Free / Basic $10 / Premium $20 / Auto-trading $30; Spaidbot Free / Pro $20 / Super Max $100 (Founder 11-13); WOW Studios $29/$59/$119; PowerTribes $29/$79/$179 (Tower); Creator Passport $40/$75/$100/$150;
+Lineage: one ecosystem ladder (Founder 2026-10-24): Free (Passport) · Basic $10 (one app's essentials) · Premium $20 · app plans $19+. The $20 World Pass = Premium of the app you choose + Basic of every other ATH app. WM Pro: Free / Basic $10 / Premium $20 / Auto-Trading $30; Spaidbot Free / Pro $20 / Super Max $100 (Founder 11-13); WOW Studios $29/$59/$119; PowerTribes $29/$79/$179 (Tower); Creator Passport $40/$75/$100/$150;
 Services show Founder-approved starting prices; WAVEMOTION clips come with its $10/$20/$50 plans (the separate clip-bundle menu was retired by the Founder on 2026-10-22). Nothing on this
 site is sold through a fake checkout; unavailable things say Join waitlist / Request access / Get quote.
 Run: python3 build.py  -> writes public/<route>/index.html
@@ -172,7 +172,7 @@ RUNGS = [
     ("free", "Free", "Free Passport", "Your free Passport · the Lounge · WOW Music, WOW Radio &amp; WOW TV · WOW Academy's free lessons", "", "/passport/#ladder"),
     ("door", "$10 / mo", "Basic", "One app's essentials, per app · WAVEMOTION Starter · WM Pro Basic", "", "/passport/#ladder"),
     ("lattice", "$20 / mo", "World Pass", "Premium of the app you choose + Basic of every other ATH app, WOW OS, Academy and every new app", "Best value", "/passport/#world-pass-value"),
-    ("triangle", "$20–$179 / mo", "App plans", "WM Pro Auto-trading $30 · WAVEMOTION Pro $50 · Spaidbot from $20 · WOW Studios from $29 · PowerTribes from $29 · Creator Passport from $40", "", "/ecosystem/#plans"),
+    ("triangle", "$20–$179 / mo", "App plans", "WM Pro Auto-Trading $30 · WAVEMOTION Pro $50 · Spaidbot from $20 · WOW Studios from $29 · PowerTribes from $29 · Creator Passport from $40", "", "/ecosystem/#plans"),
     ("peaks", "$100–$8,000 / mo", "ATH plans", "One ladder for your business: a piece of everything ATH makes, more of it at every step", "", "/pricing/"),
 ]
 
@@ -246,17 +246,25 @@ def clip_rows():
     return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{n} clips</b></span><span role="cell" class="pt-price">${p}</span><span role="cell" class="pt-allowance">{per_clip(n, p)} per clip</span><span role="cell"><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package=clips-{n}" aria-label="Start {n} clips package">Start</a></span></div>' for n, p in CLIPS)
 def start_rows():
     return "".join(f'<li>{ic(i,"icon-sm")}<div style="flex:1"><b>{t}</b><span>from ${p}</span></div><a class="btn btn-line btn-sm" href="/contact/?intent=services&amp;package={s}" aria-label="Start {t}">Start</a></li>' for t, p, s, i in STARTS)
-# HOLIDAY SPECIAL (Founder ruling 2026-10-25): WAVEMOTION Creator (Premium, $20) first month $10, half off, through
-# Dec 25 2026 11:59 PM CT. WAVEMOTION charges it (WOW one-time coupon HOLIDAY50). Date-gated twice: a build after the
-# deadline leaves it out, and assets/ath.js removes any [data-offer-ends] element once the deadline passes.
-HOLIDAY_ENDS = "2026-12-26T05:59:59Z"
-HOLIDAY_LINE = "Holiday special: your first month of WAVEMOTION Creator (Premium, $20) is $10, half off, when you subscribe by December 25, 2026, 11:59 PM CT. Then $20/month until you cancel."
-HOLIDAY_OPEN = False  # Founder 2026-10-30: no free months, no discounts; WAVEMOTION switched the special off (3974e98).
-def holiday_note(now=None):
-    if not HOLIDAY_OPEN: return ""
+# REFUND RULE (Founder ruling 2026-11-14, his exact words; publish verbatim on /terms/ and /pricing/).
+REFUND_RULE = "Setup fees are non-refundable once work begins. Monthly plans cancel anytime and stay active through the paid period; no partial-month refunds. Free trials cancel anytime at no charge."
+# HOLIDAY — through New Year's (Founder ruling 2026-11-14). Promotion code HOLIDAY = half off the first 2 months of any APP
+# subscription (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios, Creator Passport); NOT ATH website plans or
+# setup fees, so it is shown only where app subscriptions are sold (/ecosystem/, /passport/), never on /pricing/.
+# Date-gated twice, never a stored flag: a build after the deadline leaves it out, and assets/ath.js removes any
+# [data-offer-ends] element once the deadline passes (Jan 1, 2027, 11:59 PM CT = 2027-01-02T05:59:59Z).
+HOLIDAY_ENDS = "2027-01-02T05:59:59Z"
+HOLIDAY_CODE = "HOLIDAY"
+HOLIDAY_APPS = "WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport"
+HOLIDAY_LINE = ("Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). "
+                f"It applies to app subscriptions ({HOLIDAY_APPS}), not to ATH website plans or setup fees.")
+def holiday_open(now=None):
     now = now or datetime.datetime.now(datetime.timezone.utc)
-    if now > datetime.datetime(2026, 12, 26, 5, 59, 59, tzinfo=datetime.timezone.utc): return ""
-    return f'<p class="body holiday-note" data-offer-ends="{HOLIDAY_ENDS}"><b>{html.escape(HOLIDAY_LINE)}</b></p>'
+    return now <= datetime.datetime(2027, 1, 2, 5, 59, 59, tzinfo=datetime.timezone.utc)
+def holiday_note(now=None):
+    if not holiday_open(now): return ""
+    return (f'<div class="panel panel-pad mt2 holiday-note" data-offer-ends="{HOLIDAY_ENDS}"><p class="panel-title">HOLIDAY — through New Year\'s</p>'
+            f'<p class="body mb0">{html.escape(HOLIDAY_LINE)}</p></div>')
 def wm_rows():
     return "".join(f'<div class="pt-row" role="row"><span role="cell"><b>{html.escape(p["name"])}</b></span><span role="cell" class="pt-price">${p["price"]}/mo</span><span role="cell" class="pt-allowance">{p["clips"]} standard clips / month</span><span role="cell"><a class="btn btn-line btn-sm" href="https://www.wavemotion.live/#pricing" rel="noopener" aria-label="View WAVEMOTION {html.escape(p["name"])} plan">View plans</a></span></div>' for p in WM["plans"])
 def catalog_js():
@@ -310,9 +318,9 @@ def plan_today(p):
 def plan_today_short(p):
     if p["setup_today"]: return f'${p["setup"]:,} today to set up; monthly from day 30'
     return f'${p["setup"] + p["monthly"]:,} today: set-up plus first month'
-FINE_NOW = ("You pay today the one-time setup and, from day 30, the monthly price, on the same card. Monthly after that, cancel with 30 days' notice. One price for everyone."
+FINE_NOW = ("You pay today the one-time setup and, from day 30, the monthly price, on the same card. Monthly after that; cancel anytime and the plan stays active through the paid period. One price for everyone."
             if SETUP_TODAY else
-            "Today you pay the one-time setup plus your first month, in one card payment. Your plan then renews monthly on the same card; cancel with 30 days' notice by call, text or the contact form. One price for everyone.")
+            "Today you pay the one-time setup plus your first month, in one card payment. Your plan then renews monthly on the same card; cancel anytime by call, text or the contact form, and it stays active through the paid period. One price for everyone.")
 PB["fine"] = [FINE_NOW] + PB["fine"][1:]
 PLAN_CARD_TERMS = ("A monthly plan card payment charges the one-time setup today; the monthly price starts on day 30 and renews every month on the same card until you cancel."
                    if SETUP_TODAY else "A monthly plan card payment charges the setup plus your first month today, then renews every month on the same card until you cancel.")
@@ -392,8 +400,8 @@ def services_list(groups=None, head=True):
 # WOW Academy, Dreamboard and every future app, and WOW World (the future metaverse) when it opens.
 # Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no other trials or founding offers. Founder rulings 2026-11-06/07: the ONLY trial/offers are the World Pass 7-day trial (card required),
 # FOUNDING 100 (30 days free after a real first action, no charge) and FOUNDING 500 ($10/mo while subscribed + 1-year price guarantee, first 500 per app; Founder 11-13 night).
-WP_RULE = "The $20 World Pass is your passport across the whole ATH ecosystem: Premium of the one app you choose — WAVEMOTION, WealthyMindsets Pro and more — and Basic of every other ATH app, including apps still to come."
-WP_NOTE = "Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today, and every app as it opens."
+WP_RULE = "The $20 World Pass is your passport across the whole ATH ecosystem: Premium of the one app you choose — WAVEMOTION, Wealthy Mindsets Pro and more — and Basic of every other ATH app, including apps still to come."
+WP_NOTE = "Each app switches its tier on from your pass when you open it: WAVEMOTION and Wealthy Mindsets Pro today, and every app as it opens."
 WP_SHORT = "$20: Premium of the app you choose, Basic of every other ATH app."
 CHECK = '<svg class="vs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 12.5 4 4 8-9"/></svg>'
 STEP = REG["package_step_up"]
@@ -426,7 +434,8 @@ def wp_value(head=True, eyebrow="Passport · the whole ecosystem"):
   <article class="wpv-tier wpv-feature"><span class="wpv-badge">The whole ecosystem</span><p class="wpv-price">$20<span> / month</span></p><p class="wpv-t">World Pass</p><p class="wpv-d">Everything in the free Passport, plus:</p><ul class="wpv-list">{li(wp)}</ul>
    <p class="wpv-math">One $20 WOW Pass opens the whole world: Premium of the app you choose, Basic of every other ATH app, and all of WOW OS: the Lounge, the Academy, Games, Events, WOW TV, WOW Music and WOW Radio, plus your way into WM Pro. That is <b>more than $30 in app tiers alone</b>, before everything else, and it grows with every app ATH ships.</p></article>
  </div>
- <p class="note wpv-fine">World Pass is $20 a month after a 7-day free try (card required), cancel any time; your Passport identity is free. It opens Premium of the one app you choose, not the Premium or Pro tier of every app. Top tiers (WM Pro Auto-trading $30, WAVEMOTION Pro $50) are bought on their own; ATH services and third-party costs stay separate. {WP_NOTE}</p>
+ {holiday_note()}
+ <p class="note wpv-fine">World Pass is $20 a month after a 7-day free try (card required), cancel any time; your Passport identity is free. It opens Premium of the one app you choose, not the Premium or Pro tier of every app. Top tiers (WM Pro Auto-Trading $30, WAVEMOTION Pro $50) are bought on their own; ATH services and third-party costs stay separate. {WP_NOTE}</p>
  <div class="ctas mt1">{btn("Get the World Pass", "https://thewow.online/passport", attrs='rel="noopener"')}{btn("Get your free Passport", "https://thewow.online/passport/claim", "line", 'rel="noopener"')}</div>
 </div></div></section>"""
 # ---------------------------------------------------------------- capability map (SP-055 / R41, 2026-10-23)
@@ -492,7 +501,7 @@ def caps():
       ("Prospecting, CRM & sales routing", "Find, qualify and follow up with customers in PowerTribes: CRM, pipeline, dialer and sales routing, connected to your site and campaigns.", "PowerTribes", "live", "Solo $29 · Team $79 · Tower $179 a month", "Open PowerTribes", "https://powertribes.cloud/pricing", True),
       ("Workforce & operations OS", "Your PowerTribes office: Call Desk, appointment setter, tasks and team. A bigger office at every step of the ladder.", "PowerTribes", "inc", "In every plan", "See every plan", "/pricing/", False),
       ("PowerTribes on its own", "Solo, Team or Tower: CRM and pipeline, then team, dialer and coaching, then every floor of the tower. One plain price each; Enterprise by quote.", "PowerTribes", "live", cat_price("powertribes-plans"), "See PowerTribes plans", "https://powertribes.cloud/pricing", False),
-      ("Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", "Wealthy Mindsets Pro", "live", "Free guest · Basic $10 · Premium $20 · Auto-trading $30 a month", "Take the guest tour", "https://wealthymindsetspro.com/welcome", True),
+      ("Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", "Wealthy Mindsets Pro", "live", "Free guest · Basic $10 · Premium $20 · Auto-Trading $30 a month", "Take the guest tour", "https://wealthymindsetspro.com/welcome", True),
      ]),
     ]
 def cap_card(name, does, owner, st, price, cta, href, *_):
@@ -681,7 +690,7 @@ pages["/"] = ("Above the Hill Developments — We build the way over it",
  <div class="block-head"><div><p class="eyebrow">Inventions</p><h2 class="display d-m mt1">Built by ATH</h2></div>{btn("All inventions", "/work/", "line")}</div>
  <div class="grid g3">
   <article class="panel panel-pad card"><span class="tag live">Live today</span><h3>ATHOS Diagnostic</h3><p>The free hill-finder on this site. Inspects public evidence, separates what it observed from what it inferred, and says "unknown" when it doesn't know.</p><p class="mt2">{btn("Run it", "/diagnose/", "line")}</p></article>
-  <article class="panel panel-pad card"><span class="tag">Open door</span><h3>WealthyMindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. Free guest account, then Basic $10, Premium $20 or Auto-trading $30 a month. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
+  <article class="panel panel-pad card"><span class="tag">Open door</span><h3>Wealthy Mindsets Pro</h3><p>One complete professional trading operating system — the chart as the room, intelligence that respects price truth. Free guest account, then Basic $10, Premium $20 or Auto-Trading $30 a month. No profits promised.</p><p class="mt2"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit WM Pro {ARR}</a></p></article>
   <article class="panel panel-pad card"><span class="tag live">Open door</span><h3>WAVEMOTION</h3><p>One video in, a week of clips out. Drop in one long video (a sermon, a podcast, a live, a song) and get it back as short vertical clips for TikTok, Reels and YouTube Shorts: 40 a month on Starter ($10), 80 on Creator ($20), 250 on Pro ($50). You approve every clip before anything posts, and it goes out on the schedule you pick. Starter $10 · Creator $20 · Pro $50 a month, clips included.</p><p class="mt2">{btn("Open Wavemotion", "https://www.wavemotion.live/", "line")}</p></article>
  </div>
 </div></section>
@@ -762,7 +771,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
 <section class="block"><div class="wrap">
  <div class="grid g2">
   <div class="panel panel-pad"><p class="panel-title">Basic opens one app. The World Pass opens the ecosystem.</p>
-   <p class="body"><b>Basic, $10/month per app</b>: one app's essentials, like WAVEMOTION Starter or WM Pro Basic. <b>World Pass, $20/month</b>: Premium of the app you choose and Basic of every other ATH app, including apps still to come. {WP_NOTE} Try the World Pass 7 days free (card required). WM Pro Auto-trading is $30/month and WAVEMOTION Pro $50/month.</p>
+   <p class="body"><b>Basic, $10/month per app</b>: one app's essentials, like WAVEMOTION Starter or WM Pro Basic. <b>World Pass, $20/month</b>: Premium of the app you choose and Basic of every other ATH app, including apps still to come. {WP_NOTE} Try the World Pass 7 days free (card required). WM Pro Auto-Trading is $30/month and WAVEMOTION Pro $50/month.</p>
    <p class="panel-title mt2">What $20 is — and isn't</p>
    <p class="body">The World Pass is the $20 purchase itself, carried on your free Passport: Premium of one app, Basic of every other app. It does <b>not</b> unlock the Premium or Pro tier of every app, ATH services, third-party costs, or unlimited expensive infrastructure.</p>
    <dl class="hpa mt2"><dt>Identity</dt><dd>≠ membership</dd><dt>Membership</dt><dd>≠ owning every product</dd><dt>Membership</dt><dd>≠ professional infrastructure</dd></dl></div>
@@ -774,7 +783,7 @@ pages["/path/"] = ("How ATH works — One path. Different relationships.",
    <li>{ic("free","icon-sm")}<div><b>Free ATH Diagnostic</b><span>Available now — no account required. <a class="gold" href="/diagnose/">Run it</a>.</span></div></li>
    <li>{ic("door","icon-sm")}<div><b>Basic — $10 a month per app</b><span>WAVEMOTION turns one long video into a week of short clips you approve before they post. Starter (Basic) $10 · Creator (Premium) $20 · Pro $50 per month. No permanent free operator tier; public Living Destinations stay viewable. <a class="gold" href="/contact/?intent=wavemotion">Start Wavemotion with ATH</a>.</span></div></li>
    <li>{ic("lattice","icon-sm")}<div><b>World Pass — $20 / month</b><span>{WP_RULE} {WP_NOTE} Available now on WOW OS, on your free Passport. <a class="gold" href="https://thewow.online/passport" rel="noopener">Get World Pass</a>.</span></div></li>
-   <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>WealthyMindsets Pro: a free guest account, WM Pro Basic $10/month, Premium $20/month and Auto-trading $30/month. Spaidbot: Free, Pro $20 or Super Max $100 a month. WOW Studios: Solo $29, Creator $59, Pro $119 a month. PowerTribes: Solo $29, Team $79, Tower $179 a month. Creator Passport: Launch $40, Grow $75, Pro $100, Studio $150 a month. <a class="gold" href="https://thewow.online/plans" rel="noopener">See the plans</a>. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
+   <li>{ic("triangle","icon-sm")}<div><b>Specialist systems — plans vary by operating system</b><span>Wealthy Mindsets Pro: a free guest account, WM Pro Basic $10/month, Premium $20/month and Auto-Trading $30/month. Spaidbot: Free, Pro $20 or Super Max $100 a month. WOW Studios: Solo $29, Creator $59, Pro $119 a month. PowerTribes: Solo $29, Team $79, Tower $179 a month. Creator Passport: Launch $40, Grow $75, Pro $100, Studio $150 a month. <a class="gold" href="https://thewow.online/plans" rel="noopener">See the plans</a>. Exchange, data or broker fees ATH doesn't control stay separate. No profit or return is ever promised. <a class="gold" href="https://wealthymindsetspro.com" rel="noopener">Go to WM Pro</a>.</span></div></li>
    <li>{ic("peaks","icon-sm")}<div><b>ATH plans and services — every price published</b><span>ATH plans from $100 to $8,000 a month, one ladder; websites {site_price("website-starter")} (Starter) and {site_price("website-business")} (Business), one time; WAVEMOTION starts at $10 a month, apps from $1,000, custom systems scoped and quoted. <a class="gold" href="/pricing/">See every price</a>.</span></div></li>
   </ul></div>
 </div></section>""" + wp_value() + cta_block())
@@ -803,7 +812,7 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
    ("eye","Guest","No account","Explore appropriate public experiences without an account. Guest is a legitimate state, not a broken one."),
    ("me","Passport Free","Identity","Persistent identity only where it is actually required — receipts, permissions, ownership proof."),
    ("lattice","World Pass","$20 / month",WP_RULE + " " + WP_NOTE),
-   ("triangle","Specialist Entitlements","Plans vary","WealthyMindsets Pro: free guest, Basic $10, Premium $20, Auto-trading $30. Spaidbot $20 / $100, WOW Studios $29 / $59 / $119, PowerTribes from $29 and Creator Passport $40 to $150 are bought with your Passport. Dreamboard and future systems carry their own plans."),
+   ("triangle","Specialist Entitlements","Plans vary","Wealthy Mindsets Pro: free guest, Basic $10, Premium $20, Auto-Trading $30. Spaidbot $20 / $100, WOW Studios $29 / $59 / $119, PowerTribes from $29 and Creator Passport $40 to $150 are bought with your Passport. Dreamboard and future systems carry their own plans."),
    ("own","Purchases &amp; Ownership","Yours","What you bought and what remains yours, carried by Passport where supported.")])}
  </div>
  <div class="grid g2 mt3" id="benefits">
@@ -836,7 +845,6 @@ pages["/build/"] = ("ATH Services — You need the right path",
    <p class="note mt2 mb0">Every plan has a piece of everything ATH makes, and more of it at every step. Book a call to start; card checkout opens plan by plan.</p></div>
   <div class="mt2">{services_list()}</div>
   <p class="body mt2"><b>Starts at $10 a month</b>: one link for all your socials, your analytics in one place, and clips from your videos. WAVEMOTION clips come with the plan; there is no separate clip menu, and orders placed before the change are honored as bought.</p>
-  {holiday_note()}
   <p class="note mt2">Custom-build prices are starting points for a written scope, not unlimited work. Third-party costs (ads, domains, paid tools) are passed through at cost, never hidden. Catalog version {REG["version"]}.</p>
  </section>
 </div></section><section class="block"><div class="wrap">
@@ -887,6 +895,7 @@ pages["/pricing/"] = ("Prices — ATH plans from $100 to $8,000 a month",
   <ul class="pb-every-list">{"".join(f'<li>{ic(i, "icon-sm")}<span>{t}</span></li>' for i, t in EVERY_PLAN)}</ul></div>
  {plan_cards()}
  <ul class="pkg-list mt2 pb-fine">{"".join(f"<li>{html.escape(f)}</li>" for f in PB["fine"])}<li>Price book version {PB["version"]}, {PB["as_of"]}. Card checkout opens plan by plan; until then, every plan starts with a call and a written scope.</li></ul>
+ <div class="panel panel-pad mt2 refund-rule" id="refunds"><p class="panel-title">Refunds and cancelling</p><p class="body mb0">{html.escape(REFUND_RULE)}</p></div>
 </div></section>
 <section class="block pb-block" aria-labelledby="sv-h"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">Not part of a plan</p><h2 class="display d-m mt1" id="sv-h">Services on their own</h2></div>
@@ -900,7 +909,7 @@ ECO = [
  ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW OS.", ("Get Passport", "https://thewow.online/passport/claim")),
  ("World Pass", "On WOW OS · $20/mo", "live", "Open door", WP_RULE + " " + WP_NOTE + " Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
  ("WAVEMOTION", "One video in, a week of clips out", "live", "Open door", "Drop in one long video (a sermon, a podcast, a live, a song) and get it back as short vertical clips for TikTok, Reels and YouTube Shorts: 40 a month on Starter ($10), 80 on Creator ($20), 250 on Pro ($50). You approve every clip before anything posts, and it goes out on the schedule you pick.", ("Visit Wavemotion", "https://wavemotion.live/")),
- ("WM Pro", "Wealthy Mindsets Pro · free guest tour", "", "Open door", "Free guest account · Basic $10/mo · Premium $20/mo · Auto-trading $30/mo. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
+ ("WM Pro", "Wealthy Mindsets Pro · free guest tour", "", "Open door", "Free guest account · Basic $10/mo · Premium $20/mo · Auto-Trading $30/mo. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
  ("PowerTribes", "An ATH product · Solo $29 · Team $79 · Tower $179 a month", "live", "Open door", "Your company's office: AI staff at their desks, CRM, dialer, team chat and operations. Its own app at powertribes.cloud, one plain price each, Enterprise by quote. An office also comes inside every ATH plan.", ("Open PowerTribes", "https://powertribes.cloud/")),
  ("Dreamboard", "Human-potential &amp; creative OS", "live", "Open door", "Idea → clarity → project → finished work: your board, Book Studio, Money Tree and a daily start-before-ready step, on your WOW Passport.", ("Open Dream Board", "https://spaidbot.cloud/dreamboard/")),
  ("WOW OS", "The operating system · Guest welcome", "live", "Open door", "One home, many rooms — Lounge, Academy (Idea Library, Visual Learns, Student of the Game), Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://thewow.online/")),
@@ -943,6 +952,7 @@ pages["/ecosystem/"] = ("The Ecosystem — What ATH does, who owns it, what it c
 """ + compare_section() + f"""<section class="block" id="d"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">Destinations</p><h2 class="display d-m mt1">Every door, status plainly</h2></div><p class="note" style="max-width:46ch">Statuses reflect what is actually reachable today. Future systems are never shown as purchasable.</p></div>
  <div class="grid g3">{eco_cards()}</div>
+ {holiday_note()}
 </div></section>""" + cta_block())
 
 pages["/language/"] = ("ATH Builder Dictionary — Build a better language",
@@ -1043,7 +1053,7 @@ pages["/work/"] = ("Inventions & Work — Above the Hill Developments",
  + f"""<section class="block"><div class="wrap"><div class="grid g2">
   {"".join(f'<article class="panel panel-pad card"><span class="tag {c}">{s}</span><h3>{t}</h3><dl class="hpa mt1"><dt>The hill</dt><dd>{h}</dd><dt>The path</dt><dd>{p}</dd><dt>Now</dt><dd>{n}</dd></dl>{l}</article>' for c,s,t,h,p,n,l in [
    ("live","Live","ATHOS Diagnostic","Businesses can't see what's actually stopping them — and most \"audits\" invent certainty.","An evidence-first diagnostic that separates observed, inferred and unknown.","Running on this site.", f'<p class="mt2 mb0">{btn("Run it","/diagnose/","line")}</p>'),
-   ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. Free guest account, then Basic $10, Premium $20 or Auto-trading $30 a month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
+   ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. Free guest account, then Basic $10, Premium $20 or Auto-Trading $30 a month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
    ("","Open door","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","Plans $10 / $20 / $50 a month, clips included. You approve every clip before it posts.", f'<p class="mt2 mb0">{btn("Open Wavemotion","https://www.wavemotion.live/","line")}</p>'),
    ("live","Live","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","Open at spaidbot.cloud/dreamboard with your WOW Passport.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://spaidbot.cloud/dreamboard/" rel="noopener">Open Dream Board {ARR}</a></p>'),
    ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW OS; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),
@@ -1251,14 +1261,15 @@ pages["/privacy/"] = ("Privacy — Above the Hill Developments", "What ATH colle
 
 pages["/terms/"] = ("Terms — Above the Hill Developments", "Ownership, diagnostics, and use of the ATH website.",
  """<section class="block"><div class="wrap prose" style="max-width:820px"><p class="eyebrow">Policy</p><h1 class="display d-m">Terms</h1>
-<p>Effective October 7, 2026; packages section added October 13, 2026; World Pass app tiers updated October 24, 2026; card payments added November 13, 2026. These terms cover use of abovethehilldev.online, operated by Above the Hill Developments Inc. ("ATH").</p>
+<p>Effective October 7, 2026; packages section added October 13, 2026; World Pass app tiers updated October 24, 2026; card payments added November 13, 2026; refunds and cancelling added November 14, 2026. These terms cover use of abovethehilldev.online, operated by Above the Hill Developments Inc. ("ATH").</p>
 <h2>The free diagnostic</h2><p>ATHOS reports what it observed on one public page, what it infers from that, and what it cannot know. It is informational, not a guarantee of results. Where evidence is missing, the result says "unknown".</p>
 <h2>Ownership</h2><ul>
 <li>You own your materials. A diagnostic or deep diagnostic transfers no ownership of your code, content or data to ATH.</li>
 <li>ATH owns ATH intellectual property — including ATHOS, its methods, the ATH Builder Dictionary, product designs and inventions. Purchasing the Dictionary or any product licenses its use; it does not transfer ownership of ATH inventions.</li></ul>
 <h2>Deep diagnostics and services</h2><p>Deeper inspection happens only under a written scope you approve, with access you grant and may revoke. Default posture is read-only; ATH does not modify your systems during a diagnostic. Services are delivered under a separate scope and quote.</p>
-<h2>Website and app packages</h2><p>Package prices are listed on the <a class="gold" href="/pricing/">Prices page</a>. Submitting a package request creates no charge and no obligation. ATH replies with a written scope and an invoice; work begins only after you approve the scope and pay. Timeline, revisions, ownership terms, third-party costs and refund terms are stated in that written scope. Ecosystem extras described as “not active yet” are delivered only once that product is operational, and no subscription renews without your separate consent.</p>
-<h2>Paying by card</h2><p>The ATH plans and the Starter and Business Websites can be paid by card through Stripe. A website card payment is one time: the package price plus its setup. """ + PLAN_CARD_TERMS + """ To cancel a monthly plan, give 30 days’ notice by calling or texting <a class="gold" href="tel:+19189600164">(918) 960-0164</a> or through the <a class="gold" href="/contact/">contact form</a>. After you pay, send your details on the <a class="gold" href="/start/">intake page</a> so ATH can start your build. Questions about a charge go to the same phone line or contact form.</p>
+<h2>Website and app packages</h2><p>Package prices are listed on the <a class="gold" href="/pricing/">Prices page</a>. Submitting a package request creates no charge and no obligation. ATH replies with a written scope and an invoice; work begins only after you approve the scope and pay. Timeline, revisions, ownership terms and third-party costs are stated in that written scope; refunds follow <a class="gold" href="#refunds">the refund rule below</a>. Ecosystem extras described as “not active yet” are delivered only once that product is operational, and no subscription renews without your separate consent.</p>
+<h2>Paying by card</h2><p>The ATH plans and the Starter and Business Websites can be paid by card through Stripe. A website card payment is one time: the package price plus its setup. """ + PLAN_CARD_TERMS + """ Cancel a monthly plan anytime by calling or texting <a class="gold" href="tel:+19189600164">(918) 960-0164</a> or through the <a class="gold" href="/contact/">contact form</a>. After you pay, send your details on the <a class="gold" href="/start/">intake page</a> so ATH can start your build. Questions about a charge go to the same phone line or contact form.</p>
+<h2 id="refunds">Refunds and cancelling</h2><p class="refund-rule">""" + html.escape(REFUND_RULE) + """</p>
 <h2>Prices and availability</h2><p>Only products marked available can be bought. Waitlists and access requests create no obligation for either side. The World Pass is a $20-a-month plan: it includes the Premium tier of one app you choose and the Basic tier of every other app, which each app switches on from your pass; it does not include the Premium or Pro tier of every app, ATH services or third-party costs unless stated in writing.</p>
 <h2>Contact</h2><p>Questions: use the <a class="gold" href="/contact/">contact form</a>, or call or text <a class="gold" href="tel:+19189600164">(918) 960-0164</a>.</p>
 </div></section>""")
@@ -2227,7 +2238,13 @@ def write():
     open(os.path.join(ROOT, "CNAME"), "w").write("abovethehilldev.online\n")
     open(os.path.join(ROOT, ".nojekyll"), "w").write("")
     # master catalog (registry "catalog"): every ATH offer with an honest status, for Spaidbot and partners
-    open(os.path.join(ROOT, "catalog.json"), "w").write(json.dumps({"version": REG["version"], "statuses": {"LIVE": "can be bought now", "SCOPED": "sold through a written quote", "NOT_ACTIVE": "named but not deliverable yet", "PROPOSED": "a plan, not for sale", "LIVE_IN_WM_PRO": "available inside WM Pro", "RETIRED": "no longer sold; orders already placed are honored", "BOOKABLE": "book now: ATH confirms a time; card checkout switches on when its payment link is added"}, "offers": OFFERS}, indent=1, ensure_ascii=False))
+    # HOLIDAY (Founder 11-14): app subscriptions only, date-gated at build time; the line itself names its end date so a
+    # stale catalog read after New Year's still says the offer ended Jan 1, 2027, 11:59 PM CT.
+    HOLIDAY_IDS = {"wmp-pro", "wmp-tiers", "wm-plans", "wow-world-pass", "wow-founding-500", "spaidbot", "wow-studios-plans", "powertribes-plans", "creator-passport"}
+    hol = {"code": HOLIDAY_CODE, "title": "HOLIDAY — through New Year's", "line": HOLIDAY_LINE, "ends": HOLIDAY_ENDS} if holiday_open() else None
+    cat_offers = [dict(o, holiday=hol) if hol and o["id"] in HOLIDAY_IDS else o for o in OFFERS]
+    cat_extra = {"holiday": hol} if hol else {}
+    open(os.path.join(ROOT, "catalog.json"), "w").write(json.dumps({"version": REG["version"], "statuses": {"LIVE": "can be bought now", "SCOPED": "sold through a written quote", "NOT_ACTIVE": "named but not deliverable yet", "PROPOSED": "a plan, not for sale", "LIVE_IN_WM_PRO": "available inside WM Pro", "RETIRED": "no longer sold; orders already placed are honored", "BOOKABLE": "book now: ATH confirms a time; card checkout switches on when its payment link is added"}, **cat_extra, "offers": cat_offers}, indent=1, ensure_ascii=False))
     open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     urls = "".join(f"<url><loc>{SITE}{r}</loc></url>" for r in pages if r not in NOINDEX)
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')

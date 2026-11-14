@@ -77,12 +77,12 @@ test('every card button is a real Stripe Payment Link or a booking request, neve
   for (const i of book.services.flatMap((g) => g.items)) if (i.pay_url) assert.match(i.pay_url, /^https:\/\/(buy\.stripe\.com\/|www\.wavemotion\.live\/|thewow\.online\/|wealthymindsetspro\.com\/)/, i.id);
 });
 
-test('matrix 2026-11-07 + Founder 11-13: the book names only current app tiers (WM Pro Basic/Auto-trading, Spaidbot Pro/Super Max)', () => {
+test('matrix 2026-11-07 + Founder 11-13: the book names only current app tiers (WM Pro Basic/Auto-Trading, Spaidbot Pro/Super Max)', () => {
   const raw = JSON.stringify(book);
   assert.doesNotMatch(raw, /WM Pro (App|OS)\b|Spaidbot (?:Personal|Builder|Operations)\b|\b(?:Personal|Operations) ×|OS \$50|Personal \$19/i); // Founder 11-13: Spaidbot Free / Pro $20 / Super Max $100
   const svc = Object.fromEntries(book.services.flatMap((g) => g.items).map((i) => [i.id, i]));
   assert.equal(svc.spaidbot.price, 'Free · Pro $20 · Super Max $100'); // Founder 11-13
   assert.equal(svc.spaidbot.pay_url, 'https://thewow.online/plans');
-  assert.equal(svc['wm-pro'].price, 'Free guest · Basic $10 · Premium $20 · Auto-trading $30');
-  for (const s of steps) assert.match(s.wm_pro, /^WM Pro Basic on every seat( \+ \d+ WM Pro Auto-trading seats?)?$/, s.key);
+  assert.equal(svc['wm-pro'].price, 'Free guest · Basic $10 · Premium $20 · Auto-Trading $30');
+  for (const s of steps) assert.match(s.wm_pro, /^WM Pro Basic on every seat( \+ \d+ WM Pro Auto-Trading seats?)?$/, s.key);
 });

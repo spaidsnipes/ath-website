@@ -1,6 +1,6 @@
 {
   "version": "2026-11-07.1",
-  "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status). · Founder price matrix 2026-11-07 (ATH-PRICE-MATRIX-1107): WM Pro Basic $10 / Premium $20 / Auto-trading $30; WAVEMOTION $10/$20/$50 (Living Cinema Studio retired); Spaidbot Free / Pro $20 / Super Max $100 (Founder 11-13); WOW Studios $29/$59/$119; Power Tribes launch $29/$79/$179 (standard $49/$149/$349); Creator Passport $40/$75/$100/$150; Passport free; FOUNDING 500 $10/mo; World Pass $20 with a 7-day trial (card required).",
+  "authority": "Founder confirmation in Execute ATH production sequence, October 14, 2026: Keep the current $10/$20/$50/$75 tiers. Founder, October 14, 2026 (WAVEMOTION thread): \"no discounts anymore, the new prices are the new prices\" — the Passport/World Pass clipping discount is retired. · Founder revenue plan pasted 2026-10-19 (package extras, $500 cinematic launch, WM Pro/Passport tier proposals, master catalog with live status). · Founder price matrix 2026-11-07 (ATH-PRICE-MATRIX-1107): WM Pro Basic $10 / Premium $20 / Auto-Trading $30; WAVEMOTION $10/$20/$50 (Living Cinema Studio retired); Spaidbot Free / Pro $20 / Super Max $100 (Founder 11-13); WOW Studios $29/$59/$119; Power Tribes launch $29/$79/$179 (standard $49/$149/$349); Creator Passport $40/$75/$100/$150; Passport free; FOUNDING 500 $10/mo; World Pass $20 with a 7-day trial (card required).",
   "supersedes": "2026-10-07 Founder economics lock (README-ATH-LIVE-BUILD.md) for website package prices and WAVEMOTION plan structure only. See RECONCILIATION-2026-10-13.md. October 14 confirmation supersedes the October 13 pending-new-plans hold only; website/service scope and other open decisions remain unchanged.",
   "currency": "USD",
   "payment": {
@@ -467,8 +467,8 @@
     {
       "id": "wmp-pro",
       "business": "Wealthy Mindsets Pro",
-      "name": "Wealthy Mindsets Pro",
-      "price": "WM Pro Basic $10/mo (3 inventions, standard timeframes) · Premium $20/mo · Auto-trading $30/mo · free guest account",
+      "name": "Wealthy Mindsets Pro (WM Pro)",
+      "price": "WM Pro Basic $10 / WM Pro Premium $20 / WM Pro Auto-Trading $30 a month (Basic: 3 inventions, standard timeframes) · free guest account",
       "status": "LIVE",
       "buy": "https://wealthymindsetspro.com/pricing",
       "fulfillment": "Buy on wealthymindsetspro.com/pricing: create an account, choose a tier, pay with Stripe. Cancel any time with Manage billing. Billing is in live mode (verified Oct 19: /api/billing/tiers).",
@@ -477,11 +477,11 @@
     {
       "id": "wmp-tiers",
       "business": "Wealthy Mindsets Pro",
-      "name": "WM Pro tiers",
-      "price": "Free · Basic $10 · Premium $20 · Auto-trading $30 a month",
+      "name": "Wealthy Mindsets Pro (WM Pro) tiers",
+      "price": "Free guest · WM Pro Basic $10 / WM Pro Premium $20 / WM Pro Auto-Trading $30 a month",
       "status": "LIVE",
       "buy": "https://wealthymindsetspro.com/pricing",
-      "fulfillment": "Live tiers on WM Pro's own pricing page.",
+      "fulfillment": "Live tiers on WM Pro's own pricing page. Connect your broker for live data — tastytrade and Webull give you free live data. With no broker connected, charts show delayed candles, never a blank chart.",
       "verified": "2026-11-07"
     },
     {

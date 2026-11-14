@@ -9,6 +9,12 @@
   "RETIRED": "no longer sold; orders already placed are honored",
   "BOOKABLE": "book now: ATH confirms a time; card checkout switches on when its payment link is added"
  },
+ "holiday": {
+  "code": "HOLIDAY",
+  "title": "HOLIDAY — through New Year's",
+  "line": "Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). It applies to app subscriptions (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport), not to ATH website plans or setup fees.",
+  "ends": "2027-01-02T05:59:59Z"
+ },
  "offers": [
   {
    "id": "ath-quick-start",
@@ -148,7 +154,13 @@
    "status": "LIVE",
    "buy": "https://www.wavemotion.live/#pricing",
    "fulfillment": "Self-serve; starts at $10 a month (Starter: one link for all socials, analytics, clips), paid from day one; cancel in billing portal. Paid cinematic generation closed. Living Cinema Studio ($75 a month): everything in Pro, plus a PowerTribes mini office for your business (Solo size, sold alone at $29 a month) connected to your WOW Passport, opened for you by the ATH team after your first payment. Same words as wavemotion.live and the price book.",
-   "verified": "2026-11-14"
+   "verified": "2026-11-14",
+   "holiday": {
+    "code": "HOLIDAY",
+    "title": "HOLIDAY — through New Year's",
+    "line": "Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). It applies to app subscriptions (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport), not to ATH website plans or setup fees.",
+    "ends": "2027-01-02T05:59:59Z"
+   }
   },
   {
    "id": "wm-clips",
@@ -163,22 +175,34 @@
   {
    "id": "wmp-pro",
    "business": "Wealthy Mindsets Pro",
-   "name": "Wealthy Mindsets Pro",
-   "price": "WM Pro Basic $10/mo (3 inventions, standard timeframes) · Premium $20/mo · Auto-trading $30/mo · free guest account",
+   "name": "Wealthy Mindsets Pro (WM Pro)",
+   "price": "WM Pro Basic $10 / WM Pro Premium $20 / WM Pro Auto-Trading $30 a month (Basic: 3 inventions, standard timeframes) · free guest account",
    "status": "LIVE",
    "buy": "https://wealthymindsetspro.com/pricing",
    "fulfillment": "Buy on wealthymindsetspro.com/pricing: create an account, choose a tier, pay with Stripe. Cancel any time with Manage billing. Billing is in live mode (verified Oct 19: /api/billing/tiers).",
-   "verified": "2026-11-07"
+   "verified": "2026-11-07",
+   "holiday": {
+    "code": "HOLIDAY",
+    "title": "HOLIDAY — through New Year's",
+    "line": "Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). It applies to app subscriptions (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport), not to ATH website plans or setup fees.",
+    "ends": "2027-01-02T05:59:59Z"
+   }
   },
   {
    "id": "wmp-tiers",
    "business": "Wealthy Mindsets Pro",
-   "name": "WM Pro tiers",
-   "price": "Free · Basic $10 · Premium $20 · Auto-trading $30 a month",
+   "name": "Wealthy Mindsets Pro (WM Pro) tiers",
+   "price": "Free guest · WM Pro Basic $10 / WM Pro Premium $20 / WM Pro Auto-Trading $30 a month",
    "status": "LIVE",
    "buy": "https://wealthymindsetspro.com/pricing",
-   "fulfillment": "Live tiers on WM Pro's own pricing page.",
-   "verified": "2026-11-07"
+   "fulfillment": "Live tiers on WM Pro's own pricing page. Connect your broker for live data — tastytrade and Webull give you free live data. With no broker connected, charts show delayed candles, never a blank chart.",
+   "verified": "2026-11-07",
+   "holiday": {
+    "code": "HOLIDAY",
+    "title": "HOLIDAY — through New Year's",
+    "line": "Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). It applies to app subscriptions (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport), not to ATH website plans or setup fees.",
+    "ends": "2027-01-02T05:59:59Z"
+   }
   },
   {
    "id": "wow-passport",
@@ -198,7 +222,13 @@
    "status": "LIVE",
    "buy": "https://thewow.online/passport",
    "fulfillment": "Self-serve on WOW OS. Founder rule (2026-10-23, corrected 2026-10-24): the $20 World Pass is the ecosystem pass. Premium of ONE app you choose (WAVEMOTION Creator or WM Pro Premium) plus Basic of every other ATH app (WAVEMOTION Starter or WM Pro Basic, WOW OS rooms, WOW Academy, Dreamboard and every app still to come), and WOW World (the future metaverse) when it opens. Never the Premium or Pro tier of every app. WOW OS owns the one World Pass record (Founder decision 2026-10-24); WAVEMOTION and WM Pro read it and switch their tier on: Premium for the chosen app, Basic otherwise.",
-   "verified": "2026-11-07"
+   "verified": "2026-11-07",
+   "holiday": {
+    "code": "HOLIDAY",
+    "title": "HOLIDAY — through New Year's",
+    "line": "Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). It applies to app subscriptions (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport), not to ATH website plans or setup fees.",
+    "ends": "2027-01-02T05:59:59Z"
+   }
   },
   {
    "id": "wow-passport-core",
@@ -268,7 +298,13 @@
    "status": "LIVE",
    "buy": "https://thewow.online/plans",
    "fulfillment": "Free AI assistant on every abovethehilldev.online page. Pro and Super Max are bought with your WOW Passport at thewow.online/plans (Stripe, cancel any time).",
-   "verified": "2026-11-07"
+   "verified": "2026-11-07",
+   "holiday": {
+    "code": "HOLIDAY",
+    "title": "HOLIDAY — through New Year's",
+    "line": "Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). It applies to app subscriptions (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport), not to ATH website plans or setup fees.",
+    "ends": "2027-01-02T05:59:59Z"
+   }
   },
   {
    "id": "wow-founding-500",
@@ -278,7 +314,13 @@
    "status": "LIVE",
    "buy": "https://thewow.online/passport#founding",
    "fulfillment": "First 500 per app (WM Pro, WOW OS, WAVEMOTION). Stripe checkout with your Passport. 1-year price guarantee: your $10 is locked for 12 months; after that it moves to the standard price, and we tell you first. Members already promised something keep it.",
-   "verified": "2026-11-07"
+   "verified": "2026-11-07",
+   "holiday": {
+    "code": "HOLIDAY",
+    "title": "HOLIDAY — through New Year's",
+    "line": "Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). It applies to app subscriptions (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport), not to ATH website plans or setup fees.",
+    "ends": "2027-01-02T05:59:59Z"
+   }
   },
   {
    "id": "wow-studios-plans",
@@ -288,7 +330,13 @@
    "status": "LIVE",
    "buy": "https://thewow.online/plans",
    "fulfillment": "Bought with your WOW Passport at thewow.online/plans; unlocks in wowstudios.cloud.",
-   "verified": "2026-11-07"
+   "verified": "2026-11-07",
+   "holiday": {
+    "code": "HOLIDAY",
+    "title": "HOLIDAY — through New Year's",
+    "line": "Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). It applies to app subscriptions (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport), not to ATH website plans or setup fees.",
+    "ends": "2027-01-02T05:59:59Z"
+   }
   },
   {
    "id": "powertribes-plans",
@@ -298,7 +346,13 @@
    "status": "LIVE",
    "buy": "https://thewow.online/plans",
    "fulfillment": "Bought with your WOW Passport; unlocks in powertribes.cloud.",
-   "verified": "2026-11-14"
+   "verified": "2026-11-14",
+   "holiday": {
+    "code": "HOLIDAY",
+    "title": "HOLIDAY — through New Year's",
+    "line": "Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). It applies to app subscriptions (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport), not to ATH website plans or setup fees.",
+    "ends": "2027-01-02T05:59:59Z"
+   }
   },
   {
    "id": "creator-passport",
@@ -308,7 +362,13 @@
    "status": "LIVE",
    "buy": "https://thewow.online/plans",
    "fulfillment": "One bill: WOW Studios + WAVEMOTION + Spaidbot tiers together, Passport included. Launch = Studios Solo + WAVEMOTION Starter + Spaidbot Pro; Grow = Studios Creator + WAVEMOTION Creator + Spaidbot Pro; Pro = Studios Pro + WAVEMOTION Pro + Spaidbot Pro; Studio = Studios Pro + WAVEMOTION Pro + Spaidbot Super Max.",
-   "verified": "2026-11-07"
+   "verified": "2026-11-07",
+   "holiday": {
+    "code": "HOLIDAY",
+    "title": "HOLIDAY — through New Year's",
+    "line": "Use code HOLIDAY at checkout: half off your first 2 months, through New Year's (Jan 1, 2027, 11:59 PM CT). It applies to app subscriptions (WM Pro, WAVEMOTION, World Pass, Spaidbot, PowerTribes, WOW Studios and Creator Passport), not to ATH website plans or setup fees.",
+    "ends": "2027-01-02T05:59:59Z"
+   }
   }
  ]
 }
