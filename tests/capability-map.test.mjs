@@ -18,11 +18,11 @@ test('the full map: every capability has an owner, an honest status, a price or 
   for (const c of cards) {
     const owner = c.html.match(/class="cap-owner">([^<]+)</)[1].replace(/&amp;/g, '&');
     for (const o of owner.split(/\s*[+·]\s*/)) assert.match(o, OWNERS, `${c.name}: owner ${o}`);
-    assert.ok(['live', 'inc', 'quote', 'dev', 'nb'].includes(c.st), c.name);
+    assert.ok(['live', 'inc', 'quote', 'req'].includes(c.st), c.name);
     assert.match(c.html, /class="cap-price">[^<]+</, `${c.name} has no price line`);
     const href = c.html.match(/class="cap-go" href="([^"]+)"/)[1];
     if (href.startsWith('/')) assert.ok(existsSync(PUB + href.split(/[?#]/)[0].replace(/^\//, '') + 'index.html'), `${c.name} → ${href}`);
-    else assert.match(href, /^https:\/\/(www\.wavemotion\.live|wealthymindsetspro\.com|thewow\.online)\//, `${c.name} → ${href}`);
+    else assert.match(href, /^https:\/\/(www\.wavemotion\.live|wealthymindsetspro\.com|thewow\.online|powertribes\.cloud|spaidbot\.cloud)\//, `${c.name} → ${href}`);
     if (c.st === 'dev') assert.match(c.html, /Not sold yet/, `${c.name} is in development but shows a price`);
   }
 });
@@ -42,9 +42,9 @@ test('homepage shows the grouped map, the comparison and the ONE $100 → $8,000
   assert.doesNotMatch(home, /class="pl"|pl-price|What the \$20 World Pass/, 'no second price ladder or pass block on the front page');
 });
 
-test('the comparison names no competitor and admits what is not built', () => {
+test('the comparison names no competitor and shows guests no internal status words (Founder 11-14)', () => {
   for (const f of files(PUB)) assert.doesNotMatch(readFileSync(f, 'utf8'), /contentstack/i, f);
-  assert.match(eco, /Not built yet/);
+  for (const f of files(PUB)) if (!/\/preview\//.test(f)) assert.doesNotMatch(readFileSync(f, 'utf8'), /Not built yet|In development|Not sold yet|coming soon|Founder pricing|opening to members|Built · opening/i, f);
 });
 
 test('one owner per job, and no new standalone Content OS brand', () => {

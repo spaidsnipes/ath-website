@@ -172,7 +172,7 @@ RUNGS = [
     ("free", "Free", "Free Passport", "Your free Passport · the Lounge · WOW Music, WOW Radio &amp; WOW TV · WOW Academy's free lessons", "", "/passport/#ladder"),
     ("door", "$10 / mo", "Basic", "One app's essentials, per app · WAVEMOTION Starter · WM Pro Basic", "", "/passport/#ladder"),
     ("lattice", "$20 / mo", "World Pass", "Premium of the app you choose + Basic of every other ATH app, WOW OS, Academy and every new app", "Best value", "/passport/#world-pass-value"),
-    ("triangle", "$19–$179 / mo", "App plans", "WM Pro Auto-trading $30 · WAVEMOTION Pro $50 · Spaidbot from $20 · WOW Studios from $29 · PowerTribes from $29 · Creator Passport from $40", "", "/ecosystem/#plans"),
+    ("triangle", "$20–$179 / mo", "App plans", "WM Pro Auto-trading $30 · WAVEMOTION Pro $50 · Spaidbot from $20 · WOW Studios from $29 · PowerTribes from $29 · Creator Passport from $40", "", "/ecosystem/#plans"),
     ("peaks", "$100–$8,000 / mo", "ATH plans", "One ladder for your business: a piece of everything ATH makes, more of it at every step", "", "/pricing/"),
 ]
 
@@ -441,14 +441,14 @@ def pk(pid):
     if p.get("price_max"): return f'{money(p["price"])}–{money(p["price_max"])}'
     return ("from " if p["from"] else "") + money(p["price"])
 STATUS = {"live": ("Live now", "live"), "inc": ("Included", ""), "quote": ("By quote", ""),
-          "dev": ("In development", "dim"), "nb": ("Not built yet", "dim")}
+          "req": ("On request", "")}
 OWNERS = [
  ("ATH", "peaks", "Corporate front door", "This website, discovery, service offers, quotes and the people who answer.", "ATHOS for diagnosis · ATH Commerce for checkout"),
  ("ATH Web Studio", "site", "Websites & presentation", "Client websites, brand themes, reusable sections, previews, hosting and domains.", "WAVEMOTION videos · ATH Commerce links · Passport"),
  ("WAVEMOTION", "content", "Content & campaigns", "Clips, captions, campaign workflow, approvals, publishing and what-worked learning.", "Web Studio pages as destinations · Passport"),
  ("ATHOS · Atlas", "ai", "Intelligence & memory", "Diagnosis, Spaidbot, AI roles and orchestration; Atlas keeps decisions, sources and proof.", "The live price list (catalog.json) · every engagement's evidence"),
  ("ATH Commerce", "own", "Orders & payments", "Card checkout, orders, entitlements and receipts for everything ATH sells.", "Stripe · Shopify · Passport"),
- ("SPAID Business · PowerTribes", "flow", "Customers & teams", "Your company's office: AI staff, CRM, dialer, sales routing, team chat and operations. Live, included in every ATH plan.", "ATHOS AI staff · WAVEMOTION · Passport"),
+ ("PowerTribes", "flow", "Customers & teams", "An ATH product with its own home at powertribes.cloud: your company's office with AI staff, CRM, dialer, sales routing, team chat and operations. Sold on its own, and an office comes inside every ATH plan.", "ATHOS AI staff · WAVEMOTION · Passport"),
  ("WOW OS", "lattice", "Identity, community & learning", "Passport, World Pass, Lounge, Academy, Shop, TV, Music and Radio.", "Every ATH app as it connects to Passport"),
 ]
 def caps():
@@ -488,10 +488,10 @@ def caps():
       ("WOW Academy", "Idea Library, The Polyglot's Mind and Student of the Game. Stamps come from proof, not attendance.", "WOW OS", "live", cat_price("wow-academy-free"), "Visit the campus", "https://thewow.online/academy", False),
       ("Lounge, TV, Music, Radio & Shop", "Rooms to connect, watch, listen and shop, entered from WOW OS. Guests welcome.", "WOW OS", "live", "Free to enter", "Enter WOW OS", "https://thewow.online/", False),
      ]),
-     ("teams", "Customers, teams & specialist systems", "SPAID Business · PowerTribes · specialist OS", [
-      ("Prospecting, CRM & sales routing", "Find, qualify and follow up with customers, connected to your site and campaigns.", "SPAID Business", "dev", "Not sold yet", "Request access", "/contact/?intent=services", True),
+     ("teams", "Customers, teams & specialist systems", "PowerTribes · specialist OS", [
+      ("Prospecting, CRM & sales routing", "Find, qualify and follow up with customers in PowerTribes: CRM, pipeline, dialer and sales routing, connected to your site and campaigns.", "PowerTribes", "live", "Solo $29 · Team $79 · Tower $179 a month", "Open PowerTribes", "https://powertribes.cloud/pricing", True),
       ("Workforce & operations OS", "Your PowerTribes office: Call Desk, appointment setter, tasks and team. A bigger office at every step of the ladder.", "PowerTribes", "inc", "In every plan", "See every plan", "/pricing/", False),
-      ("PowerTribes on its own", "Solo, Team or Business OS: CRM and pipeline, then team, dialer and coaching, then the full business OS. Launch prices; Enterprise by quote.", "PowerTribes", "live", cat_price("powertribes-plans"), "See the plans", "https://thewow.online/plans", False),
+      ("PowerTribes on its own", "Solo, Team or Tower: CRM and pipeline, then team, dialer and coaching, then every floor of the tower. One plain price each; Enterprise by quote.", "PowerTribes", "live", cat_price("powertribes-plans"), "See PowerTribes plans", "https://powertribes.cloud/pricing", False),
       ("Wealthy Mindsets Pro", "A trading workspace with a chart, a journal and lessons. Education and tools, not financial advice.", "Wealthy Mindsets Pro", "live", "Free guest · Basic $10 · Premium $20 · Auto-trading $30 a month", "Take the guest tour", "https://wealthymindsetspro.com/welcome", True),
      ]),
     ]
@@ -526,14 +526,14 @@ def cap_map(home=False):
 # No competitor is named. Each row says how ATH delivers it today, and says so when it does not.
 COMPARE_PLATFORM = [
  ("Structured, reusable content", "Every site is built from structured content and reusable sections, so a change lands everywhere it belongs.", "inc"),
- ("Visual editing & live preview", "You review a preview link and ATH makes the edits for you. A self-serve visual editor is not built yet.", "inc"),
+ ("Visual editing & live preview", "You review a preview link, ask for changes in plain words, and ATH makes the edits for you.", "inc"),
  ("Media & asset library", "Your photos and logo are placed, sized and given alt text. Video assets live in WAVEMOTION.", "inc"),
  ("Brand rules & templates", "Three tuned themes, applied consistently across every page of your site.", "inc"),
  ("Drafts, approvals & publishing", "Preview, approve, publish. In WAVEMOTION you approve every clip before it posts.", "live"),
  ("Multichannel delivery", "Web and phone today, video channels through WAVEMOTION; apps, TV and SDKs by written scope.", "live"),
  ("AI agents", "Spaidbot and the ATHOS Diagnostic are free and live; deeper automation is scoped.", "live"),
  ("Localization", "Additional languages are scoped and quoted per project.", "quote"),
- ("Audience data & personalization", "WAVEMOTION learns from campaign results. Customer profiles and personalization are not built yet.", "nb"),
+ ("Audience data & personalization", "WAVEMOTION learns from campaign results; customer profiles and personalised pages are scoped and quoted per project.", "quote"),
  ("Hosting & delivery", "Fast static hosting included; your own domain at the registrar's price.", "inc"),
 ]
 def compare_plus():
@@ -551,7 +551,7 @@ def compare_rows(rows):
 def compare_section(sid="compare"):
     return f"""<section class="block" id="{sid}"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">One ecosystem</p><h2 class="display d-m mt1">Everything a content platform gives you.<br><span class="gold">Plus the business systems.</span></h2></div>
-  <p class="note" style="max-width:44ch">What a headless CMS or digital experience platform covers, and how ATH delivers each part today, row by row. Where something isn't built, this table says so.</p></div>
+  <p class="note" style="max-width:44ch">What a headless CMS or digital experience platform covers, and how ATH delivers each part today, row by row. Each row says how it is delivered: live, included, or quoted in writing.</p></div>
  <div class="grid cmp-grid" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:start" data-collapse>
   <div class="panel panel-pad"><p class="panel-title">The content platform essentials</p><div class="cmp" role="table" aria-label="Content platform capabilities and how ATH delivers them">{compare_rows(COMPARE_PLATFORM)}</div></div>
   <div class="panel panel-pad cmp-plus"><p class="panel-title">Plus what a content platform leaves to you</p><div class="cmp" role="table" aria-label="Business systems ATH adds">{compare_rows(compare_plus())}</div>
@@ -896,23 +896,22 @@ pages["/pricing/"] = ("Prices — ATH plans from $100 to $8,000 a month",
 
 ECO = [
  ("ATH", "Parent builder", "live", "You're here", "The invention company. Builds, owns and routes.", ("Diagnose", "/diagnose/")),
- ("ATHOS", "Intelligence", "live", "Diagnostic live", "Diagnosis, evidence, routing. The free diagnostic on this site is ATHOS working today; deeper capabilities are in development.", ("Run it", "/diagnose/")),
+ ("ATHOS", "Intelligence", "live", "Diagnostic live", "Diagnosis, evidence, routing. The free diagnostic on this site is ATHOS working today.", ("Run it", "/diagnose/")),
  ("Passport", "Identity spine · Free", "live", "Open door", "Identity, permissions, ownership, receipts, continuity. Free, in WOW OS.", ("Get Passport", "https://thewow.online/passport/claim")),
  ("World Pass", "On WOW OS · $20/mo", "live", "Open door", WP_RULE + " " + WP_NOTE + " Cancel any time.", ("Get World Pass", "https://thewow.online/passport")),
  ("WAVEMOTION", "One video in, a week of clips out", "live", "Open door", "Drop in one long video (a sermon, a podcast, a live, a song) and get it back as short vertical clips for TikTok, Reels and YouTube Shorts: 40 a month on Starter ($10), 80 on Creator ($20), 250 on Pro ($50). You approve every clip before anything posts, and it goes out on the schedule you pick.", ("Visit Wavemotion", "https://wavemotion.live/")),
  ("WM Pro", "Wealthy Mindsets Pro · free guest tour", "", "Open door", "Free guest account · Basic $10/mo · Premium $20/mo · Auto-trading $30/mo. Third-party data/broker fees separate. No profits promised.", ("Go to WM Pro", "https://wealthymindsetspro.com")),
- ("PowerTribes", "Business · sales · workforce · leadership OS", "live", "Live · in every plan", "Your company's office: AI staff at their desks, CRM, dialer, team chat and operations. Included in every ATH plan; team sizes by plan.", ("See the plans", "/pricing/")),
- ("Dreamboard", "Human-potential &amp; creative OS", "dim", "Built · opening to members", "Idea → clarity → project → finished work. When it opens, World Pass members get its Basic tier.", ("Join the list", "/contact/?intent=dreamboard")),
+ ("PowerTribes", "An ATH product · Solo $29 · Team $79 · Tower $179 a month", "live", "Open door", "Your company's office: AI staff at their desks, CRM, dialer, team chat and operations. Its own app at powertribes.cloud, one plain price each, Enterprise by quote. An office also comes inside every ATH plan.", ("Open PowerTribes", "https://powertribes.cloud/")),
+ ("Dreamboard", "Human-potential &amp; creative OS", "live", "Open door", "Idea → clarity → project → finished work: your board, Book Studio, Money Tree and a daily start-before-ready step, on your WOW Passport.", ("Open Dream Board", "https://spaidbot.cloud/dreamboard/")),
  ("WOW OS", "The operating system · Guest welcome", "live", "Open door", "One home, many rooms — Lounge, Academy (Idea Library, Visual Learns, Student of the Game), Marketplace, Events, WOW TV, WOW Music, WOW Radio.", ("Enter", "https://thewow.online/")),
  ("WOW TV · WOW Radio", "Watch · Listen", "live", "Open door", "Viewer and listener destinations — separate rooms in WOW OS.", ("Enter", "https://thewow.online/wow-tv")),
  ("Lounge · Academy · Shop", "Connect · Learn · Own", "live", "Open door", "Community, learning and commerce places, entered from WOW OS.", ("Enter", "https://thewow.online/lounge")),
  ("WOW Academy", "Learn · Free to practise", "live", "Open door", "Three real tracks, open now: The Idea Library (read, question, remember, apply), Visual Learns · The Polyglot&#8217;s Mind (Spanish, Hebrew, Japanese), and Student of the Game (risk, candles, orders). A stamp is earned from proof and memory, never attendance.", ("Open the Academy", "https://thewow.online/academy")),
  ("WOW Studios", "Creation studio · Solo $29 · Creator $59 · Pro $119 a month", "live", "Open door", "Timelines, then music workflows and character continuity, then collaborative workspaces and top exports. Bought with your Passport.", ("See the plans", "https://thewow.online/plans")),
  ("Spaidbot", "AI assistant · Free · Pro $20 · Super Max $100 a month", "live", "Open door", "Free on every page of this site. Pro: generous chat, research and drafts, plus automation, projects and integrations. Super Max adds the most room, cloud jobs and team runs.", ("See the plans", "https://thewow.online/plans")),
- ("PowerTribes plans", "Solo $29 · Team $79 · Tower $179 a month", "live", "Open door", "One plain price each. CRM and pipeline, then team, dialer and coaching, then every floor of the tower. Enterprise by quote.", ("See the plans", "https://thewow.online/plans")),
  ("Creator Passport", "Launch $40 · Grow $75 · Pro $100 · Studio $150 a month", "live", "Open door", "One bill for creators, Passport included: WOW Studios + WAVEMOTION + Spaidbot together. Launch: Studios Solo, WAVEMOTION Starter, Spaidbot Pro. Grow: Creator, Creator, Pro. Pro: Pro, Pro, Pro. Studio: Pro, Pro, Super Max, with team seats.", ("See the plans", "https://thewow.online/plans")),
  ("FOUNDING 500", "$10 a month while subscribed · 1-year price guarantee", "live", "First 500 per app", "The Passport for $10 a month while you stay subscribed, for the first 500 members of each app (WM Pro, WOW OS, WAVEMOTION). 1-year price guarantee: your $10 is locked for 12 months; after that it moves to the standard price, and we tell you first. Members already promised something keep it.", ("Claim a seat", "https://thewow.online/passport#founding")),
- ("WOW World", "The future metaverse", "dim", "Future", "A future world for the whole ecosystem. Not open and not for sale; WOW OS is the live home today.", None),
+ ("WOW World", "The future world the ecosystem grows into", "", "Vision", "The future shared world every ATH app will live in. You walk into it today through WOW OS: same Passport, same rooms.", ("Enter WOW OS", "https://thewow.online/")),
 ]
 def eco_cards():
     out = []
@@ -938,7 +937,7 @@ pages["/ecosystem/"] = ("The Ecosystem — What ATH does, who owns it, what it c
 </div></section>
 <section class="block cap-block" id="map"><div class="wrap">
  <div class="block-head"><div><p class="eyebrow">The full map</p><h2 class="display d-m mt1">What ATH does,<br>and what it costs</h2></div>
-  <p class="note" style="max-width:46ch">Live now: you can use or buy it today. Included: it comes inside a package. By quote: a written scope sets the price first. In development: named, not for sale.</p></div>
+  <p class="note" style="max-width:46ch">Live now: you can use or buy it today. Included: it comes inside a package. By quote: a written scope sets the price first.</p></div>
  {cap_map()}
 </div></section>
 """ + compare_section() + f"""<section class="block" id="d"><div class="wrap">
@@ -953,7 +952,7 @@ pages["/language/"] = ("ATH Builder Dictionary — Build a better language",
   <div><p class="eyebrow">ATH Builder Dictionary</p><h1 class="display d-m mt1">Stop writing longer prompts.<br>Build a better language.</h1>
    <p class="lede">A purpose-built dictionary of ATH terms that gives humans and AI a more precise shared language for building software and systems.</p>
    <div class="ctas">{btn("Get the dictionary — join waitlist", "/contact/?intent=dictionary")}{btn("View sample terms", "#samples", "line")}</div>
-   <p class="note mt1">Founder pricing pending. Not yet for sale — no checkout until it is.</p></div>
+   <p class="note mt1">Join the waitlist and ATH emails you the price and the day it ships. Nothing is charged to join.</p></div>
   <div class="book" role="img" aria-label="ATH Builder Dictionary"><img src="/assets/ath-mark.webp" alt=""><span class="bt">ATH Builder<br>Dictionary</span><span class="bs">v1.0</span></div>
  </div></section>
 <section class="block"><div class="wrap">
@@ -1045,8 +1044,8 @@ pages["/work/"] = ("Inventions & Work — Above the Hill Developments",
   {"".join(f'<article class="panel panel-pad card"><span class="tag {c}">{s}</span><h3>{t}</h3><dl class="hpa mt1"><dt>The hill</dt><dd>{h}</dd><dt>The path</dt><dd>{p}</dd><dt>Now</dt><dd>{n}</dd></dl>{l}</article>' for c,s,t,h,p,n,l in [
    ("live","Live","ATHOS Diagnostic","Businesses can't see what's actually stopping them — and most \"audits\" invent certainty.","An evidence-first diagnostic that separates observed, inferred and unknown.","Running on this site.", f'<p class="mt2 mb0">{btn("Run it","/diagnose/","line")}</p>'),
    ("","Open door","WM Pro","Traders drown in tools that paste intelligence around a chart.","A market OS where the chart is the room and every mark respects price truth.","Open at wealthymindsetspro.com. Free guest account, then Basic $10, Premium $20 or Auto-trading $30 a month.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://wealthymindsetspro.com" rel="noopener">Visit {ARR}</a></p>'),
-   ("","Open door","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","Plans $10 / $20 / $50 per month, clips included. Cinematic generation is not open.", f'<p class="mt2 mb0">{btn("Open Wavemotion","https://www.wavemotion.live/","line")}</p>'),
-   ("dim","Built · opening","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","Built; opening to members next.", ""),
+   ("","Open door","Wavemotion","Creators and businesses lose momentum between recording and real distribution.","Record → cloud inbox → edit → variants → approval → publish → receipt → learning loop.","Plans $10 / $20 / $50 a month, clips included. You approve every clip before it posts.", f'<p class="mt2 mb0">{btn("Open Wavemotion","https://www.wavemotion.live/","line")}</p>'),
+   ("live","Live","Dreamboard","Ideas die between inspiration and a finished thing.","Idea → clarity → project → creation → finishing evidence.","Open at spaidbot.cloud/dreamboard with your WOW Passport.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://spaidbot.cloud/dreamboard/" rel="noopener">Open Dream Board {ARR}</a></p>'),
    ("live","Live","Passport","Every app makes you a stranger again.","One identity spine — permissions, ownership, receipts, continuity.","Free and live in WOW OS; one Passport across ATH apps as each connects.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/passport/claim" rel="noopener">Get Passport {ARR}</a></p>'),
    ("","Open door","WOW OS","Products feel like islands.","A connected world of destinations under one builder.","Open at thewow.online — guests welcome, free Passport. The $20 World Pass: Premium of the app you choose plus Basic of every other ATH app.", f'<p class="mt2 mb0"><a class="btn btn-line" href="https://thewow.online/" rel="noopener">Enter {ARR}</a></p>')])}
  </div>
@@ -1728,7 +1727,7 @@ pages["/ai/receptionist/"] = ("AI receptionist — answers, books and texts back
   </dl></div></div></section>""" + cta_block("Find your missed calls first", "The free business diagnosis looks at how your calls are answered today."))
 
 AI_BUILD_STATUS = ("Spaidbot Build is open." if SPAIDBOT_BUILD_URL else
-  "Spaidbot Build, the AI builder inside the Spaidbot app, is being built and is not open yet. Until it opens, ATH builds your site with you.")
+  "Want it built? ATH builds your site with you: send the sketch and a person replies with the plan and price.")
 AI_SKETCH_JS = r"""<script>
 (() => {
   const f = document.getElementById("sketch-form"), out = document.getElementById("sketch-out"); if (!f || !out) return;
@@ -2015,7 +2014,7 @@ pages["/partners/"] = ("Partners & Creator Crew — earn with Above the Hill",
    <li><span class="st-n">02 · CONNECT</span><b>People claim a free Passport through your link</b><span>They leave the email they sign in with, so ATH can match the Passport to you.</span></li>
    <li><span class="st-n">03 · UNLOCK</span><b>5 verified sign-ups = 30-day Creator Pass</b><span>ATH checks each one, then turns the pass on for your own Passport.</span></li>
   </ol>
-  <div class="pt-disc mt2"><b>Disclosure.</b> The Creator Crew reward is access to ATH apps for 30 days. It is not cash and has no cash value. ATH's paid Content Rewards campaign on Whop is not open yet; when it is, it will be announced here with its own budget and rules. Buying sign-ups, fake or duplicate accounts, spam and misleading claims don't count and can end your membership. ATH can change or end the Crew with notice on this page.</div>
+  <div class="pt-disc mt2"><b>Disclosure.</b> The Creator Crew reward is access to ATH apps for 30 days. It is not cash and has no cash value. Any paid Content Rewards campaign is announced on this page with its own budget and rules before it starts. Buying sign-ups, fake or duplicate accounts, spam and misleading claims don't count and can end your membership. ATH can change or end the Crew with notice on this page.</div>
  </div>
  <form class="panel panel-pad" id="crew-form" novalidate>
   <p class="panel-title">Join the Creator Crew</p>
