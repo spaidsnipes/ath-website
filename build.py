@@ -262,10 +262,10 @@ def wm_rows():
 def catalog_js():
     m = {}
     for p in PKG:
-        m[p["id"]] = {"label": f'{p["name"]} — {"from " if p["from"] else ""}{money(p["price"])}{(" + " + money(p["setup"]) + " setup") if p.get("setup") else ""}{"" if p["from"] else " one time"}', "terms": True}
+        m[p["id"]] = {"label": f'{p["name"]} — {"from " if p["from"] else ""}{money(p["price"])}{(" for the site, " + money(p["setup"]) + " to set it up") if p.get("setup") else ""}{"" if p["from"] else (", one time" if p.get("setup") else " one time")}', "terms": True}
     for t, p, s, i in STARTS: m[s] = {"label": f"{t} — from ${p}"}
     for p in WM["plans"]: m[p["id"]] = {"label": f'WAVEMOTION {p["name"]} — ${p["price"]}/month ({p["clips"]} standard clips)'}
-    for p in PLANS: m["plan-" + p["key"].replace("_", "-")] = {"label": f'{p["name"]} plan — ${p["setup"] + p["monthly"]:,} today (${p["setup"]:,} setup + first month), then ${p["monthly"]:,} a month', "terms": True}
+    for p in PLANS: m["plan-" + p["key"].replace("_", "-")] = {"label": f'{p["name"]} plan — {plan_today(p)}', "terms": True}
     for g in SERVICES:
         for i in g["items"]:
             if i["id"] not in m and i["id"] not in ("garden-check", "business-diagnosis"): m[i["id"]] = {"label": f'{i["name"]} — {i["price"]}', "terms": True}
@@ -287,6 +287,35 @@ def catalog_js():
 # Checkout: a step or service shows card checkout ONLY when its pay_url is a Stripe Payment Link; otherwise "Book a call".
 PB = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "commercial", "price-book.json")))
 PLANS = PB["steps"]
+# SETUP-TODAY LINKS (Founder 11-13 night): checkout must charge exactly what the words say. ~/Desktop/CREATE-PLAN-SETUP-LINKS.command
+# (Founder-run, his Stripe key) creates per step a NEW Payment Link = the one-time setup today + the monthly price starting day 30,
+# and writes commercial/plan-setup-links.json. A step "flips" (new link + "$30 today to set up, then $100 a month" copy) only when its
+# entry matches this book's amounts AND verified=true (scripts/verify-setup-links.cjs read the live Stripe page and saw the setup as the
+# amount due today). Copy and link always change together, and all 15 steps flip together or none do.
+SETUP_LINKS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "commercial", "plan-setup-links.json")
+SETUP_LINKS = json.load(open(SETUP_LINKS_FILE)).get("links", {}) if os.path.exists(SETUP_LINKS_FILE) else {}
+def _flip(p):
+    e = SETUP_LINKS.get(p["key"])
+    return bool(e and e.get("verified") is True and e.get("setup_cents") == p["setup"] * 100 and e.get("monthly_cents") == p["monthly"] * 100
+                and e.get("trial_days") == 30 and re.match(r"^https://buy\.stripe\.com/[A-Za-z0-9_]+$", e.get("url") or ""))
+for p in PLANS:
+    p["setup_today"] = _flip(p)
+    if p["setup_today"]: p["pay_url"] = SETUP_LINKS[p["key"]]["url"]
+SETUP_TODAY = all(p["setup_today"] for p in PLANS)
+assert SETUP_TODAY or not any(p["setup_today"] for p in PLANS), "plan-setup-links.json: all 15 steps flip together, or none"
+def plan_today(p):
+    """What the card is charged today and after, in the Founder's format (upfront fee and monthly price stated separately)."""
+    if p["setup_today"]: return f'${p["setup"]:,} today to set up, then ${p["monthly"]:,} a month starting day 30'
+    return f'${p["setup"] + p["monthly"]:,} today: ${p["setup"]:,} to set up plus your first month, then ${p["monthly"]:,} a month'
+def plan_today_short(p):
+    if p["setup_today"]: return f'${p["setup"]:,} today to set up; monthly from day 30'
+    return f'${p["setup"] + p["monthly"]:,} today: set-up plus first month'
+FINE_NOW = ("You pay today the one-time setup and, from day 30, the monthly price, on the same card. Monthly after that, cancel with 30 days' notice. One price for everyone."
+            if SETUP_TODAY else
+            "Today you pay the one-time setup plus your first month, in one card payment. Your plan then renews monthly on the same card; cancel with 30 days' notice by call, text or the contact form. One price for everyone.")
+PB["fine"] = [FINE_NOW] + PB["fine"][1:]
+PLAN_CARD_TERMS = ("A monthly plan card payment charges the one-time setup today; the monthly price starts on day 30 and renews every month on the same card until you cancel."
+                   if SETUP_TODAY else "A monthly plan card payment charges the setup plus your first month today, then renews every month on the same card until you cancel.")
 SERVICES = PB["services"]
 STRIPE_RE = r"^https://buy\.stripe\.com/[A-Za-z0-9_]+$"
 assert len({p["name"] for p in PLANS}) == len(PLANS) and len({p["monthly"] for p in PLANS}) == len(PLANS), "one name and one price per step"
@@ -314,7 +343,7 @@ def plan_strip():
     return f'<nav class="pb-strip" aria-label="ATH plans, $100 to $8,000 a month, lowest to highest">{steps}</nav>'
 def plan_card(p):
     rows = "".join(f'<div class="pc-row"><dt>{html.escape(l)}</dt><dd>{html.escape(f(p))}</dd></div>' for l, f in PLAN_ROWS)
-    setup = f'${p["setup"] + p["monthly"]:,} today: ${p["setup"]:,} setup + your first month · then ${p["monthly"]:,} a month'
+    setup = plan_today(p)
     return f'''<article class="panel pc{" pc-feature" if p["key"] in ("presence", "clientflow", "revenue_engine") else ""}" id="plan-{p["key"]}" data-plan="{p["key"]}" aria-labelledby="pc-{p["key"]}">
  <header class="pc-head"><p class="pc-step">Step {p["rank"]} of {len(PLANS)}</p><h3 class="pc-name" id="pc-{p["key"]}">{html.escape(p["name"])}</h3>
   <p class="pc-price">${p["monthly"]:,}<span> a month</span></p><p class="pc-setup">{setup}</p></header>
@@ -325,7 +354,7 @@ def plan_card(p):
 def plan_cards(): return '<div class="pc-grid">' + "".join(plan_card(p) for p in PLANS) + '</div>'
 def plan_table(pid="pricing"):
     """Compact ladder (industry + calculator pages): name · price · setup · what this step adds."""
-    rows = "".join(f'<div class="rv-row" data-level="{html.escape(p["name"])}"><span><b>{html.escape(p["name"])}</b><span class="note">{html.escape(p["unlocks"])}</span></span><span class="rv-price">${p["monthly"]:,} / month<span class="note">${p["setup"] + p["monthly"]:,} today (setup + first month)</span></span></div>' for p in PLANS)
+    rows = "".join(f'<div class="rv-row" data-level="{html.escape(p["name"])}"><span><b>{html.escape(p["name"])}</b><span class="note">{html.escape(p["unlocks"])}</span></span><span class="rv-price">${p["monthly"]:,} / month<span class="note">{plan_today_short(p)}</span></span></div>' for p in PLANS)
     fine = "".join(f"<li>{html.escape(f)}</li>" for f in PB["fine"][:3])
     return f'''<div class="panel panel-pad mt2" id="{pid}" data-sb-pricing><p class="panel-title">ATH plans · one ladder, $100 to $8,000 a month</p>
  <p class="body">Every plan has a piece of everything: a WOW Pass (WOW = World of Wealth), a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website. Each step up gives you more of all of it. <a class="gold" href="/pricing/">See exactly what each step includes</a>.</p>
@@ -362,7 +391,7 @@ def services_list(groups=None, head=True):
 # pass (that is why it is a passport): Premium of the one app you choose + Basic of every other ATH app, WOW OS,
 # WOW Academy, Dreamboard and every future app, and WOW World (the future metaverse) when it opens.
 # Never "$10 tier" / "$20 tier" to customers; never the Premium or Pro tier of every app; no other trials or founding offers. Founder rulings 2026-11-06/07: the ONLY trial/offers are the World Pass 7-day trial (card required),
-# FOUNDING 100 (30 days free after a real first action, no charge) and FOUNDING 500 ($10/mo while subscribed, first 500 per app).
+# FOUNDING 100 (30 days free after a real first action, no charge) and FOUNDING 500 ($10/mo while subscribed + 1-year price guarantee, first 500 per app; Founder 11-13 night).
 WP_RULE = "The $20 World Pass is your passport across the whole ATH ecosystem: Premium of the one app you choose — WAVEMOTION, WealthyMindsets Pro and more — and Basic of every other ATH app, including apps still to come."
 WP_NOTE = "Each app switches its tier on from your pass when you open it: WAVEMOTION and WealthyMindsets Pro today, and every app as it opens."
 WP_SHORT = "$20: Premium of the app you choose, Basic of every other ATH app."
@@ -406,7 +435,7 @@ def wp_value(head=True, eyebrow="Passport · the whole ecosystem"):
 # standalone Content OS brand), an honest status, a price from the registry or "By quote", and a real next step.
 P = {p["id"]: p for p in PKG}
 # ATH websites always show the one-time hosting setup the card checkout charges (Founder 2026-11-01; "+ setup" on every page, 2026-11-12).
-def site_price(pid): return f'{money(P[pid]["price"])} + {money(P[pid]["setup"])} setup'
+def site_price(pid): return f'{money(P[pid]["price"])} for the site, {money(P[pid]["setup"])} to set it up'
 def pk(pid):
     p = P[pid]
     if p.get("price_max"): return f'{money(p["price"])}–{money(p["price_max"])}'
@@ -427,7 +456,7 @@ def caps():
     wm = cat_price("wm-plans").replace("/month", " a month")
     return [
      ("presence", "Build your presence", "Websites & digital experience", [
-      ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'{site_price("website-starter")} or {site_price("website-business")}, one time, or in every plan', "See every price", "/pricing/#services", True),
+      ("Business website, done for you", "A mobile site with your services, hours, photos and buttons that work, linked to the booking or ordering you already use.", "ATH Web Studio", "live", f'Starter: {site_price("website-starter")}. Business: {site_price("website-business")}. One time, or in every plan', "See every price", "/pricing/#services", True),
       ("Website health check", f'The {GC["name"]}: a {GC["minutes"]} minute live check of the site you already have, on a video call you watch. You learn what needs fixing and what doesn\'t.', "ATH Web Studio", "live", f"{GC_PRICE} one time", GC_CTA if not GC_PAY else "See the Garden Check", GC_PAGE, True),
       ("Brand themes & reusable sections", "Three tuned site styles built from reusable sections: menus and price lists, galleries, hours, story.", "ATH Web Studio", "inc", "In every site", "See the website showcase", "/sites/", False),
       ("Preview & approval", "You see your site on a preview link, kept out of search, before it goes live. Revisions as your package states.", "ATH Web Studio", "inc", "In every site", "See every price", "/pricing/#services", True),
@@ -454,7 +483,7 @@ def caps():
      ("community", "Identity, community & learning", "WOW OS", [
       ("Passport", "One identity across ATH apps: permissions, ownership and receipts that stay with you.", "WOW OS", "live", cat_price("wow-passport"), "Get a Passport", "https://thewow.online/passport", True),
       ("World Pass", WP_RULE + " " + WP_NOTE, "WOW OS", "live", cat_price("wow-world-pass").replace("/month", " a month"), "Get World Pass", "https://thewow.online/passport", True),
-      ("FOUNDING 500", "The Passport at half price for the first 500 members of each app, for as long as you stay subscribed.", "WOW OS", "live", cat_price("wow-founding-500"), "Claim a seat", "https://thewow.online/passport#founding", False),
+      ("FOUNDING 500", "The Passport for $10 a month while you stay subscribed, for the first 500 members of each app. 1-year price guarantee: your $10 is locked for 12 months; after that it moves to the standard price, and we tell you first.", "WOW OS", "live", cat_price("wow-founding-500"), "Claim a seat", "https://thewow.online/passport#founding", False),
       ("Creator Passport", "WOW Studios + WAVEMOTION + Spaidbot on one bill, Passport included.", "WOW OS", "live", cat_price("creator-passport"), "See the plans", "https://thewow.online/plans", False),
       ("WOW Academy", "Idea Library, The Polyglot's Mind and Student of the Game. Stamps come from proof, not attendance.", "WOW OS", "live", cat_price("wow-academy-free"), "Visit the campus", "https://thewow.online/academy", False),
       ("Lounge, TV, Music, Radio & Shop", "Rooms to connect, watch, listen and shop, entered from WOW OS. Guests welcome.", "WOW OS", "live", "Free to enter", "Enter WOW OS", "https://thewow.online/", False),
@@ -779,7 +808,7 @@ pages["/passport/"] = ("Passport & World Pass — Identity first. Membership sec
  </div>
  <div class="grid g2 mt3" id="benefits">
   <div class="panel panel-pad"><p class="panel-title">If a member cancels</p><p class="body mb0">The person doesn't stop existing. Identity, lawful ownership, receipts and applicable durable rights persist. Membership-only benefits end.</p></div>
-  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free. The World Pass is $20/month; try it 7 days free (card required). FOUNDING 500: the first 500 members of each app get the Passport at half price, $10/month while subscribed. All live on WOW OS today, with a real Stripe checkout, and you can cancel any time.</p><p class="body">{WP_RULE} {WP_NOTE}</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
+  <div class="panel panel-pad"><p class="panel-title">Availability</p><p class="body">Passport is free. The World Pass is $20/month; try it 7 days free (card required). FOUNDING 500: the first 500 members of each app get the Passport for $10/month while subscribed, with a 1-year price guarantee: your $10 is locked for 12 months; after that it moves to the standard price, and we tell you first. All live on WOW OS today, with a real Stripe checkout, and you can cancel any time.</p><p class="body">{WP_RULE} {WP_NOTE}</p><div class="ctas mt1">{btn("Get your free Passport", "https://thewow.online/passport/claim")}{btn("Get World Pass", "https://thewow.online/passport", "line")}</div></div>
  </div>
 </div></section>""" + wp_value(eyebrow="Passport · the whole ecosystem"))
 
@@ -882,7 +911,7 @@ ECO = [
  ("Spaidbot", "AI assistant · Free · Pro $20 · Super Max $100 a month", "live", "Open door", "Free on every page of this site. Pro: generous chat, research and drafts, plus automation, projects and integrations. Super Max adds the most room, cloud jobs and team runs.", ("See the plans", "https://thewow.online/plans")),
  ("PowerTribes plans", "Solo $29 · Team $79 · Tower $179 a month", "live", "Open door", "One plain price each. CRM and pipeline, then team, dialer and coaching, then every floor of the tower. Enterprise by quote.", ("See the plans", "https://thewow.online/plans")),
  ("Creator Passport", "Launch $40 · Grow $75 · Pro $100 · Studio $150 a month", "live", "Open door", "One bill for creators, Passport included: WOW Studios + WAVEMOTION + Spaidbot together. Launch: Studios Solo, WAVEMOTION Starter, Spaidbot Pro. Grow: Creator, Creator, Pro. Pro: Pro, Pro, Pro. Studio: Pro, Pro, Super Max, with team seats.", ("See the plans", "https://thewow.online/plans")),
- ("FOUNDING 500", "$10 a month while subscribed", "live", "First 500 per app", "The Passport at half price for the first 500 members of each app (WM Pro, WOW OS, WAVEMOTION), for as long as you stay subscribed.", ("Claim a seat", "https://thewow.online/passport#founding")),
+ ("FOUNDING 500", "$10 a month while subscribed · 1-year price guarantee", "live", "First 500 per app", "The Passport for $10 a month while you stay subscribed, for the first 500 members of each app (WM Pro, WOW OS, WAVEMOTION). 1-year price guarantee: your $10 is locked for 12 months; after that it moves to the standard price, and we tell you first. Members already promised something keep it.", ("Claim a seat", "https://thewow.online/passport#founding")),
  ("WOW World", "The future metaverse", "dim", "Future", "A future world for the whole ecosystem. Not open and not for sale; WOW OS is the live home today.", None),
 ]
 def eco_cards():
@@ -1230,7 +1259,7 @@ pages["/terms/"] = ("Terms — Above the Hill Developments", "Ownership, diagnos
 <li>ATH owns ATH intellectual property — including ATHOS, its methods, the ATH Builder Dictionary, product designs and inventions. Purchasing the Dictionary or any product licenses its use; it does not transfer ownership of ATH inventions.</li></ul>
 <h2>Deep diagnostics and services</h2><p>Deeper inspection happens only under a written scope you approve, with access you grant and may revoke. Default posture is read-only; ATH does not modify your systems during a diagnostic. Services are delivered under a separate scope and quote.</p>
 <h2>Website and app packages</h2><p>Package prices are listed on the <a class="gold" href="/pricing/">Prices page</a>. Submitting a package request creates no charge and no obligation. ATH replies with a written scope and an invoice; work begins only after you approve the scope and pay. Timeline, revisions, ownership terms, third-party costs and refund terms are stated in that written scope. Ecosystem extras described as “not active yet” are delivered only once that product is operational, and no subscription renews without your separate consent.</p>
-<h2>Paying by card</h2><p>The ATH plans and the Starter and Business Websites can be paid by card through Stripe. A website card payment is one time: the package price plus its setup. A monthly plan card payment charges the setup plus your first month today, then renews every month on the same card until you cancel. To cancel a monthly plan, give 30 days’ notice by calling or texting <a class="gold" href="tel:+19189600164">(918) 960-0164</a> or through the <a class="gold" href="/contact/">contact form</a>. After you pay, send your details on the <a class="gold" href="/start/">intake page</a> so ATH can start your build. Questions about a charge go to the same phone line or contact form.</p>
+<h2>Paying by card</h2><p>The ATH plans and the Starter and Business Websites can be paid by card through Stripe. A website card payment is one time: the package price plus its setup. """ + PLAN_CARD_TERMS + """ To cancel a monthly plan, give 30 days’ notice by calling or texting <a class="gold" href="tel:+19189600164">(918) 960-0164</a> or through the <a class="gold" href="/contact/">contact form</a>. After you pay, send your details on the <a class="gold" href="/start/">intake page</a> so ATH can start your build. Questions about a charge go to the same phone line or contact form.</p>
 <h2>Prices and availability</h2><p>Only products marked available can be bought. Waitlists and access requests create no obligation for either side. The World Pass is a $20-a-month plan: it includes the Premium tier of one app you choose and the Basic tier of every other app, which each app switches on from your pass; it does not include the Premium or Pro tier of every app, ATH services or third-party costs unless stated in writing.</p>
 <h2>Contact</h2><p>Questions: use the <a class="gold" href="/contact/">contact form</a>, or call or text <a class="gold" href="tel:+19189600164">(918) 960-0164</a>.</p>
 </div></section>""")
@@ -2150,7 +2179,7 @@ pages["/taproot/results/"] = ("Your taproot — answers and offer ladder",
 # templates (sites/clients/*sample*.json); thumbnails are screenshots of those live sample pages.
 def site_showcase():
     import glob as _g
-    pk = {"quick-start": "Starter Website · $250 + $25 setup", "business-growth": "Business Website · $500 + $75 setup"}
+    pk = {"quick-start": "Starter Website · $250 for the site, $25 to set it up", "business-growth": "Business Website · $500 for the site, $75 to set it up"}
     cards = []
     for f in sorted(_g.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sites", "clients", "*.json"))):
         if os.path.basename(f).startswith("_"): continue

@@ -2,7 +2,7 @@
 // SUPERSEDES the old "customers never read trials or founding offers" rule, narrowly: exactly these are allowed —
 //   1. World Pass: try 7 days free, card required.
 //   2. FOUNDING 100: 30 days free after a real first action, no charge.
-//   3. FOUNDING 500: the Passport at half price, $10/month while subscribed, first 500 per app.
+//   3. FOUNDING 500: the Passport for $10/month while subscribed, with a 1-year price guarantee, first 500 per app (Founder 11-13 night).
 // Everything else stays banned: other trials, coupons, promo codes, % off / half off, free months, every-top-tier claims.
 // Plus: no retired price or tier name (WM Pro OS $50, intro first month, WM Pro App, Spaidbot Pro $20 / Super Max $100,
 // WAVEMOTION Living Cinema $75) survives on any built page or in catalog.json.
@@ -27,7 +27,7 @@ function allowed(t, i, word) {
   if (w === 'founding') {
     const after = t.slice(i, i + 12);
     if (/^founding[ -](500|100)\b/i.test(after)) return 'founding-n';
-    if (t[i - 1] === '#' && /FOUNDING 500/.test(win)) return 'founding-link';
+    if (t[i - 1] === '#' && /FOUNDING 500|1-year price guarantee/.test(win)) return 'founding-link';
     return false;
   }
   if (w === 'half price' && /FOUNDING 500/.test(win) && /\$10/.test(win)) return 'founding-500';
@@ -70,15 +70,15 @@ test('catalog.json carries the 2026-11-07 matrix (what the public Spaidbot answe
   assert.match(offer('powertribes-plans').price, /Solo \$29 · Team \$79 · Tower \$179/); assert.doesNotMatch(offer('powertribes-plans').price, /standard|Business OS/); // Founder 11-13: one plain price
   assert.match(offer('creator-passport').price, /\$40 · \$75 · \$100 · \$150/);
   assert.equal(offer('wow-passport').price, 'Free');
-  assert.match(offer('wow-founding-500').price, /^\$10\/month while subscribed$/);
+  assert.match(offer('wow-founding-500').price, /^\$10\/month while subscribed, with a 1-year price guarantee$/);
   assert.match(offer('wow-world-pass').price, /^\$20\/month · try 7 days free \(card required\)$/);
   for (const id of ['spaidbot', 'wow-studios-plans', 'powertribes-plans', 'creator-passport']) assert.equal(offer(id).buy, 'https://thewow.online/plans', id);
 });
 
 test('the ATH Developments business offers are untouched by the matrix', () => {
   assert.match(offer('ath-plans').price, /^\$100 to \$8,000 a month$/);
-  assert.equal(offer('ath-website-starter').price, '$250 + $25 setup, one time');
-  assert.equal(offer('ath-website-business').price, '$500 + $75 setup, one time');
+  assert.equal(offer('ath-website-starter').price, '$250 for the site, $25 to set it up, one time');
+  assert.equal(offer('ath-website-business').price, '$500 for the site, $75 to set it up, one time');
   assert.match(offer('ath-ai-services').price, /^Speed-to-Lead \$200\/month/);
   assert.equal(offer('ath-garden-check').price, '$20 one time');
 });

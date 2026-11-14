@@ -80,7 +80,7 @@ test('every showcase site carries a pinned SHOWCASE ribbon naming the real produ
   for (const d of dirs) {
     const s = read(`sites/${d}/index.html`);
     assert.match(s, /<body class="is-sample"><div class="sample-ribbon" role="note"[^>]*><b>Showcase<\/b>/, d);
-    assert.match(s, /Get yours: (Starter Website \$250 \+ \$25 setup|Business Website \$500 \+ \$75 setup)/, d);
+    assert.match(s, /Get yours: (Starter Website \$250 for the site, \$25 to set it up|Business Website \$500 for the site, \$75 to set it up)/, d);
     assert.doesNotMatch(s, /Get yours: \$100|>Sample<|[Ss]ample site/, d);
     assert.match(s, /\.sample-ribbon\{position:sticky;top:0/, d);
   }

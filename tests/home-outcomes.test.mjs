@@ -51,5 +51,5 @@ test('every next step exists: internal pages are built, external ones are ATH pr
 
 test('no door promises what the packages do not deliver', () => {
   assert.ok(start.length > 500, 'the section is missing');
-  assert.doesNotMatch(start, /order online|book online|on Google|live tomorrow|built this week|every account|guarantee/i);
+  assert.doesNotMatch(start, /order online|book online|on Google|live tomorrow|built this week|every account|(?<!price )guarantee/i); // a FOUNDING 500 "1-year price guarantee" is a Founder ruling (11-13 night); any other guarantee is banned
 });

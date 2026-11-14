@@ -358,7 +358,7 @@
       "id": "ath-website-starter",
       "business": "ATH Developments",
       "name": "Starter Website",
-      "price": "$250 + $25 setup, one time",
+      "price": "$250 for the site, $25 to set it up, one time",
       "status": "BOOKABLE",
       "buy": "https://abovethehilldev.online/contact/?intent=services&package=website-starter",
       "fulfillment": "Written scope, then build; card checkout switches on when its Stripe price is created.",
@@ -368,7 +368,7 @@
       "id": "ath-website-business",
       "business": "ATH Developments",
       "name": "Business Website",
-      "price": "$500 + $75 setup, one time",
+      "price": "$500 for the site, $75 to set it up, one time",
       "status": "BOOKABLE",
       "buy": "https://abovethehilldev.online/contact/?intent=services&package=website-business",
       "fulfillment": "Written scope, then build; card checkout switches on when its Stripe price is created.",
@@ -577,11 +577,11 @@
     {
       "id": "wow-founding-500",
       "business": "WOW OS",
-      "name": "FOUNDING 500 (the Passport at half price)",
-      "price": "$10/month while subscribed",
+      "name": "FOUNDING 500 (the Passport for $10 a month)",
+      "price": "$10/month while subscribed, with a 1-year price guarantee",
       "status": "LIVE",
       "buy": "https://thewow.online/passport#founding",
-      "fulfillment": "First 500 per app (WM Pro, WOW OS, WAVEMOTION). Stripe checkout with your Passport.",
+      "fulfillment": "First 500 per app (WM Pro, WOW OS, WAVEMOTION). Stripe checkout with your Passport. 1-year price guarantee: your $10 is locked for 12 months; after that it moves to the standard price, and we tell you first. Members already promised something keep it.",
       "verified": "2026-11-07"
     },
     {

@@ -857,7 +857,7 @@
         {
           "id": "website-starter",
           "name": "Starter Website",
-          "price": "$250 + $25 setup, one time",
+          "price": "$250 for the site, $25 to set it up, one time",
           "cents": 25000,
           "billing": "one_time",
           "what": "A fast mobile site: your services, hours, photos and a call or booking button, linked to the booking or ordering you already use. One round of changes. Plus a one-time $25 hosting setup: your domain connected, HTTPS and the site put live.",
@@ -867,7 +867,7 @@
         {
           "id": "website-business",
           "name": "Business Website",
-          "price": "$500 + $75 setup, one time",
+          "price": "$500 for the site, $75 to set it up, one time",
           "cents": 50000,
           "billing": "one_time",
           "what": "Up to 5 pages, linked to the booking or ordering you already use, plus a year of small updates. Hosting included. Plus a one-time $75 hosting setup: your domain connected, HTTPS and the site put live.",

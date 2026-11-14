@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ATH website factory: one client intake (sites/clients/<slug>.json) -> a finished site.
 
-Package keys (legacy names): "quick-start" = Starter Website $250 + $25 setup; "business-growth" = Business Website $500 + $75 setup.
+Package keys (legacy names): "quick-start" = Starter Website $250 for the site, $25 to set it up; "business-growth" = Business Website $500 for the site, $75 to set it up.
 Output: public/sites/<slug>/ (and /<page>/ for extra pages), plus a gallery of showcases at /sites/.
 
 Rules the factory enforces:
@@ -18,7 +18,7 @@ ROOT = os.path.join(os.path.dirname(HERE), "public", "sites")
 SITE = "https://abovethehilldev.online"
 E = lambda s: html.escape(str(s or ""), quote=True)
 # One price book (commercial/registry.json): the website package each showcase uses, by its intake "package" key.
-PACKAGE_OFFER = {"quick-start": "Starter Website $250 + $25 setup", "business-growth": "Business Website $500 + $75 setup"}
+PACKAGE_OFFER = {"quick-start": "Starter Website $250 for the site, $25 to set it up", "business-growth": "Business Website $500 for the site, $75 to set it up"}
 
 THEMES = {
     # food & cafe: espresso dark, warm gold
@@ -130,7 +130,7 @@ def page_html(c, page, pages):
     pc = c.get("primary_cta") or {}
     top_cta = f'<a class="btn btn-solid" href="{href(c, pc.get("href"))}">{E(pc.get("label", "Call"))}</a>' if pc else ""
     # Founder 2026-11-12: never "sample site" or "Get yours: $100". These are SHOWCASE sites; the ribbon names the real
-    # product and its price-book price (Starter Website $250 + $25 setup / Business Website $500 + $75 setup).
+    # product and its price-book price (Starter Website $250 for the site, $25 to set it up / Business Website $500 for the site, $75 to set it up).
     offer = PACKAGE_OFFER.get(c.get("package"), PACKAGE_OFFER["quick-start"])
     ribbon = (f'<div class="sample-ribbon" role="note" aria-label="Showcase site: {E(c["name"])} is not a real business"><b>Showcase</b>'
               f'<span class="sr-long">Built by Above the Hill · {E(c["name"])} is not a real business ·</span><span class="sr-short">Not a real business ·</span>'
@@ -228,7 +228,7 @@ def build():
             open(os.path.join(d, "index.html"), "w").write(page_html(c, p, pages))
         clients.append(c)
     samples = [c for c in clients if c.get("sample")]
-    cards = "".join(f'<a class="card" href="/sites/{c["slug"]}/"><span class="k">{E({"quick-start": "Starter Website · $250 + $25 setup", "business-growth": "Business Website · $500 + $75 setup"}.get(c.get("package"), ""))}</span><b>{E(c["name"])}</b><span>{E(c.get("category_label"))} · {E(c.get("theme"))} style</span></a>' for c in samples)
+    cards = "".join(f'<a class="card" href="/sites/{c["slug"]}/"><span class="k">{E({"quick-start": "Starter Website · $250 for the site, $25 to set it up", "business-growth": "Business Website · $500 for the site, $75 to set it up"}.get(c.get("package"), ""))}</span><b>{E(c["name"])}</b><span>{E(c.get("category_label"))} · {E(c.get("theme"))} style</span></a>' for c in samples)
     os.makedirs(ROOT, exist_ok=True)
     open(os.path.join(ROOT, "index.html"), "w").write(f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>Website showcase — Above the Hill</title><meta name="description" content="Showcase websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients."><link rel="canonical" href="https://abovethehilldev.online/sites/"><meta property="og:title" content="Website showcase — Above the Hill"><meta property="og:description" content="Showcase websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients."><meta property="og:type" content="website"><meta property="og:url" content="https://abovethehilldev.online/sites/"><meta property="og:image" content="https://abovethehilldev.online/assets/art/home.jpg"><link rel="icon" href="/favicon.png" type="image/png"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap">
