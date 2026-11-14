@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Watch the tour · Above The Hill</title>
+<meta name="description" content="Walk Above The Hill in one minute: your website, your channel, your office tower, your studio and your trading floor, behind one key.">
+<link rel="canonical" href="https://abovethehilldev.online/watch/">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.png">
+<!-- Email click-through (Founder order 2026-11-14): each outreach email's 15-second preview opens this page, which plays the
+     film at once. Films are the approved v3 commercials (graded PASS 11-12, VOICES re-voice): AI rooms whose screens play the
+     real live apps, AI voice, captions in the picture. Static page on GitHub Pages; the films stream from the public bucket. -->
+<style>
+:root{--bg:#07080a;--ink:#f3efe6;--mut:#b9b2a3;--gold:#c9a259;--hi:#e6c88a;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;background:radial-gradient(120% 70% at 50% 0%,#17130b,#07080a 60%) #07080a;color:var(--ink);font:16px/1.5 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:18px 16px 48px}
+.eye{margin:0;font:700 12px/1.2 Arial,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+h1{margin:8px 0 6px;font:500 clamp(26px,4.4vw,44px)/1.1 Georgia,'Times New Roman',serif}
+.sub{margin:0 0 16px;color:var(--mut)}
+.frame{position:relative;border:1px solid rgba(201,162,89,.35);border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9}
+.frame.tall{aspect-ratio:9/16;max-width:420px;margin:0 auto}
+video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.sound{position:absolute;left:12px;bottom:12px;padding:10px 16px;border:0;border-radius:999px;background:var(--gold);color:#14110b;font:700 15px/1.2 Arial,sans-serif;cursor:pointer}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+.btn{display:inline-block;padding:12px 18px;border-radius:999px;text-decoration:none;font:700 15px/1.2 Arial,sans-serif}
+.gold{background:var(--gold);color:#14110b}.dark{background:#1c1a16;color:#f3d48a;border:1px solid rgba(201,162,89,.35)}
+.note{margin:14px 0 0;color:var(--mut);font-size:13px}
+.films{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.films a{display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid rgba(201,162,89,.3);color:var(--hi);text-decoration:none;font-size:14px}
+.films a[aria-current]{background:rgba(201,162,89,.18)}
+</style>
+</head>
+<body>
+<main>
+<p class="eye">Above The Hill</p>
+<h1 id="t">One key. Every door.</h1>
+<p class="sub" id="s">The one-minute tour: your website, your channel, your tower, your studio, your trading floor.</p>
+<div class="frame" id="fr"><video id="v" playsinline muted autoplay preload="auto" controls></video><button class="sound" id="snd" type="button" hidden>&#128266; Play with sound</button></div>
+<div class="row">
+<a class="btn gold" id="full" href="/watch/" hidden>&#9654; Watch the full one-minute tour</a>
+<a class="btn gold" href="/tour/">Walk every room</a>
+<a class="btn dark" href="/pricing/">Pick your time or your package</a>
+</div>
+<ul class="films" id="films" aria-label="Other films"></ul>
+<p class="note">Call or text: main office (918) 960-0164 · WAVEMOTION &amp; PowerTribes line (909) 909-8146.</p>
+<p class="note">The rooms are AI imagery and the voice is AI; every screen inside them plays the real live app. Captions are in the picture.</p>
+</main>
+<script>
+(function(){
+  var B='https://zrzaifaxecwgpfrqctkp.supabase.co/storage/v1/object/public/radio/commercials/ath-1112-v3r/';
+  var F={
+    tour:{k:'ath-master',tall:true,t:'One key. Every door.',s:'The one-minute tour: your website, your channel, your tower, your studio, your trading floor.'},
+    powertribes:{k:'ath-04-powertribes',t:'Your company’s own tower.',s:'PowerTribes: the boardroom, the sales floor, the dialer, the coaching room. 20 seconds.'},
+    wavemotion:{k:'ath-03-wavemotion',t:'Give your work a home.',s:'WAVEMOTION: your music, your videos, your shop, your bookings, one link. 19 seconds.'},
+    wowtv:{k:'ath-02-wow-tv',t:'Your channel. On air tonight.',s:'WOW TV: your own channel with a real program guide. 24 seconds.'},
+    websites:{k:'ath-09-ath-websites',t:'Business websites that book.',s:'Above The Hill websites: booking, calls and directions on any phone. 18 seconds.'}
+  };
+  var NAMES={tour:'The one-minute tour',powertribes:'PowerTribes',wavemotion:'WAVEMOTION',wowtv:'WOW TV',websites:'Websites'};
+  var q=new URLSearchParams(location.search),id=F[q.get('f')]?q.get('f'):'tour',f=F[id];
+  var tall=f.tall&&matchMedia('(max-width:600px) and (orientation:portrait)').matches;
+  var v=document.getElementById('v'),snd=document.getElementById('snd');
+  document.getElementById('t').textContent=f.t;document.getElementById('s').textContent=f.s;
+  if(tall)document.getElementById('fr').classList.add('tall');
+  v.poster=B+f.k+'-16x9.jpg';v.src=B+f.k+(tall?'-9x16':'-16x9')+'.mp4';
+  if(id!=='tour')document.getElementById('full').hidden=false;
+  var ul=document.getElementById('films');
+  Object.keys(F).forEach(function(k){var li=document.createElement('li'),a=document.createElement('a');a.href='/watch/'+(k==='tour'?'':'?f='+k);a.textContent=NAMES[k];if(k===id)a.setAttribute('aria-current','page');li.appendChild(a);ul.appendChild(li);});
+  var p=v.play();if(p&&p.then)p.then(function(){snd.hidden=false;},function(){});
+  snd.onclick=function(){v.muted=false;v.currentTime=0;v.play();snd.hidden=true;};
+  v.addEventListener('volumechange',function(){if(!v.muted)snd.hidden=true;});
+})();
+</script>
+</body>
+</html>
