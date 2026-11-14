@@ -19,7 +19,8 @@ const usd = (c) => '$' + (c / 100).toLocaleString('en-US', { minimumFractionDigi
       try {
         await p.goto(e.url, { waitUntil: 'load', timeout: 60000 }); await p.waitForTimeout(5000);
         const t = (await p.innerText('body')).replace(/\s+/g, ' ');
-        const due = /due today\s*(\$[\d,]+\.\d\d)/i.exec(t)?.[1];
+        // Stripe's older checkout says "… due today $X"; the newer one says "Pay <business> $X Then $Y per month".
+        const due = /due today\s*(\$[\d,]+\.\d\d)/i.exec(t)?.[1] || /\bPay\b[^$]{0,80}(\$[\d,]+\.\d\d)\s*Then\b/i.exec(t)?.[1];
         const checks = { live: !/test mode/i.test(t), dueToday: due === usd(e.setup_cents), monthly: t.includes(usd(e.monthly_cents)), thirty: /30 days|30-day/i.test(t), noTotal: !t.includes(usd(e.setup_cents + e.monthly_cents)) };
         e.verified = Object.values(checks).every(Boolean);
         e.verified_at = new Date().toISOString(); e.checks = checks; e.seen = t.slice(0, 400);

@@ -48,7 +48,7 @@ test('the ONE price book (2026-10-31) on industry + calculator pages: 15 steps $
     const levels = [...panel.matchAll(/data-level="([^"]+)"><span><b>[^<]+<\/b><span class="note">[^<]*<\/span><\/span><span class="rv-price">([^<]+)<span class="note">\$[\d,]+ today(?:: set-up plus first month| to set up; monthly from day 30)<\/span><\/span>/g)].map((m) => [m[1], m[2]]);
     assert.deepEqual(levels, want, r);
     assert.match(panel, /WOW Pass \(WOW = World of Wealth\)/, r);
-    assert.match(panel, /Today you pay the one-time setup plus your first month, in one card payment\./, r); // 11-13: the live Stripe links charge setup + first month at signup (Presence $130); copy says what the card is charged
+    assert.match(panel, /Today you pay the one-time setup plus your first month, in one card payment\.|You pay today the one-time setup and, from day 30, the monthly price, on the same card\./, r); // 11-13: the live Stripe links charge setup + first month at signup (Presence $130); copy says what the card is charged
     assert.doesNotMatch(s, /free trial|free month of|\bWild\b|Quick Start|Business Growth/i, r);
     assert.match(s, /Services on their own · not part of a plan/, r);
     for (const t of ['Speed-to-Lead', '$200 a month', 'Review AI', '$300 a month', '$500 a month', 'Starter Website', '$250 for the site, $25 to set it up, one time', 'Business Website', '$500 for the site, $75 to set it up, one time']) assert.ok(s.includes(t), `${r}: ${t}`);

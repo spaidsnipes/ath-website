@@ -1,0 +1,361 @@
+{
+ "version": "v2",
+ "created_at": "2026-11-14T06:59:56.288635Z",
+ "created_via": "Stripe Dashboard UI (Claude in Chrome), account acct_1UMFQDLRFuTpfZm9, LIVE mode",
+ "livemode": true,
+ "note": "verified=false until scripts/verify-setup-links.cjs passes. Plan price ids not copied from the UI; each price carries the lookup key shown (resolve with GET /v1/prices?lookup_keys[]=...). Link metadata: ath_plan_key, ath_setup_link=v2. Each link: phone required, custom text field 'Business name', 30-day trial, redirect to /start/.",
+ "links": {
+  "presence": {
+   "name": "Presence",
+   "url": "https://buy.stripe.com/5kQ14o4WwdPk1V9e7o97G0k",
+   "link_id": "plink_1UbaJwLRFuTpfZm9tsr3khxy",
+   "setup_cents": 3000,
+   "monthly_cents": 10000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_presence_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_presence_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-presence&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:22:41.830Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $30.00 Then $100.00 per month ATH Presence setup $30.00 ATH Presence plan $100.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) Australia (+61) A"
+  },
+  "presence_plus": {
+   "name": "Presence Plus",
+   "url": "https://buy.stripe.com/7sY6oI9cM8v0gQ36EW97G0l",
+   "link_id": "plink_1UbaMRLRFuTpfZm9vxpJaLYG",
+   "setup_cents": 9900,
+   "monthly_cents": 15000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_presence_plus_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_presence_plus_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-presence-plus&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:22:47.510Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $99.00 Then $150.00 per month ATH Presence Plus setup $99.00 ATH Presence Plus plan $150.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) Austral"
+  },
+  "leadflow": {
+   "name": "LeadFlow",
+   "url": "https://buy.stripe.com/8x27sM74EdPk1V91kC97G0m",
+   "link_id": "plink_1UbaOrLRFuTpfZm93dcWfbhG",
+   "setup_cents": 9900,
+   "monthly_cents": 20000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_leadflow_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_leadflow_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-leadflow&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:22:53.373Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $99.00 Then $200.00 per month ATH LeadFlow setup $99.00 ATH LeadFlow plan $200.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) Australia (+61) A"
+  },
+  "clientflow": {
+   "name": "ClientFlow",
+   "url": "https://buy.stripe.com/aFa8wQ60AbHc6bpd3k97G0n",
+   "link_id": "plink_1UbabGLRFuTpfZm9wMlkVQ6L",
+   "setup_cents": 9900,
+   "monthly_cents": 25000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_clientflow_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_clientflow_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-clientflow&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:22:59.005Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $99.00 Then $250.00 per month ATH ClientFlow setup $99.00 ATH ClientFlow plan $250.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) Australia (+6"
+  },
+  "clientflow_plus": {
+   "name": "ClientFlow Plus",
+   "url": "https://buy.stripe.com/aFabJ22Oo4eK6bpd3k97G0o",
+   "link_id": "plink_1Ubad1LRFuTpfZm9DS3ysFdM",
+   "setup_cents": 15000,
+   "monthly_cents": 30000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_clientflow_plus_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_clientflow_plus_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-clientflow-plus&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:23:04.632Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $150.00 Then $300.00 per month ATH ClientFlow Plus setup $150.00 ATH ClientFlow Plus plan $300.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) A"
+  },
+  "pipeline": {
+   "name": "Pipeline",
+   "url": "https://buy.stripe.com/bJebJ21KkbHc7ftgfw97G0p",
+   "link_id": "plink_1UbaegLRFuTpfZm9iYoZ1ts3",
+   "setup_cents": 20000,
+   "monthly_cents": 40000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_pipeline_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_pipeline_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-pipeline&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:23:10.239Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $200.00 Then $400.00 per month ATH Pipeline setup $200.00 ATH Pipeline plan $400.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) Australia (+61)"
+  },
+  "revenue_engine": {
+   "name": "Revenue Engine",
+   "url": "https://buy.stripe.com/4gM7sMagQ6mS0R5gfw97G0q",
+   "link_id": "plink_1UbagLLRFuTpfZm9vyyoYKer",
+   "setup_cents": 25000,
+   "monthly_cents": 50000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_revenue_engine_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_revenue_engine_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-revenue-engine&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:23:15.932Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $250.00 Then $500.00 per month ATH Revenue Engine setup $250.00 ATH Revenue Engine plan $500.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) Aus"
+  },
+  "revenue_engine_plus": {
+   "name": "Revenue Engine Plus",
+   "url": "https://buy.stripe.com/28EcN6gFeaD88jx5AS97G0r",
+   "link_id": "plink_1UbahvLRFuTpfZm9scyYKapW",
+   "setup_cents": 37500,
+   "monthly_cents": 75000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_revenue_engine_plus_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_revenue_engine_plus_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-revenue-engine-plus&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:23:21.975Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $375.00 Then $750.00 per month ATH Revenue Engine Plus setup $375.00 ATH Revenue Engine Plus plan $750.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island "
+  },
+  "command": {
+   "name": "Command",
+   "url": "https://buy.stripe.com/28EdRa3SseTo57le7o97G0s",
+   "link_id": "plink_1UbajULRFuTpfZm9mmvxtKdD",
+   "setup_cents": 50000,
+   "monthly_cents": 100000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_command_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_command_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-command&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:23:27.830Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $500.00 Then $1,000.00 per month ATH Command setup $500.00 ATH Command plan $1,000.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) Australia (+6"
+  },
+  "command_plus": {
+   "name": "Command Plus",
+   "url": "https://buy.stripe.com/7sYeVe60A5iO6bpe7o97G0t",
+   "link_id": "plink_1Ubal2LRFuTpfZm9HhtCanE6",
+   "setup_cents": 75000,
+   "monthly_cents": 150000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_command_plus_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_command_plus_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-command-plus&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:23:33.578Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $750.00 Then $1,500.00 per month ATH Command Plus setup $750.00 ATH Command Plus plan $1,500.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) Aus"
+  },
+  "business_os": {
+   "name": "Business OS",
+   "url": "https://buy.stripe.com/28E5kE0Gg7qWbvJ7J097G0u",
+   "link_id": "plink_1UbamaLRFuTpfZm93LpCfhVi",
+   "setup_cents": 100000,
+   "monthly_cents": 200000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_business_os_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_business_os_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-business-os&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:23:39.369Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $1,000.00 Then $2,000.00 per month ATH Business OS setup $1,000.00 ATH Business OS plan $2,000.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) A"
+  },
+  "business_os_plus": {
+   "name": "Business OS Plus",
+   "url": "https://buy.stripe.com/5kQcN6coY3aGgQ3gfw97G0v",
+   "link_id": "plink_1Ubao9LRFuTpfZm9rQA4ZYvO",
+   "setup_cents": 150000,
+   "monthly_cents": 300000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_business_os_plus_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_business_os_plus_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-business-os-plus&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:23:45.067Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $1,500.00 Then $3,000.00 per month ATH Business OS Plus setup $1,500.00 ATH Business OS Plus plan $3,000.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Islan"
+  },
+  "multi_site": {
+   "name": "Multi-Site",
+   "url": "https://buy.stripe.com/3cI9AU4Ww12y7ft3sK97G0w",
+   "link_id": "plink_1UbapiLRFuTpfZm9BebxOTqE",
+   "setup_cents": 200000,
+   "monthly_cents": 400000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_multi_site_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_multi_site_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-multi-site&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:23:50.792Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $2,000.00 Then $4,000.00 per month ATH Multi-Site setup $2,000.00 ATH Multi-Site plan $4,000.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) Aus"
+  },
+  "multi_site_plus": {
+   "name": "Multi-Site Plus",
+   "url": "https://buy.stripe.com/9B628s9cM12ydDR1kC97G0x",
+   "link_id": "plink_1UbarHLRFuTpfZm966QFuUS9",
+   "setup_cents": 250000,
+   "monthly_cents": 500000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_multi_site_plus_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_multi_site_plus_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-multi-site-plus&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:23:56.478Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $2,500.00 Then $5,000.00 per month ATH Multi-Site Plus setup $2,500.00 ATH Multi-Site Plus plan $5,000.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island "
+  },
+  "enterprise": {
+   "name": "Enterprise",
+   "url": "https://buy.stripe.com/9B600k2Oo7qWarFfbs97G0y",
+   "link_id": "plink_1UbaspLRFuTpfZm9L1Ge2svG",
+   "setup_cents": 400000,
+   "monthly_cents": 800000,
+   "trial_days": 30,
+   "livemode": true,
+   "verified": true,
+   "setup_price_lookup_key": "ath_plan_enterprise_setup_v2",
+   "monthly_price_lookup_key": "ath_plan_enterprise_monthly_v2",
+   "redirect": "https://abovethehilldev.online/start/?package=plan-enterprise&session={CHECKOUT_SESSION_ID}",
+   "verified_at": "2026-11-14T09:24:02.285Z",
+   "checks": {
+    "live": true,
+    "dueToday": true,
+    "monthly": true,
+    "thirty": true,
+    "noTotal": true
+   },
+   "seen": "AboveTheHilldevelopments Pay AboveTheHilldevelopments $4,000.00 Then $8,000.00 per month ATH Enterprise setup $4,000.00 ATH Enterprise plan $8,000.00 / month after 30 days free Enter payment details Contact details Afghanistan (+93) Albania (+355) Algeria (+213) Andorra (+376) Angola (+244) Anguilla (+1) Antigua & Barbuda (+1) Argentina (+54) Armenia (+374) Aruba (+297) Ascension Island (+247) Aus"
+  }
+ },
+ "spaidbot": {
+  "pro": {
+   "product": "prod_Vcqb1FMtHOTEeh",
+   "price": "price_1UbauFLRFuTpfZm923XSJ5Eq",
+   "lookup_key": "spaidbot_pro_monthly",
+   "cents": 2000,
+   "interval": "month",
+   "wow_secret": "WOW_STRIPE_PRICE_SPAIDBOT_PRO"
+  },
+  "super_max": {
+   "product": "prod_VcqcwjrtBgEEef",
+   "price": "price_1UbauqLRFuTpfZm9azwFivUm",
+   "lookup_key": "spaidbot_super_max_monthly",
+   "cents": 10000,
+   "interval": "month",
+   "wow_secret": "WOW_STRIPE_PRICE_SPAIDBOT_SUPER_MAX"
+  }
+ },
+ "customer_portal": {
+  "config": "bpc_1UNDnqLRFuTpfZm9Ya8ekvX5",
+  "login_link": "https://billing.stripe.com/p/login/3cI4gA1KkdPkbvJ2oG97G00"
+ }
+}

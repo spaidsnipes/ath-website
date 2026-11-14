@@ -13,6 +13,10 @@ const book = JSON.parse(readFileSync(new URL('../commercial/price-book.json', im
 const files = (d) => readdirSync(d).flatMap((n) => { const p = join(d, n); return statSync(p).isDirectory() ? files(p) : n === 'index.html' ? [p] : []; });
 const site = files(PUB).filter((f) => !/\/(sites|preview)\//.test(f)); // client sites + prospect previews are not ATH price pages
 const steps = book.steps;
+// Setup-today links (Founder 11-13): when all 15 verified links exist, the page links to them instead of the old pay_url.
+let SETUP = {};
+try { const j = JSON.parse(readFileSync(new URL('../commercial/plan-setup-links.json', import.meta.url), 'utf8')); SETUP = j.links || {}; } catch {}
+const payUrl = (p) => { const e = SETUP[p.key]; return e && e.verified === true && e.setup_cents === p.setup * 100 && e.monthly_cents === p.monthly * 100 ? e.url : p.pay_url; };
 
 test('one ladder: 15 steps, $100 → $8,000, the Founder\'s numbers, one name and one price each', () => {
   assert.deepEqual(steps.map((s) => s.monthly), [100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000, 3000, 4000, 5000, 8000]);
@@ -45,7 +49,7 @@ test('the pricing page shows ONLY the ladder plus a separate services list', () 
   for (const p of steps) {
     const sec = s.slice(s.indexOf(`id="plan-${p.key}"`), s.indexOf('</article>', s.indexOf(`id="plan-${p.key}"`)));
     assert.ok(sec.includes(`$${p.monthly.toLocaleString('en-US')}<span> a month</span>`), p.key);
-    if (p.pay_url) assert.ok(sec.includes(`href="${p.pay_url}"`), p.key);
+    if (payUrl(p)) assert.ok(sec.includes(`href="${payUrl(p)}"`), p.key);
     else { assert.match(sec, /Book a call/, p.key); assert.doesNotMatch(sec, /stripe\.com/, p.key); }
   }
   assert.ok(s.indexOf('id="services"') > s.lastIndexOf('id="plan-'), 'services sit after, and apart from, the ladder');
