@@ -351,7 +351,7 @@
       "price": "$100 to $8,000 a month",
       "status": "LIVE",
       "buy": "https://abovethehilldev.online/pricing/",
-      "fulfillment": "One ladder: every step includes a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website, more of each at every step. Every step has a card link on /pricing/; the card is charged the setup fee and the first month today (Presence: $130 today, then $100 a month; Enterprise: $12,000 today, then $8,000 a month). Source: commercial/price-book.json.",
+      "fulfillment": "One ladder: every step includes a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website, more of each at every step. Every step has a card link on /pricing/; the card is charged the setup fee today and the monthly price from day 30 (Presence: $30 today to set up, then $100 a month; Enterprise: $4,000 today to set up, then $8,000 a month). Source: commercial/price-book.json.",
       "verified": "2026-11-14"
     },
     {
