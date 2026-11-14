@@ -56,7 +56,8 @@ test('no coupons, promo codes, percent-off, half-off, first-month deals or every
 
 test('retired prices and tier names are gone from every built page and the catalog', () => {
   const RETIRED = [/OS \$50/, /WM Pro OS/, /\bApp \(Basic\)/, /WM Pro App\b/, /Spaidbot[^.]{0,40}\b(?:Personal|Builder|Operations)\b/, /Personal \$19|Builder \$49|Operations \$99/, // Founder 11-13: Spaidbot = Free / Pro $20 / Super Max $100
-    /Living Cinema/i, /\$10–\$75/, /\$10\/\$20\/\$50\/\$75/, /Studio \$75/];
+    // Founder 11-13 night: the WAVEMOTION $75 Living Cinema Studio is KEPT (price book row 13), so "$10–$75" and "Living Cinema" are allowed again.
+  ];
   for (const f of targets) { const s = readFileSync(f, 'utf8'); for (const re of RETIRED) assert.doesNotMatch(s, re, `${f.slice(PUB.length)}: ${re}`); }
 });
 
@@ -65,7 +66,7 @@ test('catalog.json carries the 2026-11-07 matrix (what the public Spaidbot answe
   assert.match(offer('wmp-pro').price, /Basic \$10.*Premium \$20.*Auto-trading \$30/);
   assert.match(offer('wmp-tiers').price, /Basic \$10 · Premium \$20 · Auto-trading \$30/);
   assert.match(offer('spaidbot').price, /Pro \$20.*Super Max \$100/); assert.doesNotMatch(offer('spaidbot').price, /\$19|\$49|\$99/); // Founder 11-13
-  assert.equal(offer('wm-plans').price, '$10–$50/month');
+  assert.equal(offer('wm-plans').price, '$10–$75/month'); // Founder 11-13 night: Living Cinema Studio $75 kept
   assert.match(offer('wow-studios-plans').price, /\$29 · \$59 · \$119/);
   assert.match(offer('powertribes-plans').price, /Solo \$29 · Team \$79 · Tower \$179/); assert.doesNotMatch(offer('powertribes-plans').price, /standard|Business OS/); // Founder 11-13: one plain price
   assert.match(offer('creator-passport').price, /\$40 · \$75 · \$100 · \$150/);

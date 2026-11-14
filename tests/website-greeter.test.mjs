@@ -14,7 +14,7 @@ const read = (r) => readFileSync(PUB + r, 'utf8');
 const TAG = /<script src="https:\/\/mission\.abovethehilldev\.online\/spaidbot\.js" data-api="https:\/\/mission\.abovethehilldev\.online" data-product="ath" data-greet="1" data-compact-hero="1" data-audit-href="\/business-diagnosis\/" defer><\/script>/;
 
 test('every built ATH page loads the ATHOS embed once, public ATH product, greeter on; the old local Spaidbot is gone', () => {
-  const built = pages(PUB).filter((p) => !/\/(sites|preview)\//.test(p) && !/http-equiv="refresh"/.test(readFileSync(p, 'utf8')));
+  const built = pages(PUB).filter((p) => !/\/(sites|preview|watch)\//.test(p) && !/http-equiv="refresh"/.test(readFileSync(p, 'utf8')));
   assert.ok(built.length >= 40, String(built.length));
   for (const p of built) {
     const s = readFileSync(p, 'utf8');

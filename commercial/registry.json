@@ -349,30 +349,30 @@
       "business": "ATH Developments",
       "name": "ATH plans (monthly): Presence $100 → Enterprise $8,000, 15 steps",
       "price": "$100 to $8,000 a month",
-      "status": "BOOKABLE",
+      "status": "LIVE",
       "buy": "https://abovethehilldev.online/pricing/",
-      "fulfillment": "One ladder: every step includes a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website, more of each at every step. Booked with a person until each Stripe price is created. Source: commercial/price-book.json.",
-      "verified": "2026-10-31"
+      "fulfillment": "One ladder: every step includes a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website, more of each at every step. Every step has a card link on /pricing/; the card is charged the setup fee and the first month today (Presence: $130 today, then $100 a month; Enterprise: $12,000 today, then $8,000 a month). Source: commercial/price-book.json.",
+      "verified": "2026-11-14"
     },
     {
       "id": "ath-website-starter",
       "business": "ATH Developments",
       "name": "Starter Website",
       "price": "$250 for the site, $25 to set it up, one time",
-      "status": "BOOKABLE",
-      "buy": "https://abovethehilldev.online/contact/?intent=services&package=website-starter",
-      "fulfillment": "Written scope, then build; card checkout switches on when its Stripe price is created.",
-      "verified": "2026-10-31"
+      "status": "LIVE",
+      "buy": "https://abovethehilldev.online/pricing/#services",
+      "fulfillment": "Card link on /pricing/ (one time), then a written scope and the build.",
+      "verified": "2026-11-14"
     },
     {
       "id": "ath-website-business",
       "business": "ATH Developments",
       "name": "Business Website",
       "price": "$500 for the site, $75 to set it up, one time",
-      "status": "BOOKABLE",
-      "buy": "https://abovethehilldev.online/contact/?intent=services&package=website-business",
-      "fulfillment": "Written scope, then build; card checkout switches on when its Stripe price is created.",
-      "verified": "2026-10-31"
+      "status": "LIVE",
+      "buy": "https://abovethehilldev.online/pricing/#services",
+      "fulfillment": "Card link on /pricing/ (one time), then a written scope and the build.",
+      "verified": "2026-11-14"
     },
     {
       "id": "ath-ai-services",
@@ -447,12 +447,12 @@
     {
       "id": "wm-plans",
       "business": "WAVEMOTION",
-      "name": "Starter $10 · Creator $20 · Pro $50 per month",
-      "price": "$10–$50/month",
+      "name": "Starter $10 · Creator $20 · Pro $50 · Living Cinema Studio $75 per month",
+      "price": "$10–$75/month",
       "status": "LIVE",
       "buy": "https://www.wavemotion.live/#pricing",
-      "fulfillment": "Self-serve; starts at $10 a month (Starter: one link for all socials, analytics, clips), paid from day one; cancel in billing portal. Paid cinematic generation closed",
-      "verified": "2026-11-07"
+      "fulfillment": "Self-serve; starts at $10 a month (Starter: one link for all socials, analytics, clips), paid from day one; cancel in billing portal. Paid cinematic generation closed. Living Cinema Studio ($75) is back on sale (Founder 11-13): Pro plus more value, as listed on wavemotion.live.",
+      "verified": "2026-11-14"
     },
     {
       "id": "wm-clips",
@@ -596,13 +596,13 @@
     },
     {
       "id": "powertribes-plans",
-      "business": "Power Tribes",
-      "name": "Power Tribes Solo · Team · Business OS (launch prices)",
+      "business": "PowerTribes",
+      "name": "PowerTribes Solo · Team · Tower",
       "price": "Solo $29 · Team $79 · Tower $179 a month; Enterprise by quote",
       "status": "LIVE",
       "buy": "https://thewow.online/plans",
       "fulfillment": "Bought with your WOW Passport; unlocks in powertribes.cloud.",
-      "verified": "2026-11-07"
+      "verified": "2026-11-14"
     },
     {
       "id": "creator-passport",
