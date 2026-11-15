@@ -578,3 +578,7 @@ details summary{cursor:pointer}
 @media (max-width:620px){.film-sound{right:8px;bottom:8px;padding:0 13px}.spot-row{grid-auto-columns:82%}}
 @media (min-width:1100px){.spot-row{grid-auto-flow:row;grid-template-columns:repeat(5,minmax(0,1fr));overflow:visible}}
 .spot-door .arr{margin-left:6px}
+
+/* Mansion pass 11-14: a long uppercase word in a .d-l heading ("RECOMMENDATIONS" on /ai/growing-with-ai/) ran 68px past a 390px
+   iPhone in Safari (WebKit measured scrollWidth 458). Narrow phones get a smaller .d-l floor, and any word still too long wraps. */
+@media (max-width:440px){.d-l{font-size:clamp(28px,8.2vw,40px)}.display{overflow-wrap:break-word}}
