@@ -44,7 +44,7 @@ video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
 </div>
 <ul class="films" id="films" aria-label="Other films"></ul>
 <p class="note">Call or text: main office (918) 960-0164 · WAVEMOTION &amp; PowerTribes line (909) 909-8146.</p>
-<p class="note">The rooms are AI imagery and the voice is AI; every screen inside them plays the real live app. Captions are in the picture.</p>
+<p class="note" id="fnote">The rooms are AI imagery and the voice is AI; every screen inside them plays the real live app. Captions are in the picture.</p>
 </main>
 <script>
 (function(){
@@ -54,15 +54,20 @@ video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
     powertribes:{k:'ath-04-powertribes',t:'Your company’s own tower.',s:'PowerTribes: the boardroom, the sales floor, the dialer, the coaching room. 20 seconds.'},
     wavemotion:{k:'ath-03-wavemotion',t:'Give your work a home.',s:'WAVEMOTION: your music, your videos, your shop, your bookings, one link. 19 seconds.'},
     wowtv:{k:'ath-02-wow-tv',t:'Your channel. On air tonight.',s:'WOW TV: your own channel with a real program guide. 24 seconds.'},
-    websites:{k:'ath-09-ath-websites',t:'Business websites that book.',s:'Above The Hill websites: booking, calls and directions on any phone. 18 seconds.'}
+    websites:{k:'ath-09-ath-websites',t:'Business websites that book.',s:'Above The Hill websites: booking, calls and directions on any phone. 18 seconds.'},
+    // 11-14 OS outreach lanes: films served from this site (/assets/film/), not the bucket.
+    spaidbot:{src:'/assets/film/spaidbot-say-it-16x9.mp4',poster:'/assets/email/spaidbot-operator-1114.jpg',t:'Say it once. Spaidbot builds it.',s:'Spaidbot: the AI assistant at Above The Hill. 9 seconds.'},
+    blacknerds:{src:'/assets/film/cbn-crew-9x16.mp4',poster:'/assets/film/cbn-crew-9x16.jpg',vertical:true,eye:'Cipher Black Nerds',t:'Too smart for their own good.',s:'Meet Cipher, Numbers and Professor. 50 seconds.',note:'Cipher Black Nerds is an AI-made cartoon by Above The Hill: AI images, AI voices, captions in the picture.'}
   };
-  var NAMES={tour:'The one-minute tour',powertribes:'PowerTribes',wavemotion:'WAVEMOTION',wowtv:'WOW TV',websites:'Websites'};
+  var NAMES={tour:'The one-minute tour',powertribes:'PowerTribes',wavemotion:'WAVEMOTION',wowtv:'WOW TV',websites:'Websites',spaidbot:'Spaidbot',blacknerds:'Cipher Black Nerds'};
   var q=new URLSearchParams(location.search),id=F[q.get('f')]?q.get('f'):'tour',f=F[id];
   var tall=f.tall&&matchMedia('(max-width:600px) and (orientation:portrait)').matches;
   var v=document.getElementById('v'),snd=document.getElementById('snd');
   document.getElementById('t').textContent=f.t;document.getElementById('s').textContent=f.s;
-  if(tall)document.getElementById('fr').classList.add('tall');
-  v.poster=B+f.k+'-16x9.jpg';v.src=B+f.k+(tall?'-9x16':'-16x9')+'.mp4';
+  if(tall||f.vertical)document.getElementById('fr').classList.add('tall');
+  if(f.src){v.poster=f.poster;v.src=f.src;}else{v.poster=B+f.k+'-16x9.jpg';v.src=B+f.k+(tall?'-9x16':'-16x9')+'.mp4';}
+  if(f.eye)document.querySelector('.eye').textContent=f.eye;
+  if(f.note)document.getElementById('fnote').textContent=f.note;
   if(id!=='tour')document.getElementById('full').hidden=false;
   var ul=document.getElementById('films');
   Object.keys(F).forEach(function(k){var li=document.createElement('li'),a=document.createElement('a');a.href='/watch/'+(k==='tour'?'':'?f='+k);a.textContent=NAMES[k];if(k===id)a.setAttribute('aria-current','page');li.appendChild(a);ul.appendChild(li);});
