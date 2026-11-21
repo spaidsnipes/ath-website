@@ -18,9 +18,11 @@ const page = (r) => readFileSync(PUB + r + 'index.html', 'utf8');
 const main = (s) => s.slice(s.indexOf('<main'), s.indexOf('</main>'));
 const text = (s) => main(s).replace(/<script(?![^>]*application\/json)[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
 
-test('the retired $100 / $200 website checkouts are not live; the websites come from the price book', () => {
+test('the retired one-time website checkouts are not live; websites come inside Presence (Founder 11-20)', () => {
   for (const id of ['ath-quick-start', 'ath-business-growth']) assert.notEqual(cat.offers.find((o) => o.id === id)?.status, 'LIVE', id);
-  assert.ok(PB_ITEMS.some((i) => i.id === 'website-starter' && i.price === '$250 for the site, $25 to set it up, one time'));
+  assert.ok(PB_ITEMS.some((i) => i.id === 'website-in-presence' && i.price === 'Inside Presence: $30 today, then $100 a month' && i.pay_url === 'https://buy.stripe.com/5kQ14o4WwdPk1V9e7o97G0k'));
+  assert.ok(!PB_ITEMS.some((i) => ['website-starter', 'website-business'].includes(i.id)));
+  for (const id of ['ath-website-starter', 'ath-website-business']) assert.equal(cat.offers.find((o) => o.id === id), undefined, id);
 });
 for (const r of ROUTES) test(`/${r}: AI labelled; every price is a price-book price; every card button is a price-book or live Stripe link`, () => {
   const s = page(r), t = text(s);

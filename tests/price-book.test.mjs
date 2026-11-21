@@ -38,7 +38,7 @@ test('every step adds a little of everything, nothing is unlimited', () => {
   for (const s of steps) {
     for (const k of ['wow_pass', 'office', 'wavemotion', 'spaidbot', 'wm_pro', 'website']) assert.ok(s[k], `${s.key} has ${k}`);
     assert.doesNotMatch(JSON.stringify(s), /unlimited/i, s.key);
-    assert.equal(s.wow_pass_level, s.monthly >= 250 ? '$20 WOW Pass' : '$10-level WOW Pass', s.key);
+    assert.equal(s.wow_pass_level, s.monthly >= 250 ? '$20 WOW Pass' : 'WOW Passport included', s.key);
   }
 });
 

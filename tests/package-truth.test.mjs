@@ -33,9 +33,10 @@ for (const re of OVERCLAIMS) {
   });
 }
 
-test('the $500 Business Website says what it links to', () => {
+test('the free look points websites to Presence and says what it links to (Founder 11-20)', () => {
   const free = readFileSync(join(ROOT, 'free-look/index.html'), 'utf8');
-  assert.match(free, /Up to 5 pages, linked to the booking or ordering you already use/);
+  assert.match(free, /inside Presence: \$30 today, then \$100 a month/);
+  assert.match(free, /linked to the booking or ordering you already use/);
 });
 
 test('city pages tell the owner when search engines list the site', () => {

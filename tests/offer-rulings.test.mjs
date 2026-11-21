@@ -91,8 +91,8 @@ test('catalog.json carries the 2026-11-07 matrix (what the public Spaidbot answe
 
 test('the ATH Developments business offers are untouched by the matrix', () => {
   assert.match(offer('ath-plans').price, /^\$100 to \$8,000 a month$/);
-  assert.equal(offer('ath-website-starter').price, '$250 for the site, $25 to set it up, one time');
-  assert.equal(offer('ath-website-business').price, '$500 for the site, $75 to set it up, one time');
+  for (const id of ['ath-website-starter', 'ath-website-business']) assert.equal(cat.offers.find((o) => o.id === id), undefined, `${id} retired 2026-11-20`);
+  assert.match(offer('ath-plans').fulfillment, /Presence \(\$30 today, then \$100 a month\)/);
   assert.match(offer('ath-ai-services').price, /^Speed-to-Lead \$200\/month/);
   assert.equal(offer('ath-garden-check').price, '$20 one time');
 });
@@ -117,6 +117,6 @@ test('Founder 11-14: HOLIDAY is shown only on app-subscription pages, date-gated
     assert.deepEqual(ids, ['creator-passport', 'powertribes-plans', 'spaidbot', 'wm-plans', 'wmp-pro', 'wmp-tiers', 'wow-founding-500', 'wow-studios-plans', 'wow-world-pass']);
     assert.equal(cat.holiday.ends, HOLIDAY_ENDS);
     assert.ok(cat.holiday.line.startsWith(HOLIDAY_LINE));
-    for (const id of ['ath-plans', 'ath-website-starter', 'ath-website-business']) assert.equal(offer(id).holiday, undefined, id);
+    for (const id of ['ath-plans']) assert.equal(offer(id).holiday, undefined, id);
   } else assert.deepEqual(ids, []);
 });

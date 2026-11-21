@@ -53,27 +53,7 @@
    "price": "$100 to $8,000 a month",
    "status": "LIVE",
    "buy": "https://abovethehilldev.online/pricing/",
-   "fulfillment": "One ladder: every step includes a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website, more of each at every step. Every step has a card link on /pricing/; the card is charged the setup fee today and the monthly price from day 30 (Presence: $30 today to set up, then $100 a month; Enterprise: $4,000 today to set up, then $8,000 a month). Source: commercial/price-book.json.",
-   "verified": "2026-11-14"
-  },
-  {
-   "id": "ath-website-starter",
-   "business": "ATH Developments",
-   "name": "Starter Website",
-   "price": "$250 for the site, $25 to set it up, one time",
-   "status": "LIVE",
-   "buy": "https://abovethehilldev.online/pricing/#services",
-   "fulfillment": "Card link on /pricing/ (one time), then a written scope and the build.",
-   "verified": "2026-11-14"
-  },
-  {
-   "id": "ath-website-business",
-   "business": "ATH Developments",
-   "name": "Business Website",
-   "price": "$500 for the site, $75 to set it up, one time",
-   "status": "LIVE",
-   "buy": "https://abovethehilldev.online/pricing/#services",
-   "fulfillment": "Card link on /pricing/ (one time), then a written scope and the build.",
+   "fulfillment": "One ladder: every step includes a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website, more of each at every step. Every step has a card link on /pricing/; the card is charged the setup fee today and the monthly price from day 30 (Presence: $30 today to set up, then $100 a month; Enterprise: $4,000 today to set up, then $8,000 a month). Source: commercial/price-book.json. Websites are not sold one time: a website comes inside every plan, starting with Presence ($30 today, then $100 a month).",
    "verified": "2026-11-14"
   },
   {
@@ -93,7 +73,7 @@
    "price": "not priced yet",
    "status": "NOT_ACTIVE",
    "buy": "https://abovethehilldev.online/ai/site-builder/",
-   "fulfillment": "The AI builder inside the Spaidbot app is being built and is not open. /ai/site-builder/ has an in-browser template sketch (not AI); websites today are the Starter Website ($250) and the Business Website ($500).",
+   "fulfillment": "The AI builder inside the Spaidbot app is being built and is not open. /ai/site-builder/ has an in-browser template sketch (not AI); websites today come inside Presence ($30 today, then $100 a month).",
    "verified": "2026-10-31"
   },
   {

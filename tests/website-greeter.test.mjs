@@ -51,6 +51,6 @@ test('the ONE price book (2026-10-31) on industry + calculator pages: 15 steps $
     assert.match(panel, /Today you pay the one-time setup plus your first month, in one card payment\.|You pay today the one-time setup and, from day 30, the monthly price, on the same card\./, r); // 11-13: the live Stripe links charge setup + first month at signup (Presence $130); copy says what the card is charged
     assert.doesNotMatch(s, /free trial|free month of|\bWild\b|Quick Start|Business Growth/i, r);
     assert.match(s, /Services on their own · not part of a plan/, r);
-    for (const t of ['Speed-to-Lead', '$200 a month', 'Review AI', '$300 a month', '$500 a month', 'Starter Website', '$250 for the site, $25 to set it up, one time', 'Business Website', '$500 for the site, $75 to set it up, one time']) assert.ok(s.includes(t), `${r}: ${t}`);
+    for (const t of ['Speed-to-Lead', '$200 a month', 'Review AI', '$300 a month', '$500 a month', 'Your website', 'Inside Presence: $30 today, then $100 a month']) assert.ok(s.includes(t), `${r}: ${t}`);
   }
 });

@@ -18,8 +18,8 @@
       "locations": 1,
       "lines": 1,
       "world_passes": 0,
-      "wow_pass": "$10-level WOW Pass (Basic of every app)",
-      "wow_pass_level": "$10-level WOW Pass",
+      "wow_pass": "WOW Passport included",
+      "wow_pass_level": "WOW Passport included",
       "office_template": "front_desk",
       "office_name": "Front Desk",
       "office_floors": 1,
@@ -65,8 +65,8 @@
       "locations": 1,
       "lines": 1,
       "world_passes": 0,
-      "wow_pass": "$10-level WOW Pass (Basic of every app) on all 3 seats",
-      "wow_pass_level": "$10-level WOW Pass",
+      "wow_pass": "WOW Passport included on all 3 seats",
+      "wow_pass_level": "WOW Passport included",
       "office_template": "storefront",
       "office_name": "Storefront Office",
       "office_floors": 1,
@@ -113,8 +113,8 @@
       "locations": 1,
       "lines": 1,
       "world_passes": 0,
-      "wow_pass": "$10-level WOW Pass (Basic of every app) on all 4 seats",
-      "wow_pass_level": "$10-level WOW Pass",
+      "wow_pass": "WOW Passport included on all 4 seats",
+      "wow_pass_level": "WOW Passport included",
       "office_template": "lead_desk",
       "office_name": "Lead Desk",
       "office_floors": 1,
@@ -852,27 +852,16 @@
       ]
     },
     {
-      "group": "Websites (one time)",
+      "group": "Websites",
       "items": [
         {
-          "id": "website-starter",
-          "name": "Starter Website",
-          "price": "$250 for the site, $25 to set it up, one time",
-          "cents": 25000,
-          "billing": "one_time",
-          "what": "A fast mobile site: your services, hours, photos and a call or booking button, linked to the booking or ordering you already use. One round of changes. Plus a one-time $25 hosting setup: your domain connected, HTTPS and the site put live.",
-          "pay_url": "https://buy.stripe.com/bJe5kE0GgdPkarF9R897G02",
-          "hosting_setup": 25
-        },
-        {
-          "id": "website-business",
-          "name": "Business Website",
-          "price": "$500 for the site, $75 to set it up, one time",
-          "cents": 50000,
-          "billing": "one_time",
-          "what": "Up to 5 pages, linked to the booking or ordering you already use, plus a year of small updates. Hosting included. Plus a one-time $75 hosting setup: your domain connected, HTTPS and the site put live.",
-          "pay_url": "https://buy.stripe.com/8x23cw4WwaD843hbZg97G03",
-          "hosting_setup": 75
+          "id": "website-in-presence",
+          "name": "Your website",
+          "price": "Inside Presence: $30 today, then $100 a month",
+          "billing": "plan",
+          "in_plan": "presence",
+          "what": "Websites are no longer sold one time. Your mobile site (services, hours, photos and a call or booking button) comes inside the Presence plan, with missed-call text-back and review requests; bigger plans add more pages and changes.",
+          "pay_url": "https://buy.stripe.com/5kQ14o4WwdPk1V9e7o97G0k"
         },
         {
           "id": "garden-check",

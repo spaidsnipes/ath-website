@@ -10,44 +10,6 @@
   },
   "packages": [
     {
-      "id": "website-starter",
-      "name": "Starter Website",
-      "price": 250,
-      "billing": "one_time",
-      "from": false,
-      "icon": "site",
-      "summary": "A fast mobile site: your services, hours, photos and a call or booking button.",
-      "includes": [
-        "Mobile-friendly business site",
-        "Your services, hours, contact information, photos and links",
-        "Linked to the booking or ordering tool you already use",
-        "One round of changes",
-        "Hosting included"
-      ],
-      "ecosystem": [],
-      "pay_url": "",
-      "setup": 25
-    },
-    {
-      "id": "website-business",
-      "name": "Business Website",
-      "price": 500,
-      "billing": "one_time",
-      "from": false,
-      "icon": "systems",
-      "summary": "Up to 5 pages, linked to the booking or ordering you already use, with a year of small updates.",
-      "includes": [
-        "Up to five pages (or equivalent scoped sections)",
-        "Linked to the booking or ordering tool you already use",
-        "Contact and social links",
-        "A year of small updates",
-        "Hosting included"
-      ],
-      "ecosystem": [],
-      "pay_url": "",
-      "setup": 75
-    },
-    {
       "id": "app-starter",
       "name": "App Starter",
       "price": 1000,
@@ -321,6 +283,24 @@
       ],
       "on": "2026-10-31",
       "note": "Second set of names for the same one-time price points: one name per price."
+    },
+    {
+      "id": "website-starter",
+      "name": "Starter Website — $250 for the site, $25 to set it up, one time",
+      "replaced_by": [
+        "plan-presence"
+      ],
+      "on": "2026-11-20",
+      "note": "Retired from the site and catalog: websites come inside Presence ($30 today, then $100 a month). Its Stripe Payment Link https://buy.stripe.com/bJe5kE0GgdPkarF9R897G02 is still active in Stripe: the Founder deactivates it. Orders already placed are honored."
+    },
+    {
+      "id": "website-business",
+      "name": "Business Website — $500 for the site, $75 to set it up, one time",
+      "replaced_by": [
+        "plan-presence"
+      ],
+      "on": "2026-11-20",
+      "note": "Retired from the site and catalog: websites come inside Presence ($30 today, then $100 a month). Its Stripe Payment Link https://buy.stripe.com/8x23cw4WwaD843hbZg97G03 is still active in Stripe: the Founder deactivates it. Orders already placed are honored."
     }
   ],
   "catalog": [
@@ -351,27 +331,7 @@
       "price": "$100 to $8,000 a month",
       "status": "LIVE",
       "buy": "https://abovethehilldev.online/pricing/",
-      "fulfillment": "One ladder: every step includes a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website, more of each at every step. Every step has a card link on /pricing/; the card is charged the setup fee today and the monthly price from day 30 (Presence: $30 today to set up, then $100 a month; Enterprise: $4,000 today to set up, then $8,000 a month). Source: commercial/price-book.json.",
-      "verified": "2026-11-14"
-    },
-    {
-      "id": "ath-website-starter",
-      "business": "ATH Developments",
-      "name": "Starter Website",
-      "price": "$250 for the site, $25 to set it up, one time",
-      "status": "LIVE",
-      "buy": "https://abovethehilldev.online/pricing/#services",
-      "fulfillment": "Card link on /pricing/ (one time), then a written scope and the build.",
-      "verified": "2026-11-14"
-    },
-    {
-      "id": "ath-website-business",
-      "business": "ATH Developments",
-      "name": "Business Website",
-      "price": "$500 for the site, $75 to set it up, one time",
-      "status": "LIVE",
-      "buy": "https://abovethehilldev.online/pricing/#services",
-      "fulfillment": "Card link on /pricing/ (one time), then a written scope and the build.",
+      "fulfillment": "One ladder: every step includes a WOW Pass, a PowerTribes office, WAVEMOTION, Spaidbot, WM Pro, AI receptionist minutes and text-back, review requests and a website, more of each at every step. Every step has a card link on /pricing/; the card is charged the setup fee today and the monthly price from day 30 (Presence: $30 today to set up, then $100 a month; Enterprise: $4,000 today to set up, then $8,000 a month). Source: commercial/price-book.json. Websites are not sold one time: a website comes inside every plan, starting with Presence ($30 today, then $100 a month).",
       "verified": "2026-11-14"
     },
     {
@@ -391,7 +351,7 @@
       "price": "not priced yet",
       "status": "NOT_ACTIVE",
       "buy": "https://abovethehilldev.online/ai/site-builder/",
-      "fulfillment": "The AI builder inside the Spaidbot app is being built and is not open. /ai/site-builder/ has an in-browser template sketch (not AI); websites today are the Starter Website ($250) and the Business Website ($500).",
+      "fulfillment": "The AI builder inside the Spaidbot app is being built and is not open. /ai/site-builder/ has an in-browser template sketch (not AI); websites today come inside Presence ($30 today, then $100 a month).",
       "verified": "2026-10-31"
     },
     {

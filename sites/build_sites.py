@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """ATH website factory: one client intake (sites/clients/<slug>.json) -> a finished site.
 
-Package keys (legacy names): "quick-start" = Starter Website $250 for the site, $25 to set it up; "business-growth" = Business Website $500 for the site, $75 to set it up.
+Package keys (legacy names): "quick-start" and "business-growth" both point to the Presence plan ($30 today, then $100 a month);
+the one-time Starter/Business Websites were retired 2026-11-20.
 Output: public/sites/<slug>/ (and /<page>/ for extra pages), plus a gallery of showcases at /sites/.
 
 Rules the factory enforces:
@@ -17,8 +18,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(os.path.dirname(HERE), "public", "sites")
 SITE = "https://abovethehilldev.online"
 E = lambda s: html.escape(str(s or ""), quote=True)
-# One price book (commercial/registry.json): the website package each showcase uses, by its intake "package" key.
-PACKAGE_OFFER = {"quick-start": "Starter Website $250 for the site, $25 to set it up", "business-growth": "Business Website $500 for the site, $75 to set it up"}
+# Websites come inside Presence (Founder ruling 2026-11-20; commercial/price-book.json "website-in-presence").
+PRESENCE_LINE = "a website inside Presence, $30 today, then $100 a month"
+PACKAGE_OFFER = {"quick-start": PRESENCE_LINE, "business-growth": PRESENCE_LINE}
 
 THEMES = {
     # food & cafe: espresso dark, warm gold
@@ -130,11 +132,11 @@ def page_html(c, page, pages):
     pc = c.get("primary_cta") or {}
     top_cta = f'<a class="btn btn-solid" href="{href(c, pc.get("href"))}">{E(pc.get("label", "Call"))}</a>' if pc else ""
     # Founder 2026-11-12: never "sample site" or "Get yours: $100". These are SHOWCASE sites; the ribbon names the real
-    # product and its price-book price (Starter Website $250 for the site, $25 to set it up / Business Website $500 for the site, $75 to set it up).
+    # product and its price-book price (a website inside Presence, $30 today, then $100 a month).
     offer = PACKAGE_OFFER.get(c.get("package"), PACKAGE_OFFER["quick-start"])
     ribbon = (f'<div class="sample-ribbon" role="note" aria-label="Showcase site: {E(c["name"])} is not a real business"><b>Showcase</b>'
               f'<span class="sr-long">Built by Above the Hill · {E(c["name"])} is not a real business ·</span><span class="sr-short">Not a real business ·</span>'
-              f' <a href="{SITE}/pricing/#services"><span class="sr-long">Get yours: {offer}</span><span class="sr-short">{offer.split(" Website ")[1]}</span></a></div>') if c.get("sample") else ""
+              f' <a href="{SITE}/pricing/"><span class="sr-long">Get yours: {offer}</span><span class="sr-short">Presence · $30 today, then $100/mo</span></a></div>') if c.get("sample") else ""
 
     body = []
     if is_home:
@@ -152,7 +154,7 @@ def page_html(c, page, pages):
     if c.get("sample"):
         body.append(f"""<section class="block"><div class="wrap"><div id="sample-note"><h2 style="font-size:24px;margin-bottom:8px">This is a showcase site</h2>
 <p class="about" style="margin:0">On a real ATH site every button works: <b>Call</b> rings the shop, <b>Text</b> opens a message, <b>Directions</b> opens maps, and <b>Book</b> or <b>Order</b> goes to the booking or ordering tool the business already uses. Photos, prices and hours come from the owner's intake.</p>
-<p style="margin:16px 0 0"><a class="btn btn-solid" href="{SITE}/pricing/#services">See ATH website prices</a></p></div></div></section>""")
+<p style="margin:16px 0 0"><a class="btn btn-solid" href="{SITE}/pricing/">See ATH website prices</a></p></div></div></section>""")
     links = " · ".join(f'<a href="{href(c, l["href"])}">{E(l["label"])}</a>' for l in c.get("links", []))
     credit = f'Website by <a href="{SITE}/?utm_source=client-site&utm_medium=footer&utm_campaign={E(c["slug"])}">Above the Hill</a>'
     foot = f'<footer class="foot"><div class="wrap"><span>© {E(c["name"])}{" · " + links if links else ""}</span><span>{credit}</span></div></footer>'
@@ -228,7 +230,7 @@ def build():
             open(os.path.join(d, "index.html"), "w").write(page_html(c, p, pages))
         clients.append(c)
     samples = [c for c in clients if c.get("sample")]
-    cards = "".join(f'<a class="card" href="/sites/{c["slug"]}/"><span class="k">{E({"quick-start": "Starter Website · $250 for the site, $25 to set it up", "business-growth": "Business Website · $500 for the site, $75 to set it up"}.get(c.get("package"), ""))}</span><b>{E(c["name"])}</b><span>{E(c.get("category_label"))} · {E(c.get("theme"))} style</span></a>' for c in samples)
+    cards = "".join(f'<a class="card" href="/sites/{c["slug"]}/"><span class="k">{E("Website · inside Presence, $30 today, then $100 a month")}</span><b>{E(c["name"])}</b><span>{E(c.get("category_label"))} · {E(c.get("theme"))} style</span></a>' for c in samples)
     os.makedirs(ROOT, exist_ok=True)
     open(os.path.join(ROOT, "index.html"), "w").write(f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>Website showcase — Above the Hill</title><meta name="description" content="Showcase websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients."><link rel="canonical" href="https://abovethehilldev.online/sites/"><meta property="og:title" content="Website showcase — Above the Hill"><meta property="og:description" content="Showcase websites ATH built for fictional local businesses, using the same templates ATH uses for paying clients."><meta property="og:type" content="website"><meta property="og:url" content="https://abovethehilldev.online/sites/"><meta property="og:image" content="https://abovethehilldev.online/assets/art/home.jpg"><link rel="icon" href="/favicon.png" type="image/png"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap">
